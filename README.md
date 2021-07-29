@@ -1,1 +1,1 @@
-# lp-design-system
+# lp-styled-components-react

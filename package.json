@@ -1,7 +1,7 @@
 {
-  "name": "@liveperson/styled-components-react",
+  "name": "@liveperson/styled-components",
   "version": "1.0.0",
-  "description": "React styled components",
+  "description": "Styled components",
   "main": "index.ts",
   "license": "private",
   "private": true,

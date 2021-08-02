@@ -1,0 +1,25 @@
+$-breakpoints: (
+  laptop: 900px,
+  desktop: 1200px,
+  desktop-large: 1600px,
+);
+
+@function get-breakpoint($breakpoint) {
+  @return map-get($-breakpoints, $breakpoint);
+}
+
+@mixin media($breakpoint, $up: true) {
+  @if (map-has-key($breakpoint)) {
+    $breakpoint: get-breakpoint($breakpoint);
+  }
+
+  @if $up {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $breakpoint - 1px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+$-duration: (
+  fast: .15s,
+  normal: .3s,
+  slow: .4s,
+);
+
+$-timing-function: (
+  ease-in-quad: cubic-bezier(.11, 0, .5, 0),
+  ease-out-quad: cubic-bezier(.5, 1, .89, 1),
+  ease-in-out-quad: cubic-bezier(.45, 0, .55, 1),
+  ease-in-cubic: cubic-bezier(.32, 0, .67, 0),
+  ease-out-cubic: cubic-bezier(.33, 1, .68, 1),
+  ease-in-out-cubic: cubic-bezier(.65, 0, .35, 1),
+  ease-in-quart: cubic-bezier(.5, 0, .75, 0),
+  ease-out-quart: cubic-bezier(.25, 1, .5, 1),
+  ease-in-out-quart: cubic-bezier(.76, 0, .24, 1),
+);
+
+@mixin animation(
+  $name: slide-up-fade-in,
+  $duration: normal,
+  $timing-function: ease-out-cubic,
+  $delay: 0s,
+  $iteration-count: 1,
+  $direction: normal,
+  $fill-mode: none,
+  $play-state: running
+) {
+  @if map-has-key($duration) {
+    $duration: map-get($-duration, $duration);
+  }
+
+  @if map-has-key($timing-function) {
+    $timing-function: map-get($-timing-function, $timing-function);
+  }
+
+  animation: $duration $timing-function $delay $iteration-count $direction $fill-mode $play-state $name;
+}

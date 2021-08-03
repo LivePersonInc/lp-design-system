@@ -1,0 +1,201 @@
+$size-default: 1em; // 16px
+$size-body: 1em; // 16px
+$size-small: .833em; // 13.33px
+
+$line-height-regular: 1.2; // 120%
+$line-height-small: 1.2; // 120%
+$line-height-large: 1.5; // 150%
+
+$weight-light: 300; // Light
+$weight-regular: 400; // Normal
+$weight-medium: 500; // Medium
+$weight-bold: 700; // Bold
+
+$letter-spacing-regular: 0;
+$letter-spacing-all-caps: 2%;
+$letter-spacing-compact: -2%;
+
+$font-size-heading-1: 2.074em; // 33.18 px
+$font-size-heading-2: 1.728em; // 27.65px
+$font-size-heading-3: 1.44em; // 23.04px
+$font-size-heading-4: 1.2em; // 19.20px
+$font-size-heading-5: 1em; // 16px
+$font-size-heading-6: 1em; // 16px
+
+// Modifications mixins
+@mixin type-all-caps {
+  letter-spacing: $letter-spacing-all-caps;
+  text-transform: uppercase;
+}
+@mixin type-link-active {
+  text-decoration: underline;
+}
+@mixin type-inline-emphasis {
+  font-style: italic;
+}
+@mixin type-code {
+  font-family: 'Roboto Mono', sans-serif;
+}
+@mixin type-condensed {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+// Headers mixins
+@mixin h1 {
+  font-size: $font-size-heading-1;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin h2 {
+  font-size: $font-size-heading-2;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin h3 {
+  font-size: $font-size-heading-3;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin h4 {
+  font-size: $font-size-heading-4;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin h5 {
+  font-size: $font-size-heading-5;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  @include type-all-caps;
+}
+@mixin h6 {
+  font-size: $font-size-heading-6;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Body mixins
+@mixin body {
+  font-size: $size-body;
+  font-weight: $weight-regular;
+  line-height: $line-height-large;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin body-small {
+  @include body;
+  font-size: $size-small;
+}
+@mixin body-bold {
+  @include body;
+  font-weight: $weight-bold;
+}
+@mixin body-bold-small {
+  @include body-small;
+  font-weight: $weight-bold;
+}
+@mixin body-italic {
+  @include body;
+  font-style: italic;
+}
+@mixin body-italic-small {
+  @include body-small;
+  font-style: italic;
+}
+
+// Button mixins
+@mixin button-label {
+  font-size: $size-default;
+  font-weight: $weight-bold;
+  line-height: $line-height-regular;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin button-label-small {
+  @include button-label;
+  font-size: $size-small;
+}
+
+// Tag mixins
+@mixin tag {
+  font-size: $size-small;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-compact;
+}
+
+// Table mixins
+@mixin table-header {
+  font-size: $size-small;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  @include type-all-caps;
+}
+@mixin table-cell {
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Input mixins
+@mixin input-label {
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin input-value {
+  font-size: $size-body;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Code mixins
+@mixin code {
+  @include type-code;
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Charts mixins
+@mixin chart-title {
+  font-size: $size-body;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-axis-title {
+  font-size: $size-small;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-axis-label {
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-number-title {
+  font-size: $font-size-heading-3;
+  font-weight: $weight-light;
+  line-height: $line-height-small;
+  @include type-all-caps;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-number-regular {
+  font-size: $font-size-heading-3;
+  font-weight: $weight-light;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-number-big {
+  @include chart-number-regular;
+  font-size: $font-size-heading-1;
+}

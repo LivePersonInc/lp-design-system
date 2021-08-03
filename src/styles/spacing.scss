@@ -1,0 +1,29 @@
+@use './common';
+
+$-spaces: (
+  xxs: 4px,
+  xs: 8px,
+  s: 12px,
+  m: 20px,
+  l: 32px,
+  xl: 52px,
+  xxl: 84px,
+);
+
+$-spaces-inner: (
+  xxs: 4px,
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 24px,
+  xl: 20px,
+  xxl: 32px,
+);
+
+@function get-space($size, $inner: false) {
+  @return map-get(if($inner, $-spaces-inner, $-spaces), $size);
+}
+
+@function get-space-rem($size, $inner: false) {
+  @return common.get-rem(get-space($size, $inner));
+}

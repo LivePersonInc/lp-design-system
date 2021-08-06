@@ -1,6 +1,9 @@
-$size-default: 1em; // 16px
-$size-body: 1em; // 16px
-$size-small: .833em; // 13.33px
+$font-roboto: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$font-roboto-mono: 'Roboto Mono', monospace, sans-serif;
+
+$size-default: 16px;
+$size-body: 16px;
+$size-small: 13.33px;
 
 $line-height-regular: 1.2; // 120%
 $line-height-small: 1.2; // 120%
@@ -12,15 +15,21 @@ $weight-medium: 500; // Medium
 $weight-bold: 700; // Bold
 
 $letter-spacing-regular: 0;
-$letter-spacing-all-caps: 2%;
-$letter-spacing-compact: -2%;
+$letter-spacing-all-caps: .02em;
+$letter-spacing-compact: -.02em;
 
-$font-size-heading-1: 2.074em; // 33.18 px
-$font-size-heading-2: 1.728em; // 27.65px
-$font-size-heading-3: 1.44em; // 23.04px
-$font-size-heading-4: 1.2em; // 19.20px
-$font-size-heading-5: 1em; // 16px
-$font-size-heading-6: 1em; // 16px
+$font-size-heading: (
+  1: 33.18px,
+  2: 27.65px,
+  3: 23.04px,
+  4: 19.20px,
+  5: 16px,
+  6: 16px,
+);
+
+@mixin main {
+  font-family: $font-roboto;
+}
 
 // Modifications mixins
 @mixin type-all-caps {
@@ -34,92 +43,60 @@ $font-size-heading-6: 1em; // 16px
   font-style: italic;
 }
 @mixin type-code {
-  font-family: 'Roboto Mono', sans-serif;
+  font-family: $font-roboto-mono;
 }
 @mixin type-condensed {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 // Headers mixins
-@mixin h1 {
-  font-size: $font-size-heading-1;
-  font-weight: $weight-bold;
+@mixin header($header: 1) {
+  @include main;
+
+  font-size: map-get($font-size-heading, $header);
   line-height: $line-height-small;
-  letter-spacing: $letter-spacing-regular;
-}
-@mixin h2 {
-  font-size: $font-size-heading-2;
-  font-weight: $weight-bold;
-  line-height: $line-height-small;
-  letter-spacing: $letter-spacing-regular;
-}
-@mixin h3 {
-  font-size: $font-size-heading-3;
-  font-weight: $weight-bold;
-  line-height: $line-height-small;
-  letter-spacing: $letter-spacing-regular;
-}
-@mixin h4 {
-  font-size: $font-size-heading-4;
-  font-weight: $weight-medium;
-  line-height: $line-height-small;
-  letter-spacing: $letter-spacing-regular;
-}
-@mixin h5 {
-  font-size: $font-size-heading-5;
-  font-weight: $weight-medium;
-  line-height: $line-height-small;
-  @include type-all-caps;
-}
-@mixin h6 {
-  font-size: $font-size-heading-6;
-  font-weight: $weight-medium;
-  line-height: $line-height-small;
-  letter-spacing: $letter-spacing-regular;
+  font-weight: if(
+    $header == 1 or $header == 2 or $header == 3,
+    $weight-bold,
+      $weight-medium
+  );
+
+  @if $header == 5 {
+    @include type-all-caps;
+  } @else {
+    letter-spacing: $letter-spacing-regular;
+  }
 }
 
 // Body mixins
-@mixin body {
-  font-size: $size-body;
+@mixin body($small: false) {
+  @include main;
+  font-size: if($small, $size-small, $size-body);
   font-weight: $weight-regular;
   line-height: $line-height-large;
   letter-spacing: $letter-spacing-regular;
 }
-@mixin body-small {
-  @include body;
-  font-size: $size-small;
-}
-@mixin body-bold {
-  @include body;
+@mixin body-bold($small: false) {
+  @include body($small);
   font-weight: $weight-bold;
 }
-@mixin body-bold-small {
-  @include body-small;
-  font-weight: $weight-bold;
-}
-@mixin body-italic {
-  @include body;
-  font-style: italic;
-}
-@mixin body-italic-small {
-  @include body-small;
+@mixin body-italic($small: false) {
+  @include body($small);
   font-style: italic;
 }
 
 // Button mixins
-@mixin button-label {
-  font-size: $size-default;
+@mixin button-label($small: false) {
+  @include main;
+  font-size: if($small, $size-small, $size-default);
   font-weight: $weight-bold;
   line-height: $line-height-regular;
   letter-spacing: $letter-spacing-regular;
 }
-@mixin button-label-small {
-  @include button-label;
-  font-size: $size-small;
-}
 
 // Tag mixins
 @mixin tag {
+  @include main;
   font-size: $size-small;
   font-weight: $weight-medium;
   line-height: $line-height-small;
@@ -128,12 +105,14 @@ $font-size-heading-6: 1em; // 16px
 
 // Table mixins
 @mixin table-header {
+  @include main;
   font-size: $size-small;
   font-weight: $weight-medium;
   line-height: $line-height-small;
   @include type-all-caps;
 }
 @mixin table-cell {
+  @include main;
   font-size: $size-small;
   font-weight: $weight-regular;
   line-height: $line-height-small;
@@ -142,12 +121,14 @@ $font-size-heading-6: 1em; // 16px
 
 // Input mixins
 @mixin input-label {
+  @include main;
   font-size: $size-small;
   font-weight: $weight-regular;
   line-height: $line-height-small;
   letter-spacing: $letter-spacing-regular;
 }
 @mixin input-value {
+  @include main;
   font-size: $size-body;
   font-weight: $weight-regular;
   line-height: $line-height-small;
@@ -165,37 +146,38 @@ $font-size-heading-6: 1em; // 16px
 
 // Charts mixins
 @mixin chart-title {
+  @include main;
   font-size: $size-body;
   font-weight: $weight-bold;
   line-height: $line-height-small;
   letter-spacing: $letter-spacing-regular;
 }
 @mixin chart-axis-title {
+  @include main;
   font-size: $size-small;
   font-weight: $weight-bold;
   line-height: $line-height-small;
   letter-spacing: $letter-spacing-regular;
 }
 @mixin chart-axis-label {
+  @include main;
   font-size: $size-small;
   font-weight: $weight-regular;
   line-height: $line-height-small;
   letter-spacing: $letter-spacing-regular;
 }
 @mixin chart-number-title {
-  font-size: $font-size-heading-3;
+  @include main;
+  font-size: map-get($font-size-heading, 3);
   font-weight: $weight-light;
   line-height: $line-height-small;
   @include type-all-caps;
   letter-spacing: $letter-spacing-regular;
 }
-@mixin chart-number-regular {
-  font-size: $font-size-heading-3;
+@mixin chart-number($big: false) {
+  @include main;
+  font-size: map-get($font-size-heading, if($big, 1, 3));
   font-weight: $weight-light;
   line-height: $line-height-small;
   letter-spacing: $letter-spacing-regular;
-}
-@mixin chart-number-big {
-  @include chart-number-regular;
-  font-size: $font-size-heading-1;
 }

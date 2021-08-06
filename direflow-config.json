@@ -2,5 +2,10 @@
   "build": {
     "componentPath": "components",
     "filename": "direflowBundle.js"
+  },
+  "polyfills": {
+    "sd": false,
+    "ce": false,
+    "adapter": false
   }
 }

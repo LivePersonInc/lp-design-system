@@ -11,7 +11,7 @@
 
 import Button from './components/button';
 
-Button.then((element) => {
+Button.then(element => {
 
   /**
    * Access DOM node when it's mounted

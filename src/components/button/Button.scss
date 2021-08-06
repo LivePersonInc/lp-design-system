@@ -1,0 +1,270 @@
+@use '~lpds/styles/common';
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-dark';
+@use '~lpds/styles/typography';
+
+@include common.prefix {
+  &-button {
+    display: inline-block;
+    @include typography.button-label;
+    text-align: center;
+    color: colors.$black;
+    border: none;
+    @include border-radius.border-radius;
+    background: none;
+    @include spacing.padding(xs, m, true);
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      box-shadow: none !important;
+    }
+
+    &.light {
+      &:focus {
+        box-shadow: 0 0 0 2px colors.$white, 0 0 0 4px colors.$blue-dark;
+      }
+    }
+
+    &.dark {
+      &:focus {
+        box-shadow: 0 0 0 2px #0C1836, 0 0 0 4px colors.$white;
+      }
+    }
+
+    &.primary {
+      color: colors.$navy-white;
+      background: colors.$blue;
+
+      &:hover,
+      &:focus {
+        background: colors.$blue-dark;
+      }
+
+      &:active {
+        background: colors.$blue-darker;
+      }
+
+      &:disabled {
+        opacity: .53;
+      }
+
+      &.dark {
+        color: colors-dark.$navy-white;
+        background: colors-dark.$blue;
+
+        &:hover,
+        &:focus {
+          background: colors-dark.$blue-dark;
+        }
+
+        &:active {
+          background: colors-dark.$blue-darker;
+        }
+      }
+    }
+
+    &.secondary {
+      color: colors.$navy-darkest;
+      background: colors.$navy-lightest;
+
+      &:hover,
+      &:focus {
+        color: colors.$navy-white;
+        background: colors.$navy-dark;
+      }
+
+      &:active {
+        background: colors.$periwinkle;
+      }
+
+      &:disabled {
+        color: colors.$navy-darkest;
+        opacity: .53;
+      }
+
+      &.dark {
+        color: colors-dark.$navy-darker;
+        background: colors-dark.$navy-white;
+
+        &:hover,
+        &:focus {
+          color: colors-dark.$navy-darker;
+          background: colors-dark.$navy-lighter;
+        }
+
+        &:active {
+          color: colors-dark.$navy-white;
+          background: colors-dark.$periwinkle-darker;
+        }
+
+        &:disabled {
+          color: colors-dark.$navy-darker;
+        }
+      }
+    }
+
+    &.tertiary {
+      color: colors.$periwinkle-dark;
+      box-shadow: inset 0 0 0 2px colors.$periwinkle;
+
+      &:hover,
+      &:focus {
+        box-shadow: inset 0 0 0 2px colors.$periwinkle-dark;
+      }
+
+      &:focus {
+        box-shadow:
+          inset 0 0 0 2px colors.$periwinkle-dark,
+          0 0 0 2px colors.$white,
+          0 0 0 4px colors.$blue-dark;
+      }
+
+      &:active {
+        color: colors.$navy-white;
+        background: colors.$navy-darker;
+        box-shadow: none;
+      }
+
+      &:disabled {
+        opacity: .53;
+      }
+
+      &.dark {
+        color: colors-dark.$navy-white;
+        box-shadow: inset 0 0 0 2px colors-dark.$navy-lighter;
+
+        &:hover,
+        &:focus {
+          box-shadow: inset 0 0 0 2px colors-dark.$navy-light;
+        }
+
+        &:focus {
+          box-shadow:
+            inset 0 0 0 2px colors-dark.$navy-light,
+            0 0 0 2px #0C1836,
+            0 0 0 4px colors-dark.$white;
+        }
+
+        &:active {
+          color: colors-dark.$navy-darker;
+          background: colors-dark.$navy-lighter;
+        }
+      }
+    }
+
+    &.destructive {
+      color: colors.$navy-white;
+      background: colors.$red;
+
+      &:hover,
+      &:focus {
+        background: colors.$red-dark;
+      }
+
+      &:active {
+        background: colors.$red-darker;
+      }
+
+      &:disabled {
+        opacity: .53;
+      }
+
+      &.dark {
+        color: colors-dark.$navy-white;
+        background: colors-dark.$red;
+
+        &:hover,
+        &:focus {
+          background: colors-dark.$red-dark;
+        }
+
+        &:active {
+          background: colors-dark.$red-darker;
+        }
+      }
+    }
+
+    &.ghost {
+      color: colors.$blue;
+
+      &:hover,
+      &:focus {
+        color: colors.$blue-dark;
+        background: rgba(0, 32, 116, .08);
+      }
+
+      &:active {
+        color: colors.$blue-darker;
+      }
+
+      &:disabled {
+        color: colors.$blue-dark;
+        opacity: .53;
+      }
+
+      &.dark {
+        color: colors-dark.$navy-white;
+
+        &:hover,
+        &:focus {
+          color: colors-dark.$navy-white;
+          background: rgba(colors-dark.$blue-lighter, .15);
+        }
+
+        &:active {
+          color: colors.$navy-white;
+        }
+
+        &:disabled {
+          color: colors.$navy-white;
+        }
+      }
+    }
+
+    &.inline {
+      color: colors.$blue;
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        color: colors.$blue-dark;
+      }
+
+      &:active {
+        color: colors.$blue-darker;
+      }
+
+      &:disabled {
+        opacity: .53;
+      }
+
+      &.dark {
+        color: colors-dark.$cyan;
+
+        &:hover,
+        &:focus {
+          color: colors-dark.$cyan-dark;
+        }
+
+        &:active {
+          color: colors-dark.$cyan-darker;
+        }
+      }
+    }
+
+    &.small {
+      font-size: typography.$size-small;
+      @include spacing.padding(xxs, s, true);
+    }
+
+    &.large {
+      @include spacing.padding(s, m, true);
+    }
+  }
+}

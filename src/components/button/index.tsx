@@ -1,32 +1,28 @@
 import { DireflowComponent } from 'direflow-component';
-import { Theme } from '../enum';
-import Button from './button';
-import { ButtonSize, ButtonVariant } from './enum';
+
+import Button from './Button';
 
 export default DireflowComponent.create({
   component: Button,
   configuration: {
     tagname: 'lp-button',
   },
-  properties: {
-    variant: ButtonVariant.PRIMARY,
-    theme: Theme.DARK,
-    size: ButtonSize.MEDIUM,
-    label: '',
-    onClick: () => {},
-    disabled: false
-  },
   plugins: [
     {
-      name: 'styled-components'
-    }
-    // {
-    //   name: 'font-loader',
-    //   options: {
-    //     google: {
-    //       families: ['Advent Pro', 'Noto Sans JP'],
-    //     },
-    //   },
-    // },
+      name: 'font-loader',
+      options: {
+        google: {
+          families: ['Roboto'],
+        },
+      },
+    },
   ],
 });
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'lp-button': any
+    }
+  }
+}

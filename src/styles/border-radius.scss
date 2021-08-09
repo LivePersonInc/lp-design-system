@@ -1,11 +1,12 @@
 $-border-radius: (
+  xxs: 4px,
   xs: 8px,
   s: 12px,
   m: 16px,
   l: 24px,
 );
 
-@mixin border-radius($border-radius: xs) {
+@mixin border-radius($border-radius: xxs) {
   @if map-has-key($-border-radius, $border-radius) {
     $border-radius: map-get($-border-radius, $border-radius);
   }

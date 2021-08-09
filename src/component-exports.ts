@@ -9,8 +9,8 @@
  * this file can be safely deleted.
  */
 
-import Button from './components/button/button';
+import Button from './components/button/Button';
 
-export { 
-  Button 
+export {
+  Button,
 };

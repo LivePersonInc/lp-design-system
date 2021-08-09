@@ -1,4 +1,5 @@
 @use './common';
+@use './responsive';
 
 $-spaces: (
   xxs: 4px,
@@ -27,3 +28,45 @@ $-spaces-inner: (
 @function get-space-rem($size, $inner: false) {
   @return common.get-rem(get-space($size, $inner));
 }
+
+@mixin padding($size, $hSize, $inner: false) {
+  @if $hSize {
+    padding: get-space($size, $inner) get-space($hSize, $inner);
+  } @else {
+    padding: get-space($size, $inner);
+  }
+}
+
+@mixin auto-padding(
+  $breakpoints: (
+    mobile: (xs, s),
+    laptop: (s, m),
+    desktop: (m, l),
+    large-desktop: (l, xl),
+  ),
+) {
+  @if map-has-key($breakpoints, mobile) {
+    @include responsive.media(laptop, false) {
+      @include padding(map-get($breakpoints, mobile));
+    }
+  }
+
+  @if map-has-key($breakpoints, laptop) {
+    @include responsive.media(laptop) {
+      @include padding(map-get($breakpoints, laptop));
+    }
+  }
+
+  @if map-has-key($breakpoints, desktop) {
+    @include responsive.media(desktop) {
+      @include padding(map-get($breakpoints, desktop));
+    }
+  }
+
+  @if map-has-key($breakpoints, large-desktop) {
+    @include responsive.media(large-desktop) {
+      @include padding(map-get($breakpoints, large-desktop));
+    }
+  }
+}
+

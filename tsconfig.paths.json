@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "lpds/styles/*": ["./styles/*"]
+    }
+  }
+}

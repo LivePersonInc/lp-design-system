@@ -1,1 +1,8 @@
-<script src="http://localhost:3000/direflowBundle.js"></script>
+<script>
+  const el = document.createElement('script');
+
+  el.type = 'text/javascript';
+  el.src = ('%NODE_ENV%' === 'development' ? 'http://localhost:3000/direflowBundle.js' : 'direflowBundle.js');
+
+  document.head.appendChild(el);
+</script>

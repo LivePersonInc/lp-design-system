@@ -1,0 +1,93 @@
+@use '~lpds/styles/transparency';
+
+// Light theme
+
+$black: #000;
+$white: #FFF;
+
+$navy-black: #040E29;
+$navy-darker: #13244A;
+$navy-dark: #37497D;
+$navy: #5970AB;
+$navy-light: #99AFDE;
+$navy-lighter: #CBD9F5;
+$navy-lightest: #E0EAFF;
+$navy-white: #FAFBFF;
+
+$blue-darker: #073099;
+$blue-dark: #0A40CC;
+$blue: #0C50FF;
+$blue-light: #4579FF;
+$blue-lighter: #87A9FF;
+
+$periwinkle-darker: #30437E;
+$periwinkle-dark: #3955A7;
+$periwinkle: #4667C8;
+$periwinkle-light: #B2C2F1;
+$periwinkle-lighter: #D0DBF6;
+
+$orange-darker: #A84E0A;
+$orange-dark: #D65800;
+$orange: #FA6700;
+$orange-light: #FFB785;
+$orange-lighter: #FFC9A3;
+
+$cyan-darker: #08717A;
+$cyan-dark: #079DAB;
+$cyan: #19C9D9;
+$cyan-light: #49E2F0;
+$cyan-lighter: #85F5FF;
+
+$green-darker: #057229;
+$green-dark: #0C9539;
+$green-default: #12C34D;
+$green-light: #5AD382;
+$green-lighter: #8FF6B2;
+
+$red-darker: #971116;
+$red-dark: #B71A20;
+$red: #D72329;
+$red-light: #F49FA1;
+$red-lighter: #FBC5C7;
+
+$yellow-darker: #866901;
+$yellow-dark: #AF8C0D;
+$yellow: #E1B619;
+$yellow-light: #F4D676;
+$yellow-lighter: #F5E3A8;
+
+$focus-outline: 0 0 0 2px $white, 0 0 0 4px $blue;
+
+
+// Semantic names
+$primary: $blue;
+$primary--hover: $blue-dark;
+$primary--active: $blue-darker;
+$primary-text: $navy-white;
+
+$secondary: $navy-lightest;
+$secondary--hover: $navy;
+$secondary--active: $navy-dark;
+$secondary-text: $navy-darker;
+$secondary-text--hover: $navy-white;
+
+$tertiary: transparent;
+$tertiary--active: $periwinkle-dark;
+$tertiary-border: $periwinkle;
+$tertiary-border--hover: $periwinkle-dark;
+$tertiary-text: $periwinkle-dark;
+$tertiary-text--active: $navy-white;
+
+$destructive: $red;
+$destructive--hover: $red-dark;
+$destructive--active: $red-darker;
+$destructive-text: $navy-white;
+
+$ghost: transparent;
+$ghost--hover: transparency.$dark-1;
+$ghost--active: transparency.$dark-2;
+
+$inline: transparent;
+$inline-text: $blue;
+$inline-text--hover: $blue-dark;
+$inline-text--active: $blue-darker;

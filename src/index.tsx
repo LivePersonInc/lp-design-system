@@ -10,11 +10,3 @@
  */
 
 import './components/button';
-
-Button.then(element => {
-
-  /**
-   * Access DOM node when it's mounted
-   */
-  console.log('button is mounted on the DOM', element);
-});

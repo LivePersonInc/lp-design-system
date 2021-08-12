@@ -23,6 +23,6 @@ declare module '*.svg' {
 
 declare namespace JSX {
   interface IntrinsicElements {
-    'slot';
+    'slot': any;
   }
 }

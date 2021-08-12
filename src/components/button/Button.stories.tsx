@@ -3,16 +3,7 @@ import React from 'react';
 import { ButtonProps } from './Button';
 
 export default {
-  title: 'Button',
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#07092E' },
-        { name: 'light', value: '#FFF' },
-      ],
-    },
-  },
+  title: 'Components/Button',
   argTypes: {
     theme: {
       options: ['dark', 'light'],

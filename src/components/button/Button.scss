@@ -2,8 +2,10 @@
 @use '~lpds/styles/border-radius';
 @use '~lpds/styles/spacing';
 @use '~lpds/styles/colors';
-@use '~lpds/styles/colors-dark';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/transparency';
 @use '~lpds/styles/typography';
+
 
 @include common.prefix {
   &-button {
@@ -14,257 +16,218 @@
     border: none;
     @include border-radius.border-radius;
     background: none;
-    @include spacing.padding(xs, m, true);
+    @include spacing.padding(none, m, true);
     cursor: pointer;
+    height: 32px;
 
     &:focus {
       outline: none;
+      box-shadow: colors.$focus-outline;
+    }
+    &.light:focus {
+      box-shadow: colors-light.$focus-outline;
     }
 
     &:active {
       box-shadow: none !important;
     }
 
-    &.light {
-      &:focus {
-        box-shadow: 0 0 0 2px colors.$white, 0 0 0 4px colors.$blue-dark;
-      }
-    }
-
-    &.dark {
-      &:focus {
-        box-shadow: 0 0 0 2px #0C1836, 0 0 0 4px colors.$white;
-      }
+    &:disabled {
+      opacity: transparency.$disabled;
     }
 
     &.primary {
-      color: colors.$navy-white;
-      background: colors.$blue;
+      color: colors.$primary-text;
+      background: colors.$primary;
 
-      &:hover,
+      &:hover:not(:disabled),
       &:focus {
-        background: colors.$blue-dark;
+        background: colors.$primary--hover;
       }
 
-      &:active {
-        background: colors.$blue-darker;
+      &:active:not(:disabled) {
+        background: colors.$primary--active;
       }
 
-      &:disabled {
-        opacity: .53;
-      }
+      &.light {
+        background: colors-light.$primary;
+        color: colors-light.$primary-text;
 
-      &.dark {
-        color: colors-dark.$navy-white;
-        background: colors-dark.$blue;
-
-        &:hover,
+        &:hover:not(:disabled),
         &:focus {
-          background: colors-dark.$blue-dark;
+          background: colors-light.$primary--hover;
         }
 
-        &:active {
-          background: colors-dark.$blue-darker;
+        &:active:not(:disabled) {
+          background: colors-light.$primary--active;
         }
       }
     }
 
+
     &.secondary {
-      color: colors.$navy-darkest;
-      background: colors.$navy-lightest;
+      background: colors.$secondary;
+      color: colors.$secondary-text;
 
-      &:hover,
+      &:hover:not(:disabled),
       &:focus {
-        color: colors.$navy-white;
-        background: colors.$navy-dark;
+        background: colors.$secondary--hover;
       }
 
-      &:active {
-        background: colors.$periwinkle;
+      &:active:not(:disabled) {
+        background: colors.$secondary--active;
+        color: colors.$secondary-text--active;
       }
 
-      &:disabled {
-        color: colors.$navy-darkest;
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-darker;
-        background: colors-dark.$navy-white;
-
-        &:hover,
+      &.light {
+        background: colors-light.$secondary;
+        color: colors-light.$secondary-text;
+  
+        &:hover:not(:disabled),
         &:focus {
-          color: colors-dark.$navy-darker;
-          background: colors-dark.$navy-lighter;
-        }
-
-        &:active {
-          color: colors-dark.$navy-white;
-          background: colors-dark.$periwinkle-darker;
-        }
-
-        &:disabled {
-          color: colors-dark.$navy-darker;
+          color: colors-light.$secondary-text--hover;
+          background: colors-light.$secondary--hover;
         }
       }
     }
 
     &.tertiary {
-      color: colors.$periwinkle-dark;
-      box-shadow: inset 0 0 0 2px colors.$periwinkle;
+      background: colors.$tertiary;
+      color: colors.$tertiary-text;
+      box-shadow: inset 0 0 0 2px colors.$tertiary-border;
 
-      &:hover,
-      &:focus {
-        box-shadow: inset 0 0 0 2px colors.$periwinkle-dark;
+      &:hover {
+        box-shadow: inset 0 0 0 2px colors.$tertiary-border--hover;
       }
 
       &:focus {
         box-shadow:
-          inset 0 0 0 2px colors.$periwinkle-dark,
-          0 0 0 2px colors.$white,
-          0 0 0 4px colors.$blue-dark;
+          inset 0 0 0 2px colors.$tertiary-border--hover,
+          colors.$focus-outline;
       }
 
-      &:active {
-        color: colors.$navy-white;
-        background: colors.$navy-darker;
+      &:active:not(:disabled) {
+        background: colors.$tertiary--active;
+        color: colors.$tertiary-text--active;
         box-shadow: none;
       }
 
-      &:disabled {
-        opacity: .53;
-      }
+      &.light {
+        background: colors-light.$tertiary;
+        color: colors-light.$tertiary-text;
+        box-shadow: inset 0 0 0 2px colors-light.$tertiary-border;
 
-      &.dark {
-        color: colors-dark.$navy-white;
-        box-shadow: inset 0 0 0 2px colors-dark.$navy-lighter;
-
-        &:hover,
-        &:focus {
-          box-shadow: inset 0 0 0 2px colors-dark.$navy-light;
+        &:hover {
+          box-shadow: inset 0 0 0 2px colors-light.$tertiary-border--hover;
         }
 
         &:focus {
           box-shadow:
-            inset 0 0 0 2px colors-dark.$navy-light,
-            0 0 0 2px #0C1836,
-            0 0 0 4px colors-dark.$white;
+            inset 0 0 0 2px colors-light.$tertiary-border--hover,
+            colors-light.$focus-outline;
         }
 
-        &:active {
-          color: colors-dark.$navy-darker;
-          background: colors-dark.$navy-lighter;
+        &:active:not(:disabled) {
+          background: colors-light.$tertiary--active;
+          color: colors-light.$tertiary-text--active;
+          box-shadow: none;
         }
       }
     }
 
     &.destructive {
-      color: colors.$navy-white;
-      background: colors.$red;
+      background: colors.$destructive;
+      color: colors.$destructive-text;
 
-      &:hover,
+      &:hover:not(:disabled),
       &:focus {
-        background: colors.$red-dark;
+        background: colors.$destructive--hover;
       }
 
-      &:active {
-        background: colors.$red-darker;
+      &:active:not(:disabled) {
+        background: colors.$destructive--active;
       }
 
-      &:disabled {
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-white;
-        background: colors-dark.$red;
-
-        &:hover,
+      &.light {
+        background: colors-light.$destructive;
+        color: colors-light.$destructive-text;
+  
+        &:hover:not(:disabled),
         &:focus {
-          background: colors-dark.$red-dark;
+          background: colors-light.$destructive--hover;
         }
-
-        &:active {
-          background: colors-dark.$red-darker;
+  
+        &:active:not(:disabled) {
+          background: colors-light.$destructive--active;
         }
       }
     }
 
     &.ghost {
-      color: colors.$blue;
+      background: colors.$ghost;
+      color: colors.$inline-text;
 
-      &:hover,
+      &:hover:not(:disabled),
       &:focus {
-        color: colors.$blue-dark;
-        background: rgba(0, 32, 116, .08);
+        background: colors.$ghost--hover;
       }
 
-      &:active {
-        color: colors.$blue-darker;
+      &:active:not(:disabled) {
+        background: colors.$ghost--active;
       }
 
-      &:disabled {
-        color: colors.$blue-dark;
-        opacity: .53;
-      }
+      &.light {
+        background: colors-light.$ghost;
+        color: colors-light.$inline-text;
 
-      &.dark {
-        color: colors-dark.$navy-white;
-
-        &:hover,
+        &:hover:not(:disabled),
         &:focus {
-          color: colors-dark.$navy-white;
-          background: rgba(colors-dark.$blue-lighter, .15);
+          background: colors-light.$ghost--hover;
         }
 
-        &:active {
-          color: colors.$navy-white;
-        }
-
-        &:disabled {
-          color: colors.$navy-white;
+        &:active:not(:disabled) {
+          background: colors-light.$ghost--active;
         }
       }
     }
 
     &.inline {
-      color: colors.$blue;
-      padding: 0;
+      padding: 2px;
+      height: auto;
+      color: colors.$inline-text;
 
-      &:hover,
+      &:hover:not(:disabled),
       &:focus {
-        color: colors.$blue-dark;
+        color: colors.$inline-text--hover;
       }
 
-      &:active {
-        color: colors.$blue-darker;
+      &:active:not(:disabled) {
+        color: colors.$inline-text--active;
       }
 
-      &:disabled {
-        opacity: .53;
-      }
+      &.light {
+        color: colors-light.$inline-text;
 
-      &.dark {
-        color: colors-dark.$cyan;
-
-        &:hover,
+        &:hover:not(:disabled),
         &:focus {
-          color: colors-dark.$cyan-dark;
+          color: colors-light.$inline-text--hover;
         }
 
-        &:active {
-          color: colors-dark.$cyan-darker;
+        &:active:not(:disabled) {
+          color: colors-light.$inline-text--active;
         }
       }
     }
 
     &.small {
       font-size: typography.$size-small;
-      @include spacing.padding(xxs, s, true);
+      height: 24px;
+      @include spacing.padding(none, s, true);
     }
 
     &.large {
-      @include spacing.padding(s, m, true);
+      height: 40px;
+      @include spacing.padding(none, m, true);
     }
   }
 }

@@ -43,7 +43,7 @@ const Button: ButtonComponent = (
 };
 
 Button.defaultProps = {
-  theme: 'light',
+  theme: 'dark',
   variant: 'primary',
   size: 'medium',
   label: 'Button',

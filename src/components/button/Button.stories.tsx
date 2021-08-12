@@ -6,18 +6,18 @@ export default {
   title: 'Button',
   parameters: {
     backgrounds: {
-      default: 'light',
+      default: 'dark',
       values: [
-        { name: 'light', value: '#FFF' },
         { name: 'dark', value: '#07092E' },
+        { name: 'light', value: '#FFF' },
       ],
     },
   },
   argTypes: {
     theme: {
-      options: ['light', 'dark'],
+      options: ['dark', 'light'],
       control: { type: 'inline-radio' },
-      defaultValue: 'light',
+      defaultValue: 'dark',
     },
     variant: {
       options: [
@@ -41,7 +41,7 @@ export default {
 
 export const Button = (props: ButtonProps) => <lp-button {...props}></lp-button>;
 Button.args = {
-  theme: 'light',
+  theme: 'dark',
   variant: 'primary',
   size: 'medium',
   label: 'Button',

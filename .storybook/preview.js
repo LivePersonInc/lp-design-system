@@ -7,7 +7,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'light',
+    default: 'dark',
     values: [
       { name: 'light', value: '#FFF' },
       { name: 'dark', value: '#07092E' },

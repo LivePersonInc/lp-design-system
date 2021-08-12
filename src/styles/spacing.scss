@@ -2,6 +2,7 @@
 @use './responsive';
 
 $-spaces: (
+  none: 0,
   xxs: 4px,
   xs: 8px,
   s: 12px,
@@ -12,6 +13,7 @@ $-spaces: (
 );
 
 $-spaces-inner: (
+  none: 0,
   xxs: 4px,
   xs: 8px,
   s: 12px,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Styled } from 'direflow-component';
-import classNames from 'classnames';
 
 import { Theme } from 'lpds/styles/common';
 
@@ -16,28 +15,14 @@ export type ButtonProps = JSX.IntrinsicElements['button'] & {
   size?: ButtonSize
   icon?: string
   iconPlacement?: ButtonIconPlacement
-  label?: React.ReactNode
 }
 
 export type ButtonComponent = React.FC<ButtonProps>
 
-const Button: ButtonComponent = (
-  {
-    className,
-    theme,
-    variant,
-    size,
-    icon,
-    iconPlacement,
-    label,
-    ...props
-  }
-) => {
+const Button: ButtonComponent = ({ children }) => {
   return (
-    <Styled styles={styles}>
-      <button className={classNames('lp-button', theme, variant, size, className)} {...props}>
-        {label}
-      </button>
+    <Styled styles={styles} scoped={false}>
+      {children}
     </Styled>
   )
 };
@@ -46,7 +31,6 @@ Button.defaultProps = {
   theme: 'dark',
   variant: 'primary',
   size: 'medium',
-  label: 'Button',
   iconPlacement: 'left',
 };
 

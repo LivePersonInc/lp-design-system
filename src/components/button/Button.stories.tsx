@@ -1,6 +1,7 @@
 import React from 'react';
+import { Meta, Story } from '@storybook/react';
 
-import { ButtonProps } from './Button';
+import Button, { ButtonProps } from './Button';
 
 export default {
   title: 'Components/Button',
@@ -28,13 +29,16 @@ export default {
       defaultValue: 'medium',
     },
   },
-};
+} as Meta<ButtonProps>;
 
-export const Button = (props: ButtonProps) => <lp-button {...props}></lp-button>;
-Button.args = {
+export const Default: Story<ButtonProps> = ({ children, ...props }) => (
+  <lp-button {...props}>{children}</lp-button>
+);
+
+Default.args = {
   theme: 'dark',
   variant: 'primary',
   size: 'medium',
-  label: 'Button',
+  children: 'Button',
   disabled: false,
 };

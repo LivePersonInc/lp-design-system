@@ -9,7 +9,7 @@
  * It can be left blank if not needed.
  */
 
-import Button from './components/button';
+import './components/button';
 
 Button.then(element => {
 

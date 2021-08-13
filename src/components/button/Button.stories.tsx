@@ -32,7 +32,7 @@ export default {
 } as Meta<ButtonProps>;
 
 export const Default: Story<ButtonProps> = ({ children, ...props }) => (
-  <lp-button {...props}>{children}</lp-button>
+  <lp-button key={String(children)} {...props}><span>{children}</span></lp-button>
 );
 
 Default.args = {

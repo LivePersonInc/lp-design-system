@@ -25,10 +25,6 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
     dispatch(new CustomEvent('button-click', e));
   }, [dispatch]);
 
-  const wrapClickHandler = useCallback((e): void => {
-    console.log(e);
-  }, []);
-
   useEffect(() => {
     if (wrapEl.current) {
       const slotEl = wrapEl.current.querySelector('slot');
@@ -49,7 +45,7 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
 
   return (
     <Styled styles={styles} scoped={false}>
-      <div ref={wrapEl} className="wrap" onClick={wrapClickHandler}>
+      <div ref={wrapEl} className="wrap">
         {children}
       </div>
     </Styled>

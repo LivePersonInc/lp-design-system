@@ -17,6 +17,11 @@ export default {
       defaultValue: 'default',
     },
   },
+  parameters: {
+    actions: {
+      handles: ['button-click'],
+    },
+  },
 } as Meta<ButtonGroupCustomProps>;
 
 export const Default: Story<ButtonGroupCustomProps & { buttons: string }> = ({ buttons: buttonsProp, ...props }) => {

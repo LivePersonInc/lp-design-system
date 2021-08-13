@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { Styled } from 'direflow-component';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
+import { EventContext, Styled } from 'direflow-component';
 
 import { Theme } from 'lpds/styles/common';
 
@@ -19,6 +19,12 @@ export type ButtonGroupComponent = React.FC<ButtonGroupProps>
 const ButtonGroup: ButtonGroupComponent = ({ children }) => {
   const wrapEl = useRef<HTMLDivElement>(null);
 
+  const dispatch = useContext(EventContext);
+
+  const buttonClickHandler = useCallback((e): void => {
+    dispatch(new CustomEvent('button-click', e));
+  }, [dispatch]);
+
   const wrapClickHandler = useCallback((e): void => {
     console.log(e);
   }, []);
@@ -30,10 +36,12 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
       const buttons = slotEl?.assignedElements();
 
       buttons?.forEach(button => {
-        button.addEventListener('click', e => {
+        button.addEventListener('click', (e): void => {
           buttons.find(({ classList }) => classList.contains('active'))?.classList.remove('active');
 
-          (e.target as HTMLDivElement).classList.add('active');
+          (e.target as HTMLButtonElement).classList.add('active');
+
+          buttonClickHandler(e);
         });
       });
     }

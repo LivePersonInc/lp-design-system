@@ -10,7 +10,9 @@
  */
 
 import Button from './components/button/Button';
+import ButtonGroup from './components/button-group/ButtonGroup';
 
 export {
   Button,
-};
+  ButtonGroup,
+}

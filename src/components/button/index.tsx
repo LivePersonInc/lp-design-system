@@ -13,7 +13,7 @@ DireflowComponent.create({
       name: 'font-loader',
       options: {
         google: {
-          families: ['Roboto'],
+          families: ['Roboto:700'],
         },
       },
     },

@@ -9,12 +9,5 @@
  * It can be left blank if not needed.
  */
 
-import Button from './components/button';
-
-Button.then(element => {
-
-  /**
-   * Access DOM node when it's mounted
-   */
-  console.log('button is mounted on the DOM', element);
-});
+import './components/button';
+import './components/button-group';

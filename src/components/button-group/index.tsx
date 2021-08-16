@@ -1,11 +1,11 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Button, { ButtonProps } from './Button';
+import ButtonGroup, { ButtonGroupProps } from './ButtonGroup';
 
 DireflowComponent.create({
-  component: Button,
+  component: ButtonGroup,
   configuration: {
-    tagname: 'lp-button',
+    tagname: 'lp-button-group',
     useAnonymousSlot: true,
   },
   plugins: [
@@ -18,16 +18,12 @@ DireflowComponent.create({
       },
     },
   ],
-}).then(element => {
-  if (element.tagName === 'LP-BUTTON') {
-    element.tabIndex = 0;
-  }
 });
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'lp-button': ButtonProps
+      'lp-button-group': ButtonGroupProps
     }
   }
 }

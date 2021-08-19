@@ -1,0 +1,39 @@
+@use '~lpds/styles/colors';
+
+$icons-sizes: (
+  extra-small: 12px,
+  small: 16px,
+  medium: 24px,
+  large: 32px,
+);
+
+:host {
+  $default-size: map-get($icons-sizes, small);
+
+  display: inline-block;
+  width: $default-size;
+  height: $default-size;
+
+  svg {
+    width: $default-size;
+    height: $default-size;
+  }
+}
+
+@each $name, $size in $icons-sizes {
+  :host([size="#{$name}"]) {
+    width: $size;
+    height: $size;
+
+    svg {
+      width: $size;
+      height: $size;
+    }
+  }
+}
+
+:host([color="white"]) {
+  path {
+    fill: colors.$white;
+  }
+}

@@ -12,6 +12,7 @@
   body,
   #root,
   .story-decorator {
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -25,5 +26,11 @@
   .story-decorator {
     padding: 1rem;
     transition: background-color .3s;
+  }
+
+  .story-decorator > .story-decorator {
+    width: calc(100% + 2rem);
+    height: calc(100% + 2rem);
+    margin: -1rem;
   }
 </style>

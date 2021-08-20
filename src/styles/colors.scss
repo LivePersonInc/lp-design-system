@@ -1,55 +1,60 @@
+@use '~lpds/styles/transparency';
+
+// Dark theme (default)
+
 $black: #000;
-$navy-black: #040E29;
-$navy-darkest: #13244A;
-$navy-darker: #37497D;
-$navy-dark: #5970AB;
-$navy-light: #99AFDE;
-$navy-lighter: #CBD9F5;
-$navy-lightest: #E0EAFF;
-$navy-white: #FAFBFF;
 $white: #FFF;
 
-$blue-lighter: #87A9FF;
-$blue-light: #4579FF;
+$navy-black: #07092E;
+$navy-darker: #090C43;
+$navy-dark: #1B1F52;
+$navy: #3B4585;
+$navy-light: #8493D6;
+$navy-lighter: #BDCBFA;
+$navy-lightest: #DCE4FF;
+$navy-white: #F8FAFF;
+
+$blue-darker: #0632A1;
+$blue-dark: #0841D4;
 $blue: #0C50FF;
-$blue-dark: #0A40CC;
-$blue-darker: #073099;
+$blue-light: #4D7EFF;
+$blue-lighter: #8CACFF;
 
-$orange-lighter: #FFC9A3;
-$orange-light: #FFB785;
-$orange: #FA6700;
-$orange-dark: #D65800;
+$periwinkle-darker: #344C89;
+$periwinkle-dark: #3C5CAF;
+$periwinkle: #4A6EC9;
+$periwinkle-light: #9CB3ED;
+$periwinkle-lighter: #C9D5F3;
+
 $orange-darker: #A84E0A;
+$orange-dark: #D65800;
+$orange: #FF6900;
+$orange-light: #FCAC73;
+$orange-lighter: #FFC399;
 
-$periwinkle-lighter: #D0DBF6;
-$periwinkle-light: #B2C2F1;
-$periwinkle: #4667C8;
-$periwinkle-dark: #3955A7;
-$periwinkle-darker: #30437E;
+$cyan-darker: #1F858E;
+$cyan-dark: #24B0BC;
+$cyan: #2DD7E6;
+$cyan-light: #81E5EE;
+$cyan-lighter: #BBF7FC;
 
-$cyan-lighter: #85F5FF;
-$cyan-light: #49E2F0;
-$cyan: #19C9D9;
-$cyan-dark: #079DAB;
-$cyan-darker: #08717A;
+$green-darker: #09821D;
+$green-dark: #1AA731;
+$green-default: #26CC41;
+$green-light: #6BE17E;
+$green-lighter: #A1E8AD;
 
-$green-lighter: #8FF6B2;
-$green-light: #5AD382;
-$green-default: #12C34D;
-$green-dark: #0C9539;
-$green-darker: #057229;
+$red-darker: #9C0A28;
+$red-dark: #C2062E;
+$red: #D1153A;
+$red-light: #F7A2B5;
+$red-lighter: #FFCED9;
 
-$red-lighter: #FBC5C7;
-$red-light: #F49FA2;
-$red: #D72329;
-$red-dark: #B71A20;
-$red-darker: #971116;
-
-$yellow-lighter: #F5E3A8;
-$yellow-light: #F4D676;
-$yellow: #E1B619;
-$yellow-dark: #AF8C0D;
-$yellow-darker: #866901;
+$yellow-darker: #AA8C13;
+$yellow-dark: #D2AD18;
+$yellow: #EBBF14;
+$yellow-light: #F4DB76;
+$yellow-lighter: #F5E6A8;
 
 // Chart colors
 $chart-violet: #8964D8;
@@ -66,3 +71,39 @@ $chart-navy-darker: #37497D;
 $chart-navy-light: #99AFDE;
 $chart-ocean-darker: #24294D;
 $chart-ocean: #7282AB;
+
+$focus-outline: 0 0 0 2px $navy-black, 0 0 0 4px $white;
+
+// Semantic names
+$primary: $blue;
+$primary--hover: $blue-dark;
+$primary--active: $blue-darker;
+$primary-text: $navy-white;
+
+$secondary: $navy-white;
+$secondary--hover: $navy-lighter;
+$secondary--active: $periwinkle-darker;
+$secondary-text: $navy-dark;
+$secondary-text--active: $navy-white;
+
+$tertiary: transparent;
+$tertiary--active: $navy-lighter;
+$tertiary-border: $navy-lighter;
+$tertiary-border--hover: $navy-light;
+$tertiary-border: $navy-lighter;
+$tertiary-text: $navy-white;
+$tertiary-text--active: $navy-dark;
+
+$destructive: $red;
+$destructive--hover: $red-dark;
+$destructive--active: $red-darker;
+$destructive-text: $navy-white;
+
+$ghost: transparent;
+$ghost--hover: transparency.$light-2;
+$ghost--active: transparency.$light-3;
+
+$inline: transparent;
+$inline-text: $cyan;
+$inline-text--hover: $cyan-dark;
+$inline-text--active: $cyan-darker;

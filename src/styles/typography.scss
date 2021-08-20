@@ -29,6 +29,9 @@ $font-size-heading: (
 
 @mixin main {
   font-family: $font-roboto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Modifications mixins

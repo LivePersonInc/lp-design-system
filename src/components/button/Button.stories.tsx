@@ -1,23 +1,15 @@
 import React from 'react';
+import { Meta, Story } from '@storybook/react';
 
-import { ButtonProps } from './Button';
+import Button, { ButtonProps } from './Button';
 
 export default {
-  title: 'Button',
-  parameters: {
-    backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#FFF' },
-        { name: 'dark', value: '#07092E' },
-      ],
-    },
-  },
+  title: 'Components/Button',
   argTypes: {
     theme: {
-      options: ['light', 'dark'],
+      options: ['dark', 'light'],
       control: { type: 'inline-radio' },
-      defaultValue: 'light',
+      defaultValue: 'dark',
     },
     variant: {
       options: [
@@ -37,13 +29,16 @@ export default {
       defaultValue: 'medium',
     },
   },
-};
+} as Meta<ButtonProps>;
 
-export const Button = (props: ButtonProps) => <lp-button {...props}></lp-button>;
-Button.args = {
-  theme: 'light',
+export const Default: Story<ButtonProps> = ({ children, ...props }) => (
+  <lp-button key={String(children)} {...props}><span>{children}</span></lp-button>
+);
+
+Default.args = {
+  theme: 'dark',
   variant: 'primary',
   size: 'medium',
-  label: 'Button',
+  children: 'Button',
   disabled: false,
 };

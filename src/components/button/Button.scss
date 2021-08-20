@@ -1,270 +1,192 @@
-@use '~lpds/styles/common';
 @use '~lpds/styles/border-radius';
 @use '~lpds/styles/spacing';
 @use '~lpds/styles/colors';
-@use '~lpds/styles/colors-dark';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/transparency';
 @use '~lpds/styles/typography';
 
-@include common.prefix {
-  &-button {
-    display: inline-block;
-    @include typography.button-label;
-    text-align: center;
-    color: colors.$black;
-    border: none;
-    @include border-radius.border-radius;
-    background: none;
-    @include spacing.padding(xs, m, true);
-    cursor: pointer;
+@mixin variant-state($state, $theme, $additionalSelector: '') {
+  @if $state == default {
+    @if $additionalSelector != '' {
+      :host(#{$additionalSelector}) {
+        @content;
+      }
+    } @else {
+      :host {
+        @content;
+      }
+    }
+  } @else if $state == hover {
+    :host(#{$additionalSelector}:hover[disabled="false"]) {
+      @content;
+    }
+    :host(#{$additionalSelector}:hover:not([disabled]):not([disabled="true"])) {
+      @content;
+    }
+  } @else if $state == focus {
+    :host(#{$additionalSelector}:focus[disabled="false"]) {
+      @content;
+    }
+    :host(#{$additionalSelector}:focus:not([disabled]):not([disabled="true"])) {
+      @content;
+    }
+  } @else if $state == active {
+    :host(#{$additionalSelector}:active[disabled="false"]) {
+      @content;
+    }
+    :host(#{$additionalSelector}:active:not([disabled]):not([disabled="true"])) {
+      @content;
+    }
+  } @else if $state == disabled {
+    :host(#{$additionalSelector}[disabled]:not([disabled="false"])) {
+      @content;
+    }
+    :host(#{$additionalSelector}[disabled="true"]) {
+      @content;
+    }
+  }
+}
 
-    &:focus {
+@mixin button-variant($variant: primary) {
+  $selectors: default hover focus active disabled;
+
+  $variant: if($variant == primary, '', '[variant="#{$variant}"]');
+
+  @each $state in $selectors {
+    @include variant-state($state, dark, $variant) {
+      @content($state, dark);
+    };
+  }
+
+  @each $state in $selectors {
+    @include variant-state($state, light, '[theme="light"]#{$variant}') {
+      @content($state, light);
+    };
+  }
+}
+
+@include button-variant using ($state, $theme) {
+  @if $state == default {
+    @if $theme == dark {
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+      @include typography.button-label;
+      text-align: center;
+      color: colors.$primary-text;
+      @include border-radius.border-radius;
+      background: colors.$primary;
+      @include spacing.padding(none, m, true);
+      cursor: pointer;
+    } @else {
+      color: colors-light.$primary-text;
+      background: colors-light.$primary;
+    }
+  } @else if $state == hover {
+    background: if($theme == light, colors-light.$primary--hover, colors.$primary--hover);
+  } @else if $state == focus {
+    @if $theme == dark {
       outline: none;
     }
 
-    &:active {
+    background: if($theme == light, colors-light.$primary--hover, colors.$primary--hover);
+    box-shadow: if($theme == light, colors-light.$focus-outline, colors.$focus-outline);
+  } @else if $state == active {
+    background: if($theme == light, colors-light.$primary--active, colors.$primary--active);
+
+    @if $theme == dark {
       box-shadow: none !important;
     }
+  } @else if $state == disabled {
+    opacity: transparency.$disabled;
+    cursor: default;
+  }
+}
 
-    &.light {
-      &:focus {
-        box-shadow: 0 0 0 2px colors.$white, 0 0 0 4px colors.$blue-dark;
-      }
+@include button-variant(secondary) using ($state, $theme) {
+  @if $state == default {
+    color: if($theme == light, colors-light.$secondary-text, colors.$secondary-text);
+    background: if($theme == light, colors-light.$secondary, colors.$secondary);
+  } @else if $state == hover or $state == focus {
+    @if $theme == light {
+      color: colors-light.$secondary-text--hover;
+      background: colors-light.$secondary--hover;
+    } @else {
+      background: colors.$secondary--hover;
     }
+  } @else if $state == active {
+    color: colors.$secondary-text--active;
+    background: colors.$secondary--active;
+  }
+}
 
-    &.dark {
-      &:focus {
-        box-shadow: 0 0 0 2px #0C1836, 0 0 0 4px colors.$white;
-      }
-    }
+@include button-variant(tertiary) using ($state, $theme) {
+  @if $state == default {
+    color: if($theme == light, colors-light.$tertiary-text, colors.$tertiary-text);
+    background: if($theme == light, colors-light.$tertiary, colors.$tertiary);
+    box-shadow: inset 0 0 0 2px if($theme == light, colors-light.$tertiary-border, colors.$tertiary-border);
+  } @else if $state == hover {
+    box-shadow: inset 0 0 0 2px if($theme == light, colors-light.$tertiary-border--hover, colors.$tertiary-border--hover);
+  } @else if $state == focus {
+    box-shadow:
+      inset 0 0 0 2px if($theme == light, colors-light.$tertiary-border--hover, colors.$tertiary-border--hover),
+      if($theme == light, colors-light.$focus-outline, colors.$focus-outline);
+  } @else if $state == active {
+    background: if($theme == light, colors-light.$tertiary-text--active, colors.$tertiary--active);
+    color: if($theme == light, colors-light.$tertiary--active, colors.$tertiary-text--active);
 
-    &.primary {
-      color: colors.$navy-white;
-      background: colors.$blue;
-
-      &:hover,
-      &:focus {
-        background: colors.$blue-dark;
-      }
-
-      &:active {
-        background: colors.$blue-darker;
-      }
-
-      &:disabled {
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-white;
-        background: colors-dark.$blue;
-
-        &:hover,
-        &:focus {
-          background: colors-dark.$blue-dark;
-        }
-
-        &:active {
-          background: colors-dark.$blue-darker;
-        }
-      }
-    }
-
-    &.secondary {
-      color: colors.$navy-darkest;
-      background: colors.$navy-lightest;
-
-      &:hover,
-      &:focus {
-        color: colors.$navy-white;
-        background: colors.$navy-dark;
-      }
-
-      &:active {
-        background: colors.$periwinkle;
-      }
-
-      &:disabled {
-        color: colors.$navy-darkest;
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-darker;
-        background: colors-dark.$navy-white;
-
-        &:hover,
-        &:focus {
-          color: colors-dark.$navy-darker;
-          background: colors-dark.$navy-lighter;
-        }
-
-        &:active {
-          color: colors-dark.$navy-white;
-          background: colors-dark.$periwinkle-darker;
-        }
-
-        &:disabled {
-          color: colors-dark.$navy-darker;
-        }
-      }
-    }
-
-    &.tertiary {
-      color: colors.$periwinkle-dark;
-      box-shadow: inset 0 0 0 2px colors.$periwinkle;
-
-      &:hover,
-      &:focus {
-        box-shadow: inset 0 0 0 2px colors.$periwinkle-dark;
-      }
-
-      &:focus {
-        box-shadow:
-          inset 0 0 0 2px colors.$periwinkle-dark,
-          0 0 0 2px colors.$white,
-          0 0 0 4px colors.$blue-dark;
-      }
-
-      &:active {
-        color: colors.$navy-white;
-        background: colors.$navy-darker;
-        box-shadow: none;
-      }
-
-      &:disabled {
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-white;
-        box-shadow: inset 0 0 0 2px colors-dark.$navy-lighter;
-
-        &:hover,
-        &:focus {
-          box-shadow: inset 0 0 0 2px colors-dark.$navy-light;
-        }
-
-        &:focus {
-          box-shadow:
-            inset 0 0 0 2px colors-dark.$navy-light,
-            0 0 0 2px #0C1836,
-            0 0 0 4px colors-dark.$white;
-        }
-
-        &:active {
-          color: colors-dark.$navy-darker;
-          background: colors-dark.$navy-lighter;
-        }
-      }
-    }
-
-    &.destructive {
-      color: colors.$navy-white;
-      background: colors.$red;
-
-      &:hover,
-      &:focus {
-        background: colors.$red-dark;
-      }
-
-      &:active {
-        background: colors.$red-darker;
-      }
-
-      &:disabled {
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-white;
-        background: colors-dark.$red;
-
-        &:hover,
-        &:focus {
-          background: colors-dark.$red-dark;
-        }
-
-        &:active {
-          background: colors-dark.$red-darker;
-        }
-      }
-    }
-
-    &.ghost {
-      color: colors.$blue;
-
-      &:hover,
-      &:focus {
-        color: colors.$blue-dark;
-        background: rgba(0, 32, 116, .08);
-      }
-
-      &:active {
-        color: colors.$blue-darker;
-      }
-
-      &:disabled {
-        color: colors.$blue-dark;
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$navy-white;
-
-        &:hover,
-        &:focus {
-          color: colors-dark.$navy-white;
-          background: rgba(colors-dark.$blue-lighter, .15);
-        }
-
-        &:active {
-          color: colors.$navy-white;
-        }
-
-        &:disabled {
-          color: colors.$navy-white;
-        }
-      }
-    }
-
-    &.inline {
-      color: colors.$blue;
-      padding: 0;
-
-      &:hover,
-      &:focus {
-        color: colors.$blue-dark;
-      }
-
-      &:active {
-        color: colors.$blue-darker;
-      }
-
-      &:disabled {
-        opacity: .53;
-      }
-
-      &.dark {
-        color: colors-dark.$cyan;
-
-        &:hover,
-        &:focus {
-          color: colors-dark.$cyan-dark;
-        }
-
-        &:active {
-          color: colors-dark.$cyan-darker;
-        }
-      }
-    }
-
-    &.small {
-      font-size: typography.$size-small;
-      @include spacing.padding(xxs, s, true);
-    }
-
-    &.large {
-      @include spacing.padding(s, m, true);
+    @if $theme == dark {
+      box-shadow: none;
     }
   }
+}
+
+@include button-variant(destructive) using ($state, $theme) {
+  @if $state == default {
+    color: if($theme == light, colors-light.$destructive-text, colors.$destructive-text);
+    background: if($theme == light, colors-light.$destructive, colors.$destructive);
+  } @else if $state == hover or $state == focus {
+    background: if($theme == light, colors-light.$destructive--hover, colors.$destructive--hover);
+  } @else if $state == active {
+    background: if($theme == light, colors-light.$destructive--active, colors.$destructive--active);
+  }
+}
+
+@include button-variant(ghost) using ($state, $theme) {
+  @if $state == default {
+    color: if($theme == light, colors-light.$inline-text, colors.$inline-text);
+    background: if($theme == light, colors-light.$ghost, colors.$ghost);
+  } @else if $state == hover or $state == focus {
+    background: if($theme == light, colors-light.$ghost--hover, colors.$ghost--hover);
+  } @else if $state == active {
+    background: if($theme == light, colors-light.$ghost--active, colors.$ghost--active);
+  }
+}
+
+@include button-variant(inline) using ($state, $theme) {
+  @if $state == default {
+    color: if($theme == light, colors-light.$inline-text, colors.$inline-text);
+
+    @if $theme == dark {
+      height: auto;
+      background: none;
+      padding: 2px;
+    }
+  } @else if $state == hover or $state == focus {
+    color: if($theme == light, colors-light.$inline-text--hover, colors.$inline-text--hover);
+  } @else if $state == active {
+    color: if($theme == light, colors-light.$inline-text--active, colors.$inline-text--active);
+  }
+}
+
+:host([size="small"]) {
+  height: 24px;
+  font-size: typography.$size-small;
+  @include spacing.padding(none, s, true);
+}
+
+:host([size="large"]) {
+  height: 40px;
+  @include spacing.padding(none, m, true);
 }

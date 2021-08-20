@@ -1,16 +1,9 @@
-export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-  backgrounds: {
-    default: 'light',
-    values: [
-      { name: 'light', value: '#FFF' },
-      { name: 'dark', value: '#07092E' },
-    ],
-  },
-};
+import React from 'react';
+
+export const decorators = [
+  (Story, { args }) => (
+    <div className="story-decorator" style={{ backgroundColor: (args.theme === 'dark' ? '#07092E' : '#FFF') }}>
+      <Story />
+    </div>
+  ),
+];

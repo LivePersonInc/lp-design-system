@@ -1,28 +1,33 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Button from './Button';
+import Button, { ButtonProps } from './Button';
 
-export default DireflowComponent.create({
+DireflowComponent.create({
   component: Button,
   configuration: {
     tagname: 'lp-button',
+    useAnonymousSlot: true,
   },
   plugins: [
     {
       name: 'font-loader',
       options: {
         google: {
-          families: ['Roboto'],
+          families: ['Roboto:700'],
         },
       },
     },
   ],
+}).then(element => {
+  if (element.tagName === 'LP-BUTTON') {
+    element.tabIndex = 0;
+  }
 });
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'lp-button': any
+      'lp-button': ButtonProps
     }
   }
 }

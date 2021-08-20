@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
+import IconStory from 'lpds/components/icons/Icon.stories';
+
 import Button, { ButtonProps } from './Button';
 
 export default {
@@ -9,7 +11,6 @@ export default {
     theme: {
       options: ['dark', 'light'],
       control: { type: 'inline-radio' },
-      defaultValue: 'dark',
     },
     variant: {
       options: [
@@ -21,24 +22,30 @@ export default {
         'inline',
       ],
       control: { type: 'inline-radio' },
-      defaultValue: 'primary',
     },
     size: {
       options: ['small', 'medium', 'large'],
       control: { type: 'inline-radio' },
-      defaultValue: 'medium',
+    },
+    icon: IconStory.argTypes?.icon,
+    iconPlacement: {
+      options: ['left', 'right'],
+      control: { type: 'inline-radio' },
     },
   },
 } as Meta<ButtonProps>;
 
 export const Default: Story<ButtonProps> = ({ children, ...props }) => (
-  <lp-button key={String(children)} {...props}><span>{children}</span></lp-button>
+  <lp-button key={`${props.icon}-${children}`} {...props}>
+    <span>{children}</span>
+  </lp-button>
 );
 
 Default.args = {
   theme: 'dark',
   variant: 'primary',
   size: 'medium',
+  iconPlacement: 'left',
   children: 'Button',
   disabled: false,
 };

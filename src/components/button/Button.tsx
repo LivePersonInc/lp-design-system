@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Styled } from 'direflow-component';
 
 import { Theme } from 'lpds/styles/common';
@@ -19,18 +19,36 @@ export type ButtonProps = JSX.IntrinsicElements['button'] & {
 
 export type ButtonComponent = React.FC<ButtonProps>
 
-const Button: ButtonComponent = ({ children }) => {
-  return (
+const ButtonIcon: React.FC<{ name?: string }> = ({ name }) => {
+  const Icon = useMemo<string>(() => (
+    `lp-${name}-icon`
+  ), [name]);
+
+  if (!name) {
+    return null;
+  }
+
+  // @ts-ignore
+  return <Icon class="icon" />;
+};
+
+const Button: ButtonComponent = ({ icon, iconPlacement, children }) => (
+  <>
+    {iconPlacement === 'left' && <ButtonIcon name={icon} />}
+
     <Styled styles={styles} scoped={false}>
       {children}
     </Styled>
-  )
-};
+
+    {iconPlacement === 'right' && <ButtonIcon name={icon} />}
+  </>
+);
 
 Button.defaultProps = {
   theme: 'dark',
   variant: 'primary',
   size: 'medium',
+  icon: undefined,
   iconPlacement: 'left',
 };
 

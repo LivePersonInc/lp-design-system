@@ -184,9 +184,31 @@
   height: 24px;
   font-size: typography.$size-small;
   @include spacing.padding(none, s, true);
+
+  .icon {
+    &:first-child {
+      margin-right: spacing.get-space(xxs);
+    }
+
+    &:last-child {
+      margin-left: spacing.get-space(xxs);
+      margin-right: spacing.get-space(xxs) * -1;
+    }
+  }
 }
 
 :host([size="large"]) {
   height: 40px;
-  @include spacing.padding(none, m, true);
+}
+
+.icon {
+  &:first-child {
+    margin-left: spacing.get-space(xxs) * -1;
+    margin-right: spacing.get-space(xs);
+  }
+
+  &:last-child {
+    margin-left: spacing.get-space(xs);
+    margin-right: spacing.get-space(xxs) * -1;
+  }
 }

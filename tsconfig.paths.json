@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "lpds/components/*": ["./components/*"],
       "lpds/styles/*": ["./styles/*"]
     }
   }

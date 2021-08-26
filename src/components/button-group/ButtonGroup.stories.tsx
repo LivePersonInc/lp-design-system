@@ -3,6 +3,8 @@ import { Meta, Story } from '@storybook/react';
 
 import { ButtonGroupCustomProps } from './ButtonGroup';
 
+import './';
+
 export default {
   title: 'Components/ButtonGroup',
   argTypes: {

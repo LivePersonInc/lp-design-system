@@ -3,6 +3,8 @@ import { Meta, Story } from '@storybook/react';
 
 import { IconCustomProps } from './Icon';
 
+import './';
+
 const icons = [
   'add-target',
   'admin-settings',

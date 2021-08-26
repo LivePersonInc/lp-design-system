@@ -13,7 +13,7 @@
     "build": "direflow-scripts build && node ./scripts/group-icons-components.js",
     "build:lib": "direflow-scripts build:lib",
     "test": "direflow-scripts test",
-    "build-storybook": "yarn build && node ./scripts/move-direflowBuild.js && build-storybook -s public  && node ./scripts/remove-direflowBuild.js"
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@types/node": "12.7.8",

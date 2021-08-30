@@ -326,7 +326,7 @@ export type Icons =
   'zoom-in' |
   'zoom-out'
 
-export const icons = [
+export const icons: Icons[] = [
   'add-target',
   'admin-settings',
   'agent',

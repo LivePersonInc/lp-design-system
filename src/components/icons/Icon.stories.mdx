@@ -1,0 +1,62 @@
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
+
+import Icon from './Icon';
+import IconsList from './IconsList';
+
+<Meta
+  title="Components/Icons"
+  component={Icon}
+  argTypes={{
+    type: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+    color: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Icons
+
+## Properties
+
+<ArgsTable of={Icon} />
+
+Each Icon component is a separate module.
+
+## All icons
+
+<ArgsTable story="All icons" />
+
+<Story
+  name="All icons"
+  args={{
+    name: '',
+    type: 'solid',
+    size: 'large',
+    color: 'dark',
+  }}
+  argTypes={{
+    name: {
+      control: { type: 'text' },
+      description: 'This is for filtering icons by name',
+    },
+    color: {
+      table: { disable: true },
+    },
+  }}
+  parameters={{
+    controls: { expanded: false }
+  }}
+>
+  {props => <IconsList {...props} />}
+</Story>

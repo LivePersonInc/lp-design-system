@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(10% - 16px);
+    text-align: center;
+    font-size: 12px;
+    border-radius: 4px;
+    margin: 8px;
+
+    &-icon {
+      border-radius: 4px;
+      padding: 8px;
+      transition: background-color .15s ease-out;
+      margin-bottom: 8px;
+
+      .list-item:hover & {
+        background-color: rgba(#000, .1);
+      }
+    }
+
+    &-content {
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+}

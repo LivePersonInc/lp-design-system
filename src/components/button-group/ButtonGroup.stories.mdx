@@ -1,0 +1,55 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import ButtonGroup from './ButtonGroup';
+
+import './';
+
+<Meta
+  title="Components/ButtonGroup"
+  component={ButtonGroup}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+    buttons: {
+      control: { type: 'object' },
+    },
+  }}
+/>
+
+# Button
+
+<ArgsTable of={ButtonGroup} />
+
+All buttons have to be provided as children elements
+
+Example:
+```
+<lp-button-group>
+  <button>Button1</button>
+  <button>Button2</button>
+  <button>Button3</button>
+</lp-button-group>
+```
+
+## Basic
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      theme: 'dark',
+      size: 'default',
+      buttons: ['Button1', 'Button2', 'Button3'],
+    }}
+  >
+    {({ buttons, ...props }) => (
+      <lp-button-group key={buttons.toString()} {...props}>
+        {buttons.map((button, index) => <button key={index}>{button}</button>)}
+      </lp-button-group>
+    )}
+  </Story>
+</Canvas>

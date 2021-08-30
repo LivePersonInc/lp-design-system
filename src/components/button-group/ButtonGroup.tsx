@@ -50,6 +50,11 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
       </div>
     </Styled>
   );
-}
+};
+
+ButtonGroup.defaultProps = {
+  theme: 'dark',
+  size: 'default',
+};
 
 export default ButtonGroup

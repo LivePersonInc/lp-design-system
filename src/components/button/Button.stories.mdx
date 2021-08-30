@@ -1,0 +1,120 @@
+import { createElement } from 'react';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { icons } from 'lpds/components/icons/icons';
+
+import 'lpds/components/icons';
+
+import Button from './Button';
+
+import './';
+
+<Meta
+  title="Components/Button"
+  component={Button}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+/>
+
+`label` property can be provided by `label` attribute or by `slot` tag with the attribute `slot="label"`
+
+Example:
+```
+<lp-button label="Button"></lp-button>
+```
+or
+```
+<lp-button>
+  <slot slot="label">Button</slot>
+</lp-button>
+```
+
+# Button
+
+<ArgsTable
+  of={Button}
+  argTypes={{
+    label: {
+      description: '',
+    },
+  }}
+/>
+
+## Basic
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      theme: 'dark',
+      variant: 'primary',
+      size: 'medium',
+      label: 'Button',
+      disabled: false,
+    }}
+  >
+    {props => <lp-button {...props} />}
+  </Story>
+</Canvas>
+
+## With icon
+
+You can add any LPDS icon component as child of Button component by using `slot` tag with `slot` attribute with value `icon-left` or `icon-right`
+
+Example:
+```
+<lp-button>
+  <slot slot="icon-left">
+    <lp-plus-icon></lp-plus-icon>
+  </slot>
+</lp-button>
+```
+
+**Note:** Do not forget to import this icon component
+
+<Canvas>
+  <Story
+    name="With icon"
+    args={{
+      icon: icons[0],
+      iconPlacement: 'left',
+      label: 'With icon',
+    }}
+    argTypes={{
+      theme: {
+        table: { category: 'Button args' },
+      },
+      variant: {
+        table: { category: 'Button args' },
+      },
+      size: {
+        table: { category: 'Button args' },
+      },
+      label: {
+        table: { category: 'Button args' },
+      },
+      icon: {
+        options: icons,
+        control: { type: 'select' },
+      },
+      iconPlacement: {
+        options: ['left', 'right'],
+        control: { type: 'inline-radio' },
+      },
+    }}
+  >
+    {({ icon, iconPlacement, ...props }) => (
+      <lp-button key={`${icon}-${iconPlacement}`} {...props}>
+        <slot slot={`icon-${iconPlacement}`}>
+          {createElement(`lp-${icon}-icon`)}
+        </slot>
+      </lp-button>
+    )}
+  </Story>
+</Canvas>

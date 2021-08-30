@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: QuickIcon,
   configuration: {
     tagname: 'lp-quick-icon',
-  }
+  },
 });
 
 declare global {

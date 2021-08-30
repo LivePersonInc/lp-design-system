@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: IntentAnnotationSubmittedIcon,
   configuration: {
     tagname: 'lp-intent-annotation-submitted-icon',
-  }
+  },
 });
 
 declare global {

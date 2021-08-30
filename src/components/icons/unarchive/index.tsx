@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: UnarchiveIcon,
   configuration: {
     tagname: 'lp-unarchive-icon',
-  }
+  },
 });
 
 declare global {

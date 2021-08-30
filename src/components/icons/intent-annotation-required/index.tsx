@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: IntentAnnotationRequiredIcon,
   configuration: {
     tagname: 'lp-intent-annotation-required-icon',
-  }
+  },
 });
 
 declare global {

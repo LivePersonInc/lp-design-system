@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: LaptopIcon,
   configuration: {
     tagname: 'lp-laptop-icon',
-  }
+  },
 });
 
 declare global {

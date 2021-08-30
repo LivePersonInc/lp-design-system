@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ReloadCwIcon,
   configuration: {
     tagname: 'lp-reload-cw-icon',
-  }
+  },
 });
 
 declare global {

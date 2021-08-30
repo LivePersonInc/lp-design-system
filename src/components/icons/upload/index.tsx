@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: UploadIcon,
   configuration: {
     tagname: 'lp-upload-icon',
-  }
+  },
 });
 
 declare global {

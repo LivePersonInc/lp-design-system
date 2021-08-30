@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CheckmarkIcon,
   configuration: {
     tagname: 'lp-checkmark-icon',
-  }
+  },
 });
 
 declare global {

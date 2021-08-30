@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: VolumeUpIcon,
   configuration: {
     tagname: 'lp-volume-up-icon',
-  }
+  },
 });
 
 declare global {

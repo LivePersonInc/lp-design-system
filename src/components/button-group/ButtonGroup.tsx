@@ -52,4 +52,4 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
   );
 }
 
-export default ButtonGroup;
+export default ButtonGroup

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SortDescIcon,
   configuration: {
     tagname: 'lp-sort-desc-icon',
-  }
+  },
 });
 
 declare global {

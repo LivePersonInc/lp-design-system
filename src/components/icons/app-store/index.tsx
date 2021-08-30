@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AppStoreIcon,
   configuration: {
     tagname: 'lp-app-store-icon',
-  }
+  },
 });
 
 declare global {

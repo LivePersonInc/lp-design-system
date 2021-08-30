@@ -11,12 +11,10 @@ export default {
     theme: {
       options: ['dark', 'light'],
       control: { type: 'inline-radio' },
-      defaultValue: 'dark',
     },
     size: {
       options: ['default', 'small'],
       control: { type: 'inline-radio' },
-      defaultValue: 'default',
     },
   },
   parameters: {

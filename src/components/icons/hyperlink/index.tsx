@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: HyperlinkIcon,
   configuration: {
     tagname: 'lp-hyperlink-icon',
-  }
+  },
 });
 
 declare global {

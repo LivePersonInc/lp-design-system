@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: FolderStarredIcon,
   configuration: {
     tagname: 'lp-folder-starred-icon',
-  }
+  },
 });
 
 declare global {

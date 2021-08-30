@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: EyeHiddenIcon,
   configuration: {
     tagname: 'lp-eye-hidden-icon',
-  }
+  },
 });
 
 declare global {

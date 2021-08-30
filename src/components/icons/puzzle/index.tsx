@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PuzzleIcon,
   configuration: {
     tagname: 'lp-puzzle-icon',
-  }
+  },
 });
 
 declare global {

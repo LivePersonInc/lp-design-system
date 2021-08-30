@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConnectionsIcon,
   configuration: {
     tagname: 'lp-connections-icon',
-  }
+  },
 });
 
 declare global {

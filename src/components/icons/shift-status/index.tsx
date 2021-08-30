@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ShiftStatusIcon,
   configuration: {
     tagname: 'lp-shift-status-icon',
-  }
+  },
 });
 
 declare global {

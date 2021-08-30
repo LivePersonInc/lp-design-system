@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CreditCardIcon,
   configuration: {
     tagname: 'lp-credit-card-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ChannelPlaceholderIcon,
   configuration: {
     tagname: 'lp-channel-placeholder-icon',
-  }
+  },
 });
 
 declare global {

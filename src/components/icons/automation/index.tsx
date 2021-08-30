@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AutomationIcon,
   configuration: {
     tagname: 'lp-automation-icon',
-  }
+  },
 });
 
 declare global {

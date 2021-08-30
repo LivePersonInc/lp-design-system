@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: BackIcon,
   configuration: {
     tagname: 'lp-back-icon',
-  }
+  },
 });
 
 declare global {

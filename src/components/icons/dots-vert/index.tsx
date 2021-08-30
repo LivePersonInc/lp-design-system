@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DotsVertIcon,
   configuration: {
     tagname: 'lp-dots-vert-icon',
-  }
+  },
 });
 
 declare global {

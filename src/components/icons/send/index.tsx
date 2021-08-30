@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SendIcon,
   configuration: {
     tagname: 'lp-send-icon',
-  }
+  },
 });
 
 declare global {

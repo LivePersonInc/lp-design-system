@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CalendarIcon,
   configuration: {
     tagname: 'lp-calendar-icon',
-  }
+  },
 });
 
 declare global {

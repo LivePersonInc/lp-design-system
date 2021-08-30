@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TargetAudienceIcon,
   configuration: {
     tagname: 'lp-target-audience-icon',
-  }
+  },
 });
 
 declare global {

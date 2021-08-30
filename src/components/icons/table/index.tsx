@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TableIcon,
   configuration: {
     tagname: 'lp-table-icon',
-  }
+  },
 });
 
 declare global {

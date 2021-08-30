@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: Expand1Icon,
   configuration: {
     tagname: 'lp-expand-1-icon',
-  }
+  },
 });
 
 declare global {

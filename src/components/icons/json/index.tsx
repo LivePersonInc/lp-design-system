@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: JsonIcon,
   configuration: {
     tagname: 'lp-json-icon',
-  }
+  },
 });
 
 declare global {

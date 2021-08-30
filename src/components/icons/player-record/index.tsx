@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PlayerRecordIcon,
   configuration: {
     tagname: 'lp-player-record-icon',
-  }
+  },
 });
 
 declare global {

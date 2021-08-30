@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ImportIcon,
   configuration: {
     tagname: 'lp-import-icon',
-  }
+  },
 });
 
 declare global {

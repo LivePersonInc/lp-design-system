@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: QrAddIcon,
   configuration: {
     tagname: 'lp-qr-add-icon',
-  }
+  },
 });
 
 declare global {

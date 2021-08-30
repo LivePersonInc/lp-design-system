@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: Threshold2Icon,
   configuration: {
     tagname: 'lp-threshold-2-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AwayIcon,
   configuration: {
     tagname: 'lp-away-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: HtmlTagIcon,
   configuration: {
     tagname: 'lp-html-tag-icon',
-  }
+  },
 });
 
 declare global {

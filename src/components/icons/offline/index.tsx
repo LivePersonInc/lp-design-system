@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: OfflineIcon,
   configuration: {
     tagname: 'lp-offline-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ButtonQuestionIcon,
   configuration: {
     tagname: 'lp-button-question-icon',
-  }
+  },
 });
 
 declare global {

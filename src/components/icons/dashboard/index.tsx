@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DashboardIcon,
   configuration: {
     tagname: 'lp-dashboard-icon',
-  }
+  },
 });
 
 declare global {

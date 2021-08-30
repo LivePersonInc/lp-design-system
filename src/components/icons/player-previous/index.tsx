@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PlayerPreviousIcon,
   configuration: {
     tagname: 'lp-player-previous-icon',
-  }
+  },
 });
 
 declare global {

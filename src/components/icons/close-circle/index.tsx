@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CloseCircleIcon,
   configuration: {
     tagname: 'lp-close-circle-icon',
-  }
+  },
 });
 
 declare global {

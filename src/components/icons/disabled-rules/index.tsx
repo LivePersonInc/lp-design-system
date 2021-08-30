@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DisabledRulesIcon,
   configuration: {
     tagname: 'lp-disabled-rules-icon',
-  }
+  },
 });
 
 declare global {

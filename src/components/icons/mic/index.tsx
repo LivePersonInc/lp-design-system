@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MicIcon,
   configuration: {
     tagname: 'lp-mic-icon',
-  }
+  },
 });
 
 declare global {

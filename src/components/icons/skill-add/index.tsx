@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SkillAddIcon,
   configuration: {
     tagname: 'lp-skill-add-icon',
-  }
+  },
 });
 
 declare global {

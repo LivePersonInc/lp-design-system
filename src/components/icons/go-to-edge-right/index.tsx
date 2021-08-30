@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: GoToEdgeRightIcon,
   configuration: {
     tagname: 'lp-go-to-edge-right-icon',
-  }
+  },
 });
 
 declare global {

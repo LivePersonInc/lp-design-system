@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ToArchivePackIcon,
   configuration: {
     tagname: 'lp-to-archive-pack-icon',
-  }
+  },
 });
 
 declare global {

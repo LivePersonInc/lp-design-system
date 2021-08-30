@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: BrainIcon,
   configuration: {
     tagname: 'lp-brain-icon',
-  }
+  },
 });
 
 declare global {

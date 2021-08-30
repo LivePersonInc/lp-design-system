@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AuthorizedIcon,
   configuration: {
     tagname: 'lp-authorized-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CopyIcon,
   configuration: {
     tagname: 'lp-copy-icon',
-  }
+  },
 });
 
 declare global {

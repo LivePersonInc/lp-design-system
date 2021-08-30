@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ListPickerQuestionIcon,
   configuration: {
     tagname: 'lp-list-picker-question-icon',
-  }
+  },
 });
 
 declare global {

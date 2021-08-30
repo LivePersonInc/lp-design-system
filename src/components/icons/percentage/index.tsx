@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PercentageIcon,
   configuration: {
     tagname: 'lp-percentage-icon',
-  }
+  },
 });
 
 declare global {

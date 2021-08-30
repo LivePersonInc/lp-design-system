@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SocialMessagingIcon,
   configuration: {
     tagname: 'lp-social-messaging-icon',
-  }
+  },
 });
 
 declare global {

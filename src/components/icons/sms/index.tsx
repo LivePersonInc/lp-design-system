@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SmsIcon,
   configuration: {
     tagname: 'lp-sms-icon',
-  }
+  },
 });
 
 declare global {

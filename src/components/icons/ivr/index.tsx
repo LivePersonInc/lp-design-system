@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: IvrIcon,
   configuration: {
     tagname: 'lp-ivr-icon',
-  }
+  },
 });
 
 declare global {

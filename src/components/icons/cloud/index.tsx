@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CloudIcon,
   configuration: {
     tagname: 'lp-cloud-icon',
-  }
+  },
 });
 
 declare global {

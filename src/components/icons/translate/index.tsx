@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TranslateIcon,
   configuration: {
     tagname: 'lp-translate-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ApplicationCampaignIcon,
   configuration: {
     tagname: 'lp-application-campaign-icon',
-  }
+  },
 });
 
 declare global {

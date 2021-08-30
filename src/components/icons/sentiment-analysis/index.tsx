@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SentimentAnalysisIcon,
   configuration: {
     tagname: 'lp-sentiment-analysis-icon',
-  }
+  },
 });
 
 declare global {

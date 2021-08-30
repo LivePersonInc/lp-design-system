@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: StructuredQuestionsIcon,
   configuration: {
     tagname: 'lp-structured-questions-icon',
-  }
+  },
 });
 
 declare global {

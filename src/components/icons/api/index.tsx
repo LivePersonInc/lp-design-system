@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ApiIcon,
   configuration: {
     tagname: 'lp-api-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DatabaseIcon,
   configuration: {
     tagname: 'lp-database-icon',
-  }
+  },
 });
 
 declare global {

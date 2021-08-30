@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: RingOffSilentIcon,
   configuration: {
     tagname: 'lp-ring-off-silent-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PlayerPlayCircleIcon,
   configuration: {
     tagname: 'lp-player-play-circle-icon',
-  }
+  },
 });
 
 declare global {

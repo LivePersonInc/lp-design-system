@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PredefinedWidgetIcon,
   configuration: {
     tagname: 'lp-predefined-widget-icon',
-  }
+  },
 });
 
 declare global {

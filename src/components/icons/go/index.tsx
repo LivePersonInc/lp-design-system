@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: GoIcon,
   configuration: {
     tagname: 'lp-go-icon',
-  }
+  },
 });
 
 declare global {

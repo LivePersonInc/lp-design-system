@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: BotDataIcon,
   configuration: {
     tagname: 'lp-bot-data-icon',
-  }
+  },
 });
 
 declare global {

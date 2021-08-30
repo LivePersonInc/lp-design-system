@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PdfIcon,
   configuration: {
     tagname: 'lp-pdf-icon',
-  }
+  },
 });
 
 declare global {

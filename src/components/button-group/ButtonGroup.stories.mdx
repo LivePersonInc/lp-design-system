@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, SourceState, Story } from '@storybook/addon-docs';
 
 import ButtonGroup from './ButtonGroup';
 
@@ -26,29 +26,52 @@ import './';
 
 All buttons have to be provided as children elements
 
-Example:
-```
-<lp-button-group>
-  <button>Button1</button>
-  <button>Button2</button>
-  <button>Button3</button>
-</lp-button-group>
-```
-
 ## Basic
 
-<Canvas>
+<Canvas withSource={SourceState.OPEN}>
   <Story
     name="Basic"
     args={{
       theme: 'dark',
       size: 'default',
-      buttons: ['Button1', 'Button2', 'Button3'],
+      buttons: ['Button1', 'Button2', 'Button3', 'Button4', 'Button5'],
     }}
   >
-    {({ buttons, ...props }) => (
-      <lp-button-group key={buttons.toString()} {...props}>
+    {({ theme, size, buttons }) => (
+      <lp-button-group
+        key={buttons.toString()}
+        theme={theme === 'dark' ? undefined : theme}
+        size={size === 'default' ? undefined : size}
+      >
         {buttons.map((button, index) => <button key={index}>{button}</button>)}
+      </lp-button-group>
+    )}
+  </Story>
+</Canvas>
+
+## Default active
+
+You can easily set the default active button by adding `active` class to the button item
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story
+    name="Default active"
+    args={{
+      theme: 'dark',
+      size: 'default',
+      active: 2,
+      buttons: ['Button1', 'Button2', 'Button3', 'Button4', 'Button5'],
+    }}
+  >
+    {({ theme, size, active, buttons }) => (
+      <lp-button-group
+        key={`${buttons.toString()}-${active}`}
+        theme={theme === 'dark' ? undefined : theme}
+        size={size === 'default' ? undefined : size}
+      >
+        {buttons.map((button, index) => (
+          <button key={index} class={index === active - 1 ? 'active' : undefined}>{button}</button>
+        ))}
       </lp-button-group>
     )}
   </Story>

@@ -1,9 +1,22 @@
 {
-  "name": "@liveperson/styled-components",
+  "name": "@liveperson/design-system",
   "description": "Styled components",
   "version": "1.0.0",
-  "license": "private",
-  "private": true,
+  "author": "",
+  "license": "MIT",
+  "keywords": [
+    "liveperson",
+    "webcomponent"
+  ],
+  "homepage": "https://github.com/LivePersonInc/lp-design-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LivePersonInc/lp-design-system"
+  },
+  "bugs": {
+    "email": "design-system@liveperson.com",
+    "url": "https://github.com/LivePersonInc/lp-design-system/issues/new"
+  },
   "main": "build/direflowBundle.js",
   "files": [
     "build"

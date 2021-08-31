@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
 
 import { icons } from 'lpds/components/icons/icons';
 
@@ -26,7 +26,7 @@ import './';
 
 <ArgsTable of={Button} />
 
-`label` property can be provided by `label` attribute or by `slot` tag with the attribute `slot="label"`
+`label` value can be provided by `label` attribute or by `slot` tag with the attribute `slot="label"`
 
 Example:
 ```
@@ -52,7 +52,15 @@ or
       disabled: false,
     }}
   >
-    {props => <lp-button {...props} />}
+    {({ theme, variant, size, label, disabled }) => (
+      <lp-button
+        theme={theme === 'dark' ? undefined : theme}
+        variant={variant === 'primary' ? undefined : variant}
+        size={size === 'medium' ? undefined : size}
+        label={label}
+        disabled={disabled === false ? undefined : disabled}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -60,24 +68,19 @@ or
 
 You can add any LPDS icon component as child of Button component by using `slot` tag with `slot` attribute with value `icon-left` or `icon-right`
 
-Example:
-```
-<lp-button>
-  <slot slot="icon-left">
-    <lp-plus-icon></lp-plus-icon>
-  </slot>
-</lp-button>
-```
-
 **Note:** Do not forget to import this icon component
 
-<Canvas>
+<Canvas withSource={SourceState.OPEN}>
   <Story
     name="With icon"
     args={{
       icon: icons[0],
       iconPlacement: 'left',
+      theme: 'dark',
+      variant: 'primary',
+      size: 'medium',
       label: 'With icon',
+      disabled: false,
     }}
     argTypes={{
       theme: {
@@ -102,8 +105,15 @@ Example:
       },
     }}
   >
-    {({ icon, iconPlacement, ...props }) => (
-      <lp-button key={`${icon}-${iconPlacement}`} {...props}>
+    {({ icon, iconPlacement, theme, variant, size, label, disabled }) => (
+      <lp-button
+        key={`${icon}-${iconPlacement}`}
+        theme={theme === 'dark' ? undefined : theme}
+        variant={variant === 'primary' ? undefined : variant}
+        size={size === 'medium' ? undefined : size}
+        label={label}
+        disabled={disabled === false ? undefined : disabled}
+      >
         <slot slot={`icon-${iconPlacement}`}>
           {createElement(`lp-${icon}-icon`)}
         </slot>

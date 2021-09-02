@@ -1,5 +1,7 @@
 import { create } from '@storybook/theming';
 
+import LPLogo from './assets/lp-logo-small.svg';
+
 export default create({
   base: 'light',
 
@@ -33,5 +35,5 @@ export default create({
 
   brandTitle: 'LPDS',
   //brandUrl: 'https://example.com',
-  brandImage: 'lp-logo-small.svg',
+  brandImage: LPLogo,
 });

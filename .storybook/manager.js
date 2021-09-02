@@ -1,11 +1,11 @@
 import { addons } from '@storybook/addons';
 
-import LPDSTheme from './LPDSTheme';
+import theme from './theme';
 
 addons.setConfig({
   panelPosition: 'right',
   enableShortcuts: false,
-  theme: LPDSTheme,
+  theme,
   toolbar: {
     fullscreen: { hidden: false },
   },

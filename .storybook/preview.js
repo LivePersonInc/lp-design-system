@@ -1,10 +1,20 @@
 import React from 'react';
 
-import LPDSTheme from './LPDSTheme';
+import theme from './theme';
 
 export const parameters = {
+  layout: 'centered',
+  options: {
+    storySort: {
+      order: [
+        'Docs',
+        'Tokens',
+        'Components',
+      ],
+    },
+  },
   docs: {
-    theme: LPDSTheme,
+    theme,
   },
 };
 

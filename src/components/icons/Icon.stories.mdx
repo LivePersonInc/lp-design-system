@@ -4,7 +4,7 @@ import Icon from './Icon';
 import IconsList from './IconsList';
 
 <Meta
-  title="Icons"
+  title="Tokens/Icons"
   component={Icon}
   argTypes={{
     type: {
@@ -27,11 +27,28 @@ import IconsList from './IconsList';
 
 # Icons
 
+Each icon is a separate module.
+It means that you have to import a specific module for the icon that you are going to use
+
+For example, if you want to use `arrow-down` icon you have to import `icons/arrow-down.js` module to use it
+```
+// npm
+import '@liveperson/design-system/icons/arrow-down';
+
+<lp-arrow-down-icon />
+
+// browser
+<script src="icons/arrow-down.js"></script>
+
+<lp-arrow-down-icon></lp-arrow-down-icon>
+```
+
 ## Properties
 
 <ArgsTable of={Icon} />
 
-Each Icon component is a separate module.
+Thous properties can be provided for each icon component bun at the same time not all icons have all thous variations.
+However, each icon component has fallback logic to display the closest icon related to provided properties
 
 ## All icons
 

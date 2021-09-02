@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: FolderClosedIcon,
   configuration: {
     tagname: 'lp-folder-closed-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MinusIcon,
   configuration: {
     tagname: 'lp-minus-icon',
-  }
+  },
 });
 
 declare global {

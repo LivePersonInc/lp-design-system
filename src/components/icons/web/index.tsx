@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: WebIcon,
   configuration: {
     tagname: 'lp-web-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ExportIcon,
   configuration: {
     tagname: 'lp-export-icon',
-  }
+  },
 });
 
 declare global {

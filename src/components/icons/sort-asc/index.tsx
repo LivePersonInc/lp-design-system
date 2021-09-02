@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SortAscIcon,
   configuration: {
     tagname: 'lp-sort-asc-icon',
-  }
+  },
 });
 
 declare global {

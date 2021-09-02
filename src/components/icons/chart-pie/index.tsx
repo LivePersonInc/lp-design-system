@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ChartPieIcon,
   configuration: {
     tagname: 'lp-chart-pie-icon',
-  }
+  },
 });
 
 declare global {

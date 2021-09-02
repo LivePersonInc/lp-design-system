@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SentimentGoodIcon,
   configuration: {
     tagname: 'lp-sentiment-good-icon',
-  }
+  },
 });
 
 declare global {

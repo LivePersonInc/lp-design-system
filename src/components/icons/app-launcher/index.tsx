@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AppLauncherIcon,
   configuration: {
     tagname: 'lp-app-launcher-icon',
-  }
+  },
 });
 
 declare global {

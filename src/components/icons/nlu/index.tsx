@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: NluIcon,
   configuration: {
     tagname: 'lp-nlu-icon',
-  }
+  },
 });
 
 declare global {

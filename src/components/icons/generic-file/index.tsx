@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: GenericFileIcon,
   configuration: {
     tagname: 'lp-generic-file-icon',
-  }
+  },
 });
 
 declare global {

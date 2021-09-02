@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: GroupIcon,
   configuration: {
     tagname: 'lp-group-icon',
-  }
+  },
 });
 
 declare global {

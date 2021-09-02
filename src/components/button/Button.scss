@@ -185,15 +185,13 @@
   font-size: typography.$size-small;
   @include spacing.padding(none, s, true);
 
-  .icon {
-    &:first-child {
-      margin-right: spacing.get-space(xxs);
-    }
+  ::slotted([slot="icon-left"]) {
+    margin-right: spacing.get-space(xxs);
+  }
 
-    &:last-child {
-      margin-left: spacing.get-space(xxs);
-      margin-right: spacing.get-space(xxs) * -1;
-    }
+  ::slotted([slot="icon-right"]) {
+    margin-left: spacing.get-space(xxs);
+    margin-right: spacing.get-space(xxs) * -1;
   }
 }
 
@@ -201,14 +199,18 @@
   height: 40px;
 }
 
-.icon {
-  &:first-child {
-    margin-left: spacing.get-space(xxs) * -1;
-    margin-right: spacing.get-space(xs);
-  }
+@mixin icon {
+  display: inline-flex;
+}
 
-  &:last-child {
-    margin-left: spacing.get-space(xs);
-    margin-right: spacing.get-space(xxs) * -1;
-  }
+::slotted([slot="icon-left"]) {
+  @include icon;
+  margin-left: spacing.get-space(xxs) * -1;
+  margin-right: spacing.get-space(xs);
+}
+
+::slotted([slot="icon-right"]) {
+  @include icon;
+  margin-left: spacing.get-space(xs);
+  margin-right: spacing.get-space(xxs) * -1;
 }

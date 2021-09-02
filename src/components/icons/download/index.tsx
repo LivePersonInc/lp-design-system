@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DownloadIcon,
   configuration: {
     tagname: 'lp-download-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PolicyIcon,
   configuration: {
     tagname: 'lp-policy-icon',
-  }
+  },
 });
 
 declare global {

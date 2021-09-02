@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: LightThemeIcon,
   configuration: {
     tagname: 'lp-light-theme-icon',
-  }
+  },
 });
 
 declare global {

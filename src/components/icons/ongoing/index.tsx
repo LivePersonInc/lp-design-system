@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: OngoingIcon,
   configuration: {
     tagname: 'lp-ongoing-icon',
-  }
+  },
 });
 
 declare global {

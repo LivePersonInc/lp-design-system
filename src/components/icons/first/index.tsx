@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: FirstIcon,
   configuration: {
     tagname: 'lp-first-icon',
-  }
+  },
 });
 
 declare global {

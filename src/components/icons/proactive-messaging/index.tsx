@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ProactiveMessagingIcon,
   configuration: {
     tagname: 'lp-proactive-messaging-icon',
-  }
+  },
 });
 
 declare global {

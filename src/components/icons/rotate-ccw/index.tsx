@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: RotateCcwIcon,
   configuration: {
     tagname: 'lp-rotate-ccw-icon',
-  }
+  },
 });
 
 declare global {

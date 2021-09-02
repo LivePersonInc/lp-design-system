@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: NoImageIcon,
   configuration: {
     tagname: 'lp-no-image-icon',
-  }
+  },
 });
 
 declare global {

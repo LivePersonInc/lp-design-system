@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AttachmentIcon,
   configuration: {
     tagname: 'lp-attachment-icon',
-  }
+  },
 });
 
 declare global {

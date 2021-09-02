@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SubdirectoryIcon,
   configuration: {
     tagname: 'lp-subdirectory-icon',
-  }
+  },
 });
 
 declare global {

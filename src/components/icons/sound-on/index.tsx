@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SoundOnIcon,
   configuration: {
     tagname: 'lp-sound-on-icon',
-  }
+  },
 });
 
 declare global {

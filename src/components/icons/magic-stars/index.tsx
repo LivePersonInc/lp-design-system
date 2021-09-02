@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MagicStarsIcon,
   configuration: {
     tagname: 'lp-magic-stars-icon',
-  }
+  },
 });
 
 declare global {

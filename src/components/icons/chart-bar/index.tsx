@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ChartBarIcon,
   configuration: {
     tagname: 'lp-chart-bar-icon',
-  }
+  },
 });
 
 declare global {

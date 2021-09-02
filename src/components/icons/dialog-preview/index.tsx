@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DialogPreviewIcon,
   configuration: {
     tagname: 'lp-dialog-preview-icon',
-  }
+  },
 });
 
 declare global {

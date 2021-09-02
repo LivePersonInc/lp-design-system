@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ReplyIcon,
   configuration: {
     tagname: 'lp-reply-icon',
-  }
+  },
 });
 
 declare global {

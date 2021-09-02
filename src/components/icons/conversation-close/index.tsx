@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConversationCloseIcon,
   configuration: {
     tagname: 'lp-conversation-close-icon',
-  }
+  },
 });
 
 declare global {

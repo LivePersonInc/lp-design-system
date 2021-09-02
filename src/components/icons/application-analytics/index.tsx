@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ApplicationAnalyticsIcon,
   configuration: {
     tagname: 'lp-application-analytics-icon',
-  }
+  },
 });
 
 declare global {

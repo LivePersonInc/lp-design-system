@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: HeartPulseIcon,
   configuration: {
     tagname: 'lp-heart-pulse-icon',
-  }
+  },
 });
 
 declare global {

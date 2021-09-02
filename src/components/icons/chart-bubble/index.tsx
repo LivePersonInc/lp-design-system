@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ChartBubbleIcon,
   configuration: {
     tagname: 'lp-chart-bubble-icon',
-  }
+  },
 });
 
 declare global {

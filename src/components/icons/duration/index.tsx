@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DurationIcon,
   configuration: {
     tagname: 'lp-duration-icon',
-  }
+  },
 });
 
 declare global {

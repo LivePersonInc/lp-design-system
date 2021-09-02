@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: KnowledgeBaseIcon,
   configuration: {
     tagname: 'lp-knowledge-base-icon',
-  }
+  },
 });
 
 declare global {

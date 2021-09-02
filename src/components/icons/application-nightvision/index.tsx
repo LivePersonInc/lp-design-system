@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ApplicationNightvisionIcon,
   configuration: {
     tagname: 'lp-application-nightvision-icon',
-  }
+  },
 });
 
 declare global {

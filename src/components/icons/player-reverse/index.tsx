@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PlayerReverseIcon,
   configuration: {
     tagname: 'lp-player-reverse-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: Filter2AddIcon,
   configuration: {
     tagname: 'lp-filter-2-add-icon',
-  }
+  },
 });
 
 declare global {

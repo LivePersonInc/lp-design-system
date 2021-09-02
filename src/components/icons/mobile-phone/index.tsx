@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MobilePhoneIcon,
   configuration: {
     tagname: 'lp-mobile-phone-icon',
-  }
+  },
 });
 
 declare global {

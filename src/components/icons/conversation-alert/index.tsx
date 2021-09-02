@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConversationAlertIcon,
   configuration: {
     tagname: 'lp-conversation-alert-icon',
-  }
+  },
 });
 
 declare global {

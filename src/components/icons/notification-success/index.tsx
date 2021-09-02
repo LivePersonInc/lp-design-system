@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: NotificationSuccessIcon,
   configuration: {
     tagname: 'lp-notification-success-icon',
-  }
+  },
 });
 
 declare global {

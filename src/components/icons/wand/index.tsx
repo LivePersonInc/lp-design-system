@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: WandIcon,
   configuration: {
     tagname: 'lp-wand-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SyncCcwIcon,
   configuration: {
     tagname: 'lp-sync-ccw-icon',
-  }
+  },
 });
 
 declare global {

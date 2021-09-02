@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: LikeIcon,
   configuration: {
     tagname: 'lp-like-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ZoomOutIcon,
   configuration: {
     tagname: 'lp-zoom-out-icon',
-  }
+  },
 });
 
 declare global {

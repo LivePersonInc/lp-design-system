@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AuthenticatedIcon,
   configuration: {
     tagname: 'lp-authenticated-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: Search2Icon,
   configuration: {
     tagname: 'lp-search-2-icon',
-  }
+  },
 });
 
 declare global {

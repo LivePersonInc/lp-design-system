@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SeedIcon,
   configuration: {
     tagname: 'lp-seed-icon',
-  }
+  },
 });
 
 declare global {

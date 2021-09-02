@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConversationHoldIcon,
   configuration: {
     tagname: 'lp-conversation-hold-icon',
-  }
+  },
 });
 
 declare global {

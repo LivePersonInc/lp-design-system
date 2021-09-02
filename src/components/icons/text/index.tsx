@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TextIcon,
   configuration: {
     tagname: 'lp-text-icon',
-  }
+  },
 });
 
 declare global {

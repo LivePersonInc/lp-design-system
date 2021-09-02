@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SubscriptionIcon,
   configuration: {
     tagname: 'lp-subscription-icon',
-  }
+  },
 });
 
 declare global {

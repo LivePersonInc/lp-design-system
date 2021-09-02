@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: RadioIcon,
   configuration: {
     tagname: 'lp-radio-icon',
-  }
+  },
 });
 
 declare global {

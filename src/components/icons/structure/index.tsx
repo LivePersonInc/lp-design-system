@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: StructureIcon,
   configuration: {
     tagname: 'lp-structure-icon',
-  }
+  },
 });
 
 declare global {

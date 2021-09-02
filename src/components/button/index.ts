@@ -6,7 +6,6 @@ DireflowComponent.create({
   component: Button,
   configuration: {
     tagname: 'lp-button',
-    useAnonymousSlot: true,
   },
   plugins: [
     {

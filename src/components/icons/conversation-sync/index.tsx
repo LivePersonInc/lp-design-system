@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConversationSyncIcon,
   configuration: {
     tagname: 'lp-conversation-sync-icon',
-  }
+  },
 });
 
 declare global {

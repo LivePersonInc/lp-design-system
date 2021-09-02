@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ChatIcon,
   configuration: {
     tagname: 'lp-chat-icon',
-  }
+  },
 });
 
 declare global {

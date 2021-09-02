@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: InProgressIcon,
   configuration: {
     tagname: 'lp-in-progress-icon',
-  }
+  },
 });
 
 declare global {

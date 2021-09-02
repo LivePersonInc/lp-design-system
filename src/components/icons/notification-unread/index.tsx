@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: NotificationUnreadIcon,
   configuration: {
     tagname: 'lp-notification-unread-icon',
-  }
+  },
 });
 
 declare global {

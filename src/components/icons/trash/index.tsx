@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TrashIcon,
   configuration: {
     tagname: 'lp-trash-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: Key1Icon,
   configuration: {
     tagname: 'lp-key-1-icon',
-  }
+  },
 });
 
 declare global {

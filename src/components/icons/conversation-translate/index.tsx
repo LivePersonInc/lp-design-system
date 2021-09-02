@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConversationTranslateIcon,
   configuration: {
     tagname: 'lp-conversation-translate-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: BusinessIntelligenceEngineerIcon,
   configuration: {
     tagname: 'lp-business-intelligence-engineer-icon',
-  }
+  },
 });
 
 declare global {

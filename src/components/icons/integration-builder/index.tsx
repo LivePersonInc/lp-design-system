@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: IntegrationBuilderIcon,
   configuration: {
     tagname: 'lp-integration-builder-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SimilarIcon,
   configuration: {
     tagname: 'lp-similar-icon',
-  }
+  },
 });
 
 declare global {

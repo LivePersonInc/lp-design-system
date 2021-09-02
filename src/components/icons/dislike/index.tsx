@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DislikeIcon,
   configuration: {
     tagname: 'lp-dislike-icon',
-  }
+  },
 });
 
 declare global {

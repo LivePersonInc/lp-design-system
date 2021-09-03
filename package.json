@@ -1,18 +1,33 @@
 {
-  "name": "@liveperson/design-system",
-  "description": "Styled components",
-  "version": "1.0.0",
+  "name": "liveperson-design-system",
+  "description": "The company design system for LivePerson",
+  "version": "0.0.1",
   "author": "",
+  "contributors": [
+    {
+      "name": "Mykhailo Riabokon",
+      "email": "mriabokon@liveperson.com"
+    },
+    {
+      "name": "Itay Haephrati",
+      "email": "ihaephrati@liveperson.com"
+    },
+    {
+      "name": "Charlie Wu",
+      "email": "chwu@liveperson.com"
+    }
+  ],
   "license": "MIT",
   "keywords": [
+    "design-system",
+    "designsystem",
+    "live-person",
     "liveperson",
+    "web-component",
     "webcomponent"
   ],
   "homepage": "https://github.com/LivePersonInc/lp-design-system",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LivePersonInc/lp-design-system"
-  },
+  "repository": "LivePersonInc/lp-design-system",
   "bugs": {
     "email": "design-system@liveperson.com",
     "url": "https://github.com/LivePersonInc/lp-design-system/issues/new"

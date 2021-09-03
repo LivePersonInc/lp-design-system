@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DarkThemeIcon,
   configuration: {
     tagname: 'lp-dark-theme-icon',
-  }
+  },
 });
 
 declare global {

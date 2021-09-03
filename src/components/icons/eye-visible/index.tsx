@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: EyeVisibleIcon,
   configuration: {
     tagname: 'lp-eye-visible-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: Minimize2Icon,
   configuration: {
     tagname: 'lp-minimize-2-icon',
-  }
+  },
 });
 
 declare global {

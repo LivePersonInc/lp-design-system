@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TrainIcon,
   configuration: {
     tagname: 'lp-train-icon',
-  }
+  },
 });
 
 declare global {

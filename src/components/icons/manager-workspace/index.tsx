@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ManagerWorkspaceIcon,
   configuration: {
     tagname: 'lp-manager-workspace-icon',
-  }
+  },
 });
 
 declare global {

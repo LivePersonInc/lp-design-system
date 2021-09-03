@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: XlsIcon,
   configuration: {
     tagname: 'lp-xls-icon',
-  }
+  },
 });
 
 declare global {

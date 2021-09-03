@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: FolderOpenIcon,
   configuration: {
     tagname: 'lp-folder-open-icon',
-  }
+  },
 });
 
 declare global {

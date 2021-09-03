@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: GlobeTimezoneIcon,
   configuration: {
     tagname: 'lp-globe-timezone-icon',
-  }
+  },
 });
 
 declare global {

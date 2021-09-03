@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: EntryPointAddIcon,
   configuration: {
     tagname: 'lp-entry-point-add-icon',
-  }
+  },
 });
 
 declare global {

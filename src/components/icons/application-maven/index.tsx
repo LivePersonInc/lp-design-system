@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ApplicationMavenIcon,
   configuration: {
     tagname: 'lp-application-maven-icon',
-  }
+  },
 });
 
 declare global {

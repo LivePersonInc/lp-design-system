@@ -8,19 +8,34 @@
     <title>LP Styled Components Web</title>
   </head>
   <body>
-    <lp-button>Primary</lp-button>
-    <lp-button variant="secondary">Secondary</lp-button>
-    <lp-button variant="tertiary">Tertiary</lp-button>
-    <lp-button variant="destructive">Destructive</lp-button>
-    <lp-button variant="ghost">Ghost</lp-button>
-    <lp-button variant="inline">Inline</lp-button>
+    <div class="elements-wrap">
+      <lp-button>Primary</lp-button>
+      <lp-button variant="secondary">Secondary</lp-button>
+      <lp-button variant="tertiary">Tertiary</lp-button>
+      <lp-button variant="destructive">Destructive</lp-button>
+      <lp-button variant="ghost">Ghost</lp-button>
+      <lp-button variant="inline">Inline</lp-button>
+    </div>
 
-    <lp-button-group>
-      <button>button</button>
-      <button class="active">button</button>
-      <button>button</button>
-    </lp-button-group>
+    <div class="elements-wrap">
+      <lp-button size="small" icon="question-circle">Small</lp-button>
+      <lp-button icon="question-circle">Medium</lp-button>
+      <lp-button size="large" icon="question-circle">Large</lp-button>
+      <lp-button size="small" icon="question-circle" iconPlacement="right">Small</lp-button>
+      <lp-button icon="question-circle" iconPlacement="right">Medium</lp-button>
+      <lp-button size="large" icon="question-circle" iconPlacement="right">Large</lp-button>
+    </div>
 
-    <lp-question-circle-icon color="white" size="medium"></lp-question-circle-icon>
+    <div class="elements-wrap">
+      <lp-button-group>
+        <button>button</button>
+        <button class="active">button</button>
+        <button>button</button>
+      </lp-button-group>
+    </div>
+
+    <div class="elements-wrap">
+      <lp-question-circle-icon color="white" size="medium"></lp-question-circle-icon>
+    </div>
   </body>
 </html>

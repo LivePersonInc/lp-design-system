@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: JoinIcon,
   configuration: {
     tagname: 'lp-join-icon',
-  }
+  },
 });
 
 declare global {

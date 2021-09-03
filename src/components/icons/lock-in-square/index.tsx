@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: LockInSquareIcon,
   configuration: {
     tagname: 'lp-lock-in-square-icon',
-  }
+  },
 });
 
 declare global {

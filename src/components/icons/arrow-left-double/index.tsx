@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ArrowLeftDoubleIcon,
   configuration: {
     tagname: 'lp-arrow-left-double-icon',
-  }
+  },
 });
 
 declare global {

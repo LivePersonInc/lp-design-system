@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: UndoIcon,
   configuration: {
     tagname: 'lp-undo-icon',
-  }
+  },
 });
 
 declare global {

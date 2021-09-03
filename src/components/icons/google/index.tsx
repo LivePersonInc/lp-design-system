@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: GoogleIcon,
   configuration: {
     tagname: 'lp-google-icon',
-  }
+  },
 });
 
 declare global {

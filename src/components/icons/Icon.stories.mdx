@@ -1,0 +1,79 @@
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
+
+import Icon from './Icon';
+import IconsList from './IconsList';
+
+<Meta
+  title="Tokens/Icons"
+  component={Icon}
+  argTypes={{
+    type: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+    color: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Icons
+
+Each icon is a separate module.
+It means that you have to import a specific module for the icon that you are going to use
+
+For example, if you want to use `arrow-down` icon you have to import `icons/arrow-down.js` module to use it
+```
+// npm
+import '@liveperson/design-system/icons/arrow-down';
+
+<lp-arrow-down-icon />
+
+// browser
+<script src="icons/arrow-down.js"></script>
+
+<lp-arrow-down-icon></lp-arrow-down-icon>
+```
+
+## Properties
+
+<ArgsTable of={Icon} />
+
+Thous properties can be provided for each icon component bun at the same time not all icons have all thous variations.
+However, each icon component has fallback logic to display the closest icon related to provided properties
+
+## All icons
+
+<ArgsTable story="All icons" />
+
+<Story
+  name="All icons"
+  args={{
+    name: '',
+    type: 'solid',
+    size: 'large',
+    color: 'dark',
+  }}
+  argTypes={{
+    name: {
+      control: { type: 'text' },
+      description: 'This is for filtering icons by name',
+    },
+    color: {
+      table: { disable: true },
+    },
+  }}
+  parameters={{
+    controls: { expanded: false }
+  }}
+>
+  {props => <IconsList {...props} />}
+</Story>

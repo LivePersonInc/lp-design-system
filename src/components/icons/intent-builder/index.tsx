@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: IntentBuilderIcon,
   configuration: {
     tagname: 'lp-intent-builder-icon',
-  }
+  },
 });
 
 declare global {

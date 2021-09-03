@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: PlayerStopIcon,
   configuration: {
     tagname: 'lp-player-stop-icon',
-  }
+  },
 });
 
 declare global {

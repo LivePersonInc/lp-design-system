@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CreateContentIcon,
   configuration: {
     tagname: 'lp-create-content-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ApplicationThirdPartyBotsIcon,
   configuration: {
     tagname: 'lp-application-third-party-bots-icon',
-  }
+  },
 });
 
 declare global {

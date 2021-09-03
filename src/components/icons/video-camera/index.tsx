@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: VideoCameraIcon,
   configuration: {
     tagname: 'lp-video-camera-icon',
-  }
+  },
 });
 
 declare global {

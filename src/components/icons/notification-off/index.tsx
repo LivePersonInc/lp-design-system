@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: NotificationOffIcon,
   configuration: {
     tagname: 'lp-notification-off-icon',
-  }
+  },
 });
 
 declare global {

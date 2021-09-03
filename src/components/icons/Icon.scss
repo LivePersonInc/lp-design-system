@@ -18,6 +18,10 @@ $icons-sizes: (
     width: $default-size;
     height: $default-size;
   }
+
+  path {
+    fill: currentColor;
+  }
 }
 
 @each $name, $size in $icons-sizes {
@@ -33,7 +37,5 @@ $icons-sizes: (
 }
 
 :host([color="white"]) {
-  path {
-    fill: colors.$white;
-  }
+  color: colors.$white;
 }

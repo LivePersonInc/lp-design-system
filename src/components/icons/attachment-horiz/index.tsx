@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AttachmentHorizIcon,
   configuration: {
     tagname: 'lp-attachment-horiz-icon',
-  }
+  },
 });
 
 declare global {

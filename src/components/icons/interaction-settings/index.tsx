@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: InteractionSettingsIcon,
   configuration: {
     tagname: 'lp-interaction-settings-icon',
-  }
+  },
 });
 
 declare global {

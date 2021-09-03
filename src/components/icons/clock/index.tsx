@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ClockIcon,
   configuration: {
     tagname: 'lp-clock-icon',
-  }
+  },
 });
 
 declare global {

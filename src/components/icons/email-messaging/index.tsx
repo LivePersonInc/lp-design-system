@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: EmailMessagingIcon,
   configuration: {
     tagname: 'lp-email-messaging-icon',
-  }
+  },
 });
 
 declare global {

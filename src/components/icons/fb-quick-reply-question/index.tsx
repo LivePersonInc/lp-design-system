@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: FbQuickReplyQuestionIcon,
   configuration: {
     tagname: 'lp-fb-quick-reply-question-icon',
-  }
+  },
 });
 
 declare global {

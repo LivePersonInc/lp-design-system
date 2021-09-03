@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: LoadingSpinnerIcon,
   configuration: {
     tagname: 'lp-loading-spinner-icon',
-  }
+  },
 });
 
 declare global {

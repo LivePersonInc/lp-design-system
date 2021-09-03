@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ClipboardIcon,
   configuration: {
     tagname: 'lp-clipboard-icon',
-  }
+  },
 });
 
 declare global {

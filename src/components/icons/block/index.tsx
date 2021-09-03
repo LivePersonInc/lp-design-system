@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: BlockIcon,
   configuration: {
     tagname: 'lp-block-icon',
-  }
+  },
 });
 
 declare global {

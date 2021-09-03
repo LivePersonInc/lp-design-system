@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: IdleIcon,
   configuration: {
     tagname: 'lp-idle-icon',
-  }
+  },
 });
 
 declare global {

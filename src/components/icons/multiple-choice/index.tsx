@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MultipleChoiceIcon,
   configuration: {
     tagname: 'lp-multiple-choice-icon',
-  }
+  },
 });
 
 declare global {

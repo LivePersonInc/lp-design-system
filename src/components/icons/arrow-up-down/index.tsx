@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ArrowUpDownIcon,
   configuration: {
     tagname: 'lp-arrow-up-down-icon',
-  }
+  },
 });
 
 declare global {

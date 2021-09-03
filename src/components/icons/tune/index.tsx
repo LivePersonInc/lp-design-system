@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: TuneIcon,
   configuration: {
     tagname: 'lp-tune-icon',
-  }
+  },
 });
 
 declare global {

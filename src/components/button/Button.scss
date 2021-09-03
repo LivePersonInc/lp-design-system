@@ -184,9 +184,33 @@
   height: 24px;
   font-size: typography.$size-small;
   @include spacing.padding(none, s, true);
+
+  ::slotted([slot="icon-left"]) {
+    margin-right: spacing.get-space(xxs);
+  }
+
+  ::slotted([slot="icon-right"]) {
+    margin-left: spacing.get-space(xxs);
+    margin-right: spacing.get-space(xxs) * -1;
+  }
 }
 
 :host([size="large"]) {
   height: 40px;
-  @include spacing.padding(none, m, true);
+}
+
+@mixin icon {
+  display: inline-flex;
+}
+
+::slotted([slot="icon-left"]) {
+  @include icon;
+  margin-left: spacing.get-space(xxs) * -1;
+  margin-right: spacing.get-space(xs);
+}
+
+::slotted([slot="icon-right"]) {
+  @include icon;
+  margin-left: spacing.get-space(xs);
+  margin-right: spacing.get-space(xxs) * -1;
 }

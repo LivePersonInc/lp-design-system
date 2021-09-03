@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ReportBuilderIcon,
   configuration: {
     tagname: 'lp-report-builder-icon',
-  }
+  },
 });
 
 declare global {

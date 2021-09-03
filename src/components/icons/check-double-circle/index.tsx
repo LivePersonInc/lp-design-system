@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CheckDoubleCircleIcon,
   configuration: {
     tagname: 'lp-check-double-circle-icon',
-  }
+  },
 });
 
 declare global {

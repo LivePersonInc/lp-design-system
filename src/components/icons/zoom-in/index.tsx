@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ZoomInIcon,
   configuration: {
     tagname: 'lp-zoom-in-icon',
-  }
+  },
 });
 
 declare global {

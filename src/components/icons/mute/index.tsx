@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MuteIcon,
   configuration: {
     tagname: 'lp-mute-icon',
-  }
+  },
 });
 
 declare global {

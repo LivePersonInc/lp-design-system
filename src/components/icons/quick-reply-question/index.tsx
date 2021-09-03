@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: QuickReplyQuestionIcon,
   configuration: {
     tagname: 'lp-quick-reply-question-icon',
-  }
+  },
 });
 
 declare global {

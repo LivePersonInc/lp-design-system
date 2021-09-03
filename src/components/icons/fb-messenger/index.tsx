@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: FbMessengerIcon,
   configuration: {
     tagname: 'lp-fb-messenger-icon',
-  }
+  },
 });
 
 declare global {

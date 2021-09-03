@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: VoiceMessagingIcon,
   configuration: {
     tagname: 'lp-voice-messaging-icon',
-  }
+  },
 });
 
 declare global {

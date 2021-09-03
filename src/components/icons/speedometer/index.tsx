@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: SpeedometerIcon,
   configuration: {
     tagname: 'lp-speedometer-icon',
-  }
+  },
 });
 
 declare global {

@@ -7,31 +7,33 @@ import styles from './Button.scss';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'destructive' | 'ghost' | 'inline'
 export type ButtonSize = 'small' | 'medium' | 'large'
-export type ButtonIconPlacement = 'left' | 'right'
 
 export type ButtonProps = JSX.IntrinsicElements['button'] & {
   theme?: Theme
   variant?: ButtonVariant
   size?: ButtonSize
-  icon?: string
-  iconPlacement?: ButtonIconPlacement
+  label?: string
 }
 
 export type ButtonComponent = React.FC<ButtonProps>
 
-const Button: ButtonComponent = ({ children }) => {
-  return (
+const Button: ButtonComponent = ({ label }) => (
+  <>
+    <slot name="icon-left" />
+
     <Styled styles={styles} scoped={false}>
-      {children}
+      <slot name="label">{label}</slot>
     </Styled>
-  )
-};
+
+    <slot name="icon-right" />
+  </>
+);
 
 Button.defaultProps = {
   theme: 'dark',
   variant: 'primary',
   size: 'medium',
-  iconPlacement: 'left',
+  label: '',
 };
 
-export default Button;
+export default Button

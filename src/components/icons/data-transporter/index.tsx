@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DataTransporterIcon,
   configuration: {
     tagname: 'lp-data-transporter-icon',
-  }
+  },
 });
 
 declare global {

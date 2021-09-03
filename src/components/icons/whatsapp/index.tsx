@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: WhatsappIcon,
   configuration: {
     tagname: 'lp-whatsapp-icon',
-  }
+  },
 });
 
 declare global {

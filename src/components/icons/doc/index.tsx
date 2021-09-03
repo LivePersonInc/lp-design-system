@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DocIcon,
   configuration: {
     tagname: 'lp-doc-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AdminSettingsIcon,
   configuration: {
     tagname: 'lp-admin-settings-icon',
-  }
+  },
 });
 
 declare global {

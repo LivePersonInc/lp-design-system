@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AgentAddIcon,
   configuration: {
     tagname: 'lp-agent-add-icon',
-  }
+  },
 });
 
 declare global {

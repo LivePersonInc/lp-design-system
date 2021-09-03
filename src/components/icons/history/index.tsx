@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: HistoryIcon,
   configuration: {
     tagname: 'lp-history-icon',
-  }
+  },
 });
 
 declare global {

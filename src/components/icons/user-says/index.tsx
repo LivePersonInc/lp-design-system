@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: UserSaysIcon,
   configuration: {
     tagname: 'lp-user-says-icon',
-  }
+  },
 });
 
 declare global {

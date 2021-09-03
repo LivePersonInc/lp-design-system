@@ -8,7 +8,22 @@ body {
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #0C1836;
+}
+
+.elements-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.elements-wrap:last-child {
+  margin-bottom: 0;
+}
+
+.elements-wrap > * {
+  margin: 5px;
 }

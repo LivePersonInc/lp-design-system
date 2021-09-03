@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: AddTargetIcon,
   configuration: {
     tagname: 'lp-add-target-icon',
-  }
+  },
 });
 
 declare global {

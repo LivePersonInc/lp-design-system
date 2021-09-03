@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DotsHorizIcon,
   configuration: {
     tagname: 'lp-dots-horiz-icon',
-  }
+  },
 });
 
 declare global {

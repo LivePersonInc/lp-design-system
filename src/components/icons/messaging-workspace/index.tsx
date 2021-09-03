@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: MessagingWorkspaceIcon,
   configuration: {
     tagname: 'lp-messaging-workspace-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: HamburgerIcon,
   configuration: {
     tagname: 'lp-hamburger-icon',
-  }
+  },
 });
 
 declare global {

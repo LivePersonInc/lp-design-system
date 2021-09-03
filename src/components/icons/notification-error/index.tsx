@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: NotificationErrorIcon,
   configuration: {
     tagname: 'lp-notification-error-icon',
-  }
+  },
 });
 
 declare global {

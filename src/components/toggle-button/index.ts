@@ -1,12 +1,11 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Button, { ButtonProps } from './Button';
+import ToggleButton, { ToggleButtonProps } from './ToggleButton';
 
 DireflowComponent.create({
-  component: Button,
+  component: ToggleButton,
   configuration: {
-    tagname: 'lp-button',
-    useAnonymousSlot: true,
+    tagname: 'lp-toggle-button',
   },
   plugins: [
     {
@@ -19,7 +18,7 @@ DireflowComponent.create({
     },
   ],
 }).then(element => {
-  if (element.tagName === 'LP-BUTTON') {
+  if (element.tagName === 'LP-TOGGLE-BUTTON') {
     element.tabIndex = 0;
   }
 });
@@ -27,7 +26,7 @@ DireflowComponent.create({
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'lp-button': ButtonProps
+      'lp-toggle-button': ToggleButtonProps
     }
   }
 }

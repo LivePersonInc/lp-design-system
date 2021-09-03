@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: DebugIcon,
   configuration: {
     tagname: 'lp-debug-icon',
-  }
+  },
 });
 
 declare global {

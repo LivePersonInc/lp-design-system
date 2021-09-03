@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: UnpublishedIcon,
   configuration: {
     tagname: 'lp-unpublished-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: ConsumerStudioIcon,
   configuration: {
     tagname: 'lp-consumer-studio-icon',
-  }
+  },
 });
 
 declare global {

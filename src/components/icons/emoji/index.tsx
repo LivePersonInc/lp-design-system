@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: EmojiIcon,
   configuration: {
     tagname: 'lp-emoji-icon',
-  }
+  },
 });
 
 declare global {

@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: CardContactProfileIcon,
   configuration: {
     tagname: 'lp-card-contact-profile-icon',
-  }
+  },
 });
 
 declare global {

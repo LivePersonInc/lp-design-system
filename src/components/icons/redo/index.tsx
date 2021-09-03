@@ -6,7 +6,7 @@ DireflowComponent.create({
   component: RedoIcon,
   configuration: {
     tagname: 'lp-redo-icon',
-  }
+  },
 });
 
 declare global {

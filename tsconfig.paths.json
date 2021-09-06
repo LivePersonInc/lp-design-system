@@ -3,6 +3,7 @@
     "baseUrl": "./src",
     "paths": {
       "lpds/components/*": ["./components/*"],
+      "lpds/icons/*": ["./icons/*"],
       "lpds/styles/*": ["./styles/*"]
     }
   }

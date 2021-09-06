@@ -12,7 +12,7 @@
 import Button from './components/button/Button';
 import ButtonGroup from './components/button-group/ButtonGroup';
 
-export * from './components/icons/exports';
+export * from './icons/exports';
 
 export {
   Button,

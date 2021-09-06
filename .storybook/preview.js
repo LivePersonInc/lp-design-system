@@ -2,12 +2,23 @@ import React from 'react';
 
 import theme from './theme';
 
+const storyOrder = [
+  'docs-',
+  'docs-intro',
+  'docs-quick-start',
+  'docs-developing',
+  'docs-have-questions',
+  'tokens',
+  'components',
+];
+
 export const parameters = {
   layout: 'centered',
   options: {
     storySort: {
       order: [
         'Docs',
+        ['Intro', 'Quick Start', 'Developing', 'Have questions?'],
         'Tokens',
         'Components',
       ],

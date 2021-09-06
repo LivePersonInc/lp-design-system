@@ -1,43 +1,6 @@
-# LivePerson Design System
+import { Meta } from '@storybook/addon-docs';
 
-Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
-
-## Installing
-
-You can install LPDS with [NPM](https://www.npmjs.com/package/@liveperson/design-system) or Yarn.
-
-- NPM: `npm i @liveperson/design-system`
-- YARN: `yarn add @liveperson/design-system`
-
-## How to use
-
-You can use any LPDS component either in a browser or with a front-end framework
-
-### Browser usage
-```html
-<html>
-  <head>
-    <script src="button.js" />
-  </head>
-
-  <body>
-    <lp-button labal="button" />
-  </body>
-</html>
-```
-
-### Framework usage (React)
-```jsx
-import '@liveperson/design-system/button';
-
-const App = () => {
-  return (
-    <lp-button label="Button" />
-  );
-};
-
-export default App
-```
+<Meta title="Docs/Developing"/>
 
 # Developing
 
@@ -68,16 +31,15 @@ From here you can see and try all things that LPDS provides
 
 **Note:** you can run Storybook in docs mode by using `yarn start:docs` command
 
-
 ## Other development scripts
 
 In the project directory, you can run:
 
 - `yarn start` - runs Storybook dev server
-  - `yarn start:docs` - runs Storybook dev server in docs mode
+- `yarn start:docs` - runs Storybook dev server in docs mode
 - `yarn build` - builds all web-components to the `build` folder
 - `yarn storybook:build` - builds all web-components and Storybook to the `storybook-static` folder
-  - `yarn storybook:build:docs` - builds all web-components and Storybook in docs mode to the `storybook-static` folder
+- `yarn storybook:build:docs` - builds all web-components and Storybook in docs mode to the `storybook-static` folder
 
 ## Storybook deploying
 
@@ -90,7 +52,3 @@ or
 ```bash
 yarn storybook:docs:deploy
 ```
-
-## License
-
-MIT © [LivePersonInc](https://github.com/LivePersonInc)

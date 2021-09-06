@@ -74,8 +74,20 @@ In the project directory, you can run:
 - `yarn start` - runs Storybook dev server
   - `yarn start:docs` - runs Storybook dev server in docs mode
 - `yarn build` - builds all web-components to the `build` folder
-- `yarn build-storybook` - builds all web-components and Storybook to the `storybook-static` folder
-  - `yarn build-storybook-docs` - builds all web-components and Storybook in docs mode to the `storybook-static` folder
+- `yarn storybook:build` - builds all web-components and Storybook to the `storybook-static` folder
+  - `yarn storybook:build:docs` - builds all web-components and Storybook in docs mode to the `storybook-static` folder
+
+## Storybook deploying
+
+To deploy a new version of LPDS documentation (Storybook) to GH Pages you can simply run this command:
+
+```bash
+yarn storybook:deploy
+```
+or
+```bash
+yarn storybook:docs:deploy
+```
 
 ## License
 

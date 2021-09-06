@@ -1,5 +1,7 @@
 # LivePerson Design System
 
+Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
+
 ## Installing
 
 You can install LPDS with [NPM](https://www.npmjs.com/package/@liveperson/design-system) or Yarn.

@@ -11,10 +11,12 @@
 
 import Button from './components/button/Button';
 import ButtonGroup from './components/button-group/ButtonGroup';
+import ToggleButton from './components/toggle-button/ToggleButton';
 
-export * from './components/icons/exports';
+export * from './icons/exports';
 
 export {
   Button,
   ButtonGroup,
+  ToggleButton,
 }

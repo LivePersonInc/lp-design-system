@@ -2,8 +2,7 @@
   "build": {
     "componentPath": "components",
     "filename": "direflowBundle.js",
-    "split": true,
-    "vendor": true
+    "split": true
   },
   "polyfills": {
     "sd": false,

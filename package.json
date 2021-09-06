@@ -1,18 +1,33 @@
 {
-  "name": "@liveperson/design-system",
-  "description": "Styled components",
-  "version": "1.0.0",
+  "name": "liveperson-design-system",
+  "description": "The company design system for LivePerson",
+  "version": "0.0.1",
   "author": "",
+  "contributors": [
+    {
+      "name": "Mykhailo Riabokon",
+      "email": "mriabokon@liveperson.com"
+    },
+    {
+      "name": "Itay Haephrati",
+      "email": "ihaephrati@liveperson.com"
+    },
+    {
+      "name": "Charlie Wu",
+      "email": "chwu@liveperson.com"
+    }
+  ],
   "license": "MIT",
   "keywords": [
+    "design-system",
+    "designsystem",
+    "live-person",
     "liveperson",
+    "web-component",
     "webcomponent"
   ],
-  "homepage": "https://github.com/LivePersonInc/lp-design-system",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LivePersonInc/lp-design-system"
-  },
+  "homepage": "https://livepersoninc.github.io/lp-design-system/",
+  "repository": "LivePersonInc/lp-design-system",
   "bugs": {
     "email": "design-system@liveperson.com",
     "url": "https://github.com/LivePersonInc/lp-design-system/issues/new"
@@ -24,11 +39,13 @@
   "scripts": {
     "start": "start-storybook -s public",
     "start:docs": "start-storybook --docs -s public",
-    "build": "direflow-scripts build && node ./scripts/group-icons-components.js",
+    "build": "direflow-scripts build && node ./scripts/after-build.js",
     "build:lib": "direflow-scripts build:lib",
     "test": "direflow-scripts test",
-    "build-storybook": "build-storybook -s public",
-    "build-storybook-docs": "build-storybook --docs -s public"
+    "storybook:build": "build-storybook -s public",
+    "storybook:build:docs": "build-storybook --docs -s public",
+    "storybook:deploy": "storybook-to-ghpages -s storybook:build --source-branch develop",
+    "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch develop"
   },
   "dependencies": {
     "@types/node": "12.7.8",
@@ -42,15 +59,15 @@
     "react-scripts": "3.4.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.6",
-    "@storybook/addon-docs": "^6.3.7",
-    "@storybook/addon-essentials": "^6.3.6",
-    "@storybook/addon-links": "^6.3.6",
-    "@storybook/addons": "^6.3.7",
-    "@storybook/node-logger": "^6.3.6",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-docs": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addons": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.6",
-    "@storybook/theming": "^6.3.7",
+    "@storybook/react": "^6.3.8",
+    "@storybook/storybook-deployer": "^2.8.10",
+    "@storybook/theming": "^6.3.8",
     "@types/jest": "^26.0.24",
     "@types/react-test-renderer": "16.9.1",
     "css-loader": "3.4.2",

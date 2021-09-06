@@ -42,8 +42,8 @@
     "build": "direflow-scripts build && node ./scripts/after-build.js",
     "build:lib": "direflow-scripts build:lib",
     "test": "direflow-scripts test",
-    "storybook:build": "build-storybook -s public",
-    "storybook:build:docs": "build-storybook --docs -s public"
+    "storybook:build": "build-storybook -s public -o ./docs",
+    "storybook:build:docs": "build-storybook --docs -s public -o ./docs"
   },
   "dependencies": {
     "@types/node": "12.7.8",

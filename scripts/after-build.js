@@ -4,7 +4,8 @@ const path = require('path');
 
 const buildPath = path.resolve(__dirname, '../build');
 
-console.log('\nGrouping all icons components in one folder');
+console.log('\n');
+console.log('Grouping all icons components in one folder');
 
 fs.readdirSync(buildPath)
   .filter(file => file.includes('-icon'))
@@ -28,6 +29,10 @@ fs.readdirSync(buildPath)
     );
   });
 
-console.log('Removing all unnecessary files\n');
+console.log('Removing all unnecessary files');
 
 fse.removeSync(path.resolve(buildPath, 'components/main.js'));
+
+fse.moveSync(path.resolve(buildPath, 'components/vendor.js'), path.resolve(buildPath, 'main.js'));
+
+console.log('\n');

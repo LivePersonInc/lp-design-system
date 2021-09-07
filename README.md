@@ -4,31 +4,43 @@ Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
 
 ## Installing
 
-You can install LPDS with [NPM](https://www.npmjs.com/package/@liveperson/design-system) or Yarn.
+You can install LPDS with [NPM](https://www.npmjs.com/package/liveperson-design-system) or Yarn.
 
-- NPM: `npm i @liveperson/design-system`
-- YARN: `yarn add @liveperson/design-system`
+- NPM: `npm i liveperson-design-system`
+- YARN: `yarn add liveperson-design-system`
 
 ## How to use
 
+### Setup
+
+First, you have to add the following script inside `head` tag
+
+```html
+<script src="https://unpkg.com/liveperson-design-system/main.js"></script>
+```
+
+### Usage
+
 You can use any LPDS component either in a browser or with a front-end framework
 
-### Browser usage
+#### Browser
 ```html
 <html>
   <head>
-    <script src="button.js" />
+    <script src="https://unpkg.com/liveperson-design-system/components/button.js" />
   </head>
 
   <body>
-    <lp-button labal="button" />
+    <lp-button labal="Button" />
   </body>
 </html>
 ```
 
-### Framework usage (React)
+#### Framework (React)
 ```jsx
-import '@liveperson/design-system/button';
+import React from 'react';
+
+import 'liveperson-design-system/components/button';
 
 const App = () => {
   return (
@@ -89,6 +101,16 @@ yarn storybook:deploy
 or
 ```bash
 yarn storybook:docs:deploy
+```
+
+## NPM package publishing
+
+LPDS is using [np](https://www.npmjs.com/package/liveperson-design-system) package to help with publishing
+
+Run the following command to publish a new version of `liveperson-design-system` package.
+
+```bash
+yarn npm:publish
 ```
 
 ## License

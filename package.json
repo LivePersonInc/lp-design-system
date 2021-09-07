@@ -1,8 +1,7 @@
 {
   "name": "liveperson-design-system",
   "description": "The company design system for LivePerson",
-  "version": "0.0.1",
-  "author": "",
+  "version": "0.1.0",
   "contributors": [
     {
       "name": "Mykhailo Riabokon",
@@ -29,12 +28,12 @@
   "homepage": "https://livepersoninc.github.io/lp-design-system/",
   "repository": "LivePersonInc/lp-design-system",
   "bugs": {
-    "email": "design-system@liveperson.com",
-    "url": "https://github.com/LivePersonInc/lp-design-system/issues/new"
+    "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
   "main": "build/direflowBundle.js",
   "files": [
-    "build"
+    "build/components",
+    "build/icons"
   ],
   "scripts": {
     "start": "start-storybook -s public",
@@ -45,7 +44,8 @@
     "storybook:build": "build-storybook -s public",
     "storybook:build:docs": "build-storybook --docs -s public",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build --source-branch develop",
-    "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch develop"
+    "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch develop",
+    "npm:publish": "yarn build && node ./scripts/release.js && cd build && npm login && np --no-tests && cd .. && node ./scripts/after-release.js"
   },
   "dependencies": {
     "@types/node": "12.7.8",
@@ -73,6 +73,7 @@
     "css-loader": "3.4.2",
     "fs-extra": "^10.0.0",
     "jest-environment-jsdom-fourteen": "0.1.0",
+    "np": "^7.5.0",
     "react-app-rewired": "2.1.3",
     "react-test-renderer": "16.9.0",
     "sass-loader": "8.0.2",

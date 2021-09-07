@@ -1,8 +1,6 @@
-import { Meta } from '@storybook/addon-docs';
+# LivePerson Design System
 
-<Meta title="Docs/Quick Start" />
-
-# Quick Start
+Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
 
 ## Installing
 
@@ -52,3 +50,7 @@ const App = () => {
 
 export default App
 ```
+
+## License
+
+MIT © [LivePersonInc](https://github.com/LivePersonInc)

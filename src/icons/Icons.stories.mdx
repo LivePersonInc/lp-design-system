@@ -1,7 +1,8 @@
 import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
 
 import Icon from './Icon';
-import IconsList from './IconsList';
+
+import IconsList from './IconsList/IconsList';
 
 <Meta
   title="Tokens/Icons"
@@ -31,16 +32,21 @@ Each icon is a separate module.
 It means that you have to import a specific module for the icon that you are going to use
 
 For example, if you want to use `arrow-down` icon you have to import `icons/arrow-down.js` module to use it
-```
-// npm
+
+#### NPM
+
+```jsx
 import 'liveperson-design-system/icons/arrow-down';
 
 <lp-arrow-down-icon />
+```
 
-// browser
-<script src="icons/arrow-down.js"></script>
+#### Browser
 
-<lp-arrow-down-icon></lp-arrow-down-icon>
+```html
+<script src="https://unpkg.com/liveperson-design-system/icons/arrow-down.js"></script>
+
+<lp-arrow-down-icon />
 ```
 
 ## Properties

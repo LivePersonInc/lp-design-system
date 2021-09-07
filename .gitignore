@@ -4,6 +4,7 @@
 **/.DS_Store
 **/._.DS_Store
 
+build
 storybook-static
 
 node_modules

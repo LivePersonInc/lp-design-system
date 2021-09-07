@@ -29,12 +29,12 @@
   "homepage": "https://livepersoninc.github.io/lp-design-system/",
   "repository": "LivePersonInc/lp-design-system",
   "bugs": {
-    "email": "design-system@liveperson.com",
-    "url": "https://github.com/LivePersonInc/lp-design-system/issues/new"
+    "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
   "main": "build/direflowBundle.js",
   "files": [
-    "build"
+    "build/components",
+    "build/icons"
   ],
   "scripts": {
     "start": "start-storybook -s public",
@@ -45,7 +45,8 @@
     "storybook:build": "build-storybook -s public",
     "storybook:build:docs": "build-storybook --docs -s public",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build --source-branch develop",
-    "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch develop"
+    "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch develop",
+    "release": "yarn build && node ./scripts/release.js && np --no-tests --contents build"
   },
   "dependencies": {
     "@types/node": "12.7.8",

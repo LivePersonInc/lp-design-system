@@ -4,10 +4,10 @@ Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
 
 ## Installing
 
-You can install LPDS with [NPM](https://www.npmjs.com/package/@liveperson/design-system) or Yarn.
+You can install LPDS with [NPM](https://www.npmjs.com/package/liveperson-design-system) or Yarn.
 
-- NPM: `npm i @liveperson/design-system`
-- YARN: `yarn add @liveperson/design-system`
+- NPM: `npm i liveperson-design-system`
+- YARN: `yarn add liveperson-design-system`
 
 ## How to use
 
@@ -28,7 +28,7 @@ You can use any LPDS component either in a browser or with a front-end framework
 
 ### Framework usage (React)
 ```jsx
-import '@liveperson/design-system/button';
+import 'liveperson-design-system/button';
 
 const App = () => {
   return (

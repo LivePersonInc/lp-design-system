@@ -27,7 +27,7 @@ const IconImportDetails: React.FC<IconPropsWithName> = ({ name, type, size, colo
       {name}
     </h4>
 
-    <Source language="javascript" code={`import '@liveperson/design-system/icons/${name}';`} />
+    <Source language="javascript" code={`import 'liveperson-design-system/icons/${name}';`} />
 
     <Source language="html" code={`<lp-${name}-icon${type === 'solid' ? '' : ` type="${type}"`}${size === 'small' ? '' : ` size="${size}"`}${color === 'dark' ? '' : ` color="${color}"`} />`} />
   </div>

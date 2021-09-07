@@ -13,24 +13,36 @@ You can install LPDS with [NPM](https://www.npmjs.com/package/liveperson-design-
 
 ## How to use
 
+### Setup
+
+First, you have to add the following script inside `head` tag
+
+```html
+<script src="https://unpkg.com/liveperson-design-system/main.js"></script>
+```
+
+### Usage
+
 You can use any LPDS component either in a browser or with a front-end framework
 
-### Browser usage
+#### Browser
 ```html
 <html>
   <head>
-    <script src="button.js" />
+    <script src="https://unpkg.com/liveperson-design-system/components/button.js" />
   </head>
 
   <body>
-    <lp-button labal="button" />
+    <lp-button labal="Button" />
   </body>
 </html>
 ```
 
-### Framework usage (React)
+#### Framework (React)
 ```jsx
-import 'liveperson-design-system/button';
+import React from 'react';
+
+import 'liveperson-design-system/components/button';
 
 const App = () => {
   return (

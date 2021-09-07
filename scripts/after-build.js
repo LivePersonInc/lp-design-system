@@ -33,4 +33,6 @@ console.log('Removing all unnecessary files');
 
 fse.removeSync(path.resolve(buildPath, 'components/main.js'));
 
+fse.moveSync(path.resolve(buildPath, 'components/vendor.js'), path.resolve(buildPath, 'main.js'));
+
 console.log('\n');

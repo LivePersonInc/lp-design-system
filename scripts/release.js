@@ -16,7 +16,7 @@ console.log('Preparing package.json');
 
 const fields = {
   main: 'index.js',
-  files: null,
+  files: ['*'],
   scripts: null,
   dependencies: null,
   devDependencies: null,

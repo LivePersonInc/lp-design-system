@@ -37,7 +37,7 @@ Object.keys(fields).forEach(key => {
     return true;
   }
 
-  packageJSON[key] = (typeof fields[key] === 'object' ? { ...packageJSON[key], ...fields[key] } : fields[key]);
+  packageJSON[key] = fields[key];
 });
 
 fs.writeFileSync(

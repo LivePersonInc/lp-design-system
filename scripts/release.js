@@ -17,7 +17,9 @@ console.log('Preparing package.json');
 const fields = {
   main: 'main.js',
   files: ['*'],
-  scripts: null,
+  scripts: {
+    version: 'node ../scripts/after-release.js',
+  },
   dependencies: null,
   devDependencies: null,
   eslintConfig: null,

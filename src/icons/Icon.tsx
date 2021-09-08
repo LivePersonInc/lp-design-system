@@ -13,7 +13,7 @@ export type IconCustomProps = {
   color?: IconColor
 }
 
-export type IconProps = IconCustomProps
+export type IconProps = JSX.IntrinsicElements['div'] & IconCustomProps
 
 abstract class Icon<P extends IconProps = IconProps, S = {}> extends React.Component<P, S> {
   static defaultProps = {

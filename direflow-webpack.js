@@ -11,6 +11,7 @@ module.exports = (config, env) => {
   if (env === 'production') {
     fs.readdirSync(webpackAlias['lpds/icons'], { withFileTypes: true })
       .filter(dir => dir.isDirectory())
+      .filter(({ name }) => name !== 'IconsList')
       .forEach(({ name }) => {
         config.entry[`${name}-icon`] = `${webpackAlias['lpds/icons']}/${name}`;
       });

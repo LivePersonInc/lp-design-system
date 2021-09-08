@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "main": "build/direflowBundle.js",
+  "main": "build/main.js",
   "files": [
     "build/components",
     "build/icons"

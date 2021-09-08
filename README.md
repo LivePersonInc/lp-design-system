@@ -110,7 +110,7 @@ LPDS is using [np](https://www.npmjs.com/package/liveperson-design-system) packa
 Run the following command to publish a new version of `liveperson-design-system` package.
 
 ```bash
-yarn npm:publish
+yarn release
 ```
 
 ## License

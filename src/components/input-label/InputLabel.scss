@@ -1,0 +1,27 @@
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+:host {
+  display: flex;
+  align-items: center;
+  color: colors.$white;
+}
+
+:host([theme="light"]) {
+  color: colors-light.$navy-black;
+}
+
+:host([disabled]:not([disabled="false"])) {
+  opacity: transparency.$disabled;
+}
+
+label {
+  @include typography.input-label;
+}
+
+.additional-info-icon {
+  margin-left: spacing.get-space(xs);
+}

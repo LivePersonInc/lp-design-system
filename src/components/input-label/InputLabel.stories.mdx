@@ -1,0 +1,80 @@
+import { createElement } from 'react';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import InputLabel from './InputLabel';
+
+import './';
+
+<Meta
+  title="Components/InputLabel"
+  component={InputLabel}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+/>
+
+# InputLabel
+
+<ArgsTable of={InputLabel} />
+
+`label` value can be provided by `label` attribute or as a child
+
+Example:
+```html
+<lp-input-label label="Label" />
+```
+or
+```html
+<lp-input-label>Label</lp-input-label>
+```
+
+## Basic
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      theme: 'dark',
+      label: 'Label',
+      disabled: false,
+    }}
+    argTypes={{
+      info: {
+        table: { disable: true },
+      },
+    }}
+  >
+    {({ theme, label, disabled }) => (
+      <lp-input-label
+        theme={theme === 'dark' ? undefined : theme}
+        label={label}
+        disabled={disabled === false ? undefined : disabled}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## With information <span style={{ color: 'red' }}>WIP</span>
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story
+    name="With information"
+    args={{
+      theme: 'dark',
+      info: 'Information',
+      label: 'Label',
+      disabled: false,
+    }}
+  >
+    {({ theme, info, label, disabled }) => (
+      <lp-input-label
+        theme={theme === 'dark' ? undefined : theme}
+        info={info}
+        label={label}
+        disabled={disabled === false ? undefined : disabled}
+      />
+    )}
+  </Story>
+</Canvas>

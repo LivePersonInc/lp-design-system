@@ -44,7 +44,8 @@
     "storybook:build:docs": "build-storybook --docs -s public",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build --source-branch main",
     "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch main",
-    "release": "yarn build && node ./scripts/release.js && np --no-tests --contents build"
+    "release": "yarn build && node ./scripts/release.js && np --no-tests --contents build",
+    "version": "node ./scripts/sync-version.js"
   },
   "dependencies": {
     "@types/node": "12.7.8",

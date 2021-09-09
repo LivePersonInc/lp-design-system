@@ -20,7 +20,11 @@ export const parameters = {
           'Typography',
           'Shadow',
           'Animation',
-          'Icons',
+        ],
+        'Icons',
+        [
+          'Overview',
+          'All Icons',
         ],
         'Components',
       ],

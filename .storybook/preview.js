@@ -8,8 +8,24 @@ export const parameters = {
     storySort: {
       order: [
         'Docs',
-        ['Intro', 'Quick Start', 'Developing', 'Have questions?'],
+        [
+          'Intro',
+          'Quick Start',
+          'Developing',
+          'Have questions?',
+        ],
         'Tokens',
+        [
+          'Colors',
+          'Typography',
+          'Shadow',
+          'Animation',
+        ],
+        'Icons',
+        [
+          'Overview',
+          'All Icons',
+        ],
         'Components',
       ],
     },

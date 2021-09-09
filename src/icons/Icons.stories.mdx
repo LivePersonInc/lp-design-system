@@ -5,7 +5,7 @@ import Icon from './Icon';
 import IconsList from './IconsList/IconsList';
 
 <Meta
-  title="Tokens/Icons"
+  title="Icons/All Icons"
   component={Icon}
   argTypes={{
     type: {
@@ -14,51 +14,16 @@ import IconsList from './IconsList/IconsList';
     size: {
       control: { type: 'inline-radio' },
     },
-    color: {
-      control: { type: 'inline-radio' },
-    },
   }}
-  parameters={{
-    viewMode: 'docs',
-    previewTabs: {
-      canvas: { hidden: true },
-    },
-  }}
+  parameters={{ docsOnly: true }}
 />
 
-# Icons
+# All icons
 
-Each icon is a separate module.
-It means that you have to import a specific module for the icon that you are going to use
-
-For example, if you want to use `arrow-down` icon you have to import `icons/arrow-down.js` module to use it
-
-#### NPM
-
-```jsx
-import 'liveperson-design-system/icons/arrow-down';
-
-<lp-arrow-down-icon />
-```
-
-#### Browser
-
-```html
-<script src="https://unpkg.com/liveperson-design-system/icons/arrow-down.js"></script>
-
-<lp-arrow-down-icon />
-```
-
-## Properties
-
-<ArgsTable of={Icon} />
-
-Thous properties can be provided for each icon component bun at the same time not all icons have all thous variations.
-However, each icon component has fallback logic to display the closest icon related to provided properties
-
-## All icons
-
-<ArgsTable story="All icons" />
+<ArgsTable
+  story="All icons"
+  compact
+/>
 
 <Story
   name="All icons"

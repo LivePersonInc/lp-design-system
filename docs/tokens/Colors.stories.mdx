@@ -1,7 +1,36 @@
 import { Meta } from '@storybook/addon-docs';
+import { TabsState } from '@storybook/components';
+import { Figma } from 'storybook-addon-designs/blocks';
 
 <Meta title="Tokens/Colors" />
 
 # Colors
 
-### Coming soon
+<TabsState>
+  <div id="dark" title="Dark theme">
+    {({ active }) => (
+      active
+        ? (
+          <Figma
+            collapsable={false}
+            url="https://www.figma.com/file/dy2MuF5NhgXZGvqqnsPT8J/LPDS-Dark-theme-colors?node-id=0%3A1"
+            allowFullscreen
+          />
+        )
+        : null
+    )}
+  </div>
+  <div id="light" title="Light theme">
+    {({ active }) => (
+      active
+        ? (
+          <Figma
+            collapsable={false}
+            url="https://www.figma.com/file/OOr2Z5DnCI6yToEYPpyX6P/LPDS-Light-theme-colors?node-id=0%3A1"
+            allowFullscreen
+          />
+        )
+        : null
+    )}
+  </div>
+</TabsState>

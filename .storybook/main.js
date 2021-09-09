@@ -8,6 +8,7 @@ module.exports = {
   addons: [
     '@storybook/preset-create-react-app',
     '@storybook/addon-essentials',
+    'storybook-addon-designs',
   ],
   webpackFinal: async config => {
     config.resolve.alias = { ...config.resolve.alias, ...webpackAlias };

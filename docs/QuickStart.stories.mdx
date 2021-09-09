@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
+import { TabsState } from '@storybook/components';
 
 <Meta title="Docs/Quick Start" />
 
@@ -8,8 +9,22 @@ import { Meta } from '@storybook/addon-docs';
 
 You can install LPDS with [NPM](https://www.npmjs.com/package/liveperson-design-system) or Yarn.
 
-- NPM: `npm i liveperson-design-system`
-- YARN: `yarn add liveperson-design-system`
+<TabsState>
+  <div id="npm" title="NPM">
+
+```bash
+npm i liveperson-design-system
+```
+
+  </div>
+  <div id="yarn" title="Yarn">
+
+```bash
+yarn add liveperson-design-system
+```
+
+  </div>
+</TabsState>
 
 ## How to use
 
@@ -25,7 +40,9 @@ First, you have to add the following script inside `head` tag
 
 You can use any LPDS component either in a browser or with a front-end framework
 
-#### Browser
+<TabsState>
+  <div id="browser" title="Browser">
+
 ```html
 <html>
   <head>
@@ -38,7 +55,9 @@ You can use any LPDS component either in a browser or with a front-end framework
 </html>
 ```
 
-#### Framework (React)
+  </div>
+  <div id="framework" title="Framework (React)">
+
 ```jsx
 import React from 'react';
 
@@ -52,3 +71,6 @@ const App = () => {
 
 export default App
 ```
+
+  </div>
+</TabsState>

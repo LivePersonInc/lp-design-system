@@ -1,0 +1,125 @@
+import { createElement } from 'react';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import WithIconStoryDescription from 'lpds/icons/WithIconStoryDescription.mdx';
+import { icons } from 'lpds/icons/icons';
+import 'lpds/icons';
+
+import TextInput, { events } from './TextInput';
+import './';
+
+<Meta
+  title="Components/Inputs/TextInput"
+  component={TextInput}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+    textAlign: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: events,
+    },
+  }}
+/>
+
+# TextInput
+
+<ArgsTable of={TextInput} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      theme: 'dark',
+      size: 'large',
+      textAlign: 'left',
+      error: false,
+      disabled: false,
+      readOnly: false,
+    }}
+  >
+    {({ theme, size, textAlign, error, disabled, readOnly }) => (
+      <lp-text-input
+        theme={theme === 'dark' ? undefined : theme}
+        size={size === 'large' ? undefined : size}
+        textAlign={textAlign === 'left' ? undefined : textAlign}
+        error={error === false ? undefined : error}
+        disabled={disabled === false ? undefined : disabled}
+        readOnly={readOnly === false ? undefined : readOnly}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## With icon
+
+<WithIconStoryDescription />
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story
+    name="With icon"
+    args={{
+      iconLeft: icons[0],
+      theme: 'dark',
+      size: 'large',
+      textAlign: 'left',
+      error: false,
+      disabled: false,
+      readOnly: false,
+    }}
+    argTypes={{
+      iconLeft: {
+        options: icons,
+        control: { type: 'select' },
+      },
+      iconRight: {
+        options: icons,
+        control: { type: 'select' },
+      },
+      theme: {
+        table: { category: 'Input args' },
+      },
+      size: {
+        table: { category: 'Input args' },
+      },
+      textAlign: {
+        table: { category: 'Input args' },
+      },
+      error: {
+        table: { category: 'Input args' },
+      },
+      disabled: {
+        table: { category: 'Input args' },
+      },
+      readOnly: {
+        table: { category: 'Input args' },
+      },
+    }}
+  >
+    {({ iconLeft, iconRight, theme, size, textAlign, error, disabled, readOnly }) => (
+      <lp-text-input
+        key={`${iconLeft}-${iconRight}`}
+        theme={theme === 'dark' ? undefined : theme}
+        size={size === 'large' ? undefined : size}
+        textAlign={textAlign === 'left' ? undefined : textAlign}
+        error={error === false ? undefined : error}
+        disabled={disabled === false ? undefined : disabled}
+        readOnly={readOnly === false ? undefined : readOnly}
+      >
+        {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
+        {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
+      </lp-text-input>
+    )}
+  </Story>
+</Canvas>

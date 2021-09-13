@@ -1,0 +1,161 @@
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+:host {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  color: colors.$navy-white;
+}
+
+:host([theme="light"]) {
+  color: colors-light.$navy-dark;
+}
+
+$icon-size: 16px;
+$icon-offset: spacing.get-space(xs);
+$padding-size: spacing.get-space(s, true);
+
+input {
+  flex-grow: 1;
+  max-width: 100%;
+  font: inherit;
+  text-align: left;
+  @include typography.input-value;
+  height: 38px;
+  color: inherit;
+  border: 1px solid transparency.$light-4;
+  outline: none;
+  border-radius: border-radius.get-border-radius();
+  background: transparency.$light-2;
+  box-shadow: none;
+  -webkit-tap-highlight-color: rgba(#fff, 0);
+  padding: 0 $padding-size;
+  margin: 0;
+  transition: all .15s ease-out;
+
+  :host([theme="light"]) & {
+    border-color: colors-light.$navy-light;
+    background-color: colors-light.$white;
+  }
+
+  // States
+  &[disabled] {
+    opacity: transparency.$disabled;
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      border-color: colors.$navy-white;
+
+      :host([theme="light"]) & {
+        border-color: colors-light.$navy;
+      }
+    }
+
+    &:active,
+    &:focus {
+      border-color: colors.$cyan;
+
+      :host([theme="light"]) & {
+        border-color: colors-light.$periwinkle;
+      }
+    }
+
+    &:focus {
+      box-shadow: colors.$focus-outline;
+
+      :host([theme="light"]) & {
+        box-shadow: colors-light.$focus-outline;
+      }
+    }
+
+    :host([error]:not([error="false"])) & {
+      border-color: colors.$red-light;
+    }
+
+    :host([theme="light"][error]:not([error="false"])) & {
+      border-color: colors-light.$red;
+    }
+  }
+
+  &[readOnly]:not([readOnly="false"]) {
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+
+    $padding-size-with-icon: $icon-size + $icon-offset;
+
+    &.with-icon-left {
+      padding-left: $padding-size-with-icon;
+    }
+
+    &.with-icon-right {
+      padding-right: $padding-size-with-icon;
+    }
+  }
+
+  // Sizes
+  :host([size="medium"]) & {
+    height: 30px;
+  }
+
+  // Text align
+  :host([textAlign="center"]) & {
+    text-align: center;
+  }
+
+  :host([textAlign="right"]) & {
+    text-align: right;
+  }
+
+  $padding-size-with-icon: $icon-size + $padding-size + $icon-offset;
+
+  &.with-icon-left {
+    padding-left: $padding-size-with-icon;
+  }
+
+  &.with-icon-right {
+    padding-right: $padding-size-with-icon;
+  }
+}
+
+slot[name^="icon-"] {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+  transition: all .15s ease-out;
+
+  &[name$="left"] {
+    left: $padding-size;
+
+    :host([readOnly]:not([readOnly="false"])) & {
+      left: 0;
+    }
+  }
+
+  &[name$="right"] {
+    right: $padding-size;
+
+    :host([readOnly]:not([readOnly="false"])) & {
+      right: 0;
+    }
+  }
+
+  :host([error]:not([error="false"])) & {
+    color: colors.$red-light;
+  }
+
+  :host([theme="light"][error]:not([error="false"])) & {
+    color: colors-light.$red;
+  }
+}

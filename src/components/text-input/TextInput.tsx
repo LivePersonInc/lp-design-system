@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
 import { EventContext, Styled } from 'direflow-component';
 import classNames from 'classnames';
 

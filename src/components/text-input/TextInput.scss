@@ -81,22 +81,22 @@ input {
     :host([theme="light"][error]:not([error="false"])) & {
       border-color: colors-light.$red;
     }
-  }
 
-  &[readOnly]:not([readOnly="false"]) {
-    border-color: transparent;
-    background-color: transparent;
-    box-shadow: none;
-    padding: 0;
+    &[readOnly] {
+      border-color: transparent;
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
 
-    $padding-size-with-icon: $icon-size + $icon-offset;
+      $padding-size-with-icon: $icon-size + $icon-offset;
 
-    &.with-icon-left {
-      padding-left: $padding-size-with-icon;
-    }
+      &.with-icon-left {
+        padding-left: $padding-size-with-icon;
+      }
 
-    &.with-icon-right {
-      padding-right: $padding-size-with-icon;
+      &.with-icon-right {
+        padding-right: $padding-size-with-icon;
+      }
     }
   }
 

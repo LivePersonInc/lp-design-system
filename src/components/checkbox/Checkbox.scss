@@ -9,6 +9,7 @@
   --color-checkbox: #{colors.$navy-white};
   --color-checkbox-hover: #{rgba(colors.$cyan, .3)};
   --color-checkbox-active: #{rgba(colors.$cyan, .8)};
+
   --color-checkbox-checked: #{colors.$cyan};
   --color-checkbox-checked-hover: #{rgba(colors.$cyan, .85)};
   --color-checkbox-checked-active: #{colors.$cyan-darker};
@@ -28,6 +29,7 @@
   --color-checkbox: #{colors-light.$navy-light};
   --color-checkbox-hover: #{rgba(colors-light.$periwinkle, .3)};
   --color-checkbox-active: #{rgba(colors-light.$periwinkle, .8)};
+
   --color-checkbox-checked: #{colors-light.$periwinkle};
   --color-checkbox-checked-hover: #{rgba(colors-light.$periwinkle, .85)};
   --color-checkbox-checked-active: #{colors-light.$periwinkle-light};
@@ -42,12 +44,22 @@
 
 :host([error]:not([error="false"])) {
   --color-checkbox: #{colors.$red-light};
+  --color-checkbox-hover: #{rgba(colors.$red-light, .3)};
+  --color-checkbox-active: #{rgba(colors.$red-light, .8)};
+
   --color-checkbox-checked: #{colors.$red-light};
-  --color-label: #{colors.$navy-white};
+  --color-checkbox-checked-hover: #{rgba(colors.$red-light, .85)};
+  --color-checkbox-checked-active: #{rgba(colors.$red-light, .5)};
 }
 :host([theme="light"][error]:not([error="false"])) {
   --color-checkbox: #{colors-light.$red};
+  --color-checkbox-hover: #{rgba(colors-light.$red, .3)};
+  --color-checkbox-active: #{rgba(colors-light.$red, .8)};
+
   --color-checkbox-checked: #{colors-light.$red};
+  --color-checkbox-checked-hover: #{rgba(colors-light.$red, .85)};
+  --color-checkbox-checked-active: #{rgba(colors-light.$red, .5)};
+
   --color-label: #{colors-light.$red};
 }
 

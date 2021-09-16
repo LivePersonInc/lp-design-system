@@ -1,0 +1,73 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import Radio from './Radio';
+import './';
+
+<Meta
+  title="Components/Inputs/Radio"
+  component={Radio}
+  args={{
+    theme: 'dark',
+    size: 'default',
+    label: 'Radio',
+    labelPosition: 'left',
+    error: false,
+    disabled: false,
+    readOnly: false,
+  }}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      options: ['default', 'large'],
+      control: { type: 'inline-radio' },
+    },
+    label: {},
+    labelPosition: {
+      control: { type: 'inline-radio' },
+    },
+    error: {},
+  }}
+  parameters={{
+    actions: {
+      handles: ['change'],
+    },
+  }}
+/>
+
+# Radio
+
+<ArgsTable of={Radio} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Basic
+
+export const Template = ({
+  theme,
+  size,
+  label,
+  labelPosition,
+  error,
+  disabled,
+  readOnly,
+  ...props
+}) => (
+  <lp-radio
+    {...props}
+    theme={theme === 'dark' ? undefined : theme}
+    size={size === 'default' ? undefined : size}
+    label={label}
+    labelPosition={labelPosition === 'left' ? undefined : labelPosition}
+    error={error === false ? undefined : error}
+    disabled={disabled === false ? undefined : disabled}
+    readOnly={readOnly === false ? undefined : readOnly}
+  />
+);
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>

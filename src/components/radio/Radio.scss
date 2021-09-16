@@ -1,0 +1,220 @@
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+:host {
+  --size-radio: 14px;
+  --size-radio-inner: 6px;
+
+  --color-radio: #{colors.$navy-white};
+  --color-radio-hover: #{rgba(colors.$cyan, .3)};
+  --color-radio-active: #{rgba(colors.$cyan, .8)};
+
+  --color-radio-checked: #{colors.$cyan};
+  --color-radio-checked-hover: #{rgba(colors.$cyan, .85)};
+  --color-radio-checked-active: #{rgba(colors.$cyan, .5)};
+  --color-radio-outline: #{colors.$focus-outline};
+
+  --color-label: #{colors.$navy-white};
+  --color-label-hover: #{colors.$navy-white};
+  --color-label-focus: #{colors.$navy-white};
+  --color-label-active: #{colors.$navy-white};
+
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1px 0;
+}
+:host([theme="light"]) {
+  --color-radio: #{colors-light.$navy-light};
+  --color-radio-hover: #{rgba(colors-light.$periwinkle, .3)};
+  --color-radio-active: #{rgba(colors-light.$periwinkle, .8)};
+
+  --color-radio-checked: #{colors-light.$periwinkle};
+  --color-radio-checked-hover: #{rgba(colors-light.$periwinkle, .85)};
+  --color-radio-checked-active: #{colors-light.$periwinkle-light};
+  --color-radio-outline: #{colors-light.$focus-outline};
+
+  --color-label: #{colors-light.$navy-dark};
+  --color-label-hover: #{colors-light.$navy-darker};
+  --color-label-focus: #{colors-light.$navy-darker};
+  --color-label-active: #{colors-light.$navy-darker};
+}
+
+:host([size="large"]) {
+  --size-radio: 18px;
+  --size-radio-inner: 8px;
+}
+
+:host([error]:not([error="false"])) {
+  --color-radio: #{colors.$red-light};
+  --color-radio-hover: #{rgba(colors.$red-light, .3)};
+  --color-radio-active: #{rgba(colors.$red-light, .8)};
+
+  --color-radio-checked: #{colors.$red-light};
+  --color-radio-checked-hover: #{rgba(colors.$red-light, .85)};
+  --color-radio-checked-active: #{rgba(colors.$red-light, .5)};
+}
+:host([theme="light"][error]:not([error="false"])) {
+  --color-radio: #{colors-light.$red};
+  --color-radio-hover: #{rgba(colors-light.$red, .3)};
+  --color-radio-active: #{rgba(colors-light.$red, .8)};
+
+  --color-radio-checked: #{colors-light.$red};
+  --color-radio-checked-hover: #{rgba(colors-light.$red, .85)};
+  --color-radio-checked-active: #{rgba(colors-light.$red, .5)};
+
+  --color-label: #{colors-light.$red};
+}
+
+label {
+  display: flex;
+  align-items: center;
+  @include typography.input-label;
+  color: var(--color-label);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  :host([labelPosition="right"]) & {
+    flex-direction: row-reverse;
+  }
+}
+
+@mixin check-box($with-inner: false) {
+  .check-box {
+    @content(false);
+
+    @if $with-inner {
+      &::before {
+        @content(true);
+      }
+    }
+  }
+}
+
+input {
+  &[type="radio"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+
+    &[disabled] {
+      + .label {
+        opacity: transparency.$disabled;
+        cursor: default;
+      }
+    }
+
+    &:not([disabled]) {
+      &:focus {
+        + .label {
+          @include check-box(true) using ($inner) {
+            @if $inner {
+              background-color: var(--color-radio-hover);
+            } @else {
+              box-shadow: var(--color-radio-outline);
+            }
+          }
+        }
+      }
+
+      + .label {
+        &:hover {
+          @include check-box(true) using ($inner) {
+            @if $inner {
+              background-color: var(--color-radio-hover);
+            }
+          }
+        }
+
+        &:active {
+          @include check-box(true) using ($inner) {
+            @if $inner {
+              background-color: var(--color-radio-active);
+            }
+          }
+        }
+      }
+
+      &:checked {
+        &:focus {
+          + .label {
+            @include check-box(true) using ($inner) {
+              @if $inner {
+                background-color: var(--color-radio-checked-hover);
+              }
+            }
+          }
+        }
+
+        + .label {
+          &:hover {
+            @include check-box(true) using ($inner) {
+              @if $inner {
+                background-color: var(--color-radio-checked-hover);
+              }
+            }
+          }
+
+          &:active {
+            @include check-box(true) using ($inner) {
+              @if $inner {
+                background-color: var(--color-radio-checked-active);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:checked {
+      + .label {
+        @include check-box(true) using ($inner) {
+          @if $inner {
+            background-color: var(--color-radio-checked);
+          } @else {
+            border-color: var(--color-radio-checked);
+          }
+        }
+      }
+    }
+  }
+}
+
+$radio-borders-size: 2px;
+$radio-offset: spacing.get-space(xs);
+
+.check-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--size-radio) - #{$radio-borders-size});
+  height: calc(var(--size-radio) - #{$radio-borders-size});
+  border: $radio-borders-size solid var(--color-radio);
+  border-radius: 50%;
+  fill: none;
+  margin-right: $radio-offset;
+  transition: all .15s ease-out;
+
+  :host([labelPosition="right"]) & {
+    margin-left: $radio-offset;
+    margin-right: 0;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: var(--size-radio-inner);
+    height: var(--size-radio-inner);
+    border-radius: 50%;
+    transition: all .15s ease-out;
+  }
+}

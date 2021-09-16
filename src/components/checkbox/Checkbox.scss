@@ -1,0 +1,170 @@
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+:host {
+  --color-checkbox: #{colors.$navy-white};
+  --color-checkbox-hover: #{rgba(colors.$cyan, .3)};
+  --color-checkbox-active: #{rgba(colors.$cyan, .8)};
+  --color-checkbox-checked: #{colors.$cyan};
+  --color-checkbox-checked-hover: #{rgba(colors.$cyan, .85)};
+  --color-checkbox-checked-active: #{colors.$cyan-darker};
+  --color-checkbox-checked-icon: #{colors.$navy-darker};
+  --color-checkbox-outline: #{colors.$focus-outline};
+
+  --color-label: #{colors.$navy-white};
+  --color-label-hover: #{colors.$navy-white};
+  --color-label-focus: #{colors.$navy-white};
+  --color-label-active: #{colors.$navy-white};
+
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1px 0;
+}
+:host([theme="light"]) {
+  --color-checkbox: #{colors-light.$navy-light};
+  --color-checkbox-hover: #{rgba(colors-light.$periwinkle, .3)};
+  --color-checkbox-active: #{rgba(colors-light.$periwinkle, .8)};
+  --color-checkbox-checked: #{colors-light.$periwinkle};
+  --color-checkbox-checked-hover: #{rgba(colors-light.$periwinkle, .85)};
+  --color-checkbox-checked-active: #{colors-light.$periwinkle-light};
+  --color-checkbox-checked-icon: #{colors-light.$navy-white};
+  --color-checkbox-outline: #{colors-light.$focus-outline};
+
+  --color-label: #{colors-light.$navy-dark};
+  --color-label-hover: #{colors-light.$navy-darker};
+  --color-label-focus: #{colors-light.$navy-darker};
+  --color-label-active: #{colors-light.$navy-darker};
+}
+
+:host([error]:not([error="false"])) {
+  --color-checkbox: #{colors.$red-light};
+  --color-checkbox-checked: #{colors.$red-light};
+  --color-label: #{colors.$navy-white};
+}
+:host([theme="light"][error]:not([error="false"])) {
+  --color-checkbox: #{colors-light.$red};
+  --color-checkbox-checked: #{colors-light.$red};
+  --color-label: #{colors-light.$red};
+}
+
+$checkbox-size: 16px;
+$checkbox-borders: inset 0 0 0 2px var(--color-checkbox);
+$checkbox-offset: spacing.get-space(xs);
+
+label {
+  display: flex;
+  align-items: center;
+  @include typography.input-label;
+  color: var(--color-label);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  :host([labelPosition="right"]) & {
+    flex-direction: row-reverse;
+  }
+}
+
+input {
+  &[type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &[disabled] {
+      + .label {
+        opacity: transparency.$disabled;
+        cursor: default;
+      }
+    }
+
+    &:not([disabled]) {
+      &:focus {
+        + .label {
+          .check-box {
+            background-color: var(--color-checkbox-hover);
+            box-shadow: $checkbox-borders, var(--color-checkbox-outline);
+          }
+        }
+      }
+
+      + .label {
+        &:hover {
+          .check-box {
+            background-color: var(--color-checkbox-hover);
+          }
+        }
+
+        &:active {
+          .check-box {
+            background-color: var(--color-checkbox-active);
+          }
+        }
+      }
+
+      &:checked {
+        &:focus {
+          + .label {
+            .check-box {
+              background-color: var(--color-checkbox-checked-hover);
+              box-shadow: var(--color-checkbox-outline);
+            }
+          }
+        }
+
+        + .label {
+          &:hover {
+            .check-box {
+              background-color: var(--color-checkbox-checked-hover);
+            }
+          }
+
+          &:active {
+            .check-box {
+              background-color: var(--color-checkbox-checked-active);
+            }
+          }
+        }
+      }
+    }
+
+    &:checked {
+      + .label {
+        .check-box {
+          background-color: var(--color-checkbox-checked);
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
+
+.check-box {
+  display: block;
+  width: $checkbox-size;
+  height: $checkbox-size;
+  border-radius: border-radius.get-border-radius(xxxs);
+  fill: none;
+  box-shadow: $checkbox-borders;
+  margin-right: $checkbox-offset;
+  transition: all .15s ease-out;
+
+  :host([labelPosition="right"]) & {
+    margin-left: $checkbox-offset;
+    margin-right: 0;
+  }
+
+  path {
+    stroke: var(--color-checkbox-checked-icon);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}

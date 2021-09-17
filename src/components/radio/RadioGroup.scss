@@ -1,0 +1,24 @@
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+lp-radio {
+  ::slotted(&) {
+    margin-right: spacing.get-space(s);
+  }
+
+  &:last-child {
+    ::slotted(&) {
+      margin-right: 0;
+    }
+  }
+}

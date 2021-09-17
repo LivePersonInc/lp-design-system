@@ -1,33 +1,41 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
-import Radio from './Radio';
+import { getPropsByDefaultProps } from 'lpds/common/helpers';
+
+import Radio, { radioDefaultProps } from './Radio';
+import RadioGroup from './RadioGroup';
 import './';
 
 <Meta
   title="Components/Inputs/Radio"
-  component={Radio}
+  component={RadioGroup}
+  subcomponents={{ Radio }}
   args={{
     theme: 'dark',
     size: 'default',
-    label: 'Radio',
+    label: 'RadioGroup',
     labelPosition: 'left',
     error: false,
     disabled: false,
     readOnly: false,
+    selected: '',
   }}
   argTypes={{
     theme: {
       control: { type: 'inline-radio' },
     },
     size: {
-      options: ['default', 'large'],
       control: { type: 'inline-radio' },
     },
-    label: {},
+    label: {
+      description: 'Can be provided as a child element',
+      table: {
+        description: 'Can be provided as a child element',
+      },
+    },
     labelPosition: {
       control: { type: 'inline-radio' },
     },
-    error: {},
   }}
   parameters={{
     actions: {
@@ -38,36 +46,32 @@ import './';
 
 # Radio
 
-<ArgsTable of={Radio} />
+<ArgsTable of={RadioGroup} />
 
 **Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
 
-## Basic
-
-export const Template = ({
-  theme,
-  size,
-  label,
-  labelPosition,
-  error,
-  disabled,
-  readOnly,
-  ...props
-}) => (
-  <lp-radio
-    {...props}
-    theme={theme === 'dark' ? undefined : theme}
-    size={size === 'default' ? undefined : size}
-    label={label}
-    labelPosition={labelPosition === 'left' ? undefined : labelPosition}
-    error={error === false ? undefined : error}
-    disabled={disabled === false ? undefined : disabled}
-    readOnly={readOnly === false ? undefined : readOnly}
-  />
-);
+## Radio Group
 
 <Canvas>
-  <Story name="Basic">
-    {Template.bind({})}
+  <Story
+    name="Radio Group"
+    args={{
+      elements: ['Radio 1', 'Radio 2', 'Radio 3'],
+      selected: 'Radio 2',
+    }}
+    argTypes={{
+      label: { table: { disable: true } },
+    }}
+  >
+    {({ name, selected, elements, ...props }) => (
+      <lp-radio-group
+        key={`${elements.toString()}-${selected}`}
+        name={name}
+        selected={selected}
+        {...getPropsByDefaultProps(radioDefaultProps, props)}
+      >
+        {elements.map(element => <lp-radio key={element} label={element} value={element} />)}
+      </lp-radio-group>
+    )}
   </Story>
 </Canvas>

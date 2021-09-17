@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { EventContext, Styled } from 'direflow-component';
 
 import { Theme } from 'lpds/styles/common';
@@ -8,19 +8,24 @@ import styles from './Radio.scss';
 export type RadioSizes = 'default' | 'large'
 export type RadioLabelPositions = 'left' | 'right'
 
-export type RadioProps = Omit<JSX.IntrinsicElements['input'], 'size'> & {
+export type RadioCustomProps = {
   theme?: Theme
   size?: RadioSizes
+
+  /**
+   * Can be provided as a child element
+   */
   label?: string
+
   labelPosition?: RadioLabelPositions
   error?: boolean
 }
 
+export type RadioProps = Omit<JSX.IntrinsicElements['input'], 'size'> & RadioCustomProps
+
 export type RadioComponent = React.FC<RadioProps>
 
-const Radio: RadioComponent = ({ theme, size, label, labelPosition, error, ...props }) => {
-  const inputElRef = useRef<HTMLInputElement>(null);
-
+const Radio: RadioComponent = ({ theme, size, label, labelPosition, error, children, ...props }) => {
   const dispatch = useContext(EventContext);
 
   const radioChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -30,33 +35,29 @@ const Radio: RadioComponent = ({ theme, size, label, labelPosition, error, ...pr
   return (
     <Styled styles={styles} scoped={false}>
       <label>
-        <input
-          {...props}
-          ref={inputElRef}
-          type="radio"
-          onChange={radioChangeHandler}
-        />
+        <input {...props} type="radio" onChange={radioChangeHandler} />
 
         <div className="label">
           <div className="check-box" />
 
-          {label}
+          <slot>{label}</slot>
         </div>
       </label>
     </Styled>
   );
 };
 
-Radio.defaultProps = {
+export const radioDefaultProps = {
   theme: 'dark',
   size: 'default',
-  name: '',
   label: '',
   labelPosition: 'left',
   error: false,
-  defaultChecked: false,
+  checked: false,
   disabled: false,
   readOnly: false,
 };
+
+Radio.defaultProps = radioDefaultProps as Partial<RadioProps>;
 
 export default Radio

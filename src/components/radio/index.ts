@@ -1,28 +1,25 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Radio, { RadioProps } from './Radio';
+import { getComponentConfig, RobotoFontWeights } from 'lpds/common/direflow';
 
-DireflowComponent.create({
-  component: Radio,
-  configuration: {
-    tagname: 'lp-radio',
-  },
-  plugins: [
-    {
-      name: 'font-loader',
-      options: {
-        google: {
-          families: ['Roboto:400'],
-        },
-      },
-    },
-  ],
-});
+import Radio, { RadioProps } from './Radio';
+import RadioGroup, { RadioGroupProps } from './RadioGroup';
+
+DireflowComponent.createAll([
+  getComponentConfig(Radio, 'lp-radio', {
+    configuration: { useAnonymousSlot: true },
+    withRobotoFont: RobotoFontWeights.regular,
+  }),
+  getComponentConfig(RadioGroup, 'lp-radio-group', {
+    configuration: { useAnonymousSlot: true },
+  }),
+]);
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       'lp-radio': RadioProps
+      'lp-radio-group': RadioGroupProps
     }
   }
 }

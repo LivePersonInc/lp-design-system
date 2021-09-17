@@ -33,6 +33,7 @@ export const parameters = {
   docs: {
     theme,
   },
+  design: { disable: true },
 };
 
 export const decorators = [

@@ -8,6 +8,7 @@ export type IconSize = 'small' | 'medium' | 'large'
 export type IconColor = 'dark' | 'white'
 
 export type IconCustomProps = {
+  class?: JSX.IntrinsicElements['div']['className']
   type?: IconType
   size?: IconSize
   color?: IconColor

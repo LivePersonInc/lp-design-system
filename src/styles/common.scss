@@ -1,7 +1,13 @@
-$font-size: 16px;
+@use 'sass:math';
 
-@function get-rem($size) {
-  @return $size / $font-size;
+@use './typography';
+
+@function get-rem($size, $parent-size: typography.$size-default) {
+  @return math.div($size, $parent-size) * 1rem;
+}
+
+@function get-em($size, $parent-size: typography.$size-default) {
+  @return math.div($size, $parent-size) * 1em;
 }
 
 @mixin prefix {

@@ -7,13 +7,20 @@ import styles from './Checkbox.scss';
 
 export type CheckboxLabelPositions = 'left' | 'right'
 
-export type CheckboxProps = JSX.IntrinsicElements['input'] & {
+export type CheckboxCustomProps = {
   theme?: Theme
+
+  /**
+   * Can be provided as a child element
+   */
   label?: string
+
   labelPosition?: CheckboxLabelPositions
   error?: boolean
   indeterminate?: boolean
 }
+
+export type CheckboxProps = JSX.IntrinsicElements['input'] & CheckboxCustomProps
 
 export type CheckboxComponent = React.FC<CheckboxProps>
 

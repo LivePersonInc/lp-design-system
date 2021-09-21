@@ -25,7 +25,7 @@ export type CheckboxProps = JSX.IntrinsicElements['input'] & CheckboxCustomProps
 export type CheckboxComponent = React.FC<CheckboxProps>
 
 const Checkbox: CheckboxComponent = (
-  { theme, label, labelPosition, error, checked: checkedProp, defaultChecked, indeterminate, ...props },
+  { theme, label, labelPosition, error, checked: checkedProp, defaultChecked, indeterminate, children, ...props },
 ) => {
   const inputElRef = useRef<HTMLInputElement>(null);
 
@@ -73,7 +73,7 @@ const Checkbox: CheckboxComponent = (
             {checked && <path d={indeterminate ? 'M5 8H11' : 'M5 8.15805L7.28781 10.3821L11 6'} />}
           </svg>
 
-          {label}
+          <slot>{label}</slot>
         </div>
       </label>
     </Styled>
@@ -83,7 +83,7 @@ const Checkbox: CheckboxComponent = (
 Checkbox.defaultProps = {
   theme: 'dark',
   label: '',
-  labelPosition: 'left',
+  labelPosition: 'right',
   error: false,
   checked: false,
   indeterminate: false,

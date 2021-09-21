@@ -1,84 +1,123 @@
 @use '~lpds/styles/border-radius';
 @use '~lpds/styles/colors';
 @use '~lpds/styles/colors-light';
+@use '~lpds/styles/common';
 @use '~lpds/styles/spacing';
 @use '~lpds/styles/transparency';
 @use '~lpds/styles/typography';
 
 :host {
-  --size-radio: 14px;
-  --size-radio-inner: 6px;
+  --size-radio: #{common.get-em(14px, typography.$size-small)};
+  --size-radio-inner: #{common.get-em(6px, typography.$size-small)};
 
   --color-radio: #{colors.$navy-white};
-  --color-radio-hover: #{rgba(colors.$cyan, .3)};
-  --color-radio-active: #{rgba(colors.$cyan, .8)};
+  --color-radio-hover: #{colors.$navy-white};
+  --color-radio-active: #{colors.$navy-white};
+
+  --color-radio-inner-hover: #{rgba(colors.$cyan, .3)};
+  --color-radio-inner-active: #{rgba(colors.$cyan, .8)};
 
   --color-radio-checked: #{colors.$cyan};
-  --color-radio-checked-hover: #{rgba(colors.$cyan, .85)};
-  --color-radio-checked-active: #{rgba(colors.$cyan, .5)};
+  --color-radio-checked-hover: #{colors.$cyan};
+  --color-radio-checked-active: #{colors.$cyan};
+
+  --color-radio-checked-inner: #{colors.$cyan};
+  --color-radio-checked-inner-hover: #{rgba(colors.$cyan, .85)};
+  --color-radio-checked-inner-active: #{rgba(colors.$cyan, .5)};
+
   --color-radio-outline: #{colors.$focus-outline};
 
   --color-label: #{colors.$navy-white};
   --color-label-hover: #{colors.$navy-white};
-  --color-label-focus: #{colors.$navy-white};
   --color-label-active: #{colors.$navy-white};
 
   display: inline-block;
   vertical-align: middle;
+  @include typography.input-label;
   padding: 1px 0;
 }
 :host([theme="light"]) {
-  --color-radio: #{colors-light.$navy-light};
-  --color-radio-hover: #{rgba(colors-light.$periwinkle, .3)};
-  --color-radio-active: #{rgba(colors-light.$periwinkle, .8)};
+  --color-radio: #{colors-light.$navy};
+  --color-radio-hover: #{colors-light.$navy};
+  --color-radio-active: #{colors-light.$navy};
 
-  --color-radio-checked: #{colors-light.$periwinkle};
-  --color-radio-checked-hover: #{rgba(colors-light.$periwinkle, .85)};
-  --color-radio-checked-active: #{colors-light.$periwinkle-light};
+  --color-radio-inner-hover: #{rgba(colors-light.$periwinkle, .3)};
+  --color-radio-inner-active: #{rgba(colors-light.$periwinkle, .8)};
+
+  --color-radio-checked: #{colors-light.$blue-light};
+  --color-radio-checked-hover: #{colors-light.$blue-dark};
+  --color-radio-checked-active: #{colors-light.$blue-dark};
+
+  --color-radio-checked-inner: #{colors-light.$blue-light};
+  --color-radio-checked-inner-hover: #{rgba(colors-light.$blue-dark, .85)};
+  --color-radio-checked-inner-active: #{rgba(colors-light.$blue-dark, .5)};
+
   --color-radio-outline: #{colors-light.$focus-outline};
 
   --color-label: #{colors-light.$navy-dark};
   --color-label-hover: #{colors-light.$navy-darker};
-  --color-label-focus: #{colors-light.$navy-darker};
   --color-label-active: #{colors-light.$navy-darker};
 }
 
 :host([size="large"]) {
-  --size-radio: 18px;
-  --size-radio-inner: 8px;
+  --size-radio: #{common.get-em(18px, typography.$size-small)};
+  --size-radio-inner: #{common.get-em(8px, typography.$size-small)};
 }
 
 :host([error]:not([error="false"])) {
   --color-radio: #{colors.$red-light};
-  --color-radio-hover: #{rgba(colors.$red-light, .3)};
-  --color-radio-active: #{rgba(colors.$red-light, .8)};
+  --color-radio-hover: #{colors.$red-light};
+  --color-radio-active: #{colors.$red-light};
+
+  --color-radio-inner-hover: #{rgba(colors.$red-light, .3)};
+  --color-radio-inner-active: #{rgba(colors.$red-light, .8)};
 
   --color-radio-checked: #{colors.$red-light};
-  --color-radio-checked-hover: #{rgba(colors.$red-light, .85)};
-  --color-radio-checked-active: #{rgba(colors.$red-light, .5)};
+  --color-radio-checked-hover: #{colors.$red-light};
+  --color-radio-checked-active: #{colors.$red-light};
+
+  --color-radio-checked-inner: #{colors.$red-light};
+  --color-radio-checked-inner-hover: #{rgba(colors.$red-light, .85)};
+  --color-radio-checked-inner-active: #{rgba(colors.$red-light, .5)};
+
+  --color-radio-outline: #{colors.$focus-outline};
+
+  --color-label: #{colors.$navy-white};
+  --color-label-hover: #{colors.$navy-white};
+  --color-label-active: #{colors.$navy-white};
 }
 :host([theme="light"][error]:not([error="false"])) {
   --color-radio: #{colors-light.$red};
-  --color-radio-hover: #{rgba(colors-light.$red, .3)};
-  --color-radio-active: #{rgba(colors-light.$red, .8)};
+  --color-radio-hover: #{colors-light.$red};
+  --color-radio-active: #{colors-light.$red};
+
+  --color-radio-inner-hover: #{rgba(colors-light.$red, .3)};
+  --color-radio-inner-active: #{rgba(colors-light.$red, .8)};
 
   --color-radio-checked: #{colors-light.$red};
-  --color-radio-checked-hover: #{rgba(colors-light.$red, .85)};
-  --color-radio-checked-active: #{rgba(colors-light.$red, .5)};
+  --color-radio-checked-hover: #{colors-light.$red};
+  --color-radio-checked-active: #{colors-light.$red};
+
+  --color-radio-checked-inner: #{colors-light.$red};
+  --color-radio-checked-inner-hover: #{rgba(colors-light.$red, .85)};
+  --color-radio-checked-inner-active: #{rgba(colors-light.$red, .5)};
+
+  --color-radio-outline: #{colors-light.$focus-outline};
 
   --color-label: #{colors-light.$red};
+  --color-label-hover: #{colors-light.$red};
+  --color-label-active: #{colors-light.$red};
 }
 
 label {
   display: flex;
   align-items: center;
-  @include typography.input-label;
-  color: var(--color-label);
 }
 
 .label {
   display: flex;
   align-items: center;
+  color: var(--color-label);
   cursor: pointer;
 
   :host([labelPosition="right"]) & {
@@ -116,9 +155,11 @@ input {
     &:not([disabled]) {
       &:focus {
         + .label {
+          color: var(--color-label-hover);
+
           @include check-box(true) using ($inner) {
             @if $inner {
-              background-color: var(--color-radio-hover);
+              background-color: var(--color-radio-inner-hover);
             } @else {
               box-shadow: var(--color-radio-outline);
             }
@@ -128,17 +169,25 @@ input {
 
       + .label {
         &:hover {
+          color: var(--color-label-hover);
+
           @include check-box(true) using ($inner) {
             @if $inner {
-              background-color: var(--color-radio-hover);
+              background-color: var(--color-radio-inner-hover);
+            } @else {
+              border-color: var(--color-radio-hover);
             }
           }
         }
 
         &:active {
+          color: var(--color-label-active);
+
           @include check-box(true) using ($inner) {
             @if $inner {
-              background-color: var(--color-radio-active);
+              background-color: var(--color-radio-inner-active);
+            } @else {
+              border-color: var(--color-radio-active);
             }
           }
         }
@@ -147,9 +196,13 @@ input {
       &:checked {
         &:focus {
           + .label {
+            color: var(--color-label-hover);
+
             @include check-box(true) using ($inner) {
               @if $inner {
-                background-color: var(--color-radio-checked-hover);
+                background-color: var(--color-radio-checked-inner-hover);
+              } @else {
+                border-color: var(--color-radio-checked-hover);
               }
             }
           }
@@ -157,17 +210,25 @@ input {
 
         + .label {
           &:hover {
+            color: var(--color-label-hover);
+
             @include check-box(true) using ($inner) {
               @if $inner {
-                background-color: var(--color-radio-checked-hover);
+                background-color: var(--color-radio-checked-inner-hover);
+              } @else {
+                border-color: var(--color-radio-checked-hover);
               }
             }
           }
 
           &:active {
+            color: var(--color-label-active);
+
             @include check-box(true) using ($inner) {
               @if $inner {
-                background-color: var(--color-radio-checked-active);
+                background-color: var(--color-radio-checked-inner-active);
+              } @else {
+                border-color: var(--color-radio-checked-active);
               }
             }
           }
@@ -179,7 +240,7 @@ input {
       + .label {
         @include check-box(true) using ($inner) {
           @if $inner {
-            background-color: var(--color-radio-checked);
+            background-color: var(--color-radio-checked-inner);
           } @else {
             border-color: var(--color-radio-checked);
           }

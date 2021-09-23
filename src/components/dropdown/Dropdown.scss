@@ -1,0 +1,42 @@
+@use '~lpds/styles/common';
+@use '~lpds/styles/spacing';
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+$content-offset: common.get-em(spacing.get-space(s));
+
+slot {
+  &[name="content"] {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+
+    &.show {
+      visibility: visible;
+    }
+
+    &.top {
+      left: 0;
+      bottom: 100%;
+      margin-bottom: $content-offset;
+    }
+    &.bottom {
+      top: 100%;
+      left: 0;
+      margin-top: $content-offset;
+    }
+    &.left {
+      top: 0;
+      right: 100%;
+      margin-right: $content-offset;
+    }
+    &.right {
+      top: 0;
+      left: 100%;
+      margin-left: $content-offset;
+    }
+  }
+}

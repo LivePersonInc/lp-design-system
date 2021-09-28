@@ -1,12 +1,18 @@
-@use '~lpds/styles/common';
-@use '~lpds/styles/spacing';
-
 :host {
+  box-sizing: border-box;
   position: relative;
   display: inline-block;
-}
 
-$content-offset: common.get-em(spacing.get-space(s));
+  * {
+    box-sizing: border-box;
+  }
+  *::before {
+    box-sizing: border-box;
+  }
+  *::after {
+    box-sizing: border-box;
+  }
+}
 
 slot {
   &[name="content"] {
@@ -21,22 +27,18 @@ slot {
     &.top {
       left: 0;
       bottom: 100%;
-      margin-bottom: $content-offset;
     }
     &.bottom {
       top: 100%;
       left: 0;
-      margin-top: $content-offset;
     }
     &.left {
       top: 0;
       right: 100%;
-      margin-right: $content-offset;
     }
     &.right {
       top: 0;
       left: 100%;
-      margin-left: $content-offset;
     }
   }
 }

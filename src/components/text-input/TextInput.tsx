@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { EventContext, Styled } from 'direflow-component';
 import classNames from 'classnames';
 
@@ -28,21 +28,41 @@ export const events = [
   'key-down',
   'key-press',
   'key-up',
-] as const;
+];
 
-export type TextInputEvents = typeof events[number]
-
-const TextInput: TextInputComponent = ({ theme, size, textAlign, error, value, defaultValue, ...props }) => {
+const TextInput: TextInputComponent = (
+  { theme, size, textAlign, error, value: valueProp, defaultValue, children, ...props }
+) => {
   const inputElRef = useRef<HTMLInputElement>(null);
 
   const [isIconLeftExist, setIsIconLeftExist] = useState<boolean>(false);
   const [isIconRightExist, setIsIconRightExist] = useState<boolean>(false);
 
+  const [value, setValue] = useState<string>(
+    valueProp ? String(valueProp) : (defaultValue ? String(defaultValue) : '')
+  );
+
   const dispatch = useContext(EventContext);
 
-  const inputEventHandler = useCallback((type: TextInputEvents) => (e: React.SyntheticEvent<HTMLInputElement>): void => {
-    dispatch(new CustomEvent(type, e));
+  const inputEventHandler = useCallback((e: React.SyntheticEvent<HTMLInputElement>): void => {
+    e.persist();
+
+    if (e.type === 'change') {
+      setValue((e.target as HTMLInputElement).value);
+    }
+
+    dispatch(new CustomEvent(e.type, { detail: e.target }));
   }, [dispatch]);
+
+  const inputsEvents = useMemo(() => ({
+    onBlur: inputEventHandler,
+    onChange: inputEventHandler,
+    onFocus: inputEventHandler,
+    onInput: inputEventHandler,
+    onKeyDown: inputEventHandler,
+    onKeyPress: inputEventHandler,
+    onKeyUp: inputEventHandler,
+  }), [inputEventHandler]);
 
   useLayoutEffect(() => {
     const rootNode = inputElRef.current?.getRootNode();
@@ -55,30 +75,31 @@ const TextInput: TextInputComponent = ({ theme, size, textAlign, error, value, d
     }
   }, []);
 
+  useEffect(() => {
+    setValue(valueProp ? String(valueProp) : '');
+  }, [valueProp]);
+
   return (
     <>
+      <Styled styles={styles} scoped={false}>
+        <div />
+      </Styled>
+
       <slot name="icon-left" />
 
-      <Styled styles={styles} scoped={false}>
-        <slot>
-          <input
-            {...props}
-            ref={inputElRef}
-            className={classNames({
-              'with-icon-left': isIconLeftExist,
-              'with-icon-right': (error || isIconRightExist),
-            })}
-            defaultValue={String(value) || defaultValue}
-            onBlur={inputEventHandler('blur')}
-            onChange={inputEventHandler('change')}
-            onFocus={inputEventHandler('focus')}
-            onInput={inputEventHandler('input')}
-            onKeyDown={inputEventHandler('key-down')}
-            onKeyPress={inputEventHandler('key-press')}
-            onKeyUp={inputEventHandler('key-up')}
-          />
-        </slot>
-      </Styled>
+      <input
+        {...props}
+        ref={inputElRef}
+        className={classNames({
+          'with-icon-left': isIconLeftExist,
+          'with-icon-right': (error || isIconRightExist),
+        })}
+        // @ts-ignore
+        part="input"
+        type="text"
+        value={value}
+        {...inputsEvents}
+      />
 
       <slot name="icon-right">
         {error && <lp-requested-icon />}

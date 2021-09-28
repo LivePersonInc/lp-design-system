@@ -1,6 +1,8 @@
 import { createElement } from 'react';
 import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
 
+import { getPropsByDefaultProps } from 'lpds/common/helpers';
+
 import WithIconStoryDescription from 'lpds/icons/WithIconStoryDescription.mdx';
 import { icons } from 'lpds/icons/icons';
 import 'lpds/icons';
@@ -11,6 +13,7 @@ import './';
 <Meta
   title="Components/Inputs/TextInput"
   component={TextInput}
+  args={TextInput.defaultProps}
   argTypes={{
     theme: {
       control: { type: 'inline-radio' },
@@ -29,6 +32,8 @@ import './';
   }}
 />
 
+export const Template = props => <lp-text-input {...getPropsByDefaultProps(TextInput.defaultProps, props)} />;
+
 # TextInput
 
 <ArgsTable of={TextInput} />
@@ -38,27 +43,41 @@ import './';
 ## Basic
 
 <Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Controlled
+
+<Canvas>
   <Story
-    name="Basic"
+    name="Controlled"
     args={{
-      theme: 'dark',
-      size: 'large',
-      textAlign: 'left',
-      error: false,
-      disabled: false,
-      readOnly: false,
+      value: 'Text',
+    }}
+    argTypes={{
+      theme: {
+        table: { disable: true },
+      },
+      size: {
+        table: { disable: true },
+      },
+      textAlign: {
+        table: { disable: true },
+      },
+      error: {
+        table: { disable: true },
+      },
+      disabled: {
+        table: { disable: true },
+      },
+      readOnly: {
+        table: { disable: true },
+      },
     }}
   >
-    {({ theme, size, textAlign, error, disabled, readOnly }) => (
-      <lp-text-input
-        theme={theme === 'dark' ? undefined : theme}
-        size={size === 'large' ? undefined : size}
-        textAlign={textAlign === 'left' ? undefined : textAlign}
-        error={error === false ? undefined : error}
-        disabled={disabled === false ? undefined : disabled}
-        readOnly={readOnly === false ? undefined : readOnly}
-      />
-    )}
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -71,12 +90,6 @@ import './';
     name="With icon"
     args={{
       iconLeft: icons[0],
-      theme: 'dark',
-      size: 'large',
-      textAlign: 'left',
-      error: false,
-      disabled: false,
-      readOnly: false,
     }}
     argTypes={{
       iconLeft: {
@@ -99,6 +112,9 @@ import './';
       error: {
         table: { category: 'Input args' },
       },
+      value: {
+        table: { category: 'Input args' },
+      },
       disabled: {
         table: { category: 'Input args' },
       },
@@ -107,16 +123,8 @@ import './';
       },
     }}
   >
-    {({ iconLeft, iconRight, theme, size, textAlign, error, disabled, readOnly }) => (
-      <lp-text-input
-        key={`${iconLeft}-${iconRight}`}
-        theme={theme === 'dark' ? undefined : theme}
-        size={size === 'large' ? undefined : size}
-        textAlign={textAlign === 'left' ? undefined : textAlign}
-        error={error === false ? undefined : error}
-        disabled={disabled === false ? undefined : disabled}
-        readOnly={readOnly === false ? undefined : readOnly}
-      >
+    {({ iconLeft, iconRight, ...props }) => (
+      <lp-text-input key={`${iconLeft}-${iconRight}`} {...getPropsByDefaultProps(TextInput.defaultProps, props)}>
         {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
         {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
       </lp-text-input>

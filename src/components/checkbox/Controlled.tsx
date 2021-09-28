@@ -13,10 +13,6 @@ const Controlled: React.FC<CheckboxProps> = ({ ...props }) => {
 
   useLayoutEffect(() => {
     checkboxRef.current?.addEventListener('change', checkboxChangeHandler);
-
-    return () => {
-      checkboxRef.current?.removeEventListener('change', checkboxChangeHandler);
-    };
   }, [checkboxChangeHandler]);
 
   return <lp-checkbox {...props} ref={checkboxRef} checked={checked} />;

@@ -13,10 +13,6 @@ const Controlled: React.FC<ToggleProps> = ({ ...props }) => {
 
   useLayoutEffect(() => {
     toggleRef.current?.addEventListener('change', toggleChangeHandler);
-
-    return () => {
-      toggleRef.current?.removeEventListener('change', toggleChangeHandler);
-    };
   }, [toggleChangeHandler]);
 
   return <lp-toggle {...props} ref={toggleRef} checked={checked} />;

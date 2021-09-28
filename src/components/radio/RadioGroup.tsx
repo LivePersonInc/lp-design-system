@@ -32,7 +32,7 @@ const RadioGroup: RadioGroupComponent = ({ name, selected, children, ...props })
     e.target.setAttribute('checked', '');
 
     dispatch(new CustomEvent<HTMLInputElement>('change', { detail: e.target }));
-  }, [dispatch]);
+  }, [getRadioElements, dispatch]);
 
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -60,7 +60,7 @@ const RadioGroup: RadioGroupComponent = ({ name, selected, children, ...props })
         element.addEventListener('change', radioChangeHandler);
       });
     });
-  }, [getRadioElements, props, radioChangeHandler]);
+  }, [getRadioElements, selected, props, radioChangeHandler]);
 
   return (
     <Styled styles={styles} scoped={false}>

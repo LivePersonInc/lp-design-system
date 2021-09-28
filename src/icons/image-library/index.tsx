@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ImageLibraryIcon, { ImageLibraryIconProps } from './ImageLibraryIcon';
+import ImageLibraryIcon from './ImageLibraryIcon';
 
 DireflowComponent.create({
   component: ImageLibraryIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-image-library-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-image-library-icon': ImageLibraryIconProps
-    }
-  }
-}

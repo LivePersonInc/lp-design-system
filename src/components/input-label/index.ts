@@ -1,29 +1,9 @@
 import { DireflowComponent } from 'direflow-component';
 
-import InputLabel, { InputLabelProps } from './InputLabel';
+import { getComponentConfig, RobotoFontWeights } from 'lpds/common/direflow';
 
-DireflowComponent.create({
-  component: InputLabel,
-  configuration: {
-    tagname: 'lp-input-label',
-    useAnonymousSlot: true,
-  },
-  plugins: [
-    {
-      name: 'font-loader',
-      options: {
-        google: {
-          families: ['Roboto:400'],
-        },
-      },
-    },
-  ],
-});
+import InputLabel from './InputLabel';
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-input-label': InputLabelProps
-    }
-  }
-}
+DireflowComponent.create(getComponentConfig(InputLabel, 'lp-input-label', {
+  withRobotoFont: RobotoFontWeights.regular,
+}));

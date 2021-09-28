@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import EmailMessagingIcon, { EmailMessagingIconProps } from './EmailMessagingIcon';
+import EmailMessagingIcon from './EmailMessagingIcon';
 
 DireflowComponent.create({
   component: EmailMessagingIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-email-messaging-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-email-messaging-icon': EmailMessagingIconProps
-    }
-  }
-}

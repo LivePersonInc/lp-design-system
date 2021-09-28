@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CardContactProfileIcon, { CardContactProfileIconProps } from './CardContactProfileIcon';
+import CardContactProfileIcon from './CardContactProfileIcon';
 
 DireflowComponent.create({
   component: CardContactProfileIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-card-contact-profile-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-card-contact-profile-icon': CardContactProfileIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ReplyIcon, { ReplyIconProps } from './ReplyIcon';
+import ReplyIcon from './ReplyIcon';
 
 DireflowComponent.create({
   component: ReplyIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-reply-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-reply-icon': ReplyIconProps
-    }
-  }
-}

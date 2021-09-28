@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import VoiceMessagingIcon, { VoiceMessagingIconProps } from './VoiceMessagingIcon';
+import VoiceMessagingIcon from './VoiceMessagingIcon';
 
 DireflowComponent.create({
   component: VoiceMessagingIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-voice-messaging-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-voice-messaging-icon': VoiceMessagingIconProps
-    }
-  }
-}

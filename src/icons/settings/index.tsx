@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SettingsIcon, { SettingsIconProps } from './SettingsIcon';
+import SettingsIcon from './SettingsIcon';
 
 DireflowComponent.create({
   component: SettingsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-settings-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-settings-icon': SettingsIconProps
-    }
-  }
-}

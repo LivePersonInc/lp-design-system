@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApiIcon, { ApiIconProps } from './ApiIcon';
+import ApiIcon from './ApiIcon';
 
 DireflowComponent.create({
   component: ApiIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-api-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-api-icon': ApiIconProps
-    }
-  }
-}

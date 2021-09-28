@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CalendarIcon, { CalendarIconProps } from './CalendarIcon';
+import CalendarIcon from './CalendarIcon';
 
 DireflowComponent.create({
   component: CalendarIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-calendar-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-calendar-icon': CalendarIconProps
-    }
-  }
-}

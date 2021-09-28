@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TuneIcon, { TuneIconProps } from './TuneIcon';
+import TuneIcon from './TuneIcon';
 
 DireflowComponent.create({
   component: TuneIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-tune-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-tune-icon': TuneIconProps
-    }
-  }
-}

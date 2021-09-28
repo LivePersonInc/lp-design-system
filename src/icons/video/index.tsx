@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import VideoIcon, { VideoIconProps } from './VideoIcon';
+import VideoIcon from './VideoIcon';
 
 DireflowComponent.create({
   component: VideoIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-video-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-video-icon': VideoIconProps
-    }
-  }
-}

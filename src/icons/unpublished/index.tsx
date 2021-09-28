@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import UnpublishedIcon, { UnpublishedIconProps } from './UnpublishedIcon';
+import UnpublishedIcon from './UnpublishedIcon';
 
 DireflowComponent.create({
   component: UnpublishedIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-unpublished-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-unpublished-icon': UnpublishedIconProps
-    }
-  }
-}

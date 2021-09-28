@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SoundOffIcon, { SoundOffIconProps } from './SoundOffIcon';
+import SoundOffIcon from './SoundOffIcon';
 
 DireflowComponent.create({
   component: SoundOffIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-sound-off-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-sound-off-icon': SoundOffIconProps
-    }
-  }
-}

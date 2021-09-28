@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationMavenIcon, { ApplicationMavenIconProps } from './ApplicationMavenIcon';
+import ApplicationMavenIcon from './ApplicationMavenIcon';
 
 DireflowComponent.create({
   component: ApplicationMavenIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-maven-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-maven-icon': ApplicationMavenIconProps
-    }
-  }
-}

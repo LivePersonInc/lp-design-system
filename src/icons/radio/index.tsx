@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import RadioIcon, { RadioIconProps } from './RadioIcon';
+import RadioIcon from './RadioIcon';
 
 DireflowComponent.create({
   component: RadioIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-radio-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-radio-icon': RadioIconProps
-    }
-  }
-}

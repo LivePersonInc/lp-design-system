@@ -1,29 +1,9 @@
 import { DireflowComponent } from 'direflow-component';
 
-import InputHelper, { InputHelperProps } from './InputHelper';
+import { getComponentConfig, RobotoFontWeights } from 'lpds/common/direflow';
 
-DireflowComponent.create({
-  component: InputHelper,
-  configuration: {
-    tagname: 'lp-input-helper',
-    useAnonymousSlot: true,
-  },
-  plugins: [
-    {
-      name: 'font-loader',
-      options: {
-        google: {
-          families: ['Roboto:400'],
-        },
-      },
-    },
-  ],
-});
+import InputHelper from './InputHelper';
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-input-helper': InputHelperProps
-    }
-  }
-}
+DireflowComponent.create(getComponentConfig(InputHelper, 'lp-input-helper', {
+  withRobotoFont: RobotoFontWeights.regular,
+}));

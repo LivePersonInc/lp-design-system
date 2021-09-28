@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import IntentManagerIcon, { IntentManagerIconProps } from './IntentManagerIcon';
+import IntentManagerIcon from './IntentManagerIcon';
 
 DireflowComponent.create({
   component: IntentManagerIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-intent-manager-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-intent-manager-icon': IntentManagerIconProps
-    }
-  }
-}

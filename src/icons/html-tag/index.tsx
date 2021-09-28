@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import HtmlTagIcon, { HtmlTagIconProps } from './HtmlTagIcon';
+import HtmlTagIcon from './HtmlTagIcon';
 
 DireflowComponent.create({
   component: HtmlTagIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-html-tag-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-html-tag-icon': HtmlTagIconProps
-    }
-  }
-}

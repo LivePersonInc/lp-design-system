@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ArrowRightDoubleCircleIcon, { ArrowRightDoubleCircleIconProps } from './ArrowRightDoubleCircleIcon';
+import ArrowRightDoubleCircleIcon from './ArrowRightDoubleCircleIcon';
 
 DireflowComponent.create({
   component: ArrowRightDoubleCircleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-arrow-right-double-circle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-arrow-right-double-circle-icon': ArrowRightDoubleCircleIconProps
-    }
-  }
-}

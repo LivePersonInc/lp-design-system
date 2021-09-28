@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import EyeVisibleIcon, { EyeVisibleIconProps } from './EyeVisibleIcon';
+import EyeVisibleIcon from './EyeVisibleIcon';
 
 DireflowComponent.create({
   component: EyeVisibleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-eye-visible-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-eye-visible-icon': EyeVisibleIconProps
-    }
-  }
-}

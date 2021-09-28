@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import IdleIcon, { IdleIconProps } from './IdleIcon';
+import IdleIcon from './IdleIcon';
 
 DireflowComponent.create({
   component: IdleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-idle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-idle-icon': IdleIconProps
-    }
-  }
-}

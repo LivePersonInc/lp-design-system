@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TranslateIcon, { TranslateIconProps } from './TranslateIcon';
+import TranslateIcon from './TranslateIcon';
 
 DireflowComponent.create({
   component: TranslateIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-translate-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-translate-icon': TranslateIconProps
-    }
-  }
-}

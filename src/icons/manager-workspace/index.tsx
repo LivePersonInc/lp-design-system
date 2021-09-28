@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ManagerWorkspaceIcon, { ManagerWorkspaceIconProps } from './ManagerWorkspaceIcon';
+import ManagerWorkspaceIcon from './ManagerWorkspaceIcon';
 
 DireflowComponent.create({
   component: ManagerWorkspaceIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-manager-workspace-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-manager-workspace-icon': ManagerWorkspaceIconProps
-    }
-  }
-}

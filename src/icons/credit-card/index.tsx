@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CreditCardIcon, { CreditCardIconProps } from './CreditCardIcon';
+import CreditCardIcon from './CreditCardIcon';
 
 DireflowComponent.create({
   component: CreditCardIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-credit-card-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-credit-card-icon': CreditCardIconProps
-    }
-  }
-}

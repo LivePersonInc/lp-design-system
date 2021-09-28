@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import NotificationOffIcon, { NotificationOffIconProps } from './NotificationOffIcon';
+import NotificationOffIcon from './NotificationOffIcon';
 
 DireflowComponent.create({
   component: NotificationOffIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-notification-off-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-notification-off-icon': NotificationOffIconProps
-    }
-  }
-}

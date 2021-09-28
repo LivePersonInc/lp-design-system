@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TableIcon, { TableIconProps } from './TableIcon';
+import TableIcon from './TableIcon';
 
 DireflowComponent.create({
   component: TableIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-table-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-table-icon': TableIconProps
-    }
-  }
-}

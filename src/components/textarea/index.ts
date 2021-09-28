@@ -1,24 +1,12 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Textarea, { TextareaProps } from './Textarea';
+import { getComponentConfig, RobotoFontWeights } from 'lpds/common/direflow';
 
-DireflowComponent.create({
-  component: Textarea,
-  configuration: {
-    tagname: 'lp-textarea',
-    useAnonymousSlot: true,
-  },
-  plugins: [
-    {
-      name: 'font-loader',
-      options: {
-        google: {
-          families: ['Roboto:400'],
-        },
-      },
-    },
-  ],
-}).then(element => {
+import Textarea from './Textarea';
+
+DireflowComponent.create(getComponentConfig(Textarea, 'lp-textarea', {
+  withRobotoFont: RobotoFontWeights.regular,
+})).then(element => {
   if (element.querySelector('[slot="icon-left"]')) {
     element.shadowRoot?.querySelector('textarea')?.classList.add('with-icon-left');
   }
@@ -27,11 +15,3 @@ DireflowComponent.create({
     element.shadowRoot?.querySelector('textarea')?.classList.add('with-icon-right');
   }
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-textarea': TextareaProps
-    }
-  }
-}

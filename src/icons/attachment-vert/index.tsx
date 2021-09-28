@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import AttachmentVertIcon, { AttachmentVertIconProps } from './AttachmentVertIcon';
+import AttachmentVertIcon from './AttachmentVertIcon';
 
 DireflowComponent.create({
   component: AttachmentVertIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-attachment-vert-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-attachment-vert-icon': AttachmentVertIconProps
-    }
-  }
-}

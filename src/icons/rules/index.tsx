@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import RulesIcon, { RulesIconProps } from './RulesIcon';
+import RulesIcon from './RulesIcon';
 
 DireflowComponent.create({
   component: RulesIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-rules-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-rules-icon': RulesIconProps
-    }
-  }
-}

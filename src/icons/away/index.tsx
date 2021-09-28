@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import AwayIcon, { AwayIconProps } from './AwayIcon';
+import AwayIcon from './AwayIcon';
 
 DireflowComponent.create({
   component: AwayIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-away-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-away-icon': AwayIconProps
-    }
-  }
-}

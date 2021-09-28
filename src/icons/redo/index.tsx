@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import RedoIcon, { RedoIconProps } from './RedoIcon';
+import RedoIcon from './RedoIcon';
 
 DireflowComponent.create({
   component: RedoIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-redo-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-redo-icon': RedoIconProps
-    }
-  }
-}

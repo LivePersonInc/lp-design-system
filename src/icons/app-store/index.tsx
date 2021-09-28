@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import AppStoreIcon, { AppStoreIconProps } from './AppStoreIcon';
+import AppStoreIcon from './AppStoreIcon';
 
 DireflowComponent.create({
   component: AppStoreIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-app-store-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-app-store-icon': AppStoreIconProps
-    }
-  }
-}

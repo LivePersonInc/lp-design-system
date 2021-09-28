@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import BackIcon, { BackIconProps } from './BackIcon';
+import BackIcon from './BackIcon';
 
 DireflowComponent.create({
   component: BackIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-back-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-back-icon': BackIconProps
-    }
-  }
-}

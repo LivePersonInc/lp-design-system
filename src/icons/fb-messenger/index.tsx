@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import FbMessengerIcon, { FbMessengerIconProps } from './FbMessengerIcon';
+import FbMessengerIcon from './FbMessengerIcon';
 
 DireflowComponent.create({
   component: FbMessengerIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-fb-messenger-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-fb-messenger-icon': FbMessengerIconProps
-    }
-  }
-}

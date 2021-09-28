@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import AnalyticsIcon, { AnalyticsIconProps } from './AnalyticsIcon';
+import AnalyticsIcon from './AnalyticsIcon';
 
 DireflowComponent.create({
   component: AnalyticsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-analytics-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-analytics-icon': AnalyticsIconProps
-    }
-  }
-}

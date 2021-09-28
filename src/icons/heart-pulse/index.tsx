@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import HeartPulseIcon, { HeartPulseIconProps } from './HeartPulseIcon';
+import HeartPulseIcon from './HeartPulseIcon';
 
 DireflowComponent.create({
   component: HeartPulseIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-heart-pulse-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-heart-pulse-icon': HeartPulseIconProps
-    }
-  }
-}

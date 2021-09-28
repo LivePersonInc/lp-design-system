@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationBotAnalyticsIcon, { ApplicationBotAnalyticsIconProps } from './ApplicationBotAnalyticsIcon';
+import ApplicationBotAnalyticsIcon from './ApplicationBotAnalyticsIcon';
 
 DireflowComponent.create({
   component: ApplicationBotAnalyticsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-bot-analytics-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-bot-analytics-icon': ApplicationBotAnalyticsIconProps
-    }
-  }
-}

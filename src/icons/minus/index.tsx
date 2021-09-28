@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import MinusIcon, { MinusIconProps } from './MinusIcon';
+import MinusIcon from './MinusIcon';
 
 DireflowComponent.create({
   component: MinusIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-minus-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-minus-icon': MinusIconProps
-    }
-  }
-}

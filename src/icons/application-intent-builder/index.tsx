@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationIntentBuilderIcon, { ApplicationIntentBuilderIconProps } from './ApplicationIntentBuilderIcon';
+import ApplicationIntentBuilderIcon from './ApplicationIntentBuilderIcon';
 
 DireflowComponent.create({
   component: ApplicationIntentBuilderIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-intent-builder-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-intent-builder-icon': ApplicationIntentBuilderIconProps
-    }
-  }
-}

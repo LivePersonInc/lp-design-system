@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PlayerForwardIcon, { PlayerForwardIconProps } from './PlayerForwardIcon';
+import PlayerForwardIcon from './PlayerForwardIcon';
 
 DireflowComponent.create({
   component: PlayerForwardIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-player-forward-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-player-forward-icon': PlayerForwardIconProps
-    }
-  }
-}

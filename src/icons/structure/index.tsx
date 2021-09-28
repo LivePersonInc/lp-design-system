@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import StructureIcon, { StructureIconProps } from './StructureIcon';
+import StructureIcon from './StructureIcon';
 
 DireflowComponent.create({
   component: StructureIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-structure-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-structure-icon': StructureIconProps
-    }
-  }
-}

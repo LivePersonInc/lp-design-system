@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DatabaseIcon , { DatabaseIconProps } from './DatabaseIcon';
+import DatabaseIcon  from './DatabaseIcon';
 
 DireflowComponent.create({
   component: DatabaseIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-database-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-database-icon': DatabaseIconProps
-    }
-  }
-}

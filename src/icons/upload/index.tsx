@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import UploadIcon, { UploadIconProps } from './UploadIcon';
+import UploadIcon from './UploadIcon';
 
 DireflowComponent.create({
   component: UploadIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-upload-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-upload-icon': UploadIconProps
-    }
-  }
-}

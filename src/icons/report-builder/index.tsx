@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ReportBuilderIcon, { ReportBuilderIconProps } from './ReportBuilderIcon';
+import ReportBuilderIcon from './ReportBuilderIcon';
 
 DireflowComponent.create({
   component: ReportBuilderIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-report-builder-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-report-builder-icon': ReportBuilderIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import LogOutIcon, { LogOutIconProps } from './LogOutIcon';
+import LogOutIcon from './LogOutIcon';
 
 DireflowComponent.create({
   component: LogOutIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-log-out-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-log-out-icon': LogOutIconProps
-    }
-  }
-}

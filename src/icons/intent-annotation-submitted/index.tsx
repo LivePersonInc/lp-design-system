@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import IntentAnnotationSubmittedIcon, { IntentAnnotationSubmittedIconProps } from './IntentAnnotationSubmittedIcon';
+import IntentAnnotationSubmittedIcon from './IntentAnnotationSubmittedIcon';
 
 DireflowComponent.create({
   component: IntentAnnotationSubmittedIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-intent-annotation-submitted-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-intent-annotation-submitted-icon': IntentAnnotationSubmittedIconProps
-    }
-  }
-}

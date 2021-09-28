@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TargetAudienceIcon, { TargetAudienceIconProps } from './TargetAudienceIcon';
+import TargetAudienceIcon from './TargetAudienceIcon';
 
 DireflowComponent.create({
   component: TargetAudienceIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-target-audience-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-target-audience-icon': TargetAudienceIconProps
-    }
-  }
-}

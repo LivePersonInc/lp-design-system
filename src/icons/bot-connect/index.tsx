@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import BotConnectIcon, { BotConnectIconProps } from './BotConnectIcon';
+import BotConnectIcon from './BotConnectIcon';
 
 DireflowComponent.create({
   component: BotConnectIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-bot-connect-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-bot-connect-icon': BotConnectIconProps
-    }
-  }
-}

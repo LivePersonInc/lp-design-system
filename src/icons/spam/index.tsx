@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SpamIcon, { SpamIconProps } from './SpamIcon';
+import SpamIcon from './SpamIcon';
 
 DireflowComponent.create({
   component: SpamIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-spam-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-spam-icon': SpamIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DashboardIcon, { DashboardIconProps } from './DashboardIcon';
+import DashboardIcon from './DashboardIcon';
 
 DireflowComponent.create({
   component: DashboardIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-dashboard-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-dashboard-icon': DashboardIconProps
-    }
-  }
-}

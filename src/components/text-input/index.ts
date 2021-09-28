@@ -1,23 +1,12 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TextInput, { TextInputProps } from './TextInput';
+import { getComponentConfig, RobotoFontWeights } from 'lpds/common/direflow';
 
-DireflowComponent.create({
-  component: TextInput,
-  configuration: {
-    tagname: 'lp-text-input',
-  },
-  plugins: [
-    {
-      name: 'font-loader',
-      options: {
-        google: {
-          families: ['Roboto:400'],
-        },
-      },
-    },
-  ],
-}).then(element => {
+import TextInput from './TextInput';
+
+DireflowComponent.create(getComponentConfig(TextInput, 'lp-text-input', {
+  withRobotoFont: RobotoFontWeights.regular,
+})).then(element => {
   if (element.querySelector('[slot="icon-left"]')) {
     element.shadowRoot?.querySelector('input')?.classList.add('with-icon-left');
   }
@@ -26,11 +15,3 @@ DireflowComponent.create({
     element.shadowRoot?.querySelector('input')?.classList.add('with-icon-right');
   }
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-text-input': TextInputProps
-    }
-  }
-}

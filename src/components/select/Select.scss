@@ -1,0 +1,39 @@
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+:host {
+  --color-dropdown-border-open: #{colors.$cyan};
+  --color-dropdown-content: #{colors.$navy-black};
+}
+
+$dropdown-content-border-radius: border-radius.get-border-radius();
+
+lp-dropdown {
+  &::part(content) {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    border: 1px solid var(--color-dropdown-border-open);
+    border-top: none;
+    border-radius: 0 0 $dropdown-content-border-radius $dropdown-content-border-radius;
+    background-color: var(--color-dropdown-content);
+    overflow: auto;
+  }
+}
+
+lp-text-input {
+  display: flex;
+
+  &.open {
+    &::part(input) {
+      border-bottom: none;
+      border-color: var(--color-dropdown-border-open);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

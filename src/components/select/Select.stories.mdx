@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from 'lpds/common/helpers';
+
+import Select from './Select';
+import SelectOption from './SelectOption';
+import './';
+
+<Meta
+  title="Components/Inputs/Select"
+  component={Select}
+  subcomponents={{ SelectOption }}
+  args={Select.defaultProps}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    withSelectAll: {
+      control: {
+        options: [true, false, 'toggle'],
+        type: 'inline-radio',
+      },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: ['change'],
+    },
+  }}
+/>
+
+export const Template = props => (
+  <lp-select {...getPropsByDefaultProps(Select.defaultProps, props)}>
+    <lp-select-option value="1"><span>Option 1</span></lp-select-option>
+    <lp-select-option value="2"><span>Option 2</span></lp-select-option>
+    <lp-select-option value="3"><span>Option 3</span></lp-select-option>
+    <lp-select-option value="4"><span>Option 4</span></lp-select-option>
+    <lp-select-option value="5"><span>Option 5</span></lp-select-option>
+  </lp-select>
+);
+
+# Select
+
+<ArgsTable of={Select} />
+
+**Note:** Those attributes extend [HTMLTextAreaElement](https://www.w3schools.com/tags/tag_select.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>

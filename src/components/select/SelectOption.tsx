@@ -1,22 +1,26 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
+
+import { useHostElement } from 'lpds/common/hooks';
+
+import Styled from 'lpds/common/Styled';
 
 import 'lpds/components/checkbox';
 import 'lpds/components/toggle';
 
 import styles from './SelectOption.scss';
-import { useHostElement } from 'lpds/common/hooks';
 
 export type SelectOptionTypes = 'default' | 'checkbox' | 'toggle'
 
 export type SelectOptionProps = JSX.IntrinsicElements['option'] & {
   type?: SelectOptionTypes
+  label?: string
 }
 
 export type SelectOptionComponent = React.FC<SelectOptionProps>
 
-const SelectOption: SelectOptionComponent = ({ type }) => {
-  const styledInnerElRef = useRef<HTMLDivElement>(null);
+const SelectOption: SelectOptionComponent = ({ type, label }) => {
+  const slotElRef = useRef<HTMLSlotElement>(null);
 
   const { getHostElement } = useHostElement();
 
@@ -27,31 +31,27 @@ const SelectOption: SelectOptionComponent = ({ type }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    getHostElement(styledInnerElRef).setAttribute('tabindex', '0');
+    getHostElement(slotElRef).tabIndex = 0;
   }, [getHostElement, hostClickElement]);
 
   useEffect(() => {
-    getHostElement(styledInnerElRef).addEventListener('click', hostClickElement);
+    getHostElement(slotElRef).addEventListener('click', hostClickElement);
   }, [getHostElement, hostClickElement]);
 
   return (
-    <>
-      <Styled styles={styles} scoped={false}>
-        <div ref={styledInnerElRef} />
-      </Styled>
-
-      {type === 'default' && <slot />}
+    <Styled styles={styles}>
+      {type === 'default' && <slot ref={slotElRef}>{label}</slot>}
       {type === 'checkbox' && (
         <lp-checkbox>
-          <slot />
+          <slot ref={slotElRef}>{label}</slot>
         </lp-checkbox>
       )}
       {type === 'toggle' && (
         <lp-toggle>
-          <slot />
+          <slot ref={slotElRef}>{label}</slot>
         </lp-toggle>
       )}
-    </>
+    </Styled>
   );
 };
 

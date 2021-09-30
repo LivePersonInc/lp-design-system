@@ -10,7 +10,10 @@ import './';
   title="Components/Inputs/Select"
   component={Select}
   subcomponents={{ SelectOption }}
-  args={Select.defaultProps}
+  args={{
+    ...Select.defaultProps,
+    numberOfOptions: 5,
+  }}
   argTypes={{
     theme: {
       control: { type: 'inline-radio' },
@@ -29,13 +32,24 @@ import './';
   }}
 />
 
-export const Template = props => (
-  <lp-select {...getPropsByDefaultProps(Select.defaultProps, props)}>
-    <lp-select-option value="1"><span>Option 1</span></lp-select-option>
-    <lp-select-option value="2"><span>Option 2</span></lp-select-option>
-    <lp-select-option value="3"><span>Option 3</span></lp-select-option>
-    <lp-select-option value="4"><span>Option 4</span></lp-select-option>
-    <lp-select-option value="5"><span>Option 5</span></lp-select-option>
+export const Template = (
+  { numberOfOptions = 5, numberOfSuggestions = 0, actions = [], ...props },
+) => (
+  <lp-select
+    {...getPropsByDefaultProps(Select.defaultProps, props)}
+    key={`${numberOfOptions}-${numberOfSuggestions}-${actions.length}`}
+  >
+    {Array(numberOfOptions).fill(null).map((item, index) => (
+      <lp-select-option
+        slot={index < numberOfSuggestions ? 'suggestions' : undefined}
+        value={index + 1}
+      >
+        <span>Option {index + 1}</span>
+      </lp-select-option>
+    ))}
+    {actions.map(action => (
+      <button slot="actions" type="button">{action}</button>
+    ))}
   </lp-select>
 );
 
@@ -49,6 +63,46 @@ export const Template = props => (
 
 <Canvas>
   <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With scroll
+
+<Canvas>
+  <Story name="With scroll" args={{ numberOfOptions: 10 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With suggestions
+
+<Canvas>
+  <Story name="With suggestions" args={{ numberOfSuggestions: 2 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With actions
+
+<Canvas>
+  <Story name="With actions" args={{ actions: ['Action 1'] }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With suggestions and actions
+
+<Canvas>
+  <Story name="With suggestions and actions" args={{ numberOfSuggestions: 2, actions: ['Action 1'] }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With select all
+
+<Canvas>
+  <Story name="With select all" args={{ withSelectAll: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>

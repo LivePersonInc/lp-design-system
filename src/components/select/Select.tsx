@@ -1,7 +1,9 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 
 import { useHostElement } from 'lpds/common/hooks';
+
+import Styled from 'lpds/common/Styled';
 
 import { Theme } from 'lpds/styles/common';
 
@@ -107,27 +109,25 @@ const Select: SelectComponent = ({ withSelectAll }) => {
   }, [dropdownOpenHandler, dropdownCloseHandler, optionSelectHandler]);
 
   return (
-    <>
-      <Styled styles={styles} scoped={false}>
-        <div />
-      </Styled>
-
+    <Styled styles={styles}>
       <lp-dropdown ref={dropdownElRef} closeOnContentClick={false}>
         <lp-text-input slot="toggle" />
 
-        <div slot="content">
+        <div slot="content" className="options">
           {!!withSelectAll && (
-            withSelectAll === 'toggle' ? <lp-toggle label="Select all" /> : <lp-checkbox label="Select all" />
+            withSelectAll === 'toggle'
+              ? <lp-toggle slot="content" label="Select all" />
+              : <lp-checkbox slot="content" label="Select all" />
           )}
 
-          <slot name="suggestion" />
+          <slot name="suggestions" />
 
           <slot />
-
-          <slot name="actions" />
         </div>
+
+        <slot slot="content" name="actions" />
       </lp-dropdown>
-    </>
+    </Styled>
   );
 };
 

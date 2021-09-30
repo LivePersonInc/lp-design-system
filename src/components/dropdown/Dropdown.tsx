@@ -1,8 +1,10 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 import classNames from 'classnames';
 
 import { useHostElement } from 'lpds/common/hooks';
+
+import Styled from 'lpds/common/Styled';
 
 import styles from './Dropdown.scss';
 
@@ -147,11 +149,7 @@ const Dropdown: DropdownComponent = (
   }, [isOpen, contentPlacement, getHostElement, parentOffset, parentSelector]);
 
   return (
-    <>
-      <Styled styles={styles} scoped={false}>
-        <div/>
-      </Styled>
-
+    <Styled styles={styles} scoped={false}>
       <slot
         ref={toggleSlotElRef}
         name="toggle"
@@ -170,7 +168,7 @@ const Dropdown: DropdownComponent = (
           part={`content${isOpen ? ' open' : ''}`}
         />
       )}
-    </>
+    </Styled>
   );
 };
 

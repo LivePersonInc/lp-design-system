@@ -5,6 +5,7 @@ $-border-radius: (
   s: 12px,
   m: 16px,
   l: 24px,
+  xl: 32px,
 );
 
 @function get-border-radius($size: xxs) {

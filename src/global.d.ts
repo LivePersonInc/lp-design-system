@@ -7,8 +7,9 @@ import { ChipGroupProps } from 'lpds/components/chip/ChipGroup';
 import { DropdownProps } from 'lpds/components/dropdown/Dropdown';
 import { InputHelperProps } from 'lpds/components/input-helper/InputHelper';
 import { InputLabelProps } from 'lpds/components/input-label/InputLabel';
-import { RadioGroupProps } from 'lpds/components/radio/RadioGroup';
+import { NumberInputProps } from 'lpds/components/number-input/NumberInput';
 import { RadioProps } from 'lpds/components/radio/Radio';
+import { RadioGroupProps } from 'lpds/components/radio/RadioGroup';
 import { SelectOptionProps } from 'lpds/components/select/SelectOption';
 import { SelectProps } from 'lpds/components/select/Select';
 import { TextareaProps } from 'lpds/components/textarea/Textarea';
@@ -356,6 +357,7 @@ declare global {
       'lp-dropdown': DropdownProps
       'lp-input-helper': InputHelperProps
       'lp-input-label': InputLabelProps
+      'lp-number-input': NumberInputProps
       'lp-radio': RadioProps
       'lp-radio-group': RadioGroupProps
       'lp-select': SelectProps

@@ -18,12 +18,6 @@ import './';
     theme: {
       control: { type: 'inline-radio' },
     },
-    withSelectAll: {
-      control: {
-        options: [true, false, 'toggle'],
-        type: 'inline-radio',
-      },
-    },
   }}
   parameters={{
     actions: {
@@ -41,14 +35,15 @@ export const Template = (
   >
     {Array(numberOfOptions).fill(null).map((item, index) => (
       <lp-select-option
+        key={index}
         slot={index < numberOfSuggestions ? 'suggestions' : undefined}
         value={index + 1}
       >
         <span>Option {index + 1}</span>
       </lp-select-option>
     ))}
-    {actions.map(action => (
-      <button slot="actions" type="button">{action}</button>
+    {actions.map((action, index) => (
+      <button key={index} slot="actions" type="button">{action}</button>
     ))}
   </lp-select>
 );
@@ -99,10 +94,34 @@ export const Template = (
   </Story>
 </Canvas>
 
-## With select all
+## With search
 
 <Canvas>
-  <Story name="With select all" args={{ withSelectAll: true }}>
+  <Story name="With search" args={{ search: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Multiple Selection
+
+<Canvas>
+  <Story name="Multiple Selection" args={{ multiple: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With search and multiple Selection
+
+<Canvas>
+  <Story name="With search and multiple Selection" args={{ search: true, multiple: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Select all
+
+<Canvas>
+  <Story name="With Select all" args={{ withSelectAll: 'Select all', multiple: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>

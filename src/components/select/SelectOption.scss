@@ -43,11 +43,19 @@
   background-color: var(--color-option-bg-hover);
 }
 
-:host([selected]:not([selected="false"])) {
-  color: var(--color-option-label-selected);
-  background-color: var(--color-option-bg-selected);
+[selected]:not([selected="false"]) {
+  :host(&) {
+    color: var(--color-option-label-selected);
+    background-color: var(--color-option-bg-selected);
+  }
+
+  :host(&:hover) {
+    background-color: var(--color-option-bg-selected-hover);
+  }
 }
 
-:host([selected]:not([selected="false"]):hover) {
-  background-color: var(--color-option-bg-selected-hover);
+[hidden]:not([hidden="false"]) {
+  :host(&) {
+    display: none;
+  }
 }

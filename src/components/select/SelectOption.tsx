@@ -10,19 +10,16 @@ import 'lpds/components/toggle';
 
 import styles from './SelectOption.scss';
 
-export type SelectOptionTypes = 'default' | 'checkbox' | 'toggle'
-
 export type SelectOptionProps = JSX.IntrinsicElements['option'] & {
-  type?: SelectOptionTypes
   label?: string
 }
 
 export type SelectOptionComponent = React.FC<SelectOptionProps>
 
-const SelectOption: SelectOptionComponent = ({ type, label }) => {
+const SelectOption: SelectOptionComponent = ({ label }) => {
   const slotElRef = useRef<HTMLSlotElement>(null);
 
-  const { getHostElement } = useHostElement();
+  const { getHostElement } = useHostElement(slotElRef);
 
   const dispatch = useContext(EventContext);
 
@@ -31,32 +28,26 @@ const SelectOption: SelectOptionComponent = ({ type, label }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    getHostElement(slotElRef).tabIndex = 0;
+    const hostElement = getHostElement();
+
+    if (hostElement) {
+      hostElement.tabIndex = 0;
+    }
   }, [getHostElement, hostClickElement]);
 
   useEffect(() => {
-    getHostElement(slotElRef).addEventListener('click', hostClickElement);
+    getHostElement()?.addEventListener('click', hostClickElement);
   }, [getHostElement, hostClickElement]);
 
   return (
     <Styled styles={styles}>
-      {type === 'default' && <slot ref={slotElRef}>{label}</slot>}
-      {type === 'checkbox' && (
-        <lp-checkbox>
-          <slot ref={slotElRef}>{label}</slot>
-        </lp-checkbox>
-      )}
-      {type === 'toggle' && (
-        <lp-toggle>
-          <slot ref={slotElRef}>{label}</slot>
-        </lp-toggle>
-      )}
+      <slot ref={slotElRef}>{label}</slot>
     </Styled>
   );
 };
 
 SelectOption.defaultProps = {
-  type: 'default',
+  label: '',
 };
 
 export default SelectOption

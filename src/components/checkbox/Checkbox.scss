@@ -27,6 +27,7 @@
   vertical-align: middle;
   @include typography.input-label;
   padding: 1px 0;
+  cursor: pointer;
 }
 :host([theme="light"]) {
   --color-checkbox: #{colors-light.$navy-light};
@@ -74,6 +75,8 @@ $checkbox-offset: common.get-em(spacing.get-space(xs), typography.$size-small);
 label {
   display: flex;
   align-items: center;
+  width: 100%;
+  cursor: pointer;
 }
 
 .label {
@@ -124,7 +127,8 @@ input {
         }
       }
 
-      &:checked {
+      &:checked,
+      &:indeterminate {
         &:focus {
           + .label {
             .check-box {
@@ -150,7 +154,8 @@ input {
       }
     }
 
-    &:checked {
+    &:checked,
+    &:indeterminate {
       + .label {
         .check-box {
           background-color: var(--color-checkbox-checked);

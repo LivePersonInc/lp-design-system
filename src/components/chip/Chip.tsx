@@ -1,6 +1,8 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { EventContext } from 'direflow-component';
 
+import { useHostElement } from 'lpds/common/hooks';
+
 import Styled from 'lpds/common/Styled';
 
 import { Theme } from 'lpds/styles/common';
@@ -8,11 +10,10 @@ import { Theme } from 'lpds/styles/common';
 import 'lpds/icons/close-small';
 
 import styles from './Chip.scss';
-import { useHostElement } from 'lpds/common/hooks';
 
 export type ChipSize = 'default' | 'small'
 
-export type ChipProps = JSX.IntrinsicElements['button'] & {
+export type ChipProps = JSX.IntrinsicElements['div'] & {
   theme?: Theme
   size?: ChipSize
 
@@ -31,18 +32,22 @@ const Chip: ChipComponent = ({ label, removable }) => {
 
   const dispatch = useContext(EventContext);
 
-  const { getHostElement } = useHostElement();
+  const { getHostElement } = useHostElement(slotElRef);
 
   const buttonRemoveClickHandler = useCallback((): void => {
-    dispatch(new CustomEvent('remove'));
-  }, [dispatch]);
+    dispatch(new CustomEvent('chip-remove', { detail: getHostElement(), composed: true }));
+  }, [dispatch, getHostElement]);
 
   useEffect(() => {
-    getHostElement(slotElRef).tabIndex = 0;
-  }, []);
+    const hostElement = getHostElement();
+
+    if (hostElement) {
+      hostElement.tabIndex = 0;
+    }
+  }, [getHostElement]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       {removable && (
         <button type="button" onClick={buttonRemoveClickHandler}>
           <lp-close-small-icon />

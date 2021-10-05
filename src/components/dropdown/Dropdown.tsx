@@ -33,18 +33,22 @@ const Dropdown: DropdownComponent = (
 
   const dispatch = useContext(EventContext);
 
-  const { getHostElement } = useHostElement();
+  const { getHostElement, hostHasAttribute, hostGetAttribute } = useHostElement(toggleSlotElRef);
 
   const dropdownOpen = useCallback((): void => {
-    setIsOpen(true);
+    if (!hostGetAttribute('open')) {
+      setIsOpen(true);
+    }
 
-    dispatch(new CustomEvent('open'));
-  }, [dispatch]);
+    dispatch(new CustomEvent('dropdown-open', { composed: true }));
+  }, [hostGetAttribute, dispatch]);
   const dropdownClose = useCallback((): void => {
-    setIsOpen(false);
+    if (!hostGetAttribute('open')) {
+      setIsOpen(false);
+    }
 
-    dispatch(new CustomEvent('close'));
-  }, [dispatch]);
+    dispatch(new CustomEvent('dropdown-close', { composed: true }));
+  }, [hostGetAttribute, dispatch]);
 
   const toggleClickHandler = useCallback((): void => {
     if (isOpen) {
@@ -61,10 +65,14 @@ const Dropdown: DropdownComponent = (
   }, [closeOnContentClick, dropdownClose]);
 
   const windowClickHandler = useCallback((e: MouseEvent): void => {
-    if (!getHostElement(toggleSlotElRef).contains(e.target as Node)) {
-      dropdownClose();
+    if (!getHostElement()?.contains(e.target as Node)) {
+      if (closeOnBlur) {
+        dropdownClose();
+      }
+
+      dispatch(new CustomEvent('dropdown-click-outside', { detail: e.target, composed: true }));
     }
-  }, [getHostElement, dropdownClose]);
+  }, [getHostElement, closeOnBlur, dropdownClose, dispatch]);
 
   const windowKeydownHandler = useCallback((e: KeyboardEvent): void => {
     if (e.code === 'Escape') {
@@ -73,12 +81,10 @@ const Dropdown: DropdownComponent = (
   }, [dropdownClose]);
 
   useEffect(() => {
-    if (open) {
-      dropdownOpen();
-    } else {
-      dropdownClose();
+    if (hostHasAttribute('open')) {
+      setIsOpen(!!open);
     }
-  }, [open, dropdownOpen, dropdownClose]);
+  }, [open, hostHasAttribute]);
 
   useEffect(() => {
     toggleSlotElRef.current?.addEventListener<'click'>('click', toggleClickHandler);
@@ -93,12 +99,12 @@ const Dropdown: DropdownComponent = (
   }, [isOpen, contentClickHandler]);
 
   useEffect(() => {
-    if (closeOnBlur && isOpen) {
+    if (isOpen) {
       window.addEventListener<'click'>('click', windowClickHandler);
     } else {
       window.removeEventListener<'click'>('click', windowClickHandler);
     }
-  }, [closeOnBlur, isOpen, windowClickHandler]);
+  }, [isOpen, windowClickHandler]);
 
   useEffect(() => {
     if (closeOnEscape && isOpen) {
@@ -118,7 +124,7 @@ const Dropdown: DropdownComponent = (
           let parentBottom = window.innerHeight;
 
           if (parentSelector) {
-            const parentElement = getHostElement(contentSlotElRef).closest(parentSelector);
+            const parentElement = getHostElement(contentSlotElRef)?.closest(parentSelector);
 
             if (parentElement) {
               const parentBounding = parentElement.getBoundingClientRect();
@@ -154,7 +160,7 @@ const Dropdown: DropdownComponent = (
         ref={toggleSlotElRef}
         name="toggle"
         // @ts-ignore
-        part={`toggle${isOpen ? ' open' : ''}`}
+        part={classNames('toggle', { open: isOpen }, show)}
       />
 
       {isOpen && (
@@ -165,7 +171,7 @@ const Dropdown: DropdownComponent = (
           }, show)}
           name="content"
           // @ts-ignore
-          part={`content${isOpen ? ' open' : ''}`}
+          part={classNames('content', { open: isOpen }, show)}
         />
       )}
     </Styled>

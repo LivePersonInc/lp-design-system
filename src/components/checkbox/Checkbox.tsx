@@ -1,5 +1,9 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
+
+import { useHostElement } from 'lpds/common/hooks';
+
+import Styled from 'lpds/common/Styled';
 
 import { Theme } from 'lpds/styles/common';
 
@@ -25,35 +29,50 @@ export type CheckboxProps = JSX.IntrinsicElements['input'] & CheckboxCustomProps
 export type CheckboxComponent = React.FC<CheckboxProps>
 
 const Checkbox: CheckboxComponent = (
-  { theme, label, labelPosition, error, checked: checkedProp, defaultChecked, indeterminate, children, ...props },
+  {
+    theme,
+    label,
+    labelPosition,
+    error,
+    checked: checkedProp,
+    defaultChecked,
+    indeterminate: indeterminateProp,
+    children,
+    ...props
+  },
 ) => {
   const inputElRef = useRef<HTMLInputElement>(null);
 
   const [checked, setChecked] = useState<boolean>(!!(defaultChecked || checkedProp));
+  const [indeterminate, setIndeterminate] = useState<boolean>(!!indeterminateProp);
 
   const dispatch = useContext(EventContext);
 
-  const isCheckedSet = useCallback((): boolean => (
-    (inputElRef.current?.getRootNode() as ShadowRoot)?.host.hasAttribute('checked')
-  ), []);
+  const { hostHasAttribute } = useHostElement(inputElRef);
 
   const checkboxChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!isCheckedSet()) {
+    if (!hostHasAttribute('checked')) {
       setChecked(e.target.checked);
+
+      setIndeterminate(false);
     }
 
     dispatch(new CustomEvent<HTMLInputElement>(e.type, { detail: e.target }));
-  }, [isCheckedSet, dispatch]);
+  }, [hostHasAttribute, dispatch]);
 
   useEffect(() => {
-    if (isCheckedSet()) {
+    if (hostHasAttribute('checked')) {
       setChecked(!!checkedProp);
     }
-  }, [isCheckedSet, checkedProp]);
+  }, [hostHasAttribute, checkedProp]);
+
+  useEffect(() => {
+    setIndeterminate(!!indeterminateProp);
+  }, [indeterminateProp]);
 
   useEffect(() => {
     if (inputElRef.current) {
-      inputElRef.current.indeterminate = !!indeterminate;
+      inputElRef.current.indeterminate = indeterminate;
     }
   }, [indeterminate]);
 

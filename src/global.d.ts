@@ -2,6 +2,8 @@
 import { ButtonGroupProps } from 'lpds/components/button-group/ButtonGroup';
 import { ButtonProps } from 'lpds/components/button/Button';
 import { CheckboxProps } from 'lpds/components/checkbox/Checkbox';
+import { ChipProps } from 'lpds/components/chip/Chip';
+import { ChipGroupProps } from 'lpds/components/chip/ChipGroup';
 import { DropdownProps } from 'lpds/components/dropdown/Dropdown';
 import { InputHelperProps } from 'lpds/components/input-helper/InputHelper';
 import { InputLabelProps } from 'lpds/components/input-label/InputLabel';
@@ -349,6 +351,8 @@ declare global {
       'lp-button': ButtonProps
       'lp-button-group': ButtonGroupProps
       'lp-checkbox': CheckboxProps
+      'lp-chip': ChipProps
+      'lp-chip-group': ChipGroupProps
       'lp-dropdown': DropdownProps
       'lp-input-helper': InputHelperProps
       'lp-input-label': InputLabelProps

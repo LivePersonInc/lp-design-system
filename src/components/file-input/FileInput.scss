@@ -62,7 +62,7 @@
 }
 
 @include common.host-with-attr(disabled) {
-  --color-button: #{colors.$navy-white};
+  --color-button: #{colors.$navy-lightest};
   --color-button-text: #{colors.$navy-dark};
 }
 @include common.host-with-attr(disabled, '[theme="light"]') {
@@ -119,19 +119,26 @@ input {
   cursor: pointer;
   transition: all .15s ease-out;
 
-  &:hover {
-    color: var(--color-button-text--hover);
-    background-color: var(--color-button--hover);
+  &[disabled] {
+    opacity: transparency.$disabled;
+    cursor: default;
   }
 
-  &:active {
-    color: var(--color-button-text--active);
-    background-color: var(--color-button--active);
-  }
+  &:not([disabled]) {
+    &:hover {
+      color: var(--color-button-text--hover);
+      background-color: var(--color-button--hover);
+    }
 
-  &:focus {
-    color: var(--color-button-text--focus);
-    background-color: var(--color-button--focus);
+    &:active {
+      color: var(--color-button-text--active);
+      background-color: var(--color-button--active);
+    }
+
+    &:focus {
+      color: var(--color-button-text--focus);
+      background-color: var(--color-button--focus);
+    }
   }
 }
 

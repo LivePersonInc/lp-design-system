@@ -131,6 +131,7 @@ const FileInput: FileInputComponent = (
       <button
         // @ts-ignore
         part="file-upload-button"
+        disabled={props.disabled}
         onClick={fileUploadButtonClickHandler}
       >
         {(

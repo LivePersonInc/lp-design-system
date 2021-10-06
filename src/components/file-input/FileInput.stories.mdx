@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import { getPropsByDefaultProps } from 'lpds/common/helpers';
+import { hideControls } from 'lpds/common/storybook';
 
 import FileInput, { events } from './FileInput';
 import './';
@@ -14,9 +15,6 @@ import './';
       control: { type: 'inline-radio' },
     },
     size: {
-      control: { type: 'inline-radio' },
-    },
-    textAlign: {
       control: { type: 'inline-radio' },
     },
     buttonLabel: {},
@@ -52,7 +50,14 @@ export const Template = props => <lp-file-input {...getPropsByDefaultProps(FileI
 ## Disabled
 
 <Canvas>
-  <Story name="Disabled" args={{ disabled: true }}>
+  <Story
+    name="Disabled"
+    args={{ disabled: true }}
+    parameters={{
+      controls: { disable: true },
+      actions: { disable: true },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -60,7 +65,14 @@ export const Template = props => <lp-file-input {...getPropsByDefaultProps(FileI
 ## Uploading
 
 <Canvas>
-  <Story name="Uploading" args={{ uploading: true, uploadingProgress: 25 }}>
+  <Story
+    name="Uploading"
+    args={{ uploading: true, uploadingProgress: 25 }}
+    argTypes={hideControls(['theme', 'size', 'buttonLabel', 'uploading', 'multiple', 'error', 'disabled', 'readOnly'])}
+    parameters={{
+      actions: { disable: true },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -68,7 +80,14 @@ export const Template = props => <lp-file-input {...getPropsByDefaultProps(FileI
 ## Error
 
 <Canvas>
-  <Story name="Error" args={{ error: true }}>
+  <Story
+    name="Error"
+    args={{ error: true }}
+    parameters={{
+      controls: { disable: true },
+      actions: { disable: true },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -76,7 +95,14 @@ export const Template = props => <lp-file-input {...getPropsByDefaultProps(FileI
 ## Multiple Selection
 
 <Canvas>
-  <Story name="Multiple Selection" args={{ multiple: true }}>
+  <Story
+    name="Multiple Selection"
+    args={{ multiple: true }}
+    parameters={{
+      controls: { disable: true },
+      actions: { disable: true },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

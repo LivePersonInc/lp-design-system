@@ -5,6 +5,7 @@ import { CheckboxProps } from 'lpds/components/checkbox/Checkbox';
 import { ChipProps } from 'lpds/components/chip/Chip';
 import { ChipGroupProps } from 'lpds/components/chip/ChipGroup';
 import { DropdownProps } from 'lpds/components/dropdown/Dropdown';
+import { FileInputProps } from 'lpds/components/file-input/FileInput';
 import { InputHelperProps } from 'lpds/components/input-helper/InputHelper';
 import { InputLabelProps } from 'lpds/components/input-label/InputLabel';
 import { NumberInputProps } from 'lpds/components/number-input/NumberInput';
@@ -355,6 +356,7 @@ declare global {
       'lp-chip': ChipProps
       'lp-chip-group': ChipGroupProps
       'lp-dropdown': DropdownProps
+      'lp-file-input': FileInputProps
       'lp-input-helper': InputHelperProps
       'lp-input-label': InputLabelProps
       'lp-number-input': NumberInputProps

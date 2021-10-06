@@ -1,6 +1,5 @@
-import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { EventContext } from 'direflow-component';
-import classNames from 'classnames';
 
 import Styled from 'lpds/common/Styled';
 

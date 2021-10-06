@@ -19,7 +19,6 @@
   --color-border--hover: #{colors.$navy-white};
   --color-border--active: #{colors.$cyan};
   --color-border--focus: #{colors.$cyan};
-  --color-border--error: #{colors.$red-light};
 
   --color-outline: #{colors.$focus-outline};
 
@@ -37,13 +36,11 @@
   display: inline-flex;
   color: var(--color-text);
 }
-
 :host([theme="light"]) {
   --color-border: #{colors-light.$navy-light};
   --color-border--hover: #{colors-light.$navy};
   --color-border--active: #{colors-light.$periwinkle};
   --color-border--focus: #{colors-light.$periwinkle};
-  --color-border--error: #{colors-light.$red};
 
   --color-outline: #{colors-light.$focus-outline};
 
@@ -53,6 +50,13 @@
   --color-text--error: #{colors-light.$red};
 
   --color-button--hover: #{transparency.$dark-1};
+}
+
+:host([error]:not([error="false"])) {
+  --color-border: #{colors.$red-light};
+}
+:host([theme="light"][error]:not([error="false"])) {
+  --color-border: #{colors.$red};
 }
 
 :host([size="medium"]) {
@@ -72,7 +76,6 @@ $button-width: common.get-em(32px, $font-size);
 $padding-size: common.get-em(spacing.get-space(s, true), $font-size);
 
 input {
-  appearance: textfield;
   flex-grow: 1;
   max-width: 100%;
   font: inherit;
@@ -111,10 +114,6 @@ input {
 
     &:focus {
       box-shadow: var(--color-outline);
-    }
-
-    :host([error]:not([error="false"])) & {
-      border-color: var(--color-border--error);
     }
   }
 

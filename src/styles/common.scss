@@ -26,3 +26,9 @@
   margin: 0;
   cursor: pointer;
 }
+
+@mixin host-with-attr($attr, $additional-selector: '') {
+  :host([#{$attr}]:not([#{$attr}="false"])#{$additional-selector}) {
+    @content;
+  }
+}

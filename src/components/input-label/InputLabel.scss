@@ -5,13 +5,15 @@
 @use '~lpds/styles/typography';
 
 :host {
+  --color-text: #{colors.$navy-white};
+
   display: flex;
   align-items: center;
-  color: colors.$white;
+  color: var(--color-text);
 }
 
 :host([theme="light"]) {
-  color: colors-light.$navy-black;
+  --color-text: #{colors-light.$navy-darker};
 }
 
 :host([disabled]:not([disabled="false"])) {

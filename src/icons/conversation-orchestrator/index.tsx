@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ConversationOrchestratorIcon, { ConversationOrchestratorIconProps } from './ConversationOrchestratorIcon';
+import ConversationOrchestratorIcon from './ConversationOrchestratorIcon';
 
 DireflowComponent.create({
   component: ConversationOrchestratorIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-conversation-orchestrator-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-conversation-orchestrator-icon': ConversationOrchestratorIconProps
-    }
-  }
-}

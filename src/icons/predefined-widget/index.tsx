@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PredefinedWidgetIcon, { PredefinedWidgetIconProps } from './PredefinedWidgetIcon';
+import PredefinedWidgetIcon from './PredefinedWidgetIcon';
 
 DireflowComponent.create({
   component: PredefinedWidgetIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-predefined-widget-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-predefined-widget-icon': PredefinedWidgetIconProps
-    }
-  }
-}

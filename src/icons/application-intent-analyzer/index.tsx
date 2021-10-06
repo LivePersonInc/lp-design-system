@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationIntentAnalyzerIcon, { ApplicationIntentAnalyzerIconProps } from './ApplicationIntentAnalyzerIcon';
+import ApplicationIntentAnalyzerIcon from './ApplicationIntentAnalyzerIcon';
 
 DireflowComponent.create({
   component: ApplicationIntentAnalyzerIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-intent-analyzer-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-intent-analyzer-icon': ApplicationIntentAnalyzerIconProps
-    }
-  }
-}

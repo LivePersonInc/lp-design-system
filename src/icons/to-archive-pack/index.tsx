@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ToArchivePackIcon, { ToArchivePackIconProps } from './ToArchivePackIcon';
+import ToArchivePackIcon from './ToArchivePackIcon';
 
 DireflowComponent.create({
   component: ToArchivePackIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-to-archive-pack-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-to-archive-pack-icon': ToArchivePackIconProps
-    }
-  }
-}

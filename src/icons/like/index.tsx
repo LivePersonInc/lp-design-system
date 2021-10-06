@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import LikeIcon, { LikeIconProps } from './LikeIcon';
+import LikeIcon from './LikeIcon';
 
 DireflowComponent.create({
   component: LikeIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-like-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-like-icon': LikeIconProps
-    }
-  }
-}

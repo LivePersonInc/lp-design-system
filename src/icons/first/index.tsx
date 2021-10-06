@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import FirstIcon, { FirstIconProps } from './FirstIcon';
+import FirstIcon from './FirstIcon';
 
 DireflowComponent.create({
   component: FirstIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-first-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-first-icon': FirstIconProps
-    }
-  }
-}

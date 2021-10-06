@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import BusinessIntelligenceEngineerIcon, { BusinessIntelligenceEngineerIconProps } from './BusinessIntelligenceEngineerIcon';
+import BusinessIntelligenceEngineerIcon from './BusinessIntelligenceEngineerIcon';
 
 DireflowComponent.create({
   component: BusinessIntelligenceEngineerIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-business-intelligence-engineer-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-business-intelligence-engineer-icon': BusinessIntelligenceEngineerIconProps
-    }
-  }
-}

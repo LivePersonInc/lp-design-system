@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PublishIcon, { PublishIconProps } from './PublishIcon';
+import PublishIcon from './PublishIcon';
 
 DireflowComponent.create({
   component: PublishIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-publish-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-publish-icon': PublishIconProps
-    }
-  }
-}

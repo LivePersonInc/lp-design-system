@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import IvrIcon, { IvrIconProps } from './IvrIcon';
+import IvrIcon from './IvrIcon';
 
 DireflowComponent.create({
   component: IvrIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-ivr-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-ivr-icon': IvrIconProps
-    }
-  }
-}

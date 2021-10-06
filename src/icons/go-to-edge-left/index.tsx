@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import GoToEdgeLeftIcon, { GoToEdgeLeftIconProps } from './GoToEdgeLeftIcon';
+import GoToEdgeLeftIcon from './GoToEdgeLeftIcon';
 
 DireflowComponent.create({
   component: GoToEdgeLeftIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-go-to-edge-left-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-go-to-edge-left-icon': GoToEdgeLeftIconProps
-    }
-  }
-}

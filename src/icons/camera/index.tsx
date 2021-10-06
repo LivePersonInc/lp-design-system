@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CameraIcon, { CameraIconProps } from './CameraIcon';
+import CameraIcon from './CameraIcon';
 
 DireflowComponent.create({
   component: CameraIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-camera-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-camera-icon': CameraIconProps
-    }
-  }
-}

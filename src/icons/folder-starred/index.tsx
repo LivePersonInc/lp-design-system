@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import FolderStarredIcon, { FolderStarredIconProps } from './FolderStarredIcon';
+import FolderStarredIcon from './FolderStarredIcon';
 
 DireflowComponent.create({
   component: FolderStarredIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-folder-starred-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-folder-starred-icon': FolderStarredIconProps
-    }
-  }
-}

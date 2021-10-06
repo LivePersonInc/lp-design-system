@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SmsIcon, { SmsIconProps } from './SmsIcon';
+import SmsIcon from './SmsIcon';
 
 DireflowComponent.create({
   component: SmsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-sms-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-sms-icon': SmsIconProps
-    }
-  }
-}

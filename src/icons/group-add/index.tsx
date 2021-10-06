@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import GroupAddIcon, { GroupAddIconProps } from './GroupAddIcon';
+import GroupAddIcon from './GroupAddIcon';
 
 DireflowComponent.create({
   component: GroupAddIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-group-add-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-group-add-icon': GroupAddIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import BotPreviewIcon, { BotPreviewIconProps } from './BotPreviewIcon';
+import BotPreviewIcon from './BotPreviewIcon';
 
 DireflowComponent.create({
   component: BotPreviewIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-bot-preview-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-bot-preview-icon': BotPreviewIconProps
-    }
-  }
-}

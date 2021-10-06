@@ -1,9 +1,11 @@
 $-border-radius: (
+  xxxs: 2px,
   xxs: 4px,
   xs: 8px,
   s: 12px,
   m: 16px,
   l: 24px,
+  xl: 32px,
 );
 
 @function get-border-radius($size: xxs) {

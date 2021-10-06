@@ -5,9 +5,8 @@ import { IconsListProps } from './IconsList';
 
 import classes from './IconsList.module.scss';
 
-export type IconListItemProps = IconsListProps & {
+export type IconListItemProps = IconsListProps & Pick<JSX.IntrinsicElements['div'], 'onClick'> & {
   selected?: boolean
-  onClick?(): void
 }
 
 export type IconListItemComponent = React.FC<IconListItemProps>

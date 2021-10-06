@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SubdirectoryIcon, { SubdirectoryIconProps } from './SubdirectoryIcon';
+import SubdirectoryIcon from './SubdirectoryIcon';
 
 DireflowComponent.create({
   component: SubdirectoryIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-subdirectory-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-subdirectory-icon': SubdirectoryIconProps
-    }
-  }
-}

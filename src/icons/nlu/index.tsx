@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import NluIcon, { NluIconProps } from './NluIcon';
+import NluIcon from './NluIcon';
 
 DireflowComponent.create({
   component: NluIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-nlu-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-nlu-icon': NluIconProps
-    }
-  }
-}

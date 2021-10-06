@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ExportIcon, { ExportIconProps } from './ExportIcon';
+import ExportIcon from './ExportIcon';
 
 DireflowComponent.create({
   component: ExportIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-export-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-export-icon': ExportIconProps
-    }
-  }
-}

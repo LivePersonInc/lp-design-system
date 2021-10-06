@@ -5,13 +5,11 @@
 $black: #000;
 $white: #FFF;
 
-$navy-black: #07092E;
 $navy-darker: #090C43;
 $navy-dark: #1B1F52;
-$navy: #3B4585;
+$navy: #22295D;
 $navy-light: #8493D6;
-$navy-lighter: #BDCBFA;
-$navy-lightest: #DCE4FF;
+$navy-lighter: #BFCBF2;
 $navy-white: #F8FAFF;
 
 $blue-darker: #0632A1;
@@ -27,16 +25,16 @@ $periwinkle-light: #9CB3ED;
 $periwinkle-lighter: #C9D5F3;
 
 $orange-darker: #A84E0A;
-$orange-dark: #D65800;
+$orange-dark: #DB5A00;
 $orange: #FF6900;
 $orange-light: #FCAC73;
 $orange-lighter: #FFC399;
 
-$cyan-darker: #1F858E;
-$cyan-dark: #24B0BC;
-$cyan: #2DD7E6;
-$cyan-light: #81E5EE;
-$cyan-lighter: #BBF7FC;
+$cyan-darker: #1F788E;
+$cyan-dark: #249EBC;
+$cyan: #2DC1E6;
+$cyan-light: #81D8EE;
+$cyan-lighter: #BBEFFC;
 
 $green-darker: #09821D;
 $green-dark: #1AA731;
@@ -57,22 +55,17 @@ $yellow-light: #F4DB76;
 $yellow-lighter: #F5E6A8;
 
 // Chart colors
-$chart-violet: #8964D8;
-$chart-pink: #EC5FAB;
-$chart-red: #EF6161;
-$chart-yellow: #C78100;
-$chart-lime: #6B9E1A;
 $chart-blue: #5A8DFC;
-$chart-teal: #21A194;
-$chart-purple: #9B4677;
-$chart-gold: #7A5001;
-$chart-turquoise: #1F6F71;
-$chart-navy-darker: #37497D;
-$chart-navy-light: #99AFDE;
-$chart-ocean-darker: #24294D;
-$chart-ocean: #7282AB;
+$chart-yellow: #F7C53B;
+$chart-red: #EB4C5F;
+$chart-violet: #B494FA;
+$chart-green: #149603;
+$chart-pink: #EB94CF;
+$chart-navy-light: $navy-light;
+$chart-navy-lighter: $navy-lighter;
 
-$focus-outline: 0 0 0 2px $navy-black, 0 0 0 4px $white;
+// Focus
+$focus-outline: 0 0 0 2px $navy-darker, 0 0 0 4px $white;
 
 // Semantic names
 $primary: $blue;

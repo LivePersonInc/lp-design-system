@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationCampaignIcon, { ApplicationCampaignIconProps } from './ApplicationCampaignIcon';
+import ApplicationCampaignIcon from './ApplicationCampaignIcon';
 
 DireflowComponent.create({
   component: ApplicationCampaignIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-campaign-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-campaign-icon': ApplicationCampaignIconProps
-    }
-  }
-}

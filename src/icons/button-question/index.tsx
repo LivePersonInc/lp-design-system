@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ButtonQuestionIcon, { ButtonQuestionIconProps } from './ButtonQuestionIcon';
+import ButtonQuestionIcon from './ButtonQuestionIcon';
 
 DireflowComponent.create({
   component: ButtonQuestionIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-button-question-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-button-question-icon': ButtonQuestionIconProps
-    }
-  }
-}

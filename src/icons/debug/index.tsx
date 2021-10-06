@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DebugIcon, { DebugIconProps } from './DebugIcon';
+import DebugIcon from './DebugIcon';
 
 DireflowComponent.create({
   component: DebugIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-debug-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-debug-icon': DebugIconProps
-    }
-  }
-}

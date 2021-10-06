@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import VolumeDownIcon, { VolumeDownIconProps } from './VolumeDownIcon';
+import VolumeDownIcon from './VolumeDownIcon';
 
 DireflowComponent.create({
   component: VolumeDownIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-volume-down-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-volume-down-icon': VolumeDownIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DotsHorizIcon, { DotsHorizIconProps } from './DotsHorizIcon';
+import DotsHorizIcon from './DotsHorizIcon';
 
 DireflowComponent.create({
   component: DotsHorizIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-dots-horiz-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-dots-horiz-icon': DotsHorizIconProps
-    }
-  }
-}

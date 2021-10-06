@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ProactiveMessagingIcon, { ProactiveMessagingIconProps } from './ProactiveMessagingIcon';
+import ProactiveMessagingIcon from './ProactiveMessagingIcon';
 
 DireflowComponent.create({
   component: ProactiveMessagingIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-proactive-messaging-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-proactive-messaging-icon': ProactiveMessagingIconProps
-    }
-  }
-}

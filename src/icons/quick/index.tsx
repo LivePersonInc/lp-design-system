@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import QuickIcon, { QuickIconProps } from './QuickIcon';
+import QuickIcon from './QuickIcon';
 
 DireflowComponent.create({
   component: QuickIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-quick-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-quick-icon': QuickIconProps
-    }
-  }
-}

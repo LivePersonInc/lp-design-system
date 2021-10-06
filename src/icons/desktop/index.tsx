@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DesktopIcon, { DesktopIconProps } from './DesktopIcon';
+import DesktopIcon from './DesktopIcon';
 
 DireflowComponent.create({
   component: DesktopIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-desktop-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-desktop-icon': DesktopIconProps
-    }
-  }
-}

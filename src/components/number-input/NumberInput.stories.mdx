@@ -1,0 +1,78 @@
+import { createElement } from 'react';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from 'lpds/common/helpers';
+
+import NumberInput, { events } from './NumberInput';
+import './';
+
+<Meta
+  title="Components/Inputs/NumberInput"
+  component={NumberInput}
+  args={NumberInput.defaultProps}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+    textAlign: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: events,
+    },
+  }}
+/>
+
+export const Template = props => <lp-number-input {...getPropsByDefaultProps(NumberInput.defaultProps, props)} />;
+
+# NumberInput
+
+<ArgsTable of={NumberInput} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Controlled
+
+<Canvas>
+  <Story
+    name="Controlled"
+    args={{
+      value: 3,
+    }}
+    argTypes={{
+      theme: {
+        table: { disable: true },
+      },
+      size: {
+        table: { disable: true },
+      },
+      textAlign: {
+        table: { disable: true },
+      },
+      error: {
+        table: { disable: true },
+      },
+      disabled: {
+        table: { disable: true },
+      },
+      readOnly: {
+        table: { disable: true },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

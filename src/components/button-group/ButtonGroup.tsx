@@ -41,7 +41,7 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
         });
       });
     }
-  }, []);
+  }, [buttonClickHandler]);
 
   return (
     <Styled styles={styles} scoped={false}>

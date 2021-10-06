@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import EntryPointIcon, { EntryPointIconProps } from './EntryPointIcon';
+import EntryPointIcon from './EntryPointIcon';
 
 DireflowComponent.create({
   component: EntryPointIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-entry-point-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-entry-point-icon': EntryPointIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PlayerPreviousIcon, { PlayerPreviousIconProps } from './PlayerPreviousIcon';
+import PlayerPreviousIcon from './PlayerPreviousIcon';
 
 DireflowComponent.create({
   component: PlayerPreviousIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-player-previous-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-player-previous-icon': PlayerPreviousIconProps
-    }
-  }
-}

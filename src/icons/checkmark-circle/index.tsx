@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CheckmarkCircleIcon, { CheckmarkCircleIconProps } from './CheckmarkCircleIcon';
+import CheckmarkCircleIcon from './CheckmarkCircleIcon';
 
 DireflowComponent.create({
   component: CheckmarkCircleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-checkmark-circle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-checkmark-circle-icon': CheckmarkCircleIconProps
-    }
-  }
-}

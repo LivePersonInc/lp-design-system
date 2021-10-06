@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import AttachmentHorizIcon, { AttachmentHorizIconProps } from './AttachmentHorizIcon';
+import AttachmentHorizIcon from './AttachmentHorizIcon';
 
 DireflowComponent.create({
   component: AttachmentHorizIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-attachment-horiz-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-attachment-horiz-icon': AttachmentHorizIconProps
-    }
-  }
-}

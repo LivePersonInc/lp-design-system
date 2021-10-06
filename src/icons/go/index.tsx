@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import GoIcon, { GoIconProps } from './GoIcon';
+import GoIcon from './GoIcon';
 
 DireflowComponent.create({
   component: GoIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-go-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-go-icon': GoIconProps
-    }
-  }
-}

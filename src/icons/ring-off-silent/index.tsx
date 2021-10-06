@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import RingOffSilentIcon, { RingOffSilentIconProps } from './RingOffSilentIcon';
+import RingOffSilentIcon from './RingOffSilentIcon';
 
 DireflowComponent.create({
   component: RingOffSilentIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-ring-off-silent-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-ring-off-silent-icon': RingOffSilentIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ChartBubbleIcon, { ChartBubbleIconProps } from './ChartBubbleIcon';
+import ChartBubbleIcon from './ChartBubbleIcon';
 
 DireflowComponent.create({
   component: ChartBubbleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-chart-bubble-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-chart-bubble-icon': ChartBubbleIconProps
-    }
-  }
-}

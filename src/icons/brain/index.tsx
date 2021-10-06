@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import BrainIcon, { BrainIconProps } from './BrainIcon';
+import BrainIcon from './BrainIcon';
 
 DireflowComponent.create({
   component: BrainIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-brain-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-brain-icon': BrainIconProps
-    }
-  }
-}

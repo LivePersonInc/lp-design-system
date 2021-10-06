@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PuzzleIcon, { PuzzleIconProps } from './PuzzleIcon';
+import PuzzleIcon from './PuzzleIcon';
 
 DireflowComponent.create({
   component: PuzzleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-puzzle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-puzzle-icon': PuzzleIconProps
-    }
-  }
-}

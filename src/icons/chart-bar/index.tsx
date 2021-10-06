@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ChartBarIcon, { ChartBarIconProps } from './ChartBarIcon';
+import ChartBarIcon from './ChartBarIcon';
 
 DireflowComponent.create({
   component: ChartBarIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-chart-bar-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-chart-bar-icon': ChartBarIconProps
-    }
-  }
-}

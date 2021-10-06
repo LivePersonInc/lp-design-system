@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import QrAddIcon, { QrAddIconProps } from './QrAddIcon';
+import QrAddIcon from './QrAddIcon';
 
 DireflowComponent.create({
   component: QrAddIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-qr-add-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-qr-add-icon': QrAddIconProps
-    }
-  }
-}

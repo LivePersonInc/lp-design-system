@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import LoadingSpinnerIcon, { LoadingSpinnerIconProps } from './LoadingSpinnerIcon';
+import LoadingSpinnerIcon from './LoadingSpinnerIcon';
 
 DireflowComponent.create({
   component: LoadingSpinnerIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-loading-spinner-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-loading-spinner-icon': LoadingSpinnerIconProps
-    }
-  }
-}

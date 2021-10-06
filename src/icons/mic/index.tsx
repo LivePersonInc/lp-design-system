@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import MicIcon, { MicIconProps } from './MicIcon';
+import MicIcon from './MicIcon';
 
 DireflowComponent.create({
   component: MicIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-mic-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-mic-icon': MicIconProps
-    }
-  }
-}

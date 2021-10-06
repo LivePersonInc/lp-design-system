@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DurationIcon, { DurationIconProps } from './DurationIcon';
+import DurationIcon from './DurationIcon';
 
 DireflowComponent.create({
   component: DurationIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-duration-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-duration-icon': DurationIconProps
-    }
-  }
-}

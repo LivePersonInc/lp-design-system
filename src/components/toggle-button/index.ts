@@ -1,32 +1,13 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ToggleButton, { ToggleButtonProps } from './ToggleButton';
+import { getComponentConfig, RobotoFontWeights } from 'lpds/common/direflow';
 
-DireflowComponent.create({
-  component: ToggleButton,
-  configuration: {
-    tagname: 'lp-toggle-button',
-  },
-  plugins: [
-    {
-      name: 'font-loader',
-      options: {
-        google: {
-          families: ['Roboto:700'],
-        },
-      },
-    },
-  ],
-}).then(element => {
+import ToggleButton from './ToggleButton';
+
+DireflowComponent.create(getComponentConfig(ToggleButton, 'lp-toggle-button', {
+  withRobotoFont: RobotoFontWeights.regular,
+})).then(element => {
   if (element.tagName === 'LP-TOGGLE-BUTTON') {
     element.tabIndex = 0;
   }
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-toggle-button': ToggleButtonProps
-    }
-  }
-}

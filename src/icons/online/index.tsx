@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import OnlineIcon, { OnlineIconProps } from './OnlineIcon';
+import OnlineIcon from './OnlineIcon';
 
 DireflowComponent.create({
   component: OnlineIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-online-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-online-icon': OnlineIconProps
-    }
-  }
-}

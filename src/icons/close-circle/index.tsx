@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CloseCircleIcon, { CloseCircleIconProps } from './CloseCircleIcon';
+import CloseCircleIcon from './CloseCircleIcon';
 
 DireflowComponent.create({
   component: CloseCircleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-close-circle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-close-circle-icon': CloseCircleIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import JoinIcon, { JoinIconProps } from './JoinIcon';
+import JoinIcon from './JoinIcon';
 
 DireflowComponent.create({
   component: JoinIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-join-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-join-icon': JoinIconProps
-    }
-  }
-}

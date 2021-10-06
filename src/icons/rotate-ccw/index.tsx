@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import RotateCcwIcon, { RotateCcwIconProps } from './RotateCcwIcon';
+import RotateCcwIcon from './RotateCcwIcon';
 
 DireflowComponent.create({
   component: RotateCcwIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-rotate-ccw-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-rotate-ccw-icon': RotateCcwIconProps
-    }
-  }
-}

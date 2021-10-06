@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import AgentIcon, { AgentIconProps } from './AgentIcon';
+import AgentIcon from './AgentIcon';
 
 DireflowComponent.create({
   component: AgentIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-agent-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-agent-icon': AgentIconProps
-    }
-  }
-}

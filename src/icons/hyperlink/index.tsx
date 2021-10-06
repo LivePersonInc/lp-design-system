@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import HyperlinkIcon, { HyperlinkIconProps } from './HyperlinkIcon';
+import HyperlinkIcon from './HyperlinkIcon';
 
 DireflowComponent.create({
   component: HyperlinkIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-hyperlink-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-hyperlink-icon': HyperlinkIconProps
-    }
-  }
-}

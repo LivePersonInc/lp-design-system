@@ -23,6 +23,7 @@ declare module '*.svg' {
 
 declare namespace JSX {
   interface IntrinsicElements {
-    'slot': any;
+    slot: React.DetailedHTMLProps<React.HTMLAttributes<HTMLSlotElement>, HTMLSlotElement> &
+      Partial<Pick<HTMLSlotElement, 'name'>>
   }
 }

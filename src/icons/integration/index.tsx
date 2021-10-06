@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import IntegrationIcon, { IntegrationIconProps } from './IntegrationIcon';
+import IntegrationIcon from './IntegrationIcon';
 
 DireflowComponent.create({
   component: IntegrationIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-integration-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-integration-icon': IntegrationIconProps
-    }
-  }
-}

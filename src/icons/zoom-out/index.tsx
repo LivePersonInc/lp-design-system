@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ZoomOutIcon, { ZoomOutIconProps } from './ZoomOutIcon';
+import ZoomOutIcon from './ZoomOutIcon';
 
 DireflowComponent.create({
   component: ZoomOutIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-zoom-out-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-zoom-out-icon': ZoomOutIconProps
-    }
-  }
-}

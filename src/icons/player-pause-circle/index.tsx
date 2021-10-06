@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PlayerPauseCircleIcon, { PlayerPauseCircleIconProps } from './PlayerPauseCircleIcon';
+import PlayerPauseCircleIcon from './PlayerPauseCircleIcon';
 
 DireflowComponent.create({
   component: PlayerPauseCircleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-player-pause-circle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-player-pause-circle-icon': PlayerPauseCircleIconProps
-    }
-  }
-}

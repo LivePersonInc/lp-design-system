@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Minimize2Icon, { Minimize2IconProps } from './Minimize2Icon';
+import Minimize2Icon from './Minimize2Icon';
 
 DireflowComponent.create({
   component: Minimize2Icon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-minimize-2-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-minimize-2-icon': Minimize2IconProps
-    }
-  }
-}

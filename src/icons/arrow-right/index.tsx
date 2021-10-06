@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ArrowRightIcon, { ArrowRightIconProps } from './ArrowRightIcon';
+import ArrowRightIcon from './ArrowRightIcon';
 
 DireflowComponent.create({
   component: ArrowRightIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-arrow-right-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-arrow-right-icon': ArrowRightIconProps
-    }
-  }
-}

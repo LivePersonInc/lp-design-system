@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import NotificationSuccessIcon, { NotificationSuccessIconProps } from './NotificationSuccessIcon';
+import NotificationSuccessIcon from './NotificationSuccessIcon';
 
 DireflowComponent.create({
   component: NotificationSuccessIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-notification-success-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-notification-success-icon': NotificationSuccessIconProps
-    }
-  }
-}

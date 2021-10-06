@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SpeedometerIcon, { SpeedometerIconProps } from './SpeedometerIcon';
+import SpeedometerIcon from './SpeedometerIcon';
 
 DireflowComponent.create({
   component: SpeedometerIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-speedometer-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-speedometer-icon': SpeedometerIconProps
-    }
-  }
-}

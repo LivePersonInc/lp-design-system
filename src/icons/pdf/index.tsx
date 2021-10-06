@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PdfIcon, { PdfIconProps } from './PdfIcon';
+import PdfIcon from './PdfIcon';
 
 DireflowComponent.create({
   component: PdfIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-pdf-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-pdf-icon': PdfIconProps
-    }
-  }
-}

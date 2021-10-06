@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SyncCwIcon, { SyncCwIconProps } from './SyncCwIcon';
+import SyncCwIcon from './SyncCwIcon';
 
 DireflowComponent.create({
   component: SyncCwIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-sync-cw-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-sync-cw-icon': SyncCwIconProps
-    }
-  }
-}

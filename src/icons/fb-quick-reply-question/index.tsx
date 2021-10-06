@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import FbQuickReplyQuestionIcon, { FbQuickReplyQuestionIconProps } from './FbQuickReplyQuestionIcon';
+import FbQuickReplyQuestionIcon from './FbQuickReplyQuestionIcon';
 
 DireflowComponent.create({
   component: FbQuickReplyQuestionIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-fb-quick-reply-question-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-fb-quick-reply-question-icon': FbQuickReplyQuestionIconProps
-    }
-  }
-}

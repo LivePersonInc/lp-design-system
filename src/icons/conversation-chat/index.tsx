@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ConversationChatIcon, { ConversationChatIconProps } from './ConversationChatIcon';
+import ConversationChatIcon from './ConversationChatIcon';
 
 DireflowComponent.create({
   component: ConversationChatIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-conversation-chat-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-conversation-chat-icon': ConversationChatIconProps
-    }
-  }
-}

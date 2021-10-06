@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import WebIcon, { WebIconProps } from './WebIcon';
+import WebIcon from './WebIcon';
 
 DireflowComponent.create({
   component: WebIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-web-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-web-icon': WebIconProps
-    }
-  }
-}

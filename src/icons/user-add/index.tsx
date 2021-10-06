@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import UserAddIcon, { UserAddIconProps } from './UserAddIcon';
+import UserAddIcon from './UserAddIcon';
 
 DireflowComponent.create({
   component: UserAddIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-user-add-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-user-add-icon': UserAddIconProps
-    }
-  }
-}

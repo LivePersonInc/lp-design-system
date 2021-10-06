@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CheckIcon, { CheckIconProps } from './CheckIcon';
+import CheckIcon from './CheckIcon';
 
 DireflowComponent.create({
   component: CheckIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-check-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-check-icon': CheckIconProps
-    }
-  }
-}

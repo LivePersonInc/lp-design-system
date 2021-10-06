@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import GoogleIcon, { GoogleIconProps } from './GoogleIcon';
+import GoogleIcon from './GoogleIcon';
 
 DireflowComponent.create({
   component: GoogleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-google-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-google-icon': GoogleIconProps
-    }
-  }
-}

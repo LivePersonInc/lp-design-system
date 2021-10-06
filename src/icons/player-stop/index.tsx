@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PlayerStopIcon, { PlayerStopIconProps } from './PlayerStopIcon';
+import PlayerStopIcon from './PlayerStopIcon';
 
 DireflowComponent.create({
   component: PlayerStopIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-player-stop-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-player-stop-icon': PlayerStopIconProps
-    }
-  }
-}

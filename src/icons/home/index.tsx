@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import HomeIcon, { HomeIconProps } from './HomeIcon';
+import HomeIcon from './HomeIcon';
 
 DireflowComponent.create({
   component: HomeIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-home-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-home-icon': HomeIconProps
-    }
-  }
-}

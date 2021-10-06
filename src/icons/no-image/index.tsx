@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import NoImageIcon, { NoImageIconProps } from './NoImageIcon';
+import NoImageIcon from './NoImageIcon';
 
 DireflowComponent.create({
   component: NoImageIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-no-image-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-no-image-icon': NoImageIconProps
-    }
-  }
-}

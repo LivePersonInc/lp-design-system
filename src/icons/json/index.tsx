@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import JsonIcon, { JsonIconProps } from './JsonIcon';
+import JsonIcon from './JsonIcon';
 
 DireflowComponent.create({
   component: JsonIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-json-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-json-icon': JsonIconProps
-    }
-  }
-}

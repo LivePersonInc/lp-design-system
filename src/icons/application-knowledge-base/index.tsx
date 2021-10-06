@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationKnowledgeBaseIcon, { ApplicationKnowledgeBaseIconProps } from './ApplicationKnowledgeBaseIcon';
+import ApplicationKnowledgeBaseIcon from './ApplicationKnowledgeBaseIcon';
 
 DireflowComponent.create({
   component: ApplicationKnowledgeBaseIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-knowledge-base-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-knowledge-base-icon': ApplicationKnowledgeBaseIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DarkThemeIcon, { DarkThemeIconProps } from './DarkThemeIcon';
+import DarkThemeIcon from './DarkThemeIcon';
 
 DireflowComponent.create({
   component: DarkThemeIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-dark-theme-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-dark-theme-icon': DarkThemeIconProps
-    }
-  }
-}

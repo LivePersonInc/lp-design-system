@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import NotificationUnreadIcon, { NotificationUnreadIconProps } from './NotificationUnreadIcon';
+import NotificationUnreadIcon from './NotificationUnreadIcon';
 
 DireflowComponent.create({
   component: NotificationUnreadIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-notification-unread-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-notification-unread-icon': NotificationUnreadIconProps
-    }
-  }
-}

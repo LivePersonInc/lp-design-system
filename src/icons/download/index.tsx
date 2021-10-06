@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import DownloadIcon, { DownloadIconProps } from './DownloadIcon';
+import DownloadIcon from './DownloadIcon';
 
 DireflowComponent.create({
   component: DownloadIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-download-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-download-icon': DownloadIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PlayerRecordIcon, { PlayerRecordIconProps } from './PlayerRecordIcon';
+import PlayerRecordIcon from './PlayerRecordIcon';
 
 DireflowComponent.create({
   component: PlayerRecordIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-player-record-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-player-record-icon': PlayerRecordIconProps
-    }
-  }
-}

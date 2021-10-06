@@ -1,0 +1,174 @@
+@use '~lpds/styles/border-radius';
+@use '~lpds/styles/colors';
+@use '~lpds/styles/colors-light';
+@use '~lpds/styles/common';
+@use '~lpds/styles/spacing';
+@use '~lpds/styles/transparency';
+@use '~lpds/styles/typography';
+
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+:host {
+  --host-height: 40px;
+
+  --color-button: #{colors.$navy-white};
+  --color-button--hover: #{colors.$navy-lightest};
+  --color-button--active: #{transparency.$light-1};
+  --color-button--focus: #{colors.$navy-lightest};
+
+  --color-button-text: #{colors.$navy-darker};
+  --color-button-text--hover: #{colors.$navy-darker};
+  --color-button-text--active: #{colors.$navy-white};
+  --color-button-text--focus: #{colors.$navy-darker};
+
+  --color-button-outline: #{colors.$focus-outline};
+
+  --color-selected: #{transparency.$light-1};
+  --color-selected-border: #{transparency.$light-4};
+  --color-selected-text: #{colors.$navy-white};
+
+  --color-progress-bar: #{colors.$cyan};
+
+  display: flex;
+  height: var(--host-height);
+  @include typography.main;
+  font-size: typography.$size-default;
+  color: var(--color-text);
+}
+:host([theme="light"]) {
+  --color-button: #{colors-light.$navy-lighter};
+  --color-button--hover: #{colors-light.$navy};
+  --color-button--active: #{colors-light.$navy-dark};
+  --color-button--focus: #{colors-light.$navy-white};
+
+  --color-button-text: #{colors-light.$navy-darker};
+  --color-button-text--hover: #{colors-light.$navy-white};
+  --color-button-text--active: #{colors-light.$navy-white};
+  --color-button-text--focus: #{colors-light.$navy-darker};
+
+  --color-button-outline: #{colors-light.$focus-outline};
+
+  --color-selected: #{colors-light.$white};
+  --color-selected-border: #{colors-light.$navy-light};
+  --color-selected-text: #{colors-light.$navy-dark};
+
+  --color-progress-bar: #{colors-light.$blue};
+}
+
+@include common.host-with-attr(disabled) {
+  --color-button: #{colors.$navy-lightest};
+  --color-button-text: #{colors.$navy-dark};
+}
+@include common.host-with-attr(disabled, '[theme="light"]') {
+  --color-button: #{colors-light.$navy-lighter};
+  --color-button-text: #{colors-light.$navy-darker};
+}
+
+@include common.host-with-attr(uploading) {
+  --color-button: #{transparency.$light-1};
+  --color-button-text: #{colors.$navy-white};
+}
+@include common.host-with-attr(uploading, '[theme="light"]') {
+  --color-button: #{colors-light.$navy-lighter};
+  --color-button-text: #{colors-light.$navy-darker};
+}
+
+@include common.host-with-attr(error) {
+  --color-selected-border: #{colors.$red-light};
+}
+@include common.host-with-attr(error, '[theme="light"]') {
+  --color-selected-border: #{colors.$red};
+}
+
+:host([size="medium"]) {
+  --input-height: 32px;
+}
+
+$border-radius: border-radius.get-border-radius();
+$padding-size: spacing.get-space(s, true);
+
+input {
+  position: absolute;
+  z-index: -1;
+  padding: 0;
+  margin: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+[part="file-upload-button"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font: inherit;
+  font-size: common.get-em(16px);
+  font-weight: typography.$weight-medium;
+  color: var(--color-button-text);
+  border: none;
+  background: var(--color-button);
+  box-shadow: none;
+  border-radius: $border-radius 0 0 $border-radius;
+  padding: 0 spacing.get-space(m, true);
+  cursor: pointer;
+  transition: all .15s ease-out;
+
+  &[disabled] {
+    opacity: transparency.$disabled;
+    cursor: default;
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      color: var(--color-button-text--hover);
+      background-color: var(--color-button--hover);
+    }
+
+    &:active {
+      color: var(--color-button-text--active);
+      background-color: var(--color-button--active);
+    }
+
+    &:focus {
+      color: var(--color-button-text--focus);
+      background-color: var(--color-button--focus);
+    }
+  }
+}
+
+[part="selected-files"] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  min-width: common.get-em(100px);
+  height: var(--input-height);
+  color: var(--color-selected-text);
+  border-radius: 0 $border-radius $border-radius 0;
+  background: var(--color-selected);
+  box-shadow: inset 0 0 0 1px var(--color-selected-border);
+  padding: 0 spacing.get-space(s, true);
+  overflow: hidden;
+  transition: all .15s ease-out;
+
+  span {
+    opacity: transparency.$disabled;
+  }
+}
+
+[part="uploading-progress-bar"] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-progress-bar);
+  overflow: hidden;
+  transition: width .15s ease-out;
+}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationHelpIcon, { ApplicationHelpIconProps } from './ApplicationHelpIcon';
+import ApplicationHelpIcon from './ApplicationHelpIcon';
 
 DireflowComponent.create({
   component: ApplicationHelpIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-help-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-help-icon': ApplicationHelpIconProps
-    }
-  }
-}

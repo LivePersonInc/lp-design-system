@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CloudIcon, { CloudIconProps } from './CloudIcon';
+import CloudIcon from './CloudIcon';
 
 DireflowComponent.create({
   component: CloudIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-cloud-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-cloud-icon': CloudIconProps
-    }
-  }
-}

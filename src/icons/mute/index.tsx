@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import MuteIcon, { MuteIconProps } from './MuteIcon';
+import MuteIcon from './MuteIcon';
 
 DireflowComponent.create({
   component: MuteIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-mute-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-mute-icon': MuteIconProps
-    }
-  }
-}

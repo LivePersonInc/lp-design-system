@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import LockInSquareIcon, { LockInSquareIconProps } from './LockInSquareIcon';
+import LockInSquareIcon from './LockInSquareIcon';
 
 DireflowComponent.create({
   component: LockInSquareIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-lock-in-square-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-lock-in-square-icon': LockInSquareIconProps
-    }
-  }
-}

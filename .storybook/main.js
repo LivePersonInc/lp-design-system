@@ -34,4 +34,7 @@ module.exports = {
 
     return config;
   },
+  typescript: {
+    check: true,
+  },
 };

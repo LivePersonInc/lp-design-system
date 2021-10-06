@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ListPickerQuestionIcon, { ListPickerQuestionIconProps } from './ListPickerQuestionIcon';
+import ListPickerQuestionIcon from './ListPickerQuestionIcon';
 
 DireflowComponent.create({
   component: ListPickerQuestionIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-list-picker-question-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-list-picker-question-icon': ListPickerQuestionIconProps
-    }
-  }
-}

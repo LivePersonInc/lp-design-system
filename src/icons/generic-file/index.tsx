@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import GenericFileIcon, { GenericFileIconProps } from './GenericFileIcon';
+import GenericFileIcon from './GenericFileIcon';
 
 DireflowComponent.create({
   component: GenericFileIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-generic-file-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-generic-file-icon': GenericFileIconProps
-    }
-  }
-}

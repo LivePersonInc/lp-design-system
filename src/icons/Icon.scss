@@ -10,14 +10,11 @@ $icons-sizes: (
 :host {
   $default-size: map-get($icons-sizes, small);
 
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: $default-size;
   height: $default-size;
-
-  svg {
-    width: $default-size;
-    height: $default-size;
-  }
 
   path {
     fill: currentColor;
@@ -28,11 +25,6 @@ $icons-sizes: (
   :host([size="#{$name}"]) {
     width: $size;
     height: $size;
-
-    svg {
-      width: $size;
-      height: $size;
-    }
   }
 }
 

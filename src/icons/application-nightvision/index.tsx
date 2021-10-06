@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ApplicationNightvisionIcon, { ApplicationNightvisionIconProps } from './ApplicationNightvisionIcon';
+import ApplicationNightvisionIcon from './ApplicationNightvisionIcon';
 
 DireflowComponent.create({
   component: ApplicationNightvisionIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-application-nightvision-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-application-nightvision-icon': ApplicationNightvisionIconProps
-    }
-  }
-}

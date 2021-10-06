@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import IntentAnnotationRequiredIcon, { IntentAnnotationRequiredIconProps } from './IntentAnnotationRequiredIcon';
+import IntentAnnotationRequiredIcon from './IntentAnnotationRequiredIcon';
 
 DireflowComponent.create({
   component: IntentAnnotationRequiredIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-intent-annotation-required-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-intent-annotation-required-icon': IntentAnnotationRequiredIconProps
-    }
-  }
-}

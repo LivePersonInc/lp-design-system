@@ -1,12 +1,11 @@
 import { createElement } from 'react';
 import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
 
+import WithIconStoryDescription from 'lpds/icons/WithIconStoryDescription.mdx';
 import { icons } from 'lpds/icons/icons';
-
 import 'lpds/icons';
 
 import Button from './Button';
-
 import './';
 
 <Meta
@@ -66,16 +65,13 @@ or
 
 ## With icon
 
-You can add any LPDS icon component as child of Button component by using `slot` tag with `slot` attribute with value `icon-left` or `icon-right`
-
-**Note:** Do not forget to import this icon component
+<WithIconStoryDescription />
 
 <Canvas withSource={SourceState.OPEN}>
   <Story
     name="With icon"
     args={{
-      icon: icons[0],
-      iconPlacement: 'left',
+      iconLeft: icons[0],
       theme: 'dark',
       variant: 'primary',
       size: 'medium',
@@ -83,6 +79,14 @@ You can add any LPDS icon component as child of Button component by using `slot`
       disabled: false,
     }}
     argTypes={{
+      iconLeft: {
+        options: icons,
+        control: { type: 'select' },
+      },
+      iconRight: {
+        options: icons,
+        control: { type: 'select' },
+      },
       theme: {
         table: { category: 'Button args' },
       },
@@ -95,28 +99,22 @@ You can add any LPDS icon component as child of Button component by using `slot`
       label: {
         table: { category: 'Button args' },
       },
-      icon: {
-        options: icons,
-        control: { type: 'select' },
-      },
-      iconPlacement: {
-        options: ['left', 'right'],
-        control: { type: 'inline-radio' },
+      disabled: {
+        table: { category: 'Button args' },
       },
     }}
   >
-    {({ icon, iconPlacement, theme, variant, size, label, disabled }) => (
+    {({ iconLeft, iconRight, theme, variant, size, label, disabled }) => (
       <lp-button
-        key={`${icon}-${iconPlacement}`}
+        key={`${iconLeft}-${iconRight}`}
         theme={theme === 'dark' ? undefined : theme}
         variant={variant === 'primary' ? undefined : variant}
         size={size === 'medium' ? undefined : size}
         label={label}
         disabled={disabled === false ? undefined : disabled}
       >
-        <slot slot={`icon-${iconPlacement}`}>
-          {createElement(`lp-${icon}-icon`)}
-        </slot>
+        {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
+        {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
       </lp-button>
     )}
   </Story>

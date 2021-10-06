@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ConsumerStudioDesignIcon, { ConsumerStudioDesignIconProps } from './ConsumerStudioDesignIcon';
+import ConsumerStudioDesignIcon from './ConsumerStudioDesignIcon';
 
 DireflowComponent.create({
   component: ConsumerStudioDesignIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-consumer-studio-design-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-consumer-studio-design-icon': ConsumerStudioDesignIconProps
-    }
-  }
-}

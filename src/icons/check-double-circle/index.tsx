@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CheckDoubleCircleIcon, { CheckDoubleCircleIconProps } from './CheckDoubleCircleIcon';
+import CheckDoubleCircleIcon from './CheckDoubleCircleIcon';
 
 DireflowComponent.create({
   component: CheckDoubleCircleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-check-double-circle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-check-double-circle-icon': CheckDoubleCircleIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import InteractionSettingsIcon, { InteractionSettingsIconProps } from './InteractionSettingsIcon';
+import InteractionSettingsIcon from './InteractionSettingsIcon';
 
 DireflowComponent.create({
   component: InteractionSettingsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-interaction-settings-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-interaction-settings-icon': InteractionSettingsIconProps
-    }
-  }
-}

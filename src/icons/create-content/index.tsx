@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CreateContentIcon, { CreateContentIconProps } from './CreateContentIcon';
+import CreateContentIcon from './CreateContentIcon';
 
 DireflowComponent.create({
   component: CreateContentIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-create-content-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-create-content-icon': CreateContentIconProps
-    }
-  }
-}

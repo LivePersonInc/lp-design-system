@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ChannelPlaceholderIcon, { ChannelPlaceholderIconProps } from './ChannelPlaceholderIcon';
+import ChannelPlaceholderIcon from './ChannelPlaceholderIcon';
 
 DireflowComponent.create({
   component: ChannelPlaceholderIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-channel-placeholder-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-channel-placeholder-icon': ChannelPlaceholderIconProps
-    }
-  }
-}

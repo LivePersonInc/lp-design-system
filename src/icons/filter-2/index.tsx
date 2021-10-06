@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import Filter2Icon, { Filter2IconProps } from './Filter2Icon';
+import Filter2Icon from './Filter2Icon';
 
 DireflowComponent.create({
   component: Filter2Icon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-filter-2-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-filter-2-icon': Filter2IconProps
-    }
-  }
-}

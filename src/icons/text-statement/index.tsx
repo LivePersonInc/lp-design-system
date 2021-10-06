@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TextStatementIcon, { TextStatementIconProps } from './TextStatementIcon';
+import TextStatementIcon from './TextStatementIcon';
 
 DireflowComponent.create({
   component: TextStatementIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-text-statement-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-text-statement-icon': TextStatementIconProps
-    }
-  }
-}

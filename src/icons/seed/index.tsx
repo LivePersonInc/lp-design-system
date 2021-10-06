@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SeedIcon, { SeedIconProps } from './SeedIcon';
+import SeedIcon from './SeedIcon';
 
 DireflowComponent.create({
   component: SeedIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-seed-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-seed-icon': SeedIconProps
-    }
-  }
-}

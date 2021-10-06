@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import OfflineIcon, { OfflineIconProps } from './OfflineIcon';
+import OfflineIcon from './OfflineIcon';
 
 DireflowComponent.create({
   component: OfflineIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-offline-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-offline-icon': OfflineIconProps
-    }
-  }
-}

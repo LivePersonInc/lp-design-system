@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ArrowUpDoubleIcon, { ArrowUpDoubleIconProps } from './ArrowUpDoubleIcon';
+import ArrowUpDoubleIcon from './ArrowUpDoubleIcon';
 
 DireflowComponent.create({
   component: ArrowUpDoubleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-arrow-up-double-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-arrow-up-double-icon': ArrowUpDoubleIconProps
-    }
-  }
-}

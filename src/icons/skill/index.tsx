@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SkillIcon, { SkillIconProps } from './SkillIcon';
+import SkillIcon from './SkillIcon';
 
 DireflowComponent.create({
   component: SkillIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-skill-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-skill-icon': SkillIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import MagicStarsIcon, { MagicStarsIconProps } from './MagicStarsIcon';
+import MagicStarsIcon from './MagicStarsIcon';
 
 DireflowComponent.create({
   component: MagicStarsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-magic-stars-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-magic-stars-icon': MagicStarsIconProps
-    }
-  }
-}

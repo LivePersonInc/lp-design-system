@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import XlsIcon, { XlsIconProps } from './XlsIcon';
+import XlsIcon from './XlsIcon';
 
 DireflowComponent.create({
   component: XlsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-xls-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-xls-icon': XlsIconProps
-    }
-  }
-}

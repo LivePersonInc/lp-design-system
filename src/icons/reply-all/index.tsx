@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ReplyAllIcon, { ReplyAllIconProps } from './ReplyAllIcon';
+import ReplyAllIcon from './ReplyAllIcon';
 
 DireflowComponent.create({
   component: ReplyAllIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-reply-all-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-reply-all-icon': ReplyAllIconProps
-    }
-  }
-}

@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ReloadCcwIcon, { ReloadCcwIconProps } from './ReloadCcwIcon';
+import ReloadCcwIcon from './ReloadCcwIcon';
 
 DireflowComponent.create({
   component: ReloadCcwIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-reload-ccw-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-reload-ccw-icon': ReloadCcwIconProps
-    }
-  }
-}

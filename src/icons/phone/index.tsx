@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import PhoneIcon, { PhoneIconProps } from './PhoneIcon';
+import PhoneIcon from './PhoneIcon';
 
 DireflowComponent.create({
   component: PhoneIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-phone-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-phone-icon': PhoneIconProps
-    }
-  }
-}

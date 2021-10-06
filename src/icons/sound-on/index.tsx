@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SoundOnIcon, { SoundOnIconProps } from './SoundOnIcon';
+import SoundOnIcon from './SoundOnIcon';
 
 DireflowComponent.create({
   component: SoundOnIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-sound-on-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-sound-on-icon': SoundOnIconProps
-    }
-  }
-}

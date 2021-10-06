@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ClockIcon, { ClockIconProps } from './ClockIcon';
+import ClockIcon from './ClockIcon';
 
 DireflowComponent.create({
   component: ClockIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-clock-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-clock-icon': ClockIconProps
-    }
-  }
-}

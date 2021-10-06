@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import QuestionCircleIcon, { QuestionCircleIconProps } from './QuestionCircleIcon';
+import QuestionCircleIcon from './QuestionCircleIcon';
 
 DireflowComponent.create({
   component: QuestionCircleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-question-circle-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-question-circle-icon': QuestionCircleIconProps
-    }
-  }
-}

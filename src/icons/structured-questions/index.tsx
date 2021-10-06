@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import StructuredQuestionsIcon, { StructuredQuestionsIconProps } from './StructuredQuestionsIcon';
+import StructuredQuestionsIcon from './StructuredQuestionsIcon';
 
 DireflowComponent.create({
   component: StructuredQuestionsIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-structured-questions-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-structured-questions-icon': StructuredQuestionsIconProps
-    }
-  }
-}

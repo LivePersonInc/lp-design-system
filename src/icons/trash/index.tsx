@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import TrashIcon, { TrashIconProps } from './TrashIcon';
+import TrashIcon from './TrashIcon';
 
 DireflowComponent.create({
   component: TrashIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-trash-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-trash-icon': TrashIconProps
-    }
-  }
-}

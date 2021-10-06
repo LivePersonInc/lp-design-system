@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import SortAscIcon, { SortAscIconProps } from './SortAscIcon';
+import SortAscIcon from './SortAscIcon';
 
 DireflowComponent.create({
   component: SortAscIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-sort-asc-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-sort-asc-icon': SortAscIconProps
-    }
-  }
-}

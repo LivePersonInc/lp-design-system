@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import ArticleIcon, { ArticleIconProps } from './ArticleIcon';
+import ArticleIcon from './ArticleIcon';
 
 DireflowComponent.create({
   component: ArticleIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-article-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-article-icon': ArticleIconProps
-    }
-  }
-}

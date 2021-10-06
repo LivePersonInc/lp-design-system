@@ -1,6 +1,6 @@
 import { DireflowComponent } from 'direflow-component';
 
-import CampaignOutboundIcon, { CampaignOutboundIconProps } from './CampaignOutboundIcon';
+import CampaignOutboundIcon from './CampaignOutboundIcon';
 
 DireflowComponent.create({
   component: CampaignOutboundIcon,
@@ -8,11 +8,3 @@ DireflowComponent.create({
     tagname: 'lp-campaign-outbound-icon',
   },
 });
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'lp-campaign-outbound-icon': CampaignOutboundIconProps
-    }
-  }
-}

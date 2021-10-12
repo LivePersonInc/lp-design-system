@@ -1,0 +1,45 @@
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs';
+
+import { hideControls } from '../common/storybook';
+
+import IconsList from './IconsList/IconsList';
+
+import Icon from './Icon';
+
+<Meta
+  title="Icons/All Icons"
+  component={Icon}
+  argTypes={{
+    type: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{ docsOnly: true }}
+/>
+
+# All icons
+
+<ArgsTable story="All icons" compact />
+
+<Story
+  name="All icons"
+  args={{
+    name: '',
+    ...Icon.defaultProps,
+  }}
+  argTypes={{
+    ...hideControls(['class', 'color']),
+    name: {
+      control: { type: 'text' },
+      description: 'This is for filtering icons by name',
+    },
+  }}
+  parameters={{
+    controls: { expanded: false },
+  }}
+>
+  {props => <IconsList {...props} />}
+</Story>

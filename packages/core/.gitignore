@@ -1,0 +1,12 @@
+.idea
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
+build
+storybook-static
+
+node_modules
+package-lock.json
+yarn.lock

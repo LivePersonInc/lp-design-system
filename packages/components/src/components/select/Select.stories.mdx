@@ -1,0 +1,127 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from '../../common/helpers';
+
+import Select from './Select';
+import SelectOption from './SelectOption';
+import './';
+
+<Meta
+  title="Components/Inputs/Select"
+  component={Select}
+  subcomponents={{ SelectOption }}
+  args={{
+    ...Select.defaultProps,
+    numberOfOptions: 5,
+  }}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: ['change'],
+    },
+  }}
+/>
+
+export const Template = (
+  { numberOfOptions = 5, numberOfSuggestions = 0, actions = [], ...props },
+) => (
+  <lp-select
+    {...getPropsByDefaultProps(Select.defaultProps, props)}
+    key={`${numberOfOptions}-${numberOfSuggestions}-${actions.length}`}
+  >
+    {Array(numberOfOptions).fill(null).map((item, index) => (
+      <lp-select-option
+        key={index}
+        slot={index < numberOfSuggestions ? 'suggestions' : undefined}
+        value={index + 1}
+      >
+        <span>Option {index + 1}</span>
+      </lp-select-option>
+    ))}
+    {actions.map((action, index) => (
+      <button key={index} slot="actions" type="button">{action}</button>
+    ))}
+  </lp-select>
+);
+
+# Select
+
+<ArgsTable of={Select} />
+
+**Note:** Those attributes extend [HTMLTextAreaElement](https://www.w3schools.com/tags/tag_select.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With scroll
+
+<Canvas>
+  <Story name="With scroll" args={{ numberOfOptions: 10 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With suggestions
+
+<Canvas>
+  <Story name="With suggestions" args={{ numberOfSuggestions: 2 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With actions
+
+<Canvas>
+  <Story name="With actions" args={{ actions: ['Action 1'] }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With suggestions and actions
+
+<Canvas>
+  <Story name="With suggestions and actions" args={{ numberOfSuggestions: 2, actions: ['Action 1'] }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With search
+
+<Canvas>
+  <Story name="With search" args={{ search: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Multiple Selection
+
+<Canvas>
+  <Story name="Multiple Selection" args={{ multiple: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With search and multiple Selection
+
+<Canvas>
+  <Story name="With search and multiple Selection" args={{ search: true, multiple: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Select all
+
+<Canvas>
+  <Story name="With Select all" args={{ withSelectAll: 'Select all', multiple: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

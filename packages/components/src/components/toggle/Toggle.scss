@@ -1,0 +1,201 @@
+@use '~@liveperson-design-system/tokens/scss/border-radius';
+@use '~@liveperson-design-system/tokens/scss/box-shadow';
+@use '~@liveperson-design-system/tokens/scss/colors';
+@use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+@use '~@liveperson-design-system/tokens/scss/transparency';
+@use '~@liveperson-design-system/tokens/scss/typography';
+
+:host {
+  --color-toggle-circle: #{colors.$navy-white};
+
+  --color-toggle: #{transparency.$light-4};
+  --color-toggle-hover: #{colors.$periwinkle-dark};
+
+  --color-toggle-checked: #{colors.$cyan-dark};
+  --color-toggle-checked-hover: #{colors.$cyan-darker};
+
+  --color-toggle-outline: #{colors.$focus-outline};
+
+  --color-label: #{colors.$navy-white};
+  --color-label-hover: #{colors.$navy-white};
+
+  display: inline-block;
+  vertical-align: middle;
+  @include typography.input-label;
+  padding: 1px 0;
+}
+:host([theme="light"]) {
+  --color-toggle-circle: #{colors-light.$navy-white};
+
+  --color-toggle: #{colors-light.$navy-light};
+  --color-toggle-hover: #{colors-light.$navy};
+
+  --color-toggle-checked: #{colors-light.$blue-light};
+  --color-toggle-checked-hover: #{colors-light.$blue-dark};
+
+  --color-toggle-outline: #{colors-light.$focus-outline};
+
+  --color-label: #{colors-light.$navy-dark};
+  --color-label-hover: #{colors-light.$navy-darker};
+}
+
+$toggle-circle-width: common.get-em(14px, typography.$size-small);
+$toggle-circle-offset: 1px;
+$toggle-offset: spacing.get-space(xs);
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-label);
+  transition: color .15s ease-out;
+
+  :host([labelPosition="left"]) & {
+    flex-direction: row-reverse;
+  }
+}
+
+input {
+  &[type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &[disabled] {
+      + .label {
+        opacity: transparency.$disabled;
+        cursor: default;
+      }
+    }
+
+    &:not([disabled]) {
+      &:focus {
+        + .label {
+          color: var(--color-label-hover);
+
+          .slider {
+            background-color: var(--color-toggle-hover);
+            box-shadow: var(--color-toggle-outline);
+          }
+        }
+      }
+
+      + .label {
+        &:hover {
+          color: var(--color-label-hover);
+
+          .slider {
+            background-color: var(--color-toggle-hover);
+          }
+        }
+
+        &:active {
+          .slider {
+            background-color: var(--color-toggle-hover);
+          }
+        }
+      }
+
+      &:checked {
+        &:focus {
+          + .label {
+            .slider {
+              background-color: var(--color-toggle-checked-hover);
+              box-shadow: var(--color-toggle-outline);
+            }
+          }
+        }
+
+        + .label {
+          &:hover {
+            .slider {
+              background-color: var(--color-toggle-checked-hover);
+            }
+          }
+
+          &:active {
+            .slider {
+              background-color: var(--color-toggle-checked-hover);
+            }
+          }
+        }
+      }
+    }
+
+    &:checked {
+      + .label {
+        .slider {
+          background-color: var(--color-toggle-checked);
+
+          &::after {
+            transform: translate(calc(100% - #{$toggle-circle-offset}), -50%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  display: block;
+  width: $toggle-circle-width * 2;
+  height: calc(#{$toggle-circle-width} + #{$toggle-circle-offset} * 2);
+  border-radius: border-radius.get-border-radius(m);
+  background-color: var(--color-toggle);
+  margin-right: $toggle-offset;
+  transition: all .15s ease-out;
+
+  :host([labelPosition="left"]) & {
+    margin-left: $toggle-offset;
+    margin-right: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: $toggle-circle-width;
+    height: calc(100% - #{$toggle-circle-offset * 2});
+    border-radius: 50%;
+    background-color: var(--color-toggle-circle);
+    @include box-shadow.box-shadow;
+    transform: translate(#{$toggle-circle-offset}, -50%);
+    transition: transform .15s ease-out;
+  }
+
+  span {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    display: block;
+    @include box-shadow.box-shadow;
+    transform: translateY(-50%);
+
+    &:first-child {
+      left: common.get-em(7px, typography.$size-small);
+      width: 1px;
+      height: common.get-em(7px, typography.$size-small);
+      background-color: colors.$navy-white;
+    }
+
+    &:last-child {
+      right: common.get-em(4px, typography.$size-small);
+      width: common.get-em(4px, typography.$size-small);
+      height: common.get-em(4px, typography.$size-small);
+      border: 1px solid colors.$navy-lighter;
+      border-radius: 50%;
+    }
+  }
+}

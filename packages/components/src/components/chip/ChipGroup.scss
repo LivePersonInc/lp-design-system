@@ -1,0 +1,29 @@
+@use 'sass:math';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+lp-chip {
+  &,
+  ::slotted(&) {
+    margin: math.div(spacing.get-space(xxs), 2);
+  }
+
+  &:first-child {
+    &,
+    ::slotted(&) {
+      margin-left: 0;
+    }
+  }
+
+  &:last-child {
+    &,
+    ::slotted(&) {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "lpds/common/*": ["./common/*"],
+      "lpds/components/*": ["./components/*"]
+    }
+  }
+}

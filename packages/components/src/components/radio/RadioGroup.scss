@@ -1,0 +1,24 @@
+@use '~@liveperson-design-system/tokens/scss/border-radius';
+@use '~@liveperson-design-system/tokens/scss/colors';
+@use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+@use '~@liveperson-design-system/tokens/scss/transparency';
+@use '~@liveperson-design-system/tokens/scss/typography';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+lp-radio {
+  ::slotted(&) {
+    margin-right: spacing.get-space(s);
+  }
+
+  &:last-child {
+    ::slotted(&) {
+      margin-right: 0;
+    }
+  }
+}

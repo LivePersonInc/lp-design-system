@@ -1,0 +1,164 @@
+@use '~@liveperson-design-system/tokens/scss/border-radius';
+@use '~@liveperson-design-system/tokens/scss/colors';
+@use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+@use '~@liveperson-design-system/tokens/scss/transparency';
+@use '~@liveperson-design-system/tokens/scss/typography';
+
+:host {
+  --color-border: #{transparency.$light-4};
+  --color-border--hover: #{colors.$navy-white};
+  --color-border--active: #{colors.$cyan};
+  --color-border--focus: #{colors.$cyan};
+  --color-border--disabled: #{transparency.$light-1};
+  --color-border--error: #{colors.$red-light};
+
+  --color-outline: #{colors.$focus-outline};
+
+  --color-bg: #{transparency.$light-1};
+
+  --color-text: #{colors.$navy-white};
+  --color-text--error: #{colors.$navy-white};
+
+  --input-height: 38px;
+  --input-text-align: left;
+
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  color: var(--color-text);
+}
+:host([theme="light"]) {
+  --color-border: #{colors-light.$navy-light};
+  --color-border--hover: #{colors-light.$navy};
+  --color-border--active: #{colors-light.$periwinkle};
+  --color-border--focus: #{colors-light.$periwinkle};
+  --color-border--disabled: #{transparency.$dark-1};
+  --color-border--error: #{colors-light.$red};
+
+  --color-outline: #{colors-light.$focus-outline};
+
+  --color-bg: #{colors-light.$white};
+
+  --color-text: #{colors-light.$navy-dark};
+  --color-text--error: #{colors-light.$red};
+}
+
+:host([size="medium"]) {
+  --input-height: 30px;
+}
+
+:host([textAlign="center"]) {
+  --input-text-align: center;
+}
+:host([textAlign="right"]) {
+  --input-text-align: right;
+}
+
+$icon-size: 16px;
+$icon-offset: spacing.get-space(xs);
+$padding-size: spacing.get-space(s, true);
+
+input {
+  flex-grow: 1;
+  max-width: 100%;
+  font: inherit;
+  text-align: var(--input-text-align);
+  @include typography.input-value;
+  height: var(--input-height);
+  color: inherit;
+  border: 1px solid var(--color-border);
+  outline: none;
+  border-radius: border-radius.get-border-radius();
+  background: var(--color-bg);
+  box-shadow: none;
+  -webkit-tap-highlight-color: rgba(#fff, 0);
+  padding: 0 $padding-size;
+  margin: 0;
+  transition: all .15s ease-out;
+
+  // States
+  &[disabled] {
+    border-color: var(--color-border--disabled);
+    opacity: transparency.$disabled;
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      border-color: var(--color-border--hover);
+    }
+
+    &:active,
+    &:focus {
+      border-color: var(--color-border--active);
+    }
+
+    &:focus {
+      box-shadow: var(--color-outline);
+    }
+
+    :host([error]:not([error="false"])) & {
+      border-color: var(--color-border--error);
+    }
+
+    &[readOnly] {
+      border-color: transparent;
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+
+      $padding-size-with-icon: $icon-size + $icon-offset;
+
+      &.with-icon-left {
+        padding-left: $padding-size-with-icon;
+      }
+
+      &.with-icon-right {
+        padding-right: $padding-size-with-icon;
+      }
+    }
+  }
+
+  $padding-size-with-icon: $icon-size + $padding-size + $icon-offset;
+
+  &.with-icon-left {
+    padding-left: $padding-size-with-icon;
+  }
+
+  &.with-icon-right {
+    padding-right: $padding-size-with-icon;
+  }
+}
+
+slot {
+  &[name^="icon-"] {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    user-select: none;
+    pointer-events: none;
+    transition: all .15s ease-out;
+
+    &[name$="left"] {
+      left: $padding-size;
+
+      :host([readOnly]:not([readOnly="false"])) & {
+        left: 0;
+      }
+    }
+
+    &[name$="right"] {
+      right: $padding-size;
+
+      :host([readOnly]:not([readOnly="false"])) & {
+        right: 0;
+      }
+    }
+
+    :host([error]:not([error="false"])) & {
+      color: var(--color-text--error);
+    }
+  }
+}

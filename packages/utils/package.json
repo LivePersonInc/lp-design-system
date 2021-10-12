@@ -1,0 +1,41 @@
+{
+  "name": "@liveperson-design-system/utils",
+  "version": "0.1.0",
+  "description": "The company design system utils for LivePerson",
+  "keywords": [
+    "design-system",
+    "designsystem",
+    "live-person",
+    "liveperson",
+    "utils"
+  ],
+  "contributors": [
+    {
+      "name": "Mykhailo Riabokon",
+      "email": "mriabokon@liveperson.com"
+    },
+    {
+      "name": "Itay Haephrati",
+      "email": "ihaephrati@liveperson.com"
+    },
+    {
+      "name": "Charlie Wu",
+      "email": "chwu@liveperson.com"
+    }
+  ],
+  "homepage": "https://github.com/LivePersonInc/lp-design-system/tree/main/packages/utils#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LivePersonInc/lp-design-system.git",
+    "directory": "packages/utils"
+  },
+  "bugs": {
+    "url": "https://github.com/LivePersonInc/lp-design-system/issues"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": ["*"],
+  "dependencies": {},
+  "devDependencies": {}
+}

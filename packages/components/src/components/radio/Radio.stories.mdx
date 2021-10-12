@@ -1,0 +1,84 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from '../../common/helpers';
+
+import Radio, { radioDefaultProps } from './Radio';
+import RadioGroup from './RadioGroup';
+import './';
+
+<Meta
+  title="Components/Inputs/Radio"
+  component={RadioGroup}
+  subcomponents={{ Radio }}
+  args={{
+    theme: 'dark',
+    size: 'default',
+    label: 'RadioGroup',
+    labelPosition: 'left',
+    error: false,
+    disabled: false,
+    readOnly: false,
+    selected: '',
+  }}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+    label: {
+      description: 'Can be provided as a child element',
+      table: {
+        description: 'Can be provided as a child element',
+      },
+    },
+    labelPosition: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: ['change'],
+    },
+  }}
+/>
+
+# Radio
+
+Radio component always has to work with RadioGroup component. For this, you don't need to import two modules.
+RadioGroup and Radio components place in one `radio` module
+
+```javascript
+'liveperson-design-system/components/radio'
+```
+
+<ArgsTable of={RadioGroup} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Radio Group
+
+<Canvas>
+  <Story
+    name="Radio Group"
+    args={{
+      elements: ['Radio 1', 'Radio 2', 'Radio 3'],
+      selected: 'Radio 2',
+    }}
+    argTypes={{
+      label: { table: { disable: true } },
+    }}
+  >
+    {({ name, selected, elements, ...props }) => (
+      <lp-radio-group
+        key={`${elements.toString()}-${selected}`}
+        name={name}
+        selected={selected}
+        {...getPropsByDefaultProps(radioDefaultProps, props)}
+      >
+        {elements.map(element => <lp-radio key={element} label={element} value={element} />)}
+      </lp-radio-group>
+    )}
+  </Story>
+</Canvas>

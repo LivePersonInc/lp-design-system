@@ -1,0 +1,104 @@
+@use './transparency';
+
+// Dark theme (default)
+
+$black: #000;
+$white: #FFF;
+
+$navy-black: #07092E;
+$navy-darker: #090C43;
+$navy-dark: #1B1F52;
+$navy: #22295D;
+$navy-light: #8493D6;
+$navy-lighter: #BFCBF2;
+$navy-lightest: #C1C6F0;
+$navy-white: #F8FAFF;
+
+$blue-darker: #0632A1;
+$blue-dark: #0841D4;
+$blue: #0C50FF;
+$blue-light: #4D7EFF;
+$blue-lighter: #8CACFF;
+
+$periwinkle-darker: #344C89;
+$periwinkle-dark: #3C5CAF;
+$periwinkle: #4A6EC9;
+$periwinkle-light: #9CB3ED;
+$periwinkle-lighter: #C9D5F3;
+
+$orange-darker: #A84E0A;
+$orange-dark: #DB5A00;
+$orange: #FF6900;
+$orange-light: #FCAC73;
+$orange-lighter: #FFC399;
+
+$cyan-darker: #1F788E;
+$cyan-dark: #249EBC;
+$cyan: #2DC1E6;
+$cyan-light: #81D8EE;
+$cyan-lighter: #BBEFFC;
+
+$green-darker: #09821D;
+$green-dark: #1AA731;
+$green-default: #26CC41;
+$green-light: #6BE17E;
+$green-lighter: #A1E8AD;
+
+$red-darker: #9C0A28;
+$red-dark: #C2062E;
+$red: #D1153A;
+$red-light: #F7A2B5;
+$red-lighter: #FFCED9;
+
+$yellow-darker: #AA8C13;
+$yellow-dark: #D2AD18;
+$yellow: #EBBF14;
+$yellow-light: #F4DB76;
+$yellow-lighter: #F5E6A8;
+
+// Chart colors
+$chart-blue: #5A8DFC;
+$chart-yellow: #F7C53B;
+$chart-red: #EB4C5F;
+$chart-violet: #B494FA;
+$chart-green: #149603;
+$chart-pink: #EB94CF;
+$chart-navy-light: $navy-light;
+$chart-navy-lighter: $navy-lighter;
+
+// Focus
+$focus-outline: 0 0 0 2px $navy-darker, 0 0 0 4px $white;
+
+// Semantic names
+$primary: $blue;
+$primary--hover: $blue-dark;
+$primary--active: $blue-darker;
+$primary-text: $navy-white;
+
+$secondary: $navy-white;
+$secondary--hover: $navy-lighter;
+$secondary--active: $periwinkle-darker;
+$secondary-text: $navy-dark;
+$secondary-text--active: $navy-white;
+
+$tertiary: transparent;
+$tertiary--active: $navy-lighter;
+$tertiary-border: $navy-lighter;
+$tertiary-border--hover: $navy-light;
+$tertiary-border: $navy-lighter;
+$tertiary-text: $navy-white;
+$tertiary-text--active: $navy-dark;
+
+$destructive: $red;
+$destructive--hover: $red-dark;
+$destructive--active: $red-darker;
+$destructive-text: $navy-white;
+
+$ghost: transparent;
+$ghost--hover: transparency.$light-2;
+$ghost--active: transparency.$light-3;
+
+$inline: transparent;
+$inline-text: $cyan;
+$inline-text--hover: $cyan-dark;
+$inline-text--active: $cyan-darker;

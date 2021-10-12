@@ -1,0 +1,119 @@
+import { createElement } from 'react';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import WithIconStoryDescription, { icons } from '../../common/withIconStory';
+
+import ToggleButton from './ToggleButton';
+import './';
+
+<Meta
+  title="Components/ToggleButton"
+  component={ToggleButton}
+  argTypes={{
+    theme: {
+      control: { type: 'inline-radio' },
+    },
+    size: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+/>
+
+# Button
+
+<ArgsTable of={ToggleButton} />
+
+`label` value can be provided by `label` attribute or by `slot` tag with the attribute `slot="label"`
+
+Example:
+```html
+<lp-toggle-button label="Button" />
+```
+or
+```html
+<lp-toggle-button>
+  <slot slot="label">Button</slot>
+</lp-toggle-button>
+```
+
+## Basic
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      theme: 'dark',
+      selected: false,
+      size: 'medium',
+      label: 'Button',
+      disabled: false,
+    }}
+  >
+    {({ theme, selected, size, label, disabled }) => (
+      <lp-toggle-button
+        theme={theme === 'dark' ? undefined : theme}
+        selected={selected ? true : undefined}
+        size={size === 'medium' ? undefined : size}
+        label={label}
+        disabled={disabled ? true : undefined}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## With icon
+
+<WithIconStoryDescription />
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story
+    name="With icon"
+    args={{
+      iconLeft: icons[0],
+      theme: 'dark',
+      selected: false,
+      size: 'medium',
+      label: 'With icon',
+      disabled: false,
+    }}
+    argTypes={{
+      iconLeft: {
+        options: icons,
+        control: { type: 'select' },
+      },
+      iconRight: {
+        options: icons,
+        control: { type: 'select' },
+      },
+      theme: {
+        table: { category: 'Button args' },
+      },
+      selected: {
+        table: { category: 'Button args' },
+      },
+      size: {
+        table: { category: 'Button args' },
+      },
+      label: {
+        table: { category: 'Button args' },
+      },
+      disabled: {
+        table: { category: 'Button args' },
+      },
+    }}
+  >
+    {({ iconLeft, iconRight, theme, selected, size, label, disabled }) => (
+      <lp-toggle-button
+        key={`${iconLeft}-${iconRight}`}
+        theme={theme === 'dark' ? undefined : theme}
+        selected={selected ? true : undefined}
+        size={size === 'medium' ? undefined : size}
+        label={label}
+        disabled={disabled ? true : undefined}
+      >
+        {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
+        {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
+      </lp-toggle-button>
+    )}
+  </Story>
+</Canvas>

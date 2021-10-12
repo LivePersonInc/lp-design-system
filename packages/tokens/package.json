@@ -1,0 +1,38 @@
+{
+  "name": "@liveperson-design-system/tokens",
+  "description": "The company design system tokens for LivePerson",
+  "version": "0.3.0",
+  "contributors": [
+    {
+      "name": "Mykhailo Riabokon",
+      "email": "mriabokon@liveperson.com"
+    },
+    {
+      "name": "Itay Haephrati",
+      "email": "ihaephrati@liveperson.com"
+    },
+    {
+      "name": "Charlie Wu",
+      "email": "chwu@liveperson.com"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "designsystem",
+    "live-person",
+    "liveperson",
+    "tokens"
+  ],
+  "homepage": "https://livepersoninc.github.io/lp-design-system/?path=/story/tokens",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LivePersonInc/lp-design-system",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/LivePersonInc/lp-design-system/issues"
+  },
+  "main": "index.js",
+  "files": ["*"]
+}

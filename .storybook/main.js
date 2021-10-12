@@ -1,9 +1,10 @@
-const webpackAlias = require('../webpack-alias');
+const path = require('path');
 
 module.exports = {
   stories: [
     '../docs/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../packages/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   addons: [
     '@storybook/preset-create-react-app',
@@ -11,11 +12,14 @@ module.exports = {
     'storybook-addon-designs',
   ],
   webpackFinal: async config => {
-    config.resolve.alias = { ...config.resolve.alias, ...webpackAlias };
-
     const oneOfRuleIndex = config.module.rules.findIndex(item => item.oneOf);
 
     if (oneOfRuleIndex !== -1) {
+      const tsRuleIndex = config.module.rules[oneOfRuleIndex].oneOf.findIndex(rule => '.ts'.match(rule.test));
+      if (tsRuleIndex !== -1) {
+        config.module.rules[oneOfRuleIndex].oneOf[tsRuleIndex].include.push(path.resolve(__dirname, '../packages'));
+      }
+
       const cssRuleIndex = config.module.rules[oneOfRuleIndex].oneOf.findIndex(rule => '.css'.match(rule.test));
       if (cssRuleIndex !== -1) {
         config.module.rules[oneOfRuleIndex].oneOf[cssRuleIndex].use = ['to-string-loader', 'css-loader'];

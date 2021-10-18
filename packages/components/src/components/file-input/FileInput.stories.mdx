@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import { getPropsByDefaultProps } from '../../common/helpers';
-import { hideControls } from '../../common/storybook';
+import { commonArgTypes, hideControls } from '../../common/storybook';
 
 import FileInput, { events } from './FileInput';
 import './';
@@ -11,12 +11,7 @@ import './';
   component={FileInput}
   args={FileInput.defaultProps}
   argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    size: {
-      control: { type: 'inline-radio' },
-    },
+    ...commonArgTypes,
     buttonLabel: {},
     uploading: {},
     uploadingButtonLabel: {},

@@ -3,7 +3,6 @@ import { EventContext } from 'direflow-component';
 import classNames from 'classnames';
 
 import { useHostElement } from '../../common/hooks';
-
 import Styled from '../../common/Styled';
 
 import styles from './Dropdown.scss';
@@ -155,7 +154,7 @@ const Dropdown: DropdownComponent = (
   }, [isOpen, contentPlacement, getHostElement, parentOffset, parentSelector]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       <slot
         ref={toggleSlotElRef}
         name="toggle"

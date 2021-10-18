@@ -1,7 +1,7 @@
-import { createElement } from 'react';
-import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes, hideControls } from '../../common/storybook';
 
 import NumberInput, { events } from './NumberInput';
 import './';
@@ -11,12 +11,7 @@ import './';
   component={NumberInput}
   args={NumberInput.defaultProps}
   argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    size: {
-      control: { type: 'inline-radio' },
-    },
+    ...commonArgTypes,
     textAlign: {
       control: { type: 'inline-radio' },
     },
@@ -49,29 +44,8 @@ export const Template = props => <lp-number-input {...getPropsByDefaultProps(Num
 <Canvas>
   <Story
     name="Controlled"
-    args={{
-      value: 3,
-    }}
-    argTypes={{
-      theme: {
-        table: { disable: true },
-      },
-      size: {
-        table: { disable: true },
-      },
-      textAlign: {
-        table: { disable: true },
-      },
-      error: {
-        table: { disable: true },
-      },
-      disabled: {
-        table: { disable: true },
-      },
-      readOnly: {
-        table: { disable: true },
-      },
-    }}
+    args={{ value: 3 }}
+    argTypes={hideControls(['theme', 'size', 'textAlign', 'error', 'disabled', 'readOnly'])}
   >
     {Template.bind({})}
   </Story>

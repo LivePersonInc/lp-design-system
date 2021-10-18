@@ -3,8 +3,11 @@
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
 @use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
+
+@include common.base-styles;
 
 :host {
   --color-border: #{transparency.$light-1};
@@ -21,7 +24,8 @@
 
   display: inline-flex;
   align-items: center;
-  @include typography.button-label;
+  @include typography.with-font-family;
+  @include typography.button;
   white-space: nowrap;
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -57,9 +61,9 @@
 
   --color-outline: #{colors-light.$focus-outline};
 
-  --color-bg: #{colors-light.$periwinkle-lighter};
-  --color-bg-hover: #{colors-light.$periwinkle-light};
-  --color-bg-focus: #{colors-light.$periwinkle-light};
+  --color-bg: #{transparency.$light-2};
+  --color-bg-hover: #{colors-light.$navy-lighter};
+  --color-bg-focus: #{colors-light.$navy-lighter};
 
   --color-text: #{colors-light.$navy-darker};
 }
@@ -71,7 +75,7 @@
 
 button {
   display: block;
-  @include common.button-transparent;
+  @include helpers.button-transparent;
   margin-left: spacing.get-space(xxs) * -1;
   margin-right: spacing.get-space(xxs);
 

@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
-import { useHostElement } from '../../common/hooks';
-
 import { getPropsByDefaultProps } from '../../common/helpers';
-
+import { useHostElement } from '../../common/hooks';
 import Styled from '../../common/Styled';
 
 import Chip, { ChipProps } from './Chip';

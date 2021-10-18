@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 import classNames from 'classnames';
 
 import { Theme } from '../../common/types';
+import Styled from '../../common/Styled';
 
 import '@liveperson-design-system/icons/requested';
 
@@ -11,12 +12,14 @@ import styles from './TextInput.scss';
 export type TextInputSizes = 'large' | 'medium'
 export type TextInputTextAligners = 'left' | 'center' | 'right'
 
-export type TextInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & {
+export type TextInputCustomProps = {
   theme?: Theme
   size?: TextInputSizes
   textAlign?: TextInputTextAligners
   error?: boolean
 }
+
+export type TextInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & TextInputCustomProps
 
 export type TextInputComponent = React.FC<TextInputProps>
 
@@ -80,11 +83,7 @@ const TextInput: TextInputComponent = (
   }, [valueProp]);
 
   return (
-    <>
-      <Styled styles={styles} scoped={false}>
-        <div />
-      </Styled>
-
+    <Styled styles={styles}>
       <slot name="icon-left" />
 
       <input
@@ -104,7 +103,7 @@ const TextInput: TextInputComponent = (
       <slot name="icon-right">
         {error && <lp-requested-icon />}
       </slot>
-    </>
+    </Styled>
   );
 };
 

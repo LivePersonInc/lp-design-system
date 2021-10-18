@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 import classNames from 'classnames';
 
 import { Theme } from '../../common/types';
+import Styled from '../../common/Styled';
 
 import '@liveperson-design-system/icons/requested';
 
@@ -10,7 +11,7 @@ import styles from './Textarea.scss';
 
 export type TextareaTextAligners = 'left' | 'center' | 'right'
 
-export type TextareaProps = JSX.IntrinsicElements['textarea'] & {
+export type TextareaCustomProps = {
   theme?: Theme
   textAlign?: TextareaTextAligners
   error?: boolean
@@ -18,6 +19,8 @@ export type TextareaProps = JSX.IntrinsicElements['textarea'] & {
   defaultValue?: string
   resizable?: boolean
 }
+
+export type TextareaProps = JSX.IntrinsicElements['textarea'] & TextareaCustomProps
 
 export type TextareaComponent = React.FC<TextareaProps>
 
@@ -57,35 +60,31 @@ const Textarea: TextareaComponent = ({ theme, textAlign, error, value, defaultVa
   }, []);
 
   return (
-    <>
+    <Styled styles={styles}>
       <slot name="icon-left" />
 
-      <Styled styles={styles} scoped={false}>
-        <slot>
-          <textarea
-            {...props}
-            ref={textareaElRef}
-            className={classNames({
-              'with-icon-left': isIconLeftExist,
-              'with-icon-right': (error || isIconRightExist),
-            })}
-            onBlur={inputEventHandler('blur')}
-            onChange={inputEventHandler('change')}
-            onFocus={inputEventHandler('focus')}
-            onInput={inputEventHandler('input')}
-            onKeyDown={inputEventHandler('key-down')}
-            onKeyPress={inputEventHandler('key-press')}
-            onKeyUp={inputEventHandler('key-up')}
-          >
-            {value || defaultValue}
-          </textarea>
-        </slot>
-      </Styled>
+      <textarea
+        {...props}
+        ref={textareaElRef}
+        className={classNames({
+          'with-icon-left': isIconLeftExist,
+          'with-icon-right': (error || isIconRightExist),
+        })}
+        onBlur={inputEventHandler('blur')}
+        onChange={inputEventHandler('change')}
+        onFocus={inputEventHandler('focus')}
+        onInput={inputEventHandler('input')}
+        onKeyDown={inputEventHandler('key-down')}
+        onKeyPress={inputEventHandler('key-press')}
+        onKeyUp={inputEventHandler('key-up')}
+      >
+        {value || defaultValue}
+      </textarea>
 
       <slot name="icon-right">
         {error && <lp-requested-icon />}
       </slot>
-    </>
+    </Styled>
   );
 };
 

@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
 
 import Select from './Select';
 import SelectOption from './SelectOption';
@@ -14,11 +15,7 @@ import './';
     ...Select.defaultProps,
     numberOfOptions: 5,
   }}
-  argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-  }}
+  argTypes={commonArgTypes}
   parameters={{
     actions: {
       handles: ['change'],

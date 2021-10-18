@@ -2,140 +2,99 @@
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
 
-@mixin variant-state($state, $theme, $additionalSelector: '') {
-  @if $state == default {
-    @if $additionalSelector != '' {
-      :host(#{$additionalSelector}) {
-        @content;
-      }
-    } @else {
-      :host {
-        @content;
-      }
-    }
-  } @else if $state == hover {
-    :host(#{$additionalSelector}:hover[disabled="false"]) {
-      @content;
-    }
-    :host(#{$additionalSelector}:hover:not([disabled]):not([disabled="true"])) {
-      @content;
-    }
-  } @else if $state == focus {
-    :host(#{$additionalSelector}:focus[disabled="false"]) {
-      @content;
-    }
-    :host(#{$additionalSelector}:focus:not([disabled]):not([disabled="true"])) {
-      @content;
-    }
-  } @else if $state == active {
-    :host(#{$additionalSelector}:active[disabled="false"]) {
-      @content;
-    }
-    :host(#{$additionalSelector}:active:not([disabled]):not([disabled="true"])) {
-      @content;
-    }
-  } @else if $state == disabled {
-    :host(#{$additionalSelector}[disabled]:not([disabled="false"])) {
-      @content;
-    }
-    :host(#{$additionalSelector}[disabled="true"]) {
-      @content;
-    }
-  }
-}
-
-@mixin button-variant($selected: false) {
-  $selectors: default hover focus active disabled;
-
-  $selected: if(
-      $selected,
-        ('[selected]:not([selected="false"])'),
-        ('[selected="false"]', ':not([selected]):not([selected="true"])'),
-  );
-
-  @each $state in $selectors {
-    @each $s in $selected {
-      @include variant-state($state, dark, $s) {
-        @content($state, dark);
-      }
-    ;
-    }
-  }
-
-  @each $state in $selectors {
-    @each $s in $selected {
-      @include variant-state($state, light, '[theme="light"]#{$s}') {
-        @content($state, light);
-      }
-    ;
-    }
-  }
-}
+@include common.base-styles;
 
 :host {
-  box-sizing: border-box;
+  --size-height: 32px;
+  --size-padding: spacing.get-space(s, true);
+
+  --color-bg: transparent;
+  --color-border: #{colors.$blue-darker};
+  --color-text: #{colors.$navy-white};
+  --color-outline: #{colors.$focus-outline};
+
   display: inline-flex;
   align-items: center;
-  height: 32px;
-  @include typography.button-label(true);
+  height: var(--size-height);
+  @include typography.with-font-family;
+  @include typography.button(medium);
   text-align: center;
-  color: colors.$primary-text;
-  border: 2px solid colors.$cyan-dark;
+  color: var(--color-text);
   @include border-radius.border-radius(l);
-  background: none;
-  @include spacing.padding(none, s, true);
+  background: var(--color-bg);
+  box-shadow: inset 0 0 0 2px var(--color-border);
+  padding: 0 var(--size-padding);
   cursor: pointer;
 }
-:host([theme="light"]) {
-  color: colors-light.$blue-dark;
-  border-color: colors-light.$blue-light;
+:host(:hover),
+:host(:focus) {
+  --color-bg: #{transparency.$light-2};
+  --color-border: #{colors.$blue-dark};
+}
+:host(:active) {
+  --color-bg: #{transparency.$light-3};
+  --color-border: #{colors.$blue-darker};
+}
+:host(:focus) {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--color-border), var(--color-outline);
 }
 
-@include button-variant using($state, $theme) {
-  @if $state == hover {
-    background: if($theme == dark, rgba(140, 172, 255, .15), rgba(0, 10, 116, .08));
-  } @else if $state == focus {
-    @if $theme == dark {
-      outline: none;
-    }
+[theme="light"] {
+  :host(&) {
+    --color-bg: transparent;
+    --color-border: #{colors-light.$blue-light};
+    --color-text: #{colors-light.$blue-dark};
+    --color-outline: #{colors-light.$focus-outline};
+  }
 
-    background: if($theme == dark, rgba(140, 172, 255, .15), rgba(0, 10, 116, .08));
-    box-shadow: if($theme == dark, colors.$focus-outline, colors-light.$focus-outline);
-  } @else if $state == disabled {
-    opacity: transparency.$disabled;
-    cursor: default;
+  :host(&:hover),
+  :host(&:focus) {
+    --color-bg: #{transparency.$dark-1};
+    --color-border: #{colors-light.$blue};
+  }
+  :host(&:active) {
+    --color-bg: #{transparency.$dark-2};
+    --color-border: #{colors-light.$blue-dark};
   }
 }
 
-@include button-variant(true) using($state, $theme) {
-  @if $state == default {
-    color: if($theme == dark, colors.$navy-dark, colors-light.$navy-white);
-    border: none;
-    background: if($theme == dark, colors.$cyan-light, colors-light.$blue-dark);
-  } @else if $state == hover or $state == focus {
-    background: if($theme == dark, colors.$cyan, colors-light.$blue-darker);
-  } @else if $state == disabled {
-    @if $theme == dark {
-      color: colors.$periwinkle-darker;
-      opacity: transparency.$disabled;
-      cursor: default;
-    } @else {
-      color: colors-light.$navy-white;
-      background: colors-light.$blue;
-    }
+[selected]:not([selected="false"]) {
+  :host(&) {
+    --color-bg: #{colors.$blue-lighter};
+    --color-text: #{colors.$navy-dark};
+  }
+  :host(&:hover),
+  :host(&:focus) {
+    --color-bg: #{colors.$blue-light};
+  }
+  :host(&:active) {
+    --color-bg: #{colors.$blue};
   }
 
-  @if $state == focus {
-    box-shadow: if($theme == dark, colors.$focus-outline, colors-light.$focus-outline);
+  &[theme="light"] {
+    :host(&) {
+      --color-bg: #{colors-light.$blue-dark};
+      --color-text: #{colors-light.$navy-white};
+    }
+    :host(&:hover),
+    :host(&:focus) {
+      --color-bg: #{colors-light.$blue-darker};
+    }
+    :host(&:active) {
+      --color-bg: #{colors-light.$blue-darker};
+    }
   }
 }
 
 :host([size="small"]) {
-  height: 24px;
-  @include spacing.padding(none, xs, true);
+  --size-height: 24px;
+  --size-padding: spacing.get-space(xs, true);
 
   ::slotted([slot="icon-left"]) {
     margin-left: 0;

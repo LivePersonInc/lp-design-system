@@ -9,12 +9,14 @@ import styles from './NumberInput.scss';
 export type NumberInputSizes = 'large' | 'medium'
 export type NumberInputTextAligners = 'left' | 'center' | 'right'
 
-export type NumberInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & {
+export type NumberInputCustomProps = {
   theme?: Theme
   size?: NumberInputSizes
   textAlign?: NumberInputTextAligners
   error?: boolean
 }
+
+export type NumberInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & NumberInputCustomProps
 
 export type NumberInputComponent = React.FC<NumberInputProps>
 

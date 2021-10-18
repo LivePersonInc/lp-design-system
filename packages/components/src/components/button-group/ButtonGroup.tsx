@@ -1,7 +1,9 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 
 import { Theme } from '../../common/types';
+
+import Styled from '../../common/Styled';
 
 import styles from './ButtonGroup.scss';
 
@@ -16,8 +18,8 @@ export type ButtonGroupProps = JSX.IntrinsicElements['div'] & ButtonGroupCustomP
 
 export type ButtonGroupComponent = React.FC<ButtonGroupProps>
 
-const ButtonGroup: ButtonGroupComponent = ({ children }) => {
-  const wrapEl = useRef<HTMLDivElement>(null);
+const ButtonGroup: ButtonGroupComponent = () => {
+  const slotElRef = useRef<HTMLSlotElement>(null);
 
   const dispatch = useContext(EventContext);
 
@@ -26,28 +28,22 @@ const ButtonGroup: ButtonGroupComponent = ({ children }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (wrapEl.current) {
-      const slotEl = wrapEl.current.querySelector('slot');
+    const buttons = slotElRef.current?.assignedElements();
 
-      const buttons = slotEl?.assignedElements();
+    buttons?.forEach(button => {
+      button.addEventListener('click', (e): void => {
+        buttons.find(({ classList }) => classList.contains('selected'))?.classList.remove('selected');
 
-      buttons?.forEach(button => {
-        button.addEventListener('click', (e): void => {
-          buttons.find(({ classList }) => classList.contains('active'))?.classList.remove('active');
+        (e.target as HTMLButtonElement).classList.add('selected');
 
-          (e.target as HTMLButtonElement).classList.add('active');
-
-          buttonClickHandler(e);
-        });
+        buttonClickHandler(e);
       });
-    }
+    });
   }, [buttonClickHandler]);
 
   return (
-    <Styled styles={styles} scoped={false}>
-      <div ref={wrapEl} className="wrap">
-        {children}
-      </div>
+    <Styled styles={styles}>
+      <slot ref={slotElRef} />
     </Styled>
   );
 };

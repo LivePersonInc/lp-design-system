@@ -1,18 +1,20 @@
 import { ArgsTable, Canvas, Meta, SourceState, Story } from '@storybook/addon-docs';
 
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
+
 import ButtonGroup from './ButtonGroup';
 import './';
 
 <Meta
   title="Components/ButtonGroup"
   component={ButtonGroup}
+  args={{
+    ...ButtonGroup.defaultProps,
+    buttons: ['Button1', 'Button2', 'Button3', 'Button4', 'Button5'],
+  }}
   argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    size: {
-      control: { type: 'inline-radio' },
-    },
+    ...commonArgTypes,
     buttons: {
       control: { type: 'object' },
     },
@@ -24,6 +26,14 @@ import './';
   }}
 />
 
+export const Template = ({ selected, buttons, ...props }) => (
+  <lp-button-group key={buttons.toString()} {...getPropsByDefaultProps(ButtonGroup.defaultProps, props)}>
+    {buttons.map((button, index) => (
+      <button key={index} class={index + 1 === selected ? 'selected' : undefined}>{button}</button>
+    ))}
+  </lp-button-group>
+)
+
 # Button
 
 <ArgsTable of={ButtonGroup} />
@@ -33,50 +43,17 @@ All buttons have to be provided as children elements
 ## Basic
 
 <Canvas withSource={SourceState.OPEN}>
-  <Story
-    name="Basic"
-    args={{
-      theme: 'dark',
-      size: 'default',
-      buttons: ['Button1', 'Button2', 'Button3', 'Button4', 'Button5'],
-    }}
-  >
-    {({ theme, size, buttons }) => (
-      <lp-button-group
-        key={buttons.toString()}
-        theme={theme === 'dark' ? undefined : theme}
-        size={size === 'default' ? undefined : size}
-      >
-        {buttons.map((button, index) => <button key={index}>{button}</button>)}
-      </lp-button-group>
-    )}
+  <Story name="Basic">
+    {Template.bind({})}
   </Story>
 </Canvas>
 
-## Default active
+## Default selected
 
-You can easily set the default active button by adding `active` class to the button item
+You can easily set the default selected button by adding `selected` class to the button item
 
 <Canvas withSource={SourceState.OPEN}>
-  <Story
-    name="Default active"
-    args={{
-      theme: 'dark',
-      size: 'default',
-      active: 2,
-      buttons: ['Button1', 'Button2', 'Button3', 'Button4', 'Button5'],
-    }}
-  >
-    {({ theme, size, active, buttons }) => (
-      <lp-button-group
-        key={`${buttons.toString()}-${active}`}
-        theme={theme === 'dark' ? undefined : theme}
-        size={size === 'default' ? undefined : size}
-      >
-        {buttons.map((button, index) => (
-          <button key={index} class={index === active - 1 ? 'active' : undefined}>{button}</button>
-        ))}
-      </lp-button-group>
-    )}
+  <Story name="Default active" args={{ selected: 2 }}>
+    {Template.bind({})}
   </Story>
 </Canvas>

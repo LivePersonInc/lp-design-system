@@ -1,14 +1,19 @@
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
+
+@include common.base-styles;
 
 :host {
   --color-text: #{colors.$navy-white};
 
   display: flex;
   align-items: center;
+  @include typography.with-font-family;
   color: var(--color-text);
 }
 
@@ -16,7 +21,7 @@
   --color-text: #{colors-light.$navy-darker};
 }
 
-:host([disabled]:not([disabled="false"])) {
+@include helpers.host-with-attr(disabled) {
   opacity: transparency.$disabled;
 }
 

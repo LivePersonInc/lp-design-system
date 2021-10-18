@@ -13,11 +13,13 @@ import '../checkbox';
 
 import styles from './Select.scss';
 
-export type SelectProps = JSX.IntrinsicElements['select'] & {
+export type SelectCustomProps = {
   theme?: Theme
   search?: boolean
   withSelectAll?: false | string
 }
+
+export type SelectProps = JSX.IntrinsicElements['select'] & SelectCustomProps
 
 export type SelectComponent = React.FC<SelectProps>
 

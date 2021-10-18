@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes, hideControls } from '../../common/storybook';
 
 import Radio, { radioDefaultProps } from './Radio';
 import RadioGroup from './RadioGroup';
@@ -10,29 +11,9 @@ import './';
   title="Components/Inputs/Radio"
   component={RadioGroup}
   subcomponents={{ Radio }}
-  args={{
-    theme: 'dark',
-    size: 'default',
-    label: 'RadioGroup',
-    labelPosition: 'left',
-    error: false,
-    disabled: false,
-    readOnly: false,
-    selected: '',
-  }}
+  args={RadioGroup.defaultProps}
   argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    size: {
-      control: { type: 'inline-radio' },
-    },
-    label: {
-      description: 'Can be provided as a child element',
-      table: {
-        description: 'Can be provided as a child element',
-      },
-    },
+    ...commonArgTypes,
     labelPosition: {
       control: { type: 'inline-radio' },
     },
@@ -44,13 +25,24 @@ import './';
   }}
 />
 
+export const Template = ({ name, selected, elements, ...props }) => (
+  <lp-radio-group
+    key={`${elements.toString()}-${selected}`}
+    name={name}
+    selected={selected}
+    {...getPropsByDefaultProps(radioDefaultProps, props)}
+  >
+    {elements.map(element => <lp-radio key={element} label={element} value={element} />)}
+  </lp-radio-group>
+)
+
 # Radio
 
 Radio component always has to work with RadioGroup component. For this, you don't need to import two modules.
 RadioGroup and Radio components place in one `radio` module
 
 ```javascript
-'liveperson-design-system/components/radio'
+import '@liveperson-design-system/components/radio';
 ```
 
 <ArgsTable of={RadioGroup} />
@@ -66,19 +58,8 @@ RadioGroup and Radio components place in one `radio` module
       elements: ['Radio 1', 'Radio 2', 'Radio 3'],
       selected: 'Radio 2',
     }}
-    argTypes={{
-      label: { table: { disable: true } },
-    }}
+    argTypes={hideControls(['label'])}
   >
-    {({ name, selected, elements, ...props }) => (
-      <lp-radio-group
-        key={`${elements.toString()}-${selected}`}
-        name={name}
-        selected={selected}
-        {...getPropsByDefaultProps(radioDefaultProps, props)}
-      >
-        {elements.map(element => <lp-radio key={element} label={element} value={element} />)}
-      </lp-radio-group>
-    )}
+    {Template.bind({})}
   </Story>
 </Canvas>

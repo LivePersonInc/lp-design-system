@@ -1,52 +1,28 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
+
 import InputHelper from './InputHelper';
 import './';
 
 <Meta
   title="Components/Inputs/InputHelper"
   component={InputHelper}
-  argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-  }}
+  args={InputHelper.defaultProps}
+  argTypes={commonArgTypes}
 />
+
+export const Template = props => <lp-input-helper {...getPropsByDefaultProps(InputHelper.defaultProps, props)} />;
 
 # InputHelper
 
 <ArgsTable of={InputHelper} />
 
-Helper text can be provided by `text` attribute or as a child
-
-Example:
-```html
-<lp-input-helper text="Helper text" />
-```
-or
-```html
-<lp-input-helper>Helper text</lp-input-helper>
-```
-
 ## Basic
 
 <Canvas>
-  <Story
-    name="Basic"
-    args={{
-      theme: 'dark',
-      text: 'Helper text',
-      error: false,
-      disabled: false,
-    }}
-  >
-    {({ theme, text, error, disabled }) => (
-      <lp-input-helper
-        theme={theme === 'dark' ? undefined : theme}
-        text={text}
-        error={error === false ? undefined : error}
-        disabled={disabled === false ? undefined : disabled}
-      />
-    )}
+  <Story name="Basic">
+    {Template.bind({})}
   </Story>
 </Canvas>

@@ -1,5 +1,7 @@
 import React, { useCallback, useContext, useLayoutEffect, useRef } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
+
+import Styled from '../../common/Styled';
 
 import Radio, { RadioProps, radioDefaultProps } from '../radio/Radio';
 
@@ -63,7 +65,7 @@ const RadioGroup: RadioGroupComponent = ({ name, selected, children, ...props })
   }, [getRadioElements, selected, props, radioChangeHandler]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       <slot ref={slotElRef} />
     </Styled>
   );

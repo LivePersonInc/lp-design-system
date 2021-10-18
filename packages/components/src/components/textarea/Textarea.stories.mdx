@@ -1,7 +1,8 @@
 import { createElement } from 'react';
-import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs'; import { getPropsByDefaultProps } from '../../common/helpers';
 
-import WithIconStoryDescription, { icons } from '../../common/withIconStory';
+import { commonArgTypes, groupControls } from '../../common/storybook';
+import WithIconStoryDescription, { getArgTypesWithIcons, icons } from '../../common/withIconStory';
 
 import Textarea, { events } from './Textarea';
 import './';
@@ -9,20 +10,21 @@ import './';
 <Meta
   title="Components/Inputs/Textarea"
   component={Textarea}
-  argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    textAlign: {
-      control: { type: 'inline-radio' },
-    },
-  }}
+  args={Textarea.defaultProps}
+  argTypes={commonArgTypes}
   parameters={{
     actions: {
       handles: events,
     },
   }}
 />
+
+export const Template = ({ iconLeft, iconRight, ...props }) => (
+  <lp-textarea key={`${iconLeft}-${iconRight}`} {...getPropsByDefaultProps(Textarea.defaultProps, props)}>
+    {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
+    {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
+  </lp-textarea>
+);
 
 # Textarea
 
@@ -33,27 +35,8 @@ import './';
 ## Basic
 
 <Canvas>
-  <Story
-    name="Basic"
-    args={{
-      theme: 'dark',
-      textAlign: 'left',
-      error: false,
-      disabled: false,
-      readOnly: false,
-      resizable: false,
-    }}
-  >
-    {({ theme, textAlign, error, disabled, readOnly, resizable }) => (
-      <lp-textarea
-        theme={theme === 'dark' ? undefined : theme}
-        textAlign={textAlign === 'left' ? undefined : textAlign}
-        error={error === false ? undefined : error}
-        disabled={disabled === false ? undefined : disabled}
-        readOnly={readOnly === false ? undefined : readOnly}
-        resizable={resizable === false ? undefined : resizable}
-      />
-    )}
+  <Story name="Basic">
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -64,57 +47,12 @@ import './';
 <Canvas withSource={SourceState.OPEN}>
   <Story
     name="With icon"
-    args={{
-      iconLeft: icons[0],
-      theme: 'dark',
-      textAlign: 'left',
-      error: false,
-      disabled: false,
-      readOnly: false,
-      resizable: false,
-    }}
+    args={{ iconLeft: icons[0] }}
     argTypes={{
-      iconLeft: {
-        options: icons,
-        control: { type: 'select' },
-      },
-      iconRight: {
-        options: icons,
-        control: { type: 'select' },
-      },
-      theme: {
-        table: { category: 'Input args' },
-      },
-      textAlign: {
-        table: { category: 'Input args' },
-      },
-      error: {
-        table: { category: 'Input args' },
-      },
-      disabled: {
-        table: { category: 'Input args' },
-      },
-      readOnly: {
-        table: { category: 'Input args' },
-      },
-      resizable: {
-        table: { category: 'Input args' },
-      },
+      ...getArgTypesWithIcons(['iconLeft', 'iconRight']),
+      ...groupControls(['theme', 'textAlign', 'error', 'disabled', 'readOnly', 'resizable'], 'Textarea args'),
     }}
   >
-    {({ iconLeft, iconRight, theme, textAlign, error, disabled, readOnly, resizable }) => (
-      <lp-textarea
-        key={`${iconLeft}-${iconRight}`}
-        theme={theme === 'dark' ? undefined : theme}
-        textAlign={textAlign === 'left' ? undefined : textAlign}
-        error={error === false ? undefined : error}
-        disabled={disabled === false ? undefined : disabled}
-        readOnly={readOnly === false ? undefined : readOnly}
-        resizable={resizable === false ? undefined : resizable}
-      >
-        {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
-        {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
-      </lp-textarea>
-    )}
+    {Template.bind({})}
   </Story>
 </Canvas>

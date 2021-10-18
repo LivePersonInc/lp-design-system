@@ -1,7 +1,8 @@
 import React, { useCallback, useContext } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 
 import { Theme } from '../../common/types';
+import Styled from '../../common/Styled';
 
 import styles from './Radio.scss';
 
@@ -33,7 +34,7 @@ const Radio: RadioComponent = ({ theme, size, label, labelPosition, error, child
   }, [dispatch]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       <label>
         <input {...props} type="radio" onChange={radioChangeHandler} />
 

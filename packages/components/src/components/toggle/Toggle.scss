@@ -3,26 +3,32 @@
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
 @use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
+
+@include common.base-styles;
 
 :host {
   --color-toggle-circle: #{colors.$navy-white};
 
   --color-toggle: #{transparency.$light-4};
-  --color-toggle-hover: #{colors.$periwinkle-dark};
+  --color-toggle--hover: #{transparency.$light-2};
+  --color-toggle--active: #{transparency.$light-1};
 
-  --color-toggle-checked: #{colors.$cyan-dark};
-  --color-toggle-checked-hover: #{colors.$cyan-darker};
+  --color-toggle-checked: #{colors.$blue};
+  --color-toggle-checked--hover: #{colors.$blue-light};
+  --color-toggle-checked--active: #{colors.$blue-darker};
 
   --color-toggle-outline: #{colors.$focus-outline};
 
   --color-label: #{colors.$navy-white};
-  --color-label-hover: #{colors.$navy-white};
+  --color-label--hover: #{colors.$navy-white};
 
   display: inline-block;
   vertical-align: middle;
+  @include typography.with-font-family;
   @include typography.input-label;
   padding: 1px 0;
 }
@@ -30,18 +36,20 @@
   --color-toggle-circle: #{colors-light.$navy-white};
 
   --color-toggle: #{colors-light.$navy-light};
-  --color-toggle-hover: #{colors-light.$navy};
+  --color-toggle--hover: #{colors-light.$navy};
+  --color-toggle--active: #{colors-light.$navy};
 
   --color-toggle-checked: #{colors-light.$blue-light};
-  --color-toggle-checked-hover: #{colors-light.$blue-dark};
+  --color-toggle-checked--hover: #{colors-light.$blue-dark};
+  --color-toggle-checked--active: #{colors-light.$blue-dark};
 
   --color-toggle-outline: #{colors-light.$focus-outline};
 
   --color-label: #{colors-light.$navy-dark};
-  --color-label-hover: #{colors-light.$navy-darker};
+  --color-label--hover: #{colors-light.$navy-darker};
 }
 
-$toggle-circle-width: common.get-em(14px, typography.$size-small);
+$toggle-circle-width: helpers.get-em(14px, typography.$size-small);
 $toggle-circle-offset: 1px;
 $toggle-offset: spacing.get-space(xs);
 
@@ -78,10 +86,10 @@ input {
     &:not([disabled]) {
       &:focus {
         + .label {
-          color: var(--color-label-hover);
+          color: var(--color-label--hover);
 
           .slider {
-            background-color: var(--color-toggle-hover);
+            background-color: var(--color-toggle--hover);
             box-shadow: var(--color-toggle-outline);
           }
         }
@@ -89,16 +97,16 @@ input {
 
       + .label {
         &:hover {
-          color: var(--color-label-hover);
+          color: var(--color-label--hover);
 
           .slider {
-            background-color: var(--color-toggle-hover);
+            background-color: var(--color-toggle--hover);
           }
         }
 
         &:active {
           .slider {
-            background-color: var(--color-toggle-hover);
+            background-color: var(--color-toggle--active);
           }
         }
       }
@@ -107,7 +115,7 @@ input {
         &:focus {
           + .label {
             .slider {
-              background-color: var(--color-toggle-checked-hover);
+              background-color: var(--color-toggle-checked--hover);
               box-shadow: var(--color-toggle-outline);
             }
           }
@@ -116,13 +124,13 @@ input {
         + .label {
           &:hover {
             .slider {
-              background-color: var(--color-toggle-checked-hover);
+              background-color: var(--color-toggle-checked--hover);
             }
           }
 
           &:active {
             .slider {
-              background-color: var(--color-toggle-checked-hover);
+              background-color: var(--color-toggle-checked--active);
             }
           }
         }
@@ -169,7 +177,7 @@ input {
     height: calc(100% - #{$toggle-circle-offset * 2});
     border-radius: 50%;
     background-color: var(--color-toggle-circle);
-    @include box-shadow.box-shadow;
+    @include box-shadow.box-shadow(s);
     transform: translate(#{$toggle-circle-offset}, -50%);
     transition: transform .15s ease-out;
   }
@@ -180,20 +188,20 @@ input {
     z-index: 1;
     top: 50%;
     display: block;
-    @include box-shadow.box-shadow;
+    @include box-shadow.box-shadow(s);
     transform: translateY(-50%);
 
     &:first-child {
-      left: common.get-em(7px, typography.$size-small);
+      left: helpers.get-em(7px, typography.$size-small);
       width: 1px;
-      height: common.get-em(7px, typography.$size-small);
+      height: helpers.get-em(7px, typography.$size-small);
       background-color: colors.$navy-white;
     }
 
     &:last-child {
-      right: common.get-em(4px, typography.$size-small);
-      width: common.get-em(4px, typography.$size-small);
-      height: common.get-em(4px, typography.$size-small);
+      right: helpers.get-em(4px, typography.$size-small);
+      width: helpers.get-em(4px, typography.$size-small);
+      height: helpers.get-em(4px, typography.$size-small);
       border: 1px solid colors.$navy-lighter;
       border-radius: 50%;
     }

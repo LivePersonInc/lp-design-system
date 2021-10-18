@@ -10,9 +10,14 @@ import '../toggle';
 
 import styles from './SelectOption.scss';
 
-export type SelectOptionProps = JSX.IntrinsicElements['option'] & {
+export type SelectOptionCustomProps = {
+  /**
+   * Can be provided as a child element
+   */
   label?: string
 }
+
+export type SelectOptionProps = JSX.IntrinsicElements['option'] & SelectOptionCustomProps
 
 export type SelectOptionComponent = React.FC<SelectOptionProps>
 

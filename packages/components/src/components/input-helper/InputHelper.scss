@@ -1,26 +1,32 @@
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
 
+@include common.base-styles;
+
 :host {
+  --color-text: #{colors.$navy-white};
+
   display: block;
+  @include typography.with-font-family;
   @include typography.body(true);
-  color: colors.$navy-white;
+  color: var(--color-text);
 }
 
 :host([theme="light"]) {
-  color: colors-light.$navy-dark;
+  --color-text: #{colors-light.$navy-dark};
 }
 
-:host([error]:not([error="false"])) {
-  color: colors.$red-light;
+@include helpers.host-with-attr(error) {
+  --color-text: #{colors.$red-light};
+}
+@include helpers.host-with-attr(error, '[theme="light"]') {
+  --color-text: #{colors-light.$red};
 }
 
-:host([theme="light"][error]:not([error="false"])) {
-  color: colors-light.$red;
-}
-
-:host([disabled]:not([disabled="false"])) {
+@include helpers.host-with-attr(disabled) {
   opacity: transparency.$disabled;
 }

@@ -2,26 +2,21 @@
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
 @use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
 
-* {
-  &,
-  &::before,
-  &::after {
-    box-sizing: border-box;
-  }
-}
+@include common.base-styles;
 
 :host {
-  --color-dropdown-border--open: #{colors.$cyan};
-  --color-dropdown-content: #{colors.$navy-black};
+  --color-dropdown-border--open: #{colors.$blue};
+  --color-dropdown-content: #{transparency.$light-2};
 
   --color-input-border: #{transparency.$light-4};
   --color-input-border--hover: #{colors.$navy-white};
-  --color-input-border--active: #{colors.$cyan};
-  --color-input-border--focus: #{colors.$cyan};
+  --color-input-border--active: #{colors.$blue};
+  --color-input-border--focus: #{colors.$blue};
 
   --color-input-outline: #{colors.$focus-outline};
 
@@ -31,37 +26,49 @@
 
   --color-separator: #{transparency.$light-3};
 
-  --color-button: #{colors.$cyan};
+  --color-button: #{colors.$blue-lighter};
+  --color-button-icon: #{colors.$blue-light};
   --color-button-hover: #{transparency.$light-1};
+
+  @include typography.with-font-family;
 }
 :host([theme="light"]) {
+  --color-dropdown-border--open: #{colors.$blue};
+  --color-dropdown-content: #{colors-light.$white};
+
   --color-input-border: #{colors-light.$navy-light};
   --color-input-border--hover: #{colors-light.$navy};
-  --color-input-border--active: #{colors-light.$periwinkle};
-  --color-input-border--focus: #{colors-light.$periwinkle};
+  --color-input-border--active: #{colors-light.$blue};
+  --color-input-border--focus: #{colors-light.$blue};
 
   --color-input-outline: #{colors-light.$focus-outline};
 
   --color-input-bg: #{colors-light.$white};
 
   --color-input-text: #{colors-light.$navy-white};
+
+  --color-separator: #{transparency.$dark-3};
+
+  --color-button: #{colors-light.$blue};
+  --color-button-icon: #{colors-light.$blue};
+  --color-button-hover: #{transparency.$light-1};
 }
 
-:host([error]:not([error="false"])) {
+@include helpers.host-with-attr(error) {
   --color-input-border: #{colors.$red-light};
 }
-:host([theme="light"][error]:not([error="false"])) {
+@include helpers.host-with-attr(error, '[theme="light"]') {
   --color-input-border: #{colors-light.$red};
 }
 
-:host([disabled]:not([disabled="false"])) {
+@include helpers.host-with-attr(disabled) {
   --color-input-border: #{transparency.$light-1};
 }
-:host([theme="light"][disabled]:not([disabled="false"])) {
+@include helpers.host-with-attr(disabled, '[theme="light"]') {
   --color-input-border: #{transparency.$dark-1};
 }
 
-$dropdown-content-border-radius: border-radius.get-border-radius();
+$dropdown-content-border-radius: border-radius.get-border-radius(xxs);
 
 lp-dropdown {
   min-width: 198px;
@@ -101,7 +108,7 @@ $dropdown-toggle-size: $icon-size + $padding-size * 2;
   color: var(--color-input-text);
   outline: none;
   border: 1px solid var(--color-input-border);
-  border-radius: border-radius.get-border-radius();
+  border-radius: border-radius.get-border-radius(xxs);
   background: var(--color-input-bg);
   margin: 0;
   transition: all .15s ease-out;
@@ -231,7 +238,7 @@ slot {
       display: flex;
       align-items: center;
       flex: 1 0 auto;
-      @include typography.button-label;
+      @include typography.button;
       color: var(--color-button);
       border: none;
       background: none;

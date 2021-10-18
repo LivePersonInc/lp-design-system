@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 
 import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes, hideControls } from '../../common/storybook';
 
 import Chip from './Chip';
 import ChipGroup from './ChipGroup';
@@ -13,14 +14,7 @@ import './';
     ...Chip.defaultProps,
     label: 'Chip',
   }}
-  argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    size: {
-      control: { type: 'inline-radio' },
-    },
-  }}
+  argTypes={commonArgTypes}
   parameters={{
     actions: {
       handles: ['remove'],
@@ -28,9 +22,7 @@ import './';
   }}
 />
 
-export const Template = props => (
-  <lp-chip {...getPropsByDefaultProps(Chip.defaultProps, props)} />
-);
+export const Template = props => <lp-chip {...getPropsByDefaultProps(Chip.defaultProps, props)} />;
 
 # Chip
 
@@ -58,11 +50,7 @@ export const Template = props => (
   <Story
     name="ChipGroup"
     args={{ chips: ['Chip 1', 'Chip 2', 'Chip 3'], label: undefined }}
-    argTypes={{
-      label: {
-        table: { disable: true },
-      },
-    }}
+    argTypes={hideControls(['label'])}
   >
     {({ chips, ...props }) => (
       <lp-chip-group {...getPropsByDefaultProps(ChipGroup.defaultProps, props)}>

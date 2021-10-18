@@ -1,5 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
 
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
+
 import Controlled from './Controlled';
 import Checkbox from './Checkbox';
 import './';
@@ -7,20 +10,9 @@ import './';
 <Meta
   title="Components/Inputs/Checkbox"
   component={Checkbox}
-  args={{
-    theme: 'dark',
-    label: 'Checkbox',
-    labelPosition: 'right',
-    error: false,
-    checked: undefined,
-    indeterminate: false,
-    disabled: false,
-    readOnly: false,
-  }}
+  args={Checkbox.defaultProps}
   argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
+    ...commonArgTypes,
     label: {},
     labelPosition: {
       control: { type: 'inline-radio' },
@@ -37,6 +29,8 @@ import './';
   }}
 />
 
+export const Template = props => <lp-checkbox {...getPropsByDefaultProps(Checkbox.defaultProps, props)} />;
+
 # Checkbox
 
 <ArgsTable of={Checkbox} />
@@ -44,28 +38,6 @@ import './';
 **Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
 
 ## Basic
-
-export const Template = ({
-  theme,
-  label,
-  labelPosition,
-  error,
-  checked,
-  indeterminate,
-  disabled,
-  readOnly,
-}) => (
-  <lp-checkbox
-    theme={theme === 'dark' ? undefined : theme}
-    label={label}
-    labelPosition={labelPosition === 'right' ? undefined : labelPosition}
-    error={error === false ? undefined : error}
-    checked={checked}
-    indeterminate={indeterminate === false ? undefined : indeterminate}
-    disabled={disabled === false ? undefined : disabled}
-    readOnly={readOnly === false ? undefined : readOnly}
-  />
-);
 
 <Canvas>
   <Story name="Basic">

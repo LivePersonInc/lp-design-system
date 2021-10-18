@@ -2,17 +2,12 @@
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
 @use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
 
-* {
-  &,
-  &::before,
-  &::after {
-    box-sizing: border-box;
-  }
-}
+@include common.base-styles;
 
 :host {
   --host-height: 40px;
@@ -33,11 +28,11 @@
   --color-selected-border: #{transparency.$light-4};
   --color-selected-text: #{colors.$navy-white};
 
-  --color-progress-bar: #{colors.$cyan};
+  --color-progress-bar: #{colors.$blue};
 
   display: flex;
   height: var(--host-height);
-  @include typography.main;
+  @include typography.with-font-family;
   font-size: typography.$size-default;
   color: var(--color-text);
 }
@@ -61,28 +56,28 @@
   --color-progress-bar: #{colors-light.$blue};
 }
 
-@include common.host-with-attr(disabled) {
+@include helpers.host-with-attr(disabled) {
   --color-button: #{colors.$navy-lightest};
   --color-button-text: #{colors.$navy-dark};
 }
-@include common.host-with-attr(disabled, '[theme="light"]') {
+@include helpers.host-with-attr(disabled, '[theme="light"]') {
   --color-button: #{colors-light.$navy-lighter};
   --color-button-text: #{colors-light.$navy-darker};
 }
 
-@include common.host-with-attr(uploading) {
+@include helpers.host-with-attr(uploading) {
   --color-button: #{transparency.$light-1};
   --color-button-text: #{colors.$navy-white};
 }
-@include common.host-with-attr(uploading, '[theme="light"]') {
+@include helpers.host-with-attr(uploading, '[theme="light"]') {
   --color-button: #{colors-light.$navy-lighter};
   --color-button-text: #{colors-light.$navy-darker};
 }
 
-@include common.host-with-attr(error) {
+@include helpers.host-with-attr(error) {
   --color-selected-border: #{colors.$red-light};
 }
-@include common.host-with-attr(error, '[theme="light"]') {
+@include helpers.host-with-attr(error, '[theme="light"]') {
   --color-selected-border: #{colors.$red};
 }
 
@@ -90,7 +85,7 @@
   --input-height: 32px;
 }
 
-$border-radius: border-radius.get-border-radius();
+$border-radius: border-radius.get-border-radius(xxs);
 $padding-size: spacing.get-space(s, true);
 
 input {
@@ -108,7 +103,7 @@ input {
   align-items: center;
   flex-shrink: 0;
   font: inherit;
-  font-size: common.get-em(16px);
+  font-size: helpers.get-em(16px);
   font-weight: typography.$weight-medium;
   color: var(--color-button-text);
   border: none;
@@ -147,7 +142,7 @@ input {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  min-width: common.get-em(100px);
+  min-width: helpers.get-em(100px);
   height: var(--input-height);
   color: var(--color-selected-text);
   border-radius: 0 $border-radius $border-radius 0;

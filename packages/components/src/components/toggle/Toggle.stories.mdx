@@ -1,5 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
 
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
+
 import Controlled from './Controlled';
 import Toggle from './Toggle';
 import './';
@@ -7,19 +10,9 @@ import './';
 <Meta
   title="Components/Inputs/Toggle"
   component={Toggle}
-  args={{
-    theme: 'dark',
-    label: 'Toggle',
-    labelPosition: 'right',
-    a11y: false,
-    checked: undefined,
-    disabled: false,
-    readOnly: false,
-  }}
+  args={Toggle.defaultProps}
   argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
+    ...commonArgTypes,
     label: {},
     labelPosition: {
       control: { type: 'inline-radio' },
@@ -36,6 +29,8 @@ import './';
   }}
 />
 
+export const Template = props => <lp-toggle {...getPropsByDefaultProps(Toggle.defaultProps, props)} />;
+
 # Toggle
 
 <ArgsTable of={Toggle} />
@@ -44,26 +39,6 @@ import './';
 
 ## Basic
 
-export const Template = ({
-  theme,
-  label,
-  labelPosition,
-  a11y,
-  checked,
-  disabled,
-  readOnly,
-}) => (
-  <lp-toggle
-    theme={theme === 'dark' ? undefined : theme}
-    label={label}
-    labelPosition={labelPosition === 'right' ? undefined : labelPosition}
-    a11y={a11y === false ? undefined : a11y}
-    checked={checked}
-    disabled={disabled === false ? undefined : disabled}
-    readOnly={readOnly === false ? undefined : readOnly}
-  />
-);
-
 <Canvas>
   <Story name="Basic">
     {Template.bind({})}
@@ -71,19 +46,6 @@ export const Template = ({
 </Canvas>
 
 ## Controlled
-
-<Canvas withSource={SourceState.NONE}>
-  <Story
-    name="Controlled"
-    args={{ label: 'Checked', checked: true }}
-    parameters={{
-      controls: { disable: true },
-      actions: { disable: true },
-    }}
-  >
-    {Controlled.bind({})}
-  </Story>
-</Canvas>
 
 ```jsx
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
@@ -112,3 +74,16 @@ const Toggle = ({ ...props }) => {
 
 export default Toggle
 ```
+
+<Canvas withSource={SourceState.NONE}>
+  <Story
+    name="Controlled"
+    args={{ label: 'Checked', checked: true }}
+    parameters={{
+      controls: { disable: true },
+      actions: { disable: true },
+    }}
+  >
+    {Controlled.bind({})}
+  </Story>
+</Canvas>

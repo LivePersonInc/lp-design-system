@@ -1,9 +1,8 @@
 import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { EventContext } from 'direflow-component';
 
-import { useHostElement } from '../../common/hooks';
-
 import { Theme } from '../../common/types';
+import { useHostElement } from '../../common/hooks';
 import Styled from '../../common/Styled';
 
 import '@liveperson-design-system/icons/close-small';

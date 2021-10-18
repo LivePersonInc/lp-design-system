@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext, Styled } from 'direflow-component';
+import { EventContext } from 'direflow-component';
 
 import { Theme } from '../../common/types';
+import Styled from '../../common/Styled';
 
 import styles from './Toggle.scss';
 
@@ -51,7 +52,7 @@ const Toggle: ToggleComponent = (
   }, [isCheckedSet, checkedProp]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       <label>
         <input
           {...props}

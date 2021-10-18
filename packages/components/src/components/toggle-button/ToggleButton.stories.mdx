@@ -1,7 +1,9 @@
 import { createElement } from 'react';
 import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
 
-import WithIconStoryDescription, { icons } from '../../common/withIconStory';
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes, groupControls } from '../../common/storybook';
+import WithIconStoryDescription, { getArgTypesWithIcons, icons } from '../../common/withIconStory';
 
 import ToggleButton from './ToggleButton';
 import './';
@@ -9,55 +11,26 @@ import './';
 <Meta
   title="Components/ToggleButton"
   component={ToggleButton}
-  argTypes={{
-    theme: {
-      control: { type: 'inline-radio' },
-    },
-    size: {
-      control: { type: 'inline-radio' },
-    },
-  }}
+  args={ToggleButton.defaultProps}
+  argTypes={commonArgTypes}
 />
+
+export const Template = ({ iconLeft, iconRight, ...props }) => (
+  <lp-toggle-button key={`${iconLeft}-${iconRight}`} {...getPropsByDefaultProps(ToggleButton.defaultProps, props)}>
+    {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
+    {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
+  </lp-toggle-button>
+)
 
 # Button
 
 <ArgsTable of={ToggleButton} />
 
-`label` value can be provided by `label` attribute or by `slot` tag with the attribute `slot="label"`
-
-Example:
-```html
-<lp-toggle-button label="Button" />
-```
-or
-```html
-<lp-toggle-button>
-  <slot slot="label">Button</slot>
-</lp-toggle-button>
-```
-
 ## Basic
 
 <Canvas>
-  <Story
-    name="Basic"
-    args={{
-      theme: 'dark',
-      selected: false,
-      size: 'medium',
-      label: 'Button',
-      disabled: false,
-    }}
-  >
-    {({ theme, selected, size, label, disabled }) => (
-      <lp-toggle-button
-        theme={theme === 'dark' ? undefined : theme}
-        selected={selected ? true : undefined}
-        size={size === 'medium' ? undefined : size}
-        label={label}
-        disabled={disabled ? true : undefined}
-      />
-    )}
+  <Story name="Basic">
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -68,52 +41,12 @@ or
 <Canvas withSource={SourceState.OPEN}>
   <Story
     name="With icon"
-    args={{
-      iconLeft: icons[0],
-      theme: 'dark',
-      selected: false,
-      size: 'medium',
-      label: 'With icon',
-      disabled: false,
-    }}
+    args={{ iconLeft: icons[0] }}
     argTypes={{
-      iconLeft: {
-        options: icons,
-        control: { type: 'select' },
-      },
-      iconRight: {
-        options: icons,
-        control: { type: 'select' },
-      },
-      theme: {
-        table: { category: 'Button args' },
-      },
-      selected: {
-        table: { category: 'Button args' },
-      },
-      size: {
-        table: { category: 'Button args' },
-      },
-      label: {
-        table: { category: 'Button args' },
-      },
-      disabled: {
-        table: { category: 'Button args' },
-      },
+      ...getArgTypesWithIcons(['iconLeft', 'iconRight']),
+      ...groupControls(['theme', 'selected', 'size', 'label', 'disabled'], 'Button args'),
     }}
   >
-    {({ iconLeft, iconRight, theme, selected, size, label, disabled }) => (
-      <lp-toggle-button
-        key={`${iconLeft}-${iconRight}`}
-        theme={theme === 'dark' ? undefined : theme}
-        selected={selected ? true : undefined}
-        size={size === 'medium' ? undefined : size}
-        label={label}
-        disabled={disabled ? true : undefined}
-      >
-        {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
-        {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
-      </lp-toggle-button>
-    )}
+    {Template.bind({})}
   </Story>
 </Canvas>

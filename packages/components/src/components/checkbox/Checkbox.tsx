@@ -75,7 +75,7 @@ const Checkbox: CheckboxComponent = (
   }, [indeterminate]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       <label>
         <input
           {...props}

@@ -1,47 +1,58 @@
 @use '~@liveperson-design-system/tokens/scss/border-radius';
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
 
+@include common.base-styles;
+
 :host {
   --color-border: #{transparency.$light-4};
   --color-border--hover: #{colors.$navy-white};
-  --color-border--active: #{colors.$cyan};
-  --color-border--focus: #{colors.$cyan};
+  --color-border--active: #{colors.$blue};
   --color-border--disabled: #{transparency.$light-1};
-  --color-border--error: #{colors.$red-light};
 
   --color-outline: #{colors.$focus-outline};
 
   --color-bg: #{transparency.$light-1};
 
   --color-text: #{colors.$navy-white};
-  --color-text--error: #{colors.$navy-white};
 
   --input-height: 38px;
   --input-text-align: left;
+  --input-padding: #{spacing.get-space(s, true)};
 
-  box-sizing: border-box;
   position: relative;
   display: inline-flex;
+  @include typography.with-font-family;
+  @include typography.input-value;
   color: var(--color-text);
 }
 :host([theme="light"]) {
   --color-border: #{colors-light.$navy-light};
   --color-border--hover: #{colors-light.$navy};
-  --color-border--active: #{colors-light.$periwinkle};
-  --color-border--focus: #{colors-light.$periwinkle};
+  --color-border--active: #{colors-light.$blue};
   --color-border--disabled: #{transparency.$dark-1};
-  --color-border--error: #{colors-light.$red};
 
   --color-outline: #{colors-light.$focus-outline};
 
   --color-bg: #{colors-light.$white};
 
   --color-text: #{colors-light.$navy-dark};
-  --color-text--error: #{colors-light.$red};
+}
+
+@include helpers.host-with-attr(error) {
+  --color-border: #{colors.$red-light};
+}
+@include helpers.host-with-attr(error, '[theme="light"]') {
+  --color-border: #{colors-light.$red};
+}
+
+@include helpers.host-with-attr(readOnly) {
+  --input-padding: 0;
 }
 
 :host([size="medium"]) {
@@ -55,25 +66,23 @@
   --input-text-align: right;
 }
 
-$icon-size: 16px;
-$icon-offset: spacing.get-space(xs);
-$padding-size: spacing.get-space(s, true);
+$icon-size: helpers.get-em(16px);
+$icon-offset: helpers.get-em(spacing.get-space(xs));
 
 input {
   flex-grow: 1;
   max-width: 100%;
   font: inherit;
   text-align: var(--input-text-align);
-  @include typography.input-value;
   height: var(--input-height);
   color: inherit;
   border: 1px solid var(--color-border);
   outline: none;
-  border-radius: border-radius.get-border-radius();
+  border-radius: border-radius.get-border-radius(xxs);
   background: var(--color-bg);
   box-shadow: none;
   -webkit-tap-highlight-color: rgba(#fff, 0);
-  padding: 0 $padding-size;
+  padding: 0 var(--input-padding);
   margin: 0;
   transition: all .15s ease-out;
 
@@ -97,10 +106,6 @@ input {
       box-shadow: var(--color-outline);
     }
 
-    :host([error]:not([error="false"])) & {
-      border-color: var(--color-border--error);
-    }
-
     &[readOnly] {
       border-color: transparent;
       background-color: transparent;
@@ -119,7 +124,7 @@ input {
     }
   }
 
-  $padding-size-with-icon: $icon-size + $padding-size + $icon-offset;
+  $padding-size-with-icon: $icon-size + var(--input-padding) + $icon-offset;
 
   &.with-icon-left {
     padding-left: $padding-size-with-icon;
@@ -142,23 +147,15 @@ slot {
     transition: all .15s ease-out;
 
     &[name$="left"] {
-      left: $padding-size;
-
-      :host([readOnly]:not([readOnly="false"])) & {
-        left: 0;
-      }
+      left: var(--input-padding);
     }
 
     &[name$="right"] {
-      right: $padding-size;
-
-      :host([readOnly]:not([readOnly="false"])) & {
-        right: 0;
-      }
+      right: var(--input-padding);
     }
 
     :host([error]:not([error="false"])) & {
-      color: var(--color-text--error);
+      color: var(--color-border);
     }
   }
 }

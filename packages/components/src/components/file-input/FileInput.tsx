@@ -10,7 +10,7 @@ import styles from './FileInput.scss';
 
 export type FileInputSizes = 'large' | 'medium'
 
-export type FileInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & {
+export type FileInputCustomProps = {
   theme?: Theme
   size?: FileInputSizes
   buttonLabel?: string
@@ -19,6 +19,8 @@ export type FileInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & {
   uploadingProgress?: string | number
   error?: boolean
 }
+
+export type FileInputProps = Omit<JSX.IntrinsicElements['input'], 'size'> & FileInputCustomProps
 
 export type FileInputComponent = React.FC<FileInputProps>
 
@@ -124,7 +126,7 @@ const FileInput: FileInputComponent = (
   }, [multiple, fileRemoveHandler]);
 
   return (
-    <Styled styles={styles} scoped={false}>
+    <Styled styles={styles}>
       <input {...props} ref={inputElRef} type="file" multiple={multiple} {...inputsEvents} />
 
       <button

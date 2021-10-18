@@ -1,4 +1,4 @@
-@use './common';
+@use './helpers';
 @use './responsive';
 
 $-spaces: (
@@ -28,7 +28,7 @@ $-spaces-inner: (
 }
 
 @function get-space-rem($size, $inner: false) {
-  @return common.get-rem(get-space($size, $inner));
+  @return helpers.get-rem(get-space($size, $inner));
 }
 
 @mixin padding($size, $hSize, $inner: false) {

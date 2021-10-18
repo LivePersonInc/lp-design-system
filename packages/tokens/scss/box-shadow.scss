@@ -9,7 +9,7 @@ $-shadow: (
   xl: $-shadow-xl,
   xxl: $-shadow-xxl,
 );
-@mixin box-shadow($size: s) {
+@mixin box-shadow($size) {
   box-shadow: map-get($-shadow, $size);
 }
 

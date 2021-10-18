@@ -34,5 +34,11 @@
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
   "main": "index.js",
-  "files": ["*"]
+  "directories": {
+    "scss": "scss"
+  },
+  "files": [
+    "scss",
+    "README.md"
+  ]
 }

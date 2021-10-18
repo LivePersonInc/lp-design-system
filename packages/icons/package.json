@@ -97,5 +97,6 @@
       "direflow-scripts/direflow-jest.config.js"
     ]
   },
-  "config-overrides-path": "direflow-webpack.js"
+  "config-overrides-path": "direflow-webpack.js",
+  "gitHead": "cb46f439cb4869cf5373eead7d4e1ccc3fbc4f01"
 }

@@ -37,9 +37,10 @@
   "directories": {
     "scss": "scss"
   },
-  "files": [
-    "scss",
-    "README.md"
-  ],
-  "gitHead": "cb46f439cb4869cf5373eead7d4e1ccc3fbc4f01"
+  "files": ["*"],
+  "publishConfig": {
+    "access": "public",
+    "directory": "."
+  },
+  "gitHead": "221a490e5af9e4179f749d1ee97f351dbbd48f75"
 }

@@ -39,11 +39,17 @@
     "build",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "directory": "build"
+  },
   "scripts": {
     "start": "direflow-scripts start",
-    "build": "direflow-scripts build",
+    "build": "direflow-scripts build && node ./scripts/after-build.js",
     "build:lib": "direflow-scripts build:lib",
-    "test": "direflow-scripts test"
+    "test": "direflow-scripts test",
+    "prepublishOnly": "node ./scripts/prepublishOnly.js",
+    "postpublish": "node ./scripts/postpublish.js"
   },
   "dependencies": {
     "@types/node": "12.7.8",
@@ -90,5 +96,5 @@
     ]
   },
   "config-overrides-path": "direflow-webpack.js",
-  "gitHead": "cb46f439cb4869cf5373eead7d4e1ccc3fbc4f01"
+  "gitHead": "221a490e5af9e4179f749d1ee97f351dbbd48f75"
 }

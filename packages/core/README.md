@@ -1,4 +1,4 @@
-# LivePerson Design System - core
+# LivePerson Design System Core
 
 ## How to use
 

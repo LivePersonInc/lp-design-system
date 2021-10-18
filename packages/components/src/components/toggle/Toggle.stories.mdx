@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
+
+import Controlled from './Controlled';
+import Toggle from './Toggle';
+import './';
+
+<Meta
+  title="Components/Inputs/Toggle"
+  component={Toggle}
+  args={Toggle.defaultProps}
+  argTypes={{
+    ...commonArgTypes,
+    label: {},
+    labelPosition: {
+      control: { type: 'inline-radio' },
+    },
+    a11y: {},
+    checked: {
+      control: { type: 'boolean' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: ['change'],
+    },
+  }}
+/>
+
+export const Template = props => <lp-toggle {...getPropsByDefaultProps(Toggle.defaultProps, props)} />;
+
+# Toggle
+
+<ArgsTable of={Toggle} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Controlled
+
+```jsx
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+
+import 'liveperson-design-system/components/toggle';
+
+const Toggle = ({ ...props }) => {
+  const toggleRef = useRef(null);
+
+  const [checked, setChecked] = useState(false);
+
+  const toggleChangeHandler = useCallback(e => {
+    setChecked(e.detail.checked);
+  }, []);
+
+  useLayoutEffect(() => {
+    toggleRef.current.addEventListener('change', toggleChangeHandler);
+
+    return () => {
+      toggleRef.current.removeEventListener('change', toggleChangeHandler);
+    };
+  }, [toggleChangeHandler]);
+
+  return <lp-toggle {...props} ref={toggleRef} checked={checked} />;
+};
+
+export default Toggle
+```
+
+<Canvas withSource={SourceState.NONE}>
+  <Story
+    name="Controlled"
+    args={{ label: 'Checked', checked: true }}
+    parameters={{
+      controls: { disable: true },
+      actions: { disable: true },
+    }}
+  >
+    {Controlled.bind({})}
+  </Story>
+</Canvas>

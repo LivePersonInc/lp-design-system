@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes, hideControls } from '../../common/storybook';
+
+import NumberInput, { events } from './NumberInput';
+import './';
+
+<Meta
+  title="Components/Inputs/NumberInput"
+  component={NumberInput}
+  args={NumberInput.defaultProps}
+  argTypes={{
+    ...commonArgTypes,
+    textAlign: {
+      control: { type: 'inline-radio' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: events,
+    },
+  }}
+/>
+
+export const Template = props => <lp-number-input {...getPropsByDefaultProps(NumberInput.defaultProps, props)} />;
+
+# NumberInput
+
+<ArgsTable of={NumberInput} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Controlled
+
+<Canvas>
+  <Story
+    name="Controlled"
+    args={{ value: 3 }}
+    argTypes={hideControls(['theme', 'size', 'textAlign', 'error', 'disabled', 'readOnly'])}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

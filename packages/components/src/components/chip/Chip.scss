@@ -1,0 +1,85 @@
+@use '~@liveperson-design-system/tokens/scss/border-radius';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+@use '~@liveperson-design-system/tokens/scss/colors';
+@use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
+@use '~@liveperson-design-system/tokens/scss/transparency';
+@use '~@liveperson-design-system/tokens/scss/typography';
+
+@include common.base-styles;
+
+:host {
+  --color-border: #{transparency.$light-1};
+  --color-border-hover: #{transparency.$light-2};
+  --color-border-focus: #{transparency.$light-3};
+
+  --color-outline: #{colors.$focus-outline};
+
+  --color-bg: #{transparency.$light-2};
+  --color-bg-hover: #{transparency.$light-3};
+  --color-bg-focus: #{transparency.$light-3};
+
+  --color-text: #{colors.$navy-lightest};
+
+  display: inline-flex;
+  align-items: center;
+  @include typography.with-font-family;
+  @include typography.button;
+  white-space: nowrap;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  @include border-radius.border-radius(xl);
+  background-color: var(--color-bg);
+  padding: spacing.get-space(xs, true) spacing.get-space(s, true);
+  cursor: default;
+  transition: all .15s ease-out;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+:host(:hover) {
+  border-color: var(--color-border-hover);
+  background-color: var(--color-bg-hover);
+}
+
+:host(:focus) {
+  border-color: var(--color-border-focus);
+  outline: none;
+  background-color: var(--color-bg-focus);
+  box-shadow: var(--color-outline);
+}
+
+:host([theme="light"]) {
+  --color-border: #{transparency.$dark-2};
+  --color-border-hover: #{transparency.$dark-2};
+  --color-border-focus: #{transparency.$dark-2};
+
+  --color-outline: #{colors-light.$focus-outline};
+
+  --color-bg: #{transparency.$light-2};
+  --color-bg-hover: #{colors-light.$navy-lighter};
+  --color-bg-focus: #{colors-light.$navy-lighter};
+
+  --color-text: #{colors-light.$navy-darker};
+}
+
+:host([size="small"]) {
+  @include typography.tag;
+  padding: spacing.get-space(xxs, true) spacing.get-space(xs, true);
+}
+
+button {
+  display: block;
+  @include helpers.button-transparent;
+  margin-left: spacing.get-space(xxs) * -1;
+  margin-right: spacing.get-space(xxs);
+
+  > * {
+    display: block;
+  }
+}

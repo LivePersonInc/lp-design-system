@@ -1,0 +1,34 @@
+@use '~@liveperson-design-system/tokens/scss/colors';
+@use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+@use '~@liveperson-design-system/tokens/scss/transparency';
+@use '~@liveperson-design-system/tokens/scss/typography';
+
+@include common.base-styles;
+
+:host {
+  --color-text: #{colors.$navy-white};
+
+  display: flex;
+  align-items: center;
+  @include typography.with-font-family;
+  color: var(--color-text);
+}
+
+:host([theme="light"]) {
+  --color-text: #{colors-light.$navy-darker};
+}
+
+@include helpers.host-with-attr(disabled) {
+  opacity: transparency.$disabled;
+}
+
+label {
+  @include typography.input-label;
+}
+
+.additional-info-icon {
+  margin-left: spacing.get-space(xs);
+}

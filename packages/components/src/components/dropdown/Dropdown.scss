@@ -1,0 +1,37 @@
+@use '~@liveperson-design-system/tokens/scss/common';
+
+@include common.base-styles;
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+slot {
+  &[name="content"] {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+
+    &.show {
+      visibility: visible;
+    }
+
+    &.top {
+      left: 0;
+      bottom: 100%;
+    }
+    &.bottom {
+      top: 100%;
+      left: 0;
+    }
+    &.left {
+      top: 0;
+      right: 100%;
+    }
+    &.right {
+      top: 0;
+      left: 100%;
+    }
+  }
+}

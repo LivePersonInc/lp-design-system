@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { hideControls } from '../../common/storybook';
+
+import '../button';
+
+import { AutoPlacementStoryDecorator, DropdownContent } from './AutoPlacementStory';
+
+import Dropdown from './Dropdown';
+import './';
+
+<Meta
+  title="Components/Dropdown"
+  component={Dropdown}
+  args={{
+    ...Dropdown.defaultProps,
+    open: undefined,
+  }}
+  argTypes={{
+    open: {},
+    contentPlacement: {
+      control: { type: 'select' },
+    },
+    parentSelector: {},
+    parentOffset: {
+      control: { type: 'number' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: ['open', 'close'],
+    },
+  }}
+/>
+
+export const Template = (props, { parentSelector }) => (
+  <lp-dropdown
+    {...getPropsByDefaultProps(Dropdown.defaultProps, props)}
+    open={props.open === undefined ? undefined : props.open}
+    parentSelector={parentSelector}
+  >
+    <lp-button slot="toggle" label="Toggle" />
+    <DropdownContent slot="content">Content</DropdownContent>
+  </lp-dropdown>
+);
+
+# Dropdown
+
+<ArgsTable of={Dropdown} />
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Controlled
+
+<Canvas>
+  <Story
+    name="Controlled"
+    args={{ open: false }}
+    argTypes={hideControls(['contentPlacement', 'parentSelector', 'parentOffset', 'closeOnBlur', 'closeOnEscape'])}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Auto content placement
+
+<Canvas>
+  <Story
+    name="Auto content placement"
+    args={{
+      open: undefined,
+      contentPlacement: 'auto',
+    }}
+    parameters={{
+      controls: { disable: true },
+      actions: { disable: true },
+    }}
+    decorators={[AutoPlacementStoryDecorator]}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

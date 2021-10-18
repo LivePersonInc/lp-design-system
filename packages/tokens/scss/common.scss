@@ -1,0 +1,11 @@
+@use './typography';
+
+@mixin base-styles {
+  * {
+    &,
+    &::before,
+    &::after {
+      box-sizing: border-box;
+    }
+  }
+}

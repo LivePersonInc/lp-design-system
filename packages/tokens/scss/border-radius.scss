@@ -1,0 +1,21 @@
+$-border-radius: (
+  xxxs: 2px,
+  xxs: 4px,
+  xs: 8px,
+  s: 12px,
+  m: 16px,
+  l: 24px,
+  xl: 32px,
+);
+
+@function get-border-radius($size) {
+  @return map-get($-border-radius, $size);
+}
+
+@mixin border-radius($border-radius) {
+  @if map-has-key($-border-radius, $border-radius) {
+    $border-radius: get-border-radius($border-radius);
+  }
+
+  border-radius: $border-radius;
+}

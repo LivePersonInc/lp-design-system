@@ -1,0 +1,59 @@
+import { ArgsTable, Canvas, Meta, SourceState, Story } from '@storybook/addon-docs';
+
+import { getPropsByDefaultProps } from '../../common/helpers';
+import { commonArgTypes } from '../../common/storybook';
+
+import ButtonGroup from './ButtonGroup';
+import './';
+
+<Meta
+  title="Components/ButtonGroup"
+  component={ButtonGroup}
+  args={{
+    ...ButtonGroup.defaultProps,
+    buttons: ['Button1', 'Button2', 'Button3', 'Button4', 'Button5'],
+  }}
+  argTypes={{
+    ...commonArgTypes,
+    buttons: {
+      control: { type: 'object' },
+    },
+  }}
+  parameters={{
+    actions: {
+      handles: ['button-click'],
+    },
+  }}
+/>
+
+export const Template = ({ selected, buttons, ...props }) => (
+  <lp-button-group key={buttons.toString()} {...getPropsByDefaultProps(ButtonGroup.defaultProps, props)}>
+    {buttons.map((button, index) => (
+      <button key={index} class={index + 1 === selected ? 'selected' : undefined}>{button}</button>
+    ))}
+  </lp-button-group>
+)
+
+# Button
+
+<ArgsTable of={ButtonGroup} />
+
+All buttons have to be provided as children elements
+
+## Basic
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Default selected
+
+You can easily set the default selected button by adding `selected` class to the button item
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story name="Default active" args={{ selected: 2 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

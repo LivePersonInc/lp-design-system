@@ -1,0 +1,63 @@
+@use './transparency';
+
+// Dark theme (default)
+
+$black: #000;
+$white: #FFF;
+
+// Navy
+$navy-darker: #090C43;
+$navy-dark: #1B1F52;
+$navy: #22295D;
+$navy-light: #59649B;
+$navy-lighter: #8C97CE;
+$navy-lightest: #C1C6F0;
+$navy-white: #F8F8FF;
+
+// Blue
+$blue-darker: #163F86;
+$blue-dark: #1A52B7;
+$blue: #2566DC;
+$blue-light: #5B8EE9;
+$blue-lighter: #8EB0ED;
+
+// Orange
+$orange-darker: #A84E0A;
+$orange-dark: #DB5A00;
+$orange: #FF6900;
+$orange-light: #FCAC73;
+$orange-lighter: #FFC399;
+
+// Green
+$green-darker: #09821D;
+$green-dark: #1AA731;
+$green: #26CC41;
+$green-light: #6BE17E;
+$green-lighter: #A1E8AD;
+
+// Red
+$red-darker: #9C0A28;
+$red-dark: #C2062E;
+$red: #D1153A;
+$red-light: #F7A2B5;
+$red-lighter: #FFCED9;
+
+// Yellow
+$yellow-darker: #AA8C13;
+$yellow-dark: #D2AD18;
+$yellow: #EBBF14;
+$yellow-light: #F4DB76;
+$yellow-lighter: #F5E6A8;
+
+// Chart colors
+$chart-blue: #5A8DFC;
+$chart-yellow: #F7C53B;
+$chart-red: #EB4C5F;
+$chart-violet: #B494FA;
+$chart-green: #149603;
+$chart-pink: #EB94CF;
+$chart-navy-light: $navy-light;
+$chart-navy: $navy;
+
+// Focus
+$focus-outline: 0 0 0 2px $navy-darker, 0 0 0 4px $white;

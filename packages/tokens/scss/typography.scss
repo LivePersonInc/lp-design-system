@@ -1,0 +1,186 @@
+$font-roboto: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$font-roboto-mono: 'Roboto Mono', monospace, sans-serif;
+$font-roboto-condensed: 'Roboto Condensed', sans-serif;
+
+$size-default: 14px;
+$size-body: 14px;
+$size-small: 11.67px;
+$size-large: 16.8px;
+
+$line-height-small: 1.2; // 120%
+$line-height-medium: 1.35; // 130%
+$line-height-large: 1.5; // 150%
+
+$weight-light: 300; // Light
+$weight-regular: 400; // Normal
+$weight-medium: 500; // Medium
+$weight-bold: 700; // Bold
+
+$letter-spacing-regular: 0;
+$letter-spacing-all-caps: .02em;
+$letter-spacing-compact: -.02em;
+
+$font-size-heading: (
+  1: 24.19px,
+  2: 20.16px,
+  3: 16.8px,
+  4: 14px,
+  5: 14px,
+);
+
+@mixin font-family($font-family: $font-roboto) {
+  font-family: $font-family;
+}
+
+@mixin with-font-family($font-family: $font-roboto) {
+  @if $font-family {
+    @include font-family($font-family);
+  }
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Modifications mixins
+@mixin type-all-caps {
+  letter-spacing: $letter-spacing-all-caps;
+  text-transform: uppercase;
+}
+@mixin type-link-active {
+  text-decoration: underline;
+}
+@mixin type-inline-emphasis {
+  font-style: italic;
+}
+@mixin type-code {
+  @include font-family($font-roboto-mono);
+}
+@mixin type-condensed {
+  @include font-family($font-roboto-condensed);
+}
+
+// Headers mixins
+@mixin header($header: 1) {
+  font-size: map-get($font-size-heading, $header);
+  line-height: if($header == 1 or $header == 2 or $header == 3, $line-height-medium, $line-height-small);
+  font-weight: if($header == 1 or $header == 2, $weight-bold, $weight-medium);
+
+  @if $header == 5 {
+    @include type-all-caps;
+  } @else {
+    letter-spacing: $letter-spacing-regular;
+  }
+}
+
+// Body mixins
+@mixin body($small: false) {
+  font-size: if($small, $size-small, $size-body);
+  font-weight: $weight-regular;
+  line-height: $line-height-large;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin body-bold($small: false) {
+  @include body($small);
+  font-weight: $weight-bold;
+}
+@mixin body-italic($small: false) {
+  @include body($small);
+  font-style: italic;
+}
+
+// Button mixins
+@mixin button($size: medium) {
+  @if $size == small {
+    font-size: $size-small;
+    font-weight: $weight-bold;
+  } @else if $size == medium {
+    font-size: $size-default;
+    font-weight: $weight-bold;
+  } @else if $size == large {
+    font-size: $size-large;
+    font-weight: $weight-medium;
+  }
+
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Tag mixins
+@mixin tag {
+  font-size: $size-small;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-compact;
+}
+
+// Table mixins
+@mixin table-header {
+  font-size: $size-default;
+  font-weight: $weight-medium;
+  line-height: $line-height-small;
+  @include type-all-caps;
+}
+@mixin table-cell {
+  font-size: $size-default;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Input mixins
+@mixin input-label {
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin input-value {
+  font-size: $size-default;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Code mixins
+@mixin code {
+  @include type-code;
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+
+// Charts mixins
+@mixin chart-title {
+  font-size: $size-large;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-axis-title {
+  font-size: $size-small;
+  font-weight: $weight-bold;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-axis-label {
+  @include type-condensed;
+  font-size: $size-small;
+  font-weight: $weight-regular;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-number-title {
+  font-size: $size-large;
+  font-weight: $weight-light;
+  line-height: $line-height-small;
+  @include type-all-caps;
+  letter-spacing: $letter-spacing-regular;
+}
+@mixin chart-number($big: false) {
+  font-size: map-get($font-size-heading, if($big, 1, 3));
+  font-weight: $weight-light;
+  line-height: $line-height-small;
+  letter-spacing: $letter-spacing-regular;
+}

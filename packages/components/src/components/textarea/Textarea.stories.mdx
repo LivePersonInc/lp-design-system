@@ -1,0 +1,58 @@
+import { createElement } from 'react';
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs'; import { getPropsByDefaultProps } from '../../common/helpers';
+
+import { commonArgTypes, groupControls } from '../../common/storybook';
+import WithIconStoryDescription, { getArgTypesWithIcons, icons } from '../../common/withIconStory';
+
+import Textarea, { events } from './Textarea';
+import './';
+
+<Meta
+  title="Components/Inputs/Textarea"
+  component={Textarea}
+  args={Textarea.defaultProps}
+  argTypes={commonArgTypes}
+  parameters={{
+    actions: {
+      handles: events,
+    },
+  }}
+/>
+
+export const Template = ({ iconLeft, iconRight, ...props }) => (
+  <lp-textarea key={`${iconLeft}-${iconRight}`} {...getPropsByDefaultProps(Textarea.defaultProps, props)}>
+    {!!iconLeft && createElement(`lp-${iconLeft}-icon`, { slot: 'icon-left' })}
+    {!!iconRight && createElement(`lp-${iconRight}-icon`, { slot: 'icon-right' })}
+  </lp-textarea>
+);
+
+# Textarea
+
+<ArgsTable of={Textarea} />
+
+**Note:** Those attributes extend [HTMLTextAreaElement](https://www.w3schools.com/tags/tag_textarea.asp) attributes
+
+## Basic
+
+<Canvas>
+  <Story name="Basic">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With icon
+
+<WithIconStoryDescription />
+
+<Canvas withSource={SourceState.OPEN}>
+  <Story
+    name="With icon"
+    args={{ iconLeft: icons[0] }}
+    argTypes={{
+      ...getArgTypesWithIcons(['iconLeft', 'iconRight']),
+      ...groupControls(['theme', 'textAlign', 'error', 'disabled', 'readOnly', 'resizable'], 'Textarea args'),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

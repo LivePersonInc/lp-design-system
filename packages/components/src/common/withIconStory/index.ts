@@ -1,7 +1,8 @@
+import { ArgType, ArgTypes } from '@storybook/addons/dist/ts3.9/types';
 // @ts-ignore
 import Description from './Description.mdx';
 
-export { icons } from './icons';
+import { icons } from './icons';
 
 import '@liveperson-design-system/icons/add-target';
 import '@liveperson-design-system/icons/admin-settings';
@@ -329,5 +330,25 @@ import '@liveperson-design-system/icons/whatsapp';
 import '@liveperson-design-system/icons/xls';
 import '@liveperson-design-system/icons/zoom-in';
 import '@liveperson-design-system/icons/zoom-out';
+
+export { icons };
+
+export const argTypeWithIcons: ArgType = {
+  options: icons,
+  control: { type: 'select' },
+}
+export function getArgTypesWithIcons(keys: string | string[], options: ArgTypes = {}): ArgTypes {
+  const argTypes: ArgTypes = {};
+
+  if (Array.isArray(keys)) {
+    keys.forEach(key => {
+      argTypes[key] = { ...argTypeWithIcons, ...options };
+    });
+  } else {
+    argTypes[keys] = { ...argTypeWithIcons, ...options };
+  }
+
+  return argTypes;
+}
 
 export default Description

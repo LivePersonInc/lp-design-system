@@ -9,14 +9,13 @@ You can install LPDS components with NPM or Yarn.
 - YARN: `yarn add @liveperson-design-system/components`
 - NPM: `npm i @liveperson-design-system/components`
 
-These components have a peer-dependency on the LPDS core functionality.
-Because of this before use LPDS components, you have to add the following script inside `head` tag
+## How to use
+
+Before using this package you have to add the following script inside `head` tag
 
 ```html
-<script src="https://unpkg.com/@liveperson-design-system/core/main.js"></script>
+<script src="https://unpkg.com/@liveperson-design-system/components/main.js"></script>
 ```
-
-## How to use
 
 You can use any LPDS component either in a browser or with a front-end framework
 
@@ -24,7 +23,7 @@ You can use any LPDS component either in a browser or with a front-end framework
 ```html
 <html>
   <head>
-    <script src="https://unpkg.com/liveperson-design-system/components/build/button.js" />
+    <script src="https://unpkg.com/@liveperson-design-system/components/button.js" />
   </head>
 
   <body>
@@ -37,7 +36,7 @@ You can use any LPDS component either in a browser or with a front-end framework
 ```jsx
 import React from 'react';
 
-import 'liveperson-design-system/components/build/button';
+import '@liveperson-design-system/components/button';
 
 const App = () => {
   return (

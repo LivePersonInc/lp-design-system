@@ -11,8 +11,6 @@ You can install LPDS tokens with NPM or Yarn.
 
 ## How to use
 
-### Usage
-
 You can use LPDS tokens in a SASS/SCSS file
 
 ```scss

@@ -9,16 +9,13 @@ You can install LPDS icons with NPM or Yarn.
 - NPM: `npm i @liveperson-design-system/icons`
 - YARN: `yarn add @liveperson-design-system/icons`
 
-These components have a peer-dependency on the LPDS core functionality.
-Because of this before use LPDS icons, you have to add the following script inside `head` tag
-
-```html
-<script src="https://unpkg.com/@liveperson-design-system/core/main.js"></script>
-```
-
 ## How to use
 
-### Usage
+Before using this package you have to add the following script inside `head` tag
+
+```html
+<script src="https://unpkg.com/@liveperson-design-system/components/main.js"></script>
+```
 
 You can use any LPDS icon either in a browser or with a front-end framework
 
@@ -26,7 +23,7 @@ You can use any LPDS icon either in a browser or with a front-end framework
 ```html
 <html>
   <head>
-    <script src="https://unpkg.com/@liveperson-design-system/icons/build/arrow-down.js" />
+    <script src="https://unpkg.com/@liveperson-design-system/icons/arrow-down.js" />
   </head>
 
   <body>
@@ -39,7 +36,7 @@ You can use any LPDS icon either in a browser or with a front-end framework
 ```jsx
 import React from 'react';
 
-import '@liveperson-design-system/icons/build/arrow-down';
+import '@liveperson-design-system/icons/arrow-down';
 
 const App = () => {
   return (

@@ -13,7 +13,6 @@ const fields = {
   files: ['*'],
   publishConfig: {
     access: 'public',
-    directory: '.',
   },
   scripts: null,
   dependencies: null,

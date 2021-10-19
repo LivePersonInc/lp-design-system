@@ -37,7 +37,8 @@
     "build:core": "lerna exec --scope=@liveperson-design-system/core -- yarn build",
     "build:icons": "lerna exec --scope=@liveperson-design-system/icons -- yarn build",
     "build:all": "yarn build:icons && yarn build:components && yarn build:core",
-    "bootstrap": "lerna link && yarn build:all"
+    "bootstrap": "lerna link && yarn build:all",
+    "publish:all": "lerna publish"
   },
   "dependencies": {},
   "devDependencies": {

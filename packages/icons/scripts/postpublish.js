@@ -1,4 +1,4 @@
-const fse = require('fse');
+const fse = require('fs-extra');
 const path = require('path');
 
 console.log('Removing build folder');

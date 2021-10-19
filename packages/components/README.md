@@ -14,7 +14,7 @@ You can install LPDS components with NPM or Yarn.
 Before using this package you have to add the following script inside `head` tag
 
 ```html
-<script src="https://unpkg.com/@liveperson-design-system/components/main.js"></script>
+<script src="https://unpkg.com/@liveperson-design-system/components/vendor.js"></script>
 ```
 
 You can use any LPDS component either in a browser or with a front-end framework

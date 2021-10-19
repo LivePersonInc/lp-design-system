@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "main": "index.js",
+  "main": "vendor.js",
   "files": [
     "build",
     "README.md"

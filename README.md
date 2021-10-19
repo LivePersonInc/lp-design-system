@@ -63,7 +63,6 @@ yarn publish:all
 There are few NPM scripts to help work with the project
 
 - `yarn build:components` - to build LPDS components
-- `yarn build:core` - to build LPDS core
 - `yarn build:icons` - to build LPDS icons
 - `yarn build:all` - to build all packages
 

@@ -1,7 +1,7 @@
 {
   "name": "@liveperson-design-system/tokens",
   "description": "The company design system tokens for LivePerson",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "contributors": [
     {
       "name": "Mykhailo Riabokon",

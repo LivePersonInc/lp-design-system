@@ -48,7 +48,7 @@
     "build": "direflow-scripts build && node ./scripts/after-build.js",
     "build:lib": "direflow-scripts build:lib",
     "test": "direflow-scripts test",
-    "prepublishOnly": "node ./scripts/prepublishOnly.js",
+    "prepublishOnly": "yarn build && node ./scripts/prepublishOnly.js",
     "postpublish": "node ./scripts/postpublish.js"
   },
   "dependencies": {

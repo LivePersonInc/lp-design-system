@@ -8,7 +8,7 @@ Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
 
 If you want to run the project locally, its really easy!
 
-The project uses Storybook for its demos and development environment.
+This project uses Storybook for its demos and development environment.
 
 ### 1. Clone repo
 
@@ -22,7 +22,13 @@ git clone https://github.com/LivePersonInc/lp-design-system.git
 yarn install
 ```
 
-### 3. Start Storybook
+### 3. Bootstrap project
+
+```bash
+yarn bootstrap
+```
+
+### 4. Start Storybook
 
 ```bash
 yarn start

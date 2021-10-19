@@ -1,12 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 const packageJson = require('../package.json');
 
 const buildPath = path.resolve(__dirname, '../build');
-
-execSync('yarn build', { stdio: 'inherit' });
 
 console.log('\n');
 

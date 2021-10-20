@@ -34,6 +34,11 @@ module.exports = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       });
+
+      config.module.rules[oneOfRuleIndex].oneOf.unshift({
+        test: /\.exports\.(scss|sass)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      });
     }
 
     return config;

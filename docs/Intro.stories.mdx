@@ -1,33 +1,92 @@
 import { Meta } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
 
-<Meta title="Docs/Intro" />
+import { packages } from './common/packages';
 
-<img
-  src="lpds-logo.svg"
-  alt="LPDS"
-  style={{
-    width: '250px',
-    display: 'block',
-    margin: '0 auto 50px',
-  }}
-/>
+export const Logo = styled.img`
+  width: 250px;
+  display: block;
+  margin: 0 auto 16px;
+`;
 
-<p
-  style={{
-    textAlign: 'center',
-    fontSize: '1em',
-  }}
->
-  <a href="https://npm.im/liveperson-design-system">
-    <img src="https://img.shields.io/npm/v/liveperson-design-system.svg" />
-  </a>&nbsp;&nbsp;
-  <a href="https://npm.im/liveperson-design-system">
-    <img src="https://badgen.net/npm/dw/liveperson-design-system" />
-  </a>&nbsp;&nbsp;
-  <a href="https://github.com/LivePersonInc/lp-design-system">
-    <img src="https://img.shields.io/github/stars/LivePersonInc/lp-design-system?style=social" alt="GitHub stars" />
-  </a>&nbsp;&nbsp;
-  <a href="https://github.com/LivePersonInc/lp-design-system/blob/main/LICENSE">
-    <img src="https://badgen.now.sh/badge/license/MIT" />
-  </a>&nbsp;&nbsp;
-</p>
+export const BadgesList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BadgesListItem = styled.div`
+  margin: 0 4px;
+`;
+
+export const Badge = styled.img`
+  display: block;
+`;
+
+export const PackagesList = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+`;
+
+export const PackagesListItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 auto;
+  border: ${({ theme }) => `1px solid ${theme.appBorderColor}`};
+  border-radius: ${({ theme }) => `${theme.appBorderRadius}px`};
+  margin: ${({ theme }) => `${theme.layoutMargin}px`};
+  padding: ${({ theme }) => `${theme.layoutMargin}px`};
+  transition: all .15s ease-out;
+`;
+
+export const PackageTitle = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: ${({ theme }) => `${theme.typography.size.m1}px`};
+  cursor: pointer;
+`;
+
+export const PackagePackage = styled.a`
+  font-size: ${({ theme }) => `${theme.typography.size.s1}px`};
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.secondary};
+  margin-bottom: 16px;
+  cursor: pointer;
+`;
+
+<Meta title="Docs/Intro" parameters={{ docsOnly: true }} />
+
+<Logo src="lpds-logo.svg" alt="LPDS" />
+
+<BadgesList>
+  <BadgesListItem>
+    <a href="https://github.com/LivePersonInc/lp-design-system" target="_blank">
+      <Badge src="https://img.shields.io/github/stars/LivePersonInc/lp-design-system?style=flat-square" alt="GitHub stars" />
+    </a>
+  </BadgesListItem>
+  <BadgesListItem>
+    <a href="https://github.com/LivePersonInc/lp-design-system/blob/main/LICENSE" target="_blank">
+      <Badge src="https://img.shields.io/badge/licence-MIT-green?style=flat-square" alt="licence" />
+    </a>
+  </BadgesListItem>
+</BadgesList>
+
+<PackagesList>
+  {packages.map(({ key, name, title }) => (
+    <PackagesListItem key={key}>
+      <PackageTitle>{title}</PackageTitle>
+      <PackagePackage href={`https://npm.im/${name}`} target="_blank">{name}</PackagePackage>
+      <BadgesList>
+        <BadgesListItem>
+          <Badge src={`https://img.shields.io/npm/v/${name}?style=flat-square`} alt="version" />
+        </BadgesListItem>
+        <BadgesListItem>
+          <Badge src={`https://img.shields.io/npm/dw/${name}?style=flat-square`} alt="downloads" />
+        </BadgesListItem>
+      </BadgesList>
+    </PackagesListItem>
+  ))}
+</PackagesList>

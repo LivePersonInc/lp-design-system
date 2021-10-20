@@ -20,9 +20,9 @@ const IconImportDetails: IconImportDetailsComponent = ({ name, type, size, color
       {name}
     </h4>
 
-    <Source language="html" code={`<script src="https://unpkg.com/liveperson-design-system/icons/${name}.js"></script>`} />
+    <Source language="html" code={`<script src="https://unpkg.com/@liveperson-design-system/icons/${name}.js"></script>`} />
 
-    <Source language="javascript" code={`import 'liveperson-design-system/icons/${name}';`} />
+    <Source language="javascript" code={`import '@liveperson-design-system/icons/${name}';`} />
 
     <Source language="html" code={`<lp-${name}-icon${type === 'solid' ? '' : ` type="${type}"`}${size === 'small' ? '' : ` size="${size}"`}${color === 'dark' ? '' : ` color="${color}"`} />`} />
   </div>

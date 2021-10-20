@@ -1,5 +1,7 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta, Source } from '@storybook/addon-docs';
 import { TabsState } from '@storybook/components';
+
+import { packages } from './common/packages';
 
 <Meta title="Docs/Quick Start" />
 
@@ -7,34 +9,28 @@ import { TabsState } from '@storybook/components';
 
 ## Installing
 
-You can install LPDS with [NPM](https://www.npmjs.com/package/liveperson-design-system) or Yarn.
-
 <TabsState>
-  <div id="npm" title="NPM">
-
-```bash
-npm i liveperson-design-system
-```
-
-  </div>
-  <div id="yarn" title="Yarn">
-
-```bash
-yarn add liveperson-design-system
-```
-
-  </div>
+  {packages.map(({ name, title }) => (
+    <div key={name} id={name} title={title}>
+      <Source language="bash" code={`yarn add ${name}`} />
+    </div>
+  ))}
 </TabsState>
 
 ## How to use
 
 ### Setup
 
-First, you have to add the following script inside `head` tag
+Before using `@liveperson-design-system/icons` or `@liveperson-design-system/components`,
+you have to add the following script inside `head` tag
 
-```html
-<script src="https://unpkg.com/liveperson-design-system/main.js"></script>
-```
+<TabsState>
+  {packages.filter(({ key }) => (key === 'icons' || key === 'components')).map(({ key, name, title }) => (
+    <div key={key} id={key} title={title}>
+      <Source language="html" code={`<script src="https://unpkg.com/${name}/vendor.js"></script>`} />
+    </div>
+  ))}
+</TabsState>
 
 ### Usage
 
@@ -46,7 +42,7 @@ You can use any LPDS component either in a browser or with a front-end framework
 ```html
 <html>
   <head>
-    <script src="https://unpkg.com/liveperson-design-system/components/button.js" />
+    <script src="https://unpkg.com/@liveperson-design-system/components/button.js" />
   </head>
 
   <body>
@@ -61,7 +57,7 @@ You can use any LPDS component either in a browser or with a front-end framework
 ```jsx
 import React from 'react';
 
-import 'liveperson-design-system/components/button';
+import '@liveperson-design-system/components/button';
 
 const App = () => {
   return (

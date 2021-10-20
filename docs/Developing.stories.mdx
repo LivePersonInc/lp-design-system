@@ -2,46 +2,43 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Docs/Developing"/>
 
-# Developing
+## Developing
+
+**LPDS is using Monorepo development strategy and [Lerna](https://lerna.js.org/) tool to work with it.**
 
 If you want to run the project locally, its really easy!
 
-The project uses Storybook for its demos and development environment.
+This project uses Storybook for its demos and development environment.
 
-### 1. Clone repo
+#### 1. Clone repo
 
 ```bash
 git clone https://github.com/LivePersonInc/lp-design-system.git
 ```
 
-### 2. Install dependencies
+#### 2. Install dependencies
 
 ```bash
 yarn install
 ```
 
-### 3. Start DevServer
+#### 3. Bootstrap project
+
+```bash
+yarn bootstrap
+```
+
+#### 4. Start Storybook
 
 ```bash
 yarn start
 ```
 
-Once started the browser will open to the storybook url.
-From here you can see and try all things that LPDS provides
+Once started the browser will open to the storybook url. From here you can see and try all things that LPDS provides
 
 **Note:** you can run Storybook in docs mode by using `yarn start:docs` command
 
-## Other development scripts
-
-In the project directory, you can run:
-
-- `yarn start` - runs Storybook dev server
-- `yarn start:docs` - runs Storybook dev server in docs mode
-- `yarn build` - builds all web-components to the `build` folder
-- `yarn storybook:build` - builds all web-components and Storybook to the `storybook-static` folder
-- `yarn storybook:build:docs` - builds all web-components and Storybook in docs mode to the `storybook-static` folder
-
-## Storybook deploying
+### Storybook deploying
 
 To deploy a new version of LPDS documentation (Storybook) to GH Pages you can simply run this command:
 
@@ -53,12 +50,18 @@ or
 yarn storybook:docs:deploy
 ```
 
-## NPM package publishing
+### Publishing
 
-LPDS is using [np](https://www.npmjs.com/package/liveperson-design-system) package to help with publishing
+To run publishing process simply run this script
 
-Run the following command to publish a new version of `liveperson-design-system` package.
-
-```bash
-yarn release
+```bush
+yarn publish:all
 ```
+
+### Other scripts
+
+There are few NPM scripts to help work with the project
+
+- `yarn build:components` - to build LPDS components
+- `yarn build:icons` - to build LPDS icons
+- `yarn build:all` - to build all packages

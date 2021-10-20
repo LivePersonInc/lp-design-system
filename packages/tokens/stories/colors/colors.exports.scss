@@ -1,0 +1,57 @@
+@use '../../scss/colors';
+
+:export {
+  // Navy
+  navyDarker: colors.$navy-darker;
+  navyDark: colors.$navy-dark;
+  navy: colors.$navy;
+  navyLight: colors.$navy-light;
+  navyLighter: colors.$navy-lighter;
+  navyLightest: colors.$navy-lightest;
+  navyWhite: colors.$navy-white;
+
+  // Blue
+  blueDarker: colors.$blue-darker;
+  blueDark: colors.$blue-dark;
+  blue: colors.$blue;
+  blueLight: colors.$blue-light;
+  blueLighter: colors.$blue-lighter;
+
+  // Orange
+  orangeDarker: colors.$orange-darker;
+  orangeDark: colors.$orange-dark;
+  orange: colors.$orange;
+  orangeLight: colors.$orange-light;
+  orangeLighter: colors.$orange-lighter;
+
+  // Green
+  greenDarker: colors.$green-darker;
+  greenDark: colors.$green-dark;
+  green: colors.$green;
+  greenLight: colors.$green-light;
+  greenLighter: colors.$green-lighter;
+
+  // Red
+  redDarker: colors.$red-darker;
+  redDark: colors.$red-dark;
+  red: colors.$red;
+  redLight: colors.$red-light;
+  redLighter: colors.$red-lighter;
+
+  // Yellow
+  yellowDarker: colors.$yellow-darker;
+  yellowDark: colors.$yellow-dark;
+  yellow: colors.$yellow;
+  yellowLight: colors.$yellow-light;
+  yellowLighter: colors.$yellow-lighter;
+
+  // Chart colors
+  chartBlue: colors.$chart-blue;
+  chartYellow: colors.$chart-yellow;
+  chartRed: colors.$chart-red;
+  chartViolet: colors.$chart-violet;
+  chartGreen: colors.$chart-green;
+  chartPink: colors.$chart-pink;
+  chartNavyLight: colors.$chart-navy-light;
+  chartNavy: colors.$chart-navy;
+}

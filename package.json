@@ -54,6 +54,7 @@
     "css-loader": "3.4.2",
     "fs-extra": "^10.0.0",
     "lerna": "^4.0.0",
+    "np": "^7.5.0",
     "sass-loader": "8.0.2",
     "storybook-addon-designs": "^6.1.0",
     "to-string-loader": "^1.1.6",

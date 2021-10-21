@@ -58,6 +58,14 @@ To run publishing process simply run this script
 yarn publish:all
 ```
 
+### Release
+
+To run release process simply run this script
+
+```bush
+yarn new-release
+```
+
 ### Other scripts
 
 There are few NPM scripts to help work with the project

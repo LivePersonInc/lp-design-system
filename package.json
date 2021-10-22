@@ -1,7 +1,7 @@
 {
   "name": "@liveperson-design-system/root",
   "description": "The company design system for LivePerson",
-  "version": "0.3.11",
+  "version": "0.4.0",
   "private": true,
   "contributors": [
     {

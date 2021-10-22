@@ -21,8 +21,16 @@
   cursor: pointer;
 }
 
-@mixin host-with-attr($attr, $additional-selector: '') {
-  :host([#{$attr}]:not([#{$attr}="false"])#{$additional-selector}) {
-    @content;
+@mixin host-with-attr($attr, $with-selector: '', $with-parent: false) {
+  $selector: '[#{$attr}]:not([#{$attr}="false"])#{$with-selector}';
+
+  @if $with-parent {
+    :host(#{$selector}) & {
+      @content;
+    }
+  } @else {
+    :host(#{$selector}) {
+      @content;
+    }
   }
 }

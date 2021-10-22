@@ -9,6 +9,35 @@ export const commonArgTypes: ArgTypes = {
   },
 };
 
+export function getCommonArgTypes(args: Object): ArgTypes {
+  const argTypes: ArgTypes = {};
+
+  Object.keys(args).forEach(key => {
+    switch (key) {
+      case 'theme':
+      case 'size':
+        argTypes[key] = {
+          control: { type: 'inline-radio' },
+        };
+
+        break;
+    }
+  });
+
+  return argTypes;
+}
+
+type EmptyArgTypes = { [control: string]: {} }
+export function getEmptyArgTypes(controls: string[]): EmptyArgTypes {
+  const argTypes: EmptyArgTypes = {};
+
+  controls.forEach(control => {
+    argTypes[control] = {};
+  });
+
+  return argTypes;
+}
+
 type HideControlsArgTypes = {
   [control: string]: { table: { disable: true } }
 }

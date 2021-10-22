@@ -63,7 +63,7 @@ yarn publish:all
 To run release process simply run this script
 
 ```bush
-yarn new-release
+yarn release
 ```
 
 ### Other scripts

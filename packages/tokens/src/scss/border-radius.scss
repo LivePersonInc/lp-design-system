@@ -1,4 +1,4 @@
-$-border-radius: (
+$border-radius: (
   xxxs: 2px,
   xxs: 4px,
   xs: 8px,
@@ -8,8 +8,10 @@ $-border-radius: (
   xl: 32px,
 );
 
+$-border-radius: $border-radius;
+
 @function get-border-radius($size) {
-  @return map-get($-border-radius, $size);
+  @return map-get($border-radius, $size);
 }
 
 @mixin border-radius($border-radius) {

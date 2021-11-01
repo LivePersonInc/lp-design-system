@@ -1,0 +1,5 @@
+@use './helpers';
+@use './animation';
+
+@include helpers.export-list(animation.$duration, 'duration-');
+@include helpers.export-list(animation.$timing-function, 'timing-function-');

@@ -2,6 +2,13 @@
   "name": "@liveperson-design-system/tokens",
   "description": "The company design system tokens for LivePerson",
   "version": "0.4.0",
+  "keywords": [
+    "design-system",
+    "designsystem",
+    "live-person",
+    "liveperson",
+    "tokens"
+  ],
   "contributors": [
     {
       "name": "Mykhailo Riabokon",
@@ -16,15 +23,8 @@
       "email": "chwu@liveperson.com"
     }
   ],
-  "license": "MIT",
-  "keywords": [
-    "design-system",
-    "designsystem",
-    "live-person",
-    "liveperson",
-    "tokens"
-  ],
   "homepage": "https://livepersoninc.github.io/lp-design-system/?path=/story/tokens",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/LivePersonInc/lp-design-system",
@@ -33,15 +33,36 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "main": "index.js",
-  "directories": {
-    "scss": "scss"
-  },
+  "main": "build/js/index.js",
   "files": [
-    "*"
+    "build",
+    "README.md"
   ],
   "publishConfig": {
-    "access": "public"
+    "directory": "build"
+  },
+  "scripts": {
+    "build": "rimraf build && webpack --progress --config-name css-in-js --config-name css && node ./scripts/postbuild.js",
+    "prepublishOnly": "node ./scripts/prepublishOnly.js",
+    "postpublish": "node ./scripts/postpublish.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
+    "@babel/preset-env": "^7.15.8",
+    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
+    "babel-loader": "^8.2.3",
+    "change-case": "^4.1.2",
+    "css-loader": "^6.4.0",
+    "fs-extra": "^10.0.0",
+    "mini-css-extract-plugin": "^2.4.3",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^12.2.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1"
   },
   "gitHead": "6563296f973abd643b8d2127343b2fed1a58167e"
 }

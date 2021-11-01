@@ -1,7 +1,7 @@
 @use './helpers';
 @use './responsive';
 
-$-spaces: (
+$spaces: (
   none: 0,
   xxs: 4px,
   xs: 8px,
@@ -12,7 +12,7 @@ $-spaces: (
   xxl: 84px,
 );
 
-$-spaces-inner: (
+$spaces-inner: (
   none: 0,
   xxs: 4px,
   xs: 8px,
@@ -24,7 +24,7 @@ $-spaces-inner: (
 );
 
 @function get-space($size, $inner: false) {
-  @return map-get(if($inner, $-spaces-inner, $-spaces), $size);
+  @return map-get(if($inner, $spaces-inner, $spaces), $size);
 }
 
 @function get-space-rem($size, $inner: false) {
@@ -65,8 +65,8 @@ $-spaces-inner: (
     }
   }
 
-  @if map-has-key($breakpoints, large-desktop) {
-    @include responsive.media(large-desktop) {
+  @if map-has-key($breakpoints, desktop-large) {
+    @include responsive.media(desktop-large) {
       @include padding(map-get($breakpoints, large-desktop));
     }
   }

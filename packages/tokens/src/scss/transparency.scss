@@ -5,8 +5,27 @@ $light-1: rgba(140, 172, 255, .08);
 $light-2: rgba(140, 172, 255, .15);
 $light-3: rgba(140, 172, 255, .22);
 $light-4: rgba(140, 172, 255, .3);
+$light: (
+  0: $light-0,
+  1: $light-1,
+  2: $light-2,
+  3: $light-3,
+  4: $light-4,
+);
+
 $dark-0: rgba(0, 32, 116, .02);
 $dark-1: rgba(0, 32, 116, .08);
 $dark-2: rgba(0, 14, 116, .12);
 $dark-3: rgba(8, 16, 74, .4);
 $dark-4: rgba(5, 15, 66, .73);
+$dark: (
+  0: $dark-0,
+  1: $dark-1,
+  2: $dark-2,
+  3: $dark-3,
+  4: $dark-4,
+);
+
+@function get-transparency($transparency, $light-theme: false) {
+  @return map-get(if($light-theme, $light, $dark), $transparency);
+}

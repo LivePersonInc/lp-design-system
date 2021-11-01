@@ -34,3 +34,11 @@
     }
   }
 }
+
+@mixin export-list($list, $key-prefix: '') {
+  @each $key, $value in $list {
+    :export {
+      #{$key-prefix}#{$key}: $value;
+    }
+  }
+}

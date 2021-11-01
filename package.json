@@ -23,9 +23,10 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": ["@liveperson-design-system/tokens/**/**"]
+  },
   "scripts": {
     "start": "start-storybook -s public",
     "start:docs": "start-storybook --docs -s public",
@@ -35,7 +36,8 @@
     "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch main",
     "build:components": "lerna exec --scope=@liveperson-design-system/components -- yarn build",
     "build:icons": "lerna exec --scope=@liveperson-design-system/icons -- yarn build",
-    "build:all": "yarn build:icons && yarn build:components",
+    "build:tokens": "lerna exec --scope=@liveperson-design-system/tokens -- yarn build",
+    "build:all": "yarn build:tokens && yarn build:icons && yarn build:components",
     "bootstrap": "lerna link && yarn build:all",
     "publish:all": "yarn bootstrap && lerna publish",
     "release": "np --yolo --no-publish",
@@ -91,6 +93,5 @@
     "setupFilesAfterEnv": [
       "direflow-scripts/direflow-jest.config.js"
     ]
-  },
-  "config-overrides-path": "direflow-webpack.js"
+  }
 }

@@ -31,7 +31,7 @@ const Button: ButtonComponent = ({ label }) => {
 
   useEffect(() => {
     const hostEl = getHostElement();
-console.log({e:hostEl});
+
     if (hostEl) {
       hostEl.tabIndex = 0;
     }

@@ -1,0 +1,16 @@
+@use './transparency';
+
+:export {
+  disabled: transparency.$disabled;
+
+  light-0: transparency.$light-0;
+  light-1: transparency.$light-1;
+  light-2: transparency.$light-2;
+  light-3: transparency.$light-3;
+  light-4: transparency.$light-4;
+  dark-0: transparency.$dark-0;
+  dark-1: transparency.$dark-1;
+  dark-2: transparency.$dark-2;
+  dark-3: transparency.$dark-3;
+  dark-4: transparency.$dark-4;
+}

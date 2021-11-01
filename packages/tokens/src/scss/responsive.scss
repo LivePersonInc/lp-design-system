@@ -1,11 +1,11 @@
-$-breakpoints: (
+$breakpoints: (
   laptop: 900px,
   desktop: 1200px,
   desktop-large: 1600px,
 );
 
 @function get-breakpoint($breakpoint) {
-  @return map-get($-breakpoints, $breakpoint);
+  @return map-get($breakpoints, $breakpoint);
 }
 
 @mixin media($breakpoint, $up: true) {

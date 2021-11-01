@@ -1,0 +1,31 @@
+@use './typography';
+
+:export {
+  fontRoboto: typography.$font-roboto;
+  fontRobotoMono: typography.$font-roboto-mono;
+  fontRobotoCondensed: typography.$font-roboto-condensed;
+
+  sizeDefault: typography.$size-default;
+  sizeBody: typography.$size-body;
+  sizeSmall: typography.$size-small;
+  sizeLarge: typography.$size-large;
+
+  lineHeightSmall: typography.$line-height-small;
+  lineHeightMedium: typography.$line-height-medium;
+  lineHeightLarge: typography.$line-height-large;
+
+  weightLight: typography.$weight-light;
+  weightRegular: typography.$weight-regular;
+  weightMedium: typography.$weight-medium;
+  weightBold: typography.$weight-bold;
+
+  letterSpacingRegular: typography.$letter-spacing-regular;
+  letterSpacingAllCaps: typography.$letter-spacing-all-caps;
+  letterSpacingCompact: typography.$letter-spacing-compact;
+}
+
+@each $key, $value in typography.$font-size-heading {
+  :export {
+    heading-#{$key}: $value;
+  }
+}

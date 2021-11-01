@@ -1,5 +1,5 @@
-import colorsDark from './colors.exports.scss';
-import colorsLight from './colors-light.exports.scss';
+import colorsDark from '../../src/scss/colors.exports.scss';
+import colorsLight from '../../src/scss/colors-light.exports.scss';
 
 const firstLetterUpper = (str) => (str.charAt(0).toUpperCase() + str.slice(1));
 

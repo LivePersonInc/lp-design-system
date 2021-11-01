@@ -1,7 +1,7 @@
 {
   "name": "@liveperson-design-system/root",
   "description": "The company design system for LivePerson",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "private": true,
   "contributors": [
     {
@@ -24,8 +24,12 @@
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
   "workspaces": {
-    "packages": ["packages/*"],
-    "nohoist": ["@liveperson-design-system/tokens/**/**"]
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "@liveperson-design-system/tokens/**/**"
+    ]
   },
   "scripts": {
     "start": "start-storybook -s public",

@@ -44,8 +44,7 @@
     "build:all": "yarn build:tokens && yarn build:icons && yarn build:components",
     "bootstrap": "lerna link && yarn build:all",
     "publish:all": "yarn bootstrap && lerna publish",
-    "release": "np --yolo --no-publish",
-    "postrelease": "yarn storybook:deploy"
+    "release": "np --yolo --no-publish"
   },
   "dependencies": {},
   "devDependencies": {

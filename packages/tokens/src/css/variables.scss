@@ -1,9 +1,9 @@
 @use '../scss/animation';
 @use '../scss/border-radius';
-@use '../scss/box-shadow';
 @use '../scss/colors';
 @use '../scss/colors-light';
 @use '../scss/responsive';
+@use '../scss/shadow';
 @use '../scss/spacing';
 @use '../scss/transparency';
 @use '../scss/typography';
@@ -21,24 +21,7 @@
   }
 
   &-border-radius {
-    @include generate-css-variables(border-radius.$border-radius, 'lpds-tokens-border-radius');
-  }
-
-  &-box-shadow {
-    @include generate-css-variables(box-shadow.$shadow, 'lpds-tokens-box-shadow-shadow');
-    @include generate-css-variables((
-      light-s: box-shadow.$shadow-light-text-s,
-      light-l: box-shadow.$shadow-light-text-l,
-      dark-s: box-shadow.$shadow-dark-text-s,
-      dark-l: box-shadow.$shadow-dark-text-l,
-    ), 'lpds-tokens-box-shadow-text');
-    @include generate-css-variables((
-      light-1: box-shadow.$layering-1-light,
-      light-2: box-shadow.$layering-2-light,
-      dark-1: box-shadow.$layering-1-dark,
-      dark-2: box-shadow.$layering-2-dark,
-    ), 'lpds-tokens-box-shadow-layer');
-    @include generate-css-variables(box-shadow.$shadow-input, 'lpds-tokens-box-shadow-input');
+    @include generate-css-variables(border-radius.$border-radius, 'lpds-border-radius');
   }
 
   &-colors {
@@ -155,7 +138,14 @@
   }
 
   &-responsive {
-    @include generate-css-variables(responsive.$breakpoints, 'lpds-tokens-breakpoints');
+    @include generate-css-variables(responsive.$breakpoints, 'lpds-breakpoints');
+  }
+
+  &-shadow {
+    @include generate-css-variables(shadow.$shadow, 'lpds-shadow');
+    @include generate-css-variables(shadow.$shadow-text, 'lpds-shadow-text');
+    @include generate-css-variables(shadow.$shadow-card, 'lpds-shadow-card');
+    @include generate-css-variables(shadow.$shadow-input, 'lpds-shadow-input');
   }
 
   &-spacing {

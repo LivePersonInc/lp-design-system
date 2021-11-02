@@ -1,0 +1,7 @@
+@use './helpers';
+@use './shadow';
+
+@include helpers.export-list(shadow.$shadow, 'shadow-');
+@include helpers.export-list(shadow.$shadow-text, 'shadow-text-');
+@include helpers.export-list(shadow.$shadow-card, 'shadow-card-');
+@include helpers.export-list(shadow.$shadow-input, 'shadow-input-');

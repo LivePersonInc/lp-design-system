@@ -1,9 +1,9 @@
 @use '~@liveperson-design-system/tokens/scss/border-radius';
-@use '~@liveperson-design-system/tokens/scss/box-shadow';
 @use '~@liveperson-design-system/tokens/scss/colors';
 @use '~@liveperson-design-system/tokens/scss/colors-light';
 @use '~@liveperson-design-system/tokens/scss/common';
 @use '~@liveperson-design-system/tokens/scss/helpers';
+@use '~@liveperson-design-system/tokens/scss/shadow';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/transparency';
 @use '~@liveperson-design-system/tokens/scss/typography';
@@ -177,7 +177,7 @@ input {
     height: calc(100% - #{$toggle-circle-offset * 2});
     border-radius: 50%;
     background-color: var(--color-toggle-circle);
-    @include box-shadow.box-shadow(s);
+    @include shadow.box-shadow(s);
     transform: translate(#{$toggle-circle-offset}, -50%);
     transition: transform .15s ease-out;
   }
@@ -188,7 +188,7 @@ input {
     z-index: 1;
     top: 50%;
     display: block;
-    @include box-shadow.box-shadow(s);
+    @include shadow.box-shadow(s);
     transform: translateY(-50%);
 
     &:first-child {

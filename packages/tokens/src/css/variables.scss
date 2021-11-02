@@ -16,8 +16,8 @@
 
 .lpds-tokens {
   &-animation {
-    @include generate-css-variables(animation.$duration, 'lpds-tokens-animation-duration');
-    @include generate-css-variables(animation.$timing-function, 'lpds-tokens-animation-timing-function');
+    @include generate-css-variables(animation.$duration, 'lpds-animation-duration');
+    @include generate-css-variables(animation.$timing-function, 'lpds-animation-timing-function');
   }
 
   &-border-radius {
@@ -44,14 +44,14 @@
   }
 
   &-spacing {
-    @include generate-css-variables(spacing.$spaces, 'lpds-tokens-spaces');
-    @include generate-css-variables(spacing.$spaces-inner, 'lpds-tokens-spaces-inner');
+    @include generate-css-variables(spacing.$spaces, 'lpds-spaces');
+    @include generate-css-variables(spacing.$spaces-inner, 'lpds-spaces-inner');
   }
 
   &-transparency {
-    --lpds-tokens-transparency-disabled: #{transparency.$disabled};
-    @include generate-css-variables(transparency.$light, 'lpds-tokens-transparency-light');
-    @include generate-css-variables(transparency.$dark, 'lpds-tokens-transparency-dark');
+    --lpds-transparency-disabled: #{transparency.$disabled};
+    @include generate-css-variables(transparency.$light, 'lpds-transparency-light');
+    @include generate-css-variables(transparency.$dark, 'lpds-transparency-dark');
   }
 
   &-typography {

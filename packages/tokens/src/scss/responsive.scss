@@ -9,7 +9,7 @@ $breakpoints: (
 }
 
 @mixin media($breakpoint, $up: true) {
-  @if (map-has-key($breakpoint)) {
+  @if (map-has-key($breakpoints, $breakpoint)) {
     $breakpoint: get-breakpoint($breakpoint);
   }
 

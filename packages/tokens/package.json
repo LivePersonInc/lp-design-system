@@ -50,7 +50,6 @@
     "@babel/core": "^7.15.8",
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
     "@babel/preset-env": "^7.15.8",
-    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
     "babel-loader": "^8.2.3",
     "change-case": "^4.1.2",
     "css-loader": "^6.4.0",

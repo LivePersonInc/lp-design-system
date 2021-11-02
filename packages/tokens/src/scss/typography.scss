@@ -1,24 +1,51 @@
 $font-roboto: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 $font-roboto-mono: 'Roboto Mono', monospace, sans-serif;
 $font-roboto-condensed: 'Roboto Condensed', sans-serif;
+$fonts: (
+  roboto: $font-roboto,
+  roboto-mono: $font-roboto-mono,
+  roboto-condensed: $font-roboto-condensed,
+);
 
 $size-default: 14px;
 $size-body: 14px;
 $size-small: 11.67px;
 $size-large: 16.8px;
+$sizes: (
+  default: $size-default,
+  body: $size-body,
+  small: $size-small,
+  large: $size-large,
+);
 
 $line-height-small: 1.2; // 120%
 $line-height-medium: 1.35; // 130%
 $line-height-large: 1.5; // 150%
+$line-heights: (
+  small: $line-height-small,
+  medium: $line-height-medium,
+  large: $line-height-large,
+);
 
 $weight-light: 300; // Light
 $weight-regular: 400; // Normal
 $weight-medium: 500; // Medium
 $weight-bold: 700; // Bold
+$weights: (
+  light: $weight-light,
+  regular: $weight-regular,
+  medium: $weight-medium,
+  bold: $weight-bold,
+);
 
 $letter-spacing-regular: 0;
 $letter-spacing-all-caps: .02em;
 $letter-spacing-compact: -.02em;
+$letter-spacings: (
+  regular: $letter-spacing-regular,
+  all-caps: $letter-spacing-all-caps,
+  compact: $letter-spacing-compact,
+);
 
 $font-size-heading: (
   1: 24.19px,

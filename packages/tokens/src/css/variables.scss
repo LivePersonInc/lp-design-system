@@ -55,33 +55,11 @@
   }
 
   &-typography {
-    @include generate-css-variables((
-      roboto: typography.$font-roboto,
-      roboto-mono: typography.$font-roboto-mono,
-      roboto-condensed: typography.$font-roboto-condensed,
-    ), 'lpds-tokens-typography-font');
-    @include generate-css-variables((
-      default: typography.$size-default,
-      body: typography.$size-body,
-      small: typography.$size-small,
-      large: typography.$size-large,
-    ), 'lpds-tokens-typography-size');
-    @include generate-css-variables((
-      small: typography.$line-height-small,
-      medium: typography.$line-height-medium,
-      large: typography.$line-height-large,
-    ), 'lpds-tokens-typography-line-height');
-    @include generate-css-variables((
-      light: typography.$weight-light,
-      regular: typography.$weight-regular,
-      medium: typography.$weight-medium,
-      bold: typography.$weight-bold,
-    ), 'lpds-tokens-typography-weight');
-    @include generate-css-variables((
-      regular: typography.$letter-spacing-regular,
-      all-caps: typography.$letter-spacing-all-caps,
-      compact: typography.$letter-spacing-compact,
-    ), 'lpds-tokens-typography-letter-spacing');
-    @include generate-css-variables(typography.$font-size-heading, 'lpds-tokens-typography-heading');
+    @include generate-css-variables(typography.$fonts, 'lpds-typography-font');
+    @include generate-css-variables(typography.$sizes, 'lpds-typography-size');
+    @include generate-css-variables(typography.$line-heights, 'lpds-typography-line-height');
+    @include generate-css-variables(typography.$weights, 'lpds-typography-weight');
+    @include generate-css-variables(typography.$letter-spacings, 'lpds-typography-letter-spacing');
+    @include generate-css-variables(typography.$font-size-heading, 'lpds-typography-heading');
   }
 }

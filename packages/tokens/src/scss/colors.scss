@@ -61,3 +61,57 @@ $chart-navy: $navy;
 
 // Focus
 $focus-outline: 0 0 0 2px $navy-darker, 0 0 0 4px $white;
+
+$colors: (
+  black: $black,
+  white: $white,
+
+  navy-darker: $navy-darker,
+  navy-dark: $navy-dark,
+  navy: $navy,
+  navy-light: $navy-light,
+  navy-lighter: $navy-lighter,
+  navy-lightest: $navy-lightest,
+  navy-white: $navy-white,
+
+  blue-darker: $blue-darker,
+  blue-dark: $blue-dark,
+  blue: $blue,
+  blue-light: $blue-light,
+  blue-lighter: $blue-lighter,
+
+  orange-darker: $orange-darker,
+  orange-dark: $orange-dark,
+  orange: $orange,
+  orange-light: $orange-light,
+  orange-lighter: $orange-lighter,
+
+  green-darker: $green-darker,
+  green-dark: $green-dark,
+  green: $green,
+  green-light: $green-light,
+  green-lighter: $green-lighter,
+
+  red-darker: $red-darker,
+  red-dark: $red-dark,
+  red: $red,
+  red-light: $red-light,
+  red-lighter: $red-lighter,
+
+  yellow-darker: $yellow-darker,
+  yellow-dark: $yellow-dark,
+  yellow: $yellow,
+  yellow-light: $yellow-light,
+  yellow-lighter: $yellow-lighter,
+
+  chart-blue: $chart-blue,
+  chart-yellow: $chart-yellow,
+  chart-red: $chart-red,
+  chart-violet: $chart-violet,
+  chart-green: $chart-green,
+  chart-pink: $chart-pink,
+  chart-navy-light: $chart-navy-light,
+  chart-navy: $chart-navy,
+
+  focus-outline: $focus-outline,
+);

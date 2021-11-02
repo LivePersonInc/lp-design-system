@@ -8,9 +8,9 @@
 @use '../scss/transparency';
 @use '../scss/typography';
 
-@mixin generate-css-variables($variables, $prefix) {
-  @each $key, $value in $variables {
-    --#{$prefix}-#{$key}: #{$value};
+@mixin generate-css-variables($list, $prefix) {
+  @each $key, $value in $list {
+    --#{$prefix}-#{'' + $key}: #{$value};
   }
 }
 

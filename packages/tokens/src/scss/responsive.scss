@@ -23,3 +23,17 @@ $breakpoints: (
     }
   }
 }
+
+@mixin media-from-to($from, $to) {
+  @if (map-has-key($breakpoints, $from)) {
+    $from: get-breakpoint($from);
+  }
+
+  @if (map-has-key($breakpoints, $to)) {
+    $to: get-breakpoint($to) - 1px;
+  }
+
+  @media (min-width: $from) and (max-width: $to) {
+    @content;
+  }
+}

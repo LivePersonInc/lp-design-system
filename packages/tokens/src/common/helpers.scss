@@ -1,0 +1,19 @@
+@mixin lpds-prefix {
+  .lpds {
+    @content;
+  }
+}
+
+@mixin generate-css-variables($list, $prefix) {
+  @each $key, $value in $list {
+    --#{$prefix}-#{'' + $key}: #{$value};
+  }
+}
+
+@mixin generate-helpers-classes($list, $rule) {
+  @each $key, $value in $list {
+    &-#{'' + $key} {
+      #{$rule}: $value;
+    }
+  }
+}

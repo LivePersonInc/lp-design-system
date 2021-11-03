@@ -1,3 +1,5 @@
+@use '../common/helpers';
+
 @use '../scss/animation';
 @use '../scss/border-radius';
 @use '../scss/colors';
@@ -8,27 +10,19 @@
 @use '../scss/transparency';
 @use '../scss/typography';
 
-@mixin generate-classes($list, $rule) {
-  @each $key, $value in $list {
-    &-#{'' + $key} {
-      #{$rule}: $value;
-    }
-  }
-}
-
-.lpds {
+@include helpers.lpds-prefix {
   &-animation {
     &-duration {
-      @include generate-classes(animation.$duration, animation-direction);
+      @include helpers.generate-helpers-classes(animation.$duration, animation-direction);
     }
 
     &-timing-function {
-      @include generate-classes(animation.$timing-function, animation-timing-function);
+      @include helpers.generate-helpers-classes(animation.$timing-function, animation-timing-function);
     }
   }
 
   &-border-radius {
-    @include generate-classes(border-radius.$border-radius, border-radius);
+    @include helpers.generate-helpers-classes(border-radius.$border-radius, border-radius);
 
     @each $key, $value in border-radius.$border-radius {
       &-#{$key} {
@@ -63,20 +57,20 @@
 
   &-colors {
     &-bg {
-      @include generate-classes(colors.$colors, background-color);
+      @include helpers.generate-helpers-classes(colors.$colors, background-color);
     }
 
     &-text {
-      @include generate-classes(colors.$colors, color);
+      @include helpers.generate-helpers-classes(colors.$colors, color);
     }
 
     .lpds-theme-light & {
       &-bg {
-        @include generate-classes(colors-light.$colors, background-color);
+        @include helpers.generate-helpers-classes(colors-light.$colors, background-color);
       }
 
       &-text {
-        @include generate-classes(colors-light.$colors, color);
+        @include helpers.generate-helpers-classes(colors-light.$colors, color);
       }
     }
   }
@@ -110,23 +104,23 @@
   }
 
   &-shadow {
-    @include generate-classes(shadow.$shadow, box-shadow);
+    @include helpers.generate-helpers-classes(shadow.$shadow, box-shadow);
 
     &-text {
-      @include generate-classes(shadow.$shadow-text, text-shadow);
+      @include helpers.generate-helpers-classes(shadow.$shadow-text, text-shadow);
     }
 
     &-card {
-      @include generate-classes(shadow.$shadow-card, box-shadow);
+      @include helpers.generate-helpers-classes(shadow.$shadow-card, box-shadow);
     }
 
     &-input {
-      @include generate-classes(shadow.$shadow-input, box-shadow);
+      @include helpers.generate-helpers-classes(shadow.$shadow-input, box-shadow);
     }
   }
 
   &-spacing {
-    @include generate-classes(spacing.$spaces, margin);
+    @include helpers.generate-helpers-classes(spacing.$spaces, margin);
 
     @each $key, $value in spacing.$spaces {
       &-#{$key}-vertical {
@@ -147,7 +141,7 @@
     }
 
     &-inner {
-      @include generate-classes(spacing.$spaces-inner, padding);
+      @include helpers.generate-helpers-classes(spacing.$spaces-inner, padding);
 
       @each $key, $value in spacing.$spaces-inner {
         &-#{$key}-vertical {
@@ -175,37 +169,37 @@
     }
 
     &-light {
-      @include generate-classes(transparency.$light, opacity);
+      @include helpers.generate-helpers-classes(transparency.$light, opacity);
     }
 
     &-dark {
-      @include generate-classes(transparency.$dark, opacity);
+      @include helpers.generate-helpers-classes(transparency.$dark, opacity);
     }
   }
 
   &-typography {
     &-font {
-      @include generate-classes(typography.$fonts, font-family);
+      @include helpers.generate-helpers-classes(typography.$fonts, font-family);
     }
 
     &-size {
-      @include generate-classes(typography.$sizes, font-size);
+      @include helpers.generate-helpers-classes(typography.$sizes, font-size);
     }
 
     &-line-height {
-      @include generate-classes(typography.$line-heights, line-height);
+      @include helpers.generate-helpers-classes(typography.$line-heights, line-height);
     }
 
     &-weight {
-      @include generate-classes(typography.$weights, font-weight);
+      @include helpers.generate-helpers-classes(typography.$weights, font-weight);
     }
 
     &-letter-spacing {
-      @include generate-classes(typography.$letter-spacings, letter-spacing);
+      @include helpers.generate-helpers-classes(typography.$letter-spacings, letter-spacing);
     }
 
     &-heading {
-      @include generate-classes(typography.$font-size-heading, font-size);
+      @include helpers.generate-helpers-classes(typography.$font-size-heading, font-size);
     }
 
     &-head {

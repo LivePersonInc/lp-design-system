@@ -14,6 +14,8 @@
   &-animation {
     @include helpers.generate-css-variables(animation.$duration, 'lpds-animation-duration');
     @include helpers.generate-css-variables(animation.$timing-function, 'lpds-animation-timing-function');
+    @include helpers.generate-css-variables(animation.$animation, 'lpds-animation');
+    --lpds-animation-settings: #{animation.$animation-setting};
   }
 
   &-border-radius {

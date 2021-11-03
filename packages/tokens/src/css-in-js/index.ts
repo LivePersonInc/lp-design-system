@@ -28,12 +28,15 @@ export const functions = {
 };
 
 export const mixins = {
-  animation: animation.mixins,
   borderRadius: borderRadius.mixins,
   responsive: responsive.mixins,
   shadow: shadow.mixins,
   spacing: spacing.mixins,
   typography: typography.mixins,
+};
+
+export const keyframes = {
+  animation: animation.keyframes,
 };
 
 type ColorsType<T> = T extends true ? typeof variables.colors : typeof variables.colorsLight

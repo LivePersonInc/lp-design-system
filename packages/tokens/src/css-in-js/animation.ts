@@ -3,40 +3,66 @@ import animation from '../scss/animation.exports.scss';
 import { groupListVariables } from './helpers';
 
 export type Durations = 'fast' | 'normal' | 'slow'
-export type TimingFunctions = 'ease-in-quad' |
-  'ease-out-quad' |
-  'ease-in-out-quad' |
-  'ease-in-cubic' |
-  'ease-out-cubic' |
-  'ease-in-out-cubic' |
-  'ease-in-quart' |
-  'ease-out-quart' |
-  'ease-in-out-quart'
+export type TimingFunctions = 'easeInQuad' |
+  'easeOutQuad' |
+  'easeInOutQuad' |
+  'easeInCubic' |
+  'easeOutCubic' |
+  'easeInOutCubic' |
+  'easeInQuart' |
+  'easeOutQuart' |
+  'easeInOutQuart'
+export type Animations = 'slideUpFadeIn' |
+  'slideUpFadeOut' |
+  'slideDownFadeIn' |
+  'slideDownFadeOut'
 
 export const variables = {
   durations: groupListVariables<Record<Durations, string>>(animation, 'duration-'),
   timingFunctions: groupListVariables<Record<TimingFunctions, string>>(animation, 'timing-function-'),
+  animations: groupListVariables<Record<Animations, string>>(animation, 'animation-'),
+  animationSetting: animation.animationSetting as string,
 };
 
-export const mixins = {
-  animation: (
-    name: string = 'slide-up-fade-in',
-    duration: Durations | string = 'normal',
-    timingFunction: TimingFunctions | string = 'ease-out-cubic',
-    delay: string = '0s',
-    iterationCount: string | number = '1',
-    direction: string = 'normal',
-    fillMode: string = 'none',
-    playState: string = 'running',
-  ): string => {
-    if (variables.durations[duration]) {
-      duration = variables.durations[duration];
-    }
-
-    if (variables.timingFunctions[timingFunction]) {
-      timingFunction = variables.timingFunctions[timingFunction];
-    }
-
-    return `animation: ${duration} ${timingFunction} ${delay} ${iterationCount} ${direction} ${fillMode} ${playState} ${name};`;
+export const keyframes: { [name in Animations]: { [key in 'from' | 'to' | string]: Object } } = {
+  slideUpFadeIn: {
+    '0%': {
+      opacity: 0,
+      transform: 'translateY(3rem)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
+  slideUpFadeOut: {
+    '0%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+    '100%': {
+      opacity: 0,
+      transform: 'translateY(-3rem)',
+    },
+  },
+  slideDownFadeIn: {
+    '0%': {
+      opacity: 0,
+      transform: 'translateY(-3rem)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
+  slideDownFadeOut: {
+    '0%': {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+    '100%': {
+      opacity: 0,
+      transform: 'translateY(3rem)',
+    },
   },
 };

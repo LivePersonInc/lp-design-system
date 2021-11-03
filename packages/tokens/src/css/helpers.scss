@@ -19,6 +19,10 @@
     &-timing-function {
       @include helpers.generate-helpers-classes(animation.$timing-function, animation-timing-function);
     }
+
+    &-animation {
+      @include helpers.generate-helpers-classes(animation.$animation, animation);
+    }
   }
 
   &-border-radius {

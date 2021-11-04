@@ -2,17 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const cijConfig = {
-  name: 'css-in-js',
+const jsConfig = {
+  name: 'js',
   mode: 'production',
   target: 'web',
   entry: () => {
-    const cijPath = path.resolve(__dirname, 'src/css-in-js');
+    const jsPath = path.resolve(__dirname, 'src/js');
 
     const entries = {};
 
-    fs.readdirSync(cijPath).forEach(file => {
-      entries[file.replace(/\.(ts|js)$/g, '')] = path.resolve(cijPath, file);
+    fs.readdirSync(jsPath).forEach(file => {
+      entries[file.replace(/\.(ts|js)$/g, '')] = path.resolve(jsPath, file);
     });
 
     return entries;
@@ -114,6 +114,6 @@ const cssConfig = {
 };
 
 module.exports = [
-  cijConfig,
+  jsConfig,
   cssConfig,
 ];

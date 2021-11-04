@@ -20,8 +20,8 @@ export type Animations = 'slideUpFadeIn' |
 export const variables = {
   durations: groupListVariables<Record<Durations, string>>(animation, 'duration-'),
   timingFunctions: groupListVariables<Record<TimingFunctions, string>>(animation, 'timing-function-'),
+  animationSetting: animation['animation-setting'] as string,
   animations: groupListVariables<Record<Animations, string>>(animation, 'animation-'),
-  animationSetting: animation.animationSetting as string,
 };
 
 export const keyframes: { [name in Animations]: { [key in 'from' | 'to' | string]: Object } } = {

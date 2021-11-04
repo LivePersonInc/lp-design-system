@@ -42,7 +42,7 @@
     "directory": "build"
   },
   "scripts": {
-    "build": "rimraf build && webpack --progress --config-name css-in-js --config-name css && node ./scripts/postbuild.js",
+    "build": "rimraf build && webpack --progress --config-name js --config-name css && node ./scripts/postbuild.js",
     "prepublishOnly": "node ./scripts/prepublishOnly.js",
     "postpublish": "node ./scripts/postpublish.js"
   },

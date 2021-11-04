@@ -15,7 +15,7 @@ export const variables =  {
 };
 
 export const functions = {
-  getBorderRadius: (size: BorderRadius) => variables.borderRadius[size],
+  getBorderRadius: (size: BorderRadius): string => variables.borderRadius[size],
 };
 
 export const mixins = {

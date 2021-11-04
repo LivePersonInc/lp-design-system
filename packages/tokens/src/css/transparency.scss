@@ -1,0 +1,25 @@
+@use '../common/helpers';
+
+@use '../scss/transparency';
+
+:root {
+  --lpds-transparency-disabled: #{transparency.$disabled};
+  @include helpers.generate-css-variables(transparency.$light, 'lpds-transparency-light');
+  @include helpers.generate-css-variables(transparency.$dark, 'lpds-transparency-dark');
+}
+
+@include helpers.lpds-prefix {
+  &-transparency {
+    &-disabled {
+      opacity: transparency.$disabled;
+    }
+
+    &-light {
+      @include helpers.generate-helpers-classes(transparency.$light, opacity);
+    }
+
+    &-dark {
+      @include helpers.generate-helpers-classes(transparency.$dark, opacity);
+    }
+  }
+}

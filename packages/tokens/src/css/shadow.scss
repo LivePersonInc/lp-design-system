@@ -1,0 +1,28 @@
+@use '../common/helpers';
+
+@use '../scss/shadow';
+
+:root {
+  @include helpers.generate-css-variables(shadow.$shadow, 'lpds-shadow');
+  @include helpers.generate-css-variables(shadow.$shadow-text, 'lpds-shadow-text');
+  @include helpers.generate-css-variables(shadow.$shadow-card, 'lpds-shadow-card');
+  @include helpers.generate-css-variables(shadow.$shadow-input, 'lpds-shadow-input');
+}
+
+@include helpers.lpds-prefix {
+  &-shadow {
+    @include helpers.generate-helpers-classes(shadow.$shadow, box-shadow);
+
+    &-text {
+      @include helpers.generate-helpers-classes(shadow.$shadow-text, text-shadow);
+    }
+
+    &-card {
+      @include helpers.generate-helpers-classes(shadow.$shadow-card, box-shadow);
+    }
+
+    &-input {
+      @include helpers.generate-helpers-classes(shadow.$shadow-input, box-shadow);
+    }
+  }
+}

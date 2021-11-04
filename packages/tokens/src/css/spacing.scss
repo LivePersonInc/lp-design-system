@@ -1,0 +1,54 @@
+@use '../common/helpers';
+
+@use '../scss/spacing';
+
+:root {
+  @include helpers.generate-css-variables(spacing.$spaces, 'lpds-spaces');
+  @include helpers.generate-css-variables(spacing.$spaces-inner, 'lpds-spaces-inner');
+}
+
+@include helpers.lpds-prefix {
+  &-spacing {
+    @include helpers.generate-helpers-classes(spacing.$spaces, margin);
+
+    @each $key, $value in spacing.$spaces {
+      &-#{$key}-vertical {
+        margin: {
+          top: $value;
+          bottom: $value;
+        };
+      }
+    }
+
+    @each $key, $value in spacing.$spaces {
+      &-#{$key}-horizontal {
+        margin: {
+          left: $value;
+          right: $value;
+        };
+      }
+    }
+
+    &-inner {
+      @include helpers.generate-helpers-classes(spacing.$spaces-inner, padding);
+
+      @each $key, $value in spacing.$spaces-inner {
+        &-#{$key}-vertical {
+          margin: {
+            top: $value;
+            bottom: $value;
+          };
+        }
+      }
+
+      @each $key, $value in spacing.$spaces-inner {
+        &-#{$key}-horizontal {
+          margin: {
+            left: $value;
+            right: $value;
+          };
+        }
+      }
+    }
+  }
+}

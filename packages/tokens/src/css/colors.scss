@@ -1,0 +1,34 @@
+@use '../common/helpers';
+
+@use '../scss/colors';
+@use '../scss/colors-light';
+
+:root {
+  @include helpers.generate-css-variables(colors.$colors, 'lpds-colors');
+}
+
+.lpds-theme-light {
+  @include helpers.generate-css-variables(colors-light.$colors, 'lpds-colors');
+}
+
+@include helpers.lpds-prefix {
+  &-colors {
+    &-bg {
+      @include helpers.generate-helpers-classes(colors.$colors, background-color);
+    }
+
+    &-text {
+      @include helpers.generate-helpers-classes(colors.$colors, color);
+    }
+
+    .lpds-theme-light & {
+      &-bg {
+        @include helpers.generate-helpers-classes(colors-light.$colors, background-color);
+      }
+
+      &-text {
+        @include helpers.generate-helpers-classes(colors-light.$colors, color);
+      }
+    }
+  }
+}

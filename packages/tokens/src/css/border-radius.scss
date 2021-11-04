@@ -2,12 +2,10 @@
 
 @use '../scss/border-radius';
 
-:root {
-  @include helpers.generate-css-variables(border-radius.$border-radius, 'lpds-border-radius');
-}
-
 @include helpers.lpds-prefix {
   &-border-radius {
+    @include helpers.generate-css-variables(border-radius.$border-radius, 'lpds-border-radius');
+
     @include helpers.generate-helpers-classes(border-radius.$border-radius, border-radius);
 
     @each $key, $value in border-radius.$border-radius {

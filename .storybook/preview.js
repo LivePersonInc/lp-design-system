@@ -15,12 +15,6 @@ export const parameters = {
           'Have questions?',
         ],
         'Tokens',
-        [
-          'Colors',
-          'Typography',
-          'Shadow',
-          'Animation',
-        ],
         'Icons',
         [
           'Overview',

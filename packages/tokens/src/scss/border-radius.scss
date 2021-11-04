@@ -1,11 +1,18 @@
+$border-radius-xxxs: 2px;
+$border-radius-xxs: 4px;
+$border-radius-xs: 8px;
+$border-radius-s: 12px;
+$border-radius-m: 16px;
+$border-radius-l: 24px;
+$border-radius-xl: 32px;
 $border-radius: (
-  xxxs: 2px,
-  xxs: 4px,
-  xs: 8px,
-  s: 12px,
-  m: 16px,
-  l: 24px,
-  xl: 32px,
+  xxxs: $border-radius-xxxs,
+  xxs: $border-radius-xxs,
+  xs: $border-radius-xs,
+  s: $border-radius-s,
+  m: $border-radius-m,
+  l: $border-radius-l,
+  xl: $border-radius-xl,
 );
 
 $-border-radius: $border-radius;

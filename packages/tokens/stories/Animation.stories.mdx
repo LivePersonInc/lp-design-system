@@ -1,12 +1,93 @@
 import { Meta } from '@storybook/addon-docs';
-import { Figma } from 'storybook-addon-designs/blocks';
+
+import animation from '../src/scss/animation.exports.scss';
+import animationCSS from '../src/css/animation.scss';
+
+import { parseClasses } from './helpers';
+
+import TokensList from './TokensList';
 
 <Meta title="Tokens/Animation" />
 
 # Animation
 
-<Figma
-  collapsable={false}
-  url="https://www.figma.com/file/HDTHGpqZJxUpvdlWWKAbux/LPDS-v0.1----WIP?node-id=11677%3A98710"
-  allowFullscreen
+These are a set of animation values.
+
+## How to use
+
+### SCSS
+
+```scss
+@use '~@liveperson-design-system/tokens/scss/animation';
+
+@import '~@liveperson-design-system/tokens/scss/animation-keyframes';
+
+.buttons {
+  animation: animation.$animation-slide-up-fade-in;
+}
+```
+
+### JS
+
+```js
+import { variables, keyframes } from '@liveperson-design-system/tokens/scss/animation';
+```
+
+### CSS
+
+`animation.css` includes CSS variables, helpers classes and keyframes animations
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/animation.css">
+```
+
+To use CSS variables just add `lpds-animation` class to the container
+
+```html
+<body class="lpds-animation">
+  <button>Button</button>
+</body>
+
+<style>
+  button {
+    transition-duration: var(--lpds-animation-duration-fast);
+  }
+</style>
+```
+
+## Variables
+
+The `$animation-setting` token provides a default value for use in all animations.
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$duration-fast</code>, <code>durations.fast</code>, <code>--lpds-animation-duration-fast</code>, animation['duration-fast']],
+    [<code>$duration-normal</code>, <code>durations.normal</code>, <code>--lpds-animation-duration-normal</code>, animation['duration-normal']],
+    [<code>$duration-slow</code>, <code>durations.slow</code>, <code>--lpds-animation-duration-slow</code>, animation['duration-slow']],
+    [<code>$ease-in-quad</code>, <code>timingFunctions.easeInQuad</code>, <code>--lpds-animation-ease-in-quad</code>, animation['timing-function-ease-in-quad']],
+    [<code>$ease-out-quad</code>, <code>timingFunctions.easeOutQuad</code>, <code>--lpds-animation-ease-out-quad</code>, animation['timing-function-ease-out-quad']],
+    [<code>$ease-in-out-quad</code>, <code>timingFunctions.easeInOutQuad</code>, <code>--lpds-animation-ease-in-out-quad</code>, animation['timing-function-ease-in-out-quad']],
+    [<code>$ease-in-cubic</code>, <code>timingFunctions.easeInCubic</code>, <code>--lpds-animation-ease-in-cubic</code>, animation['timing-function-ease-in-cubic']],
+    [<code>$ease-out-cubic</code>, <code>timingFunctions.easeOutCubic</code>, <code>--lpds-animation-ease-out-cubic</code>, animation['timing-function-ease-out-cubic']],
+    [<code>$ease-in-out-cubic</code>, <code>timingFunctions.easeInOutCubic</code>, <code>--lpds-animation-ease-in-out-cubic</code>, animation['timing-function-ease-in-out-cubic']],
+    [<code>$ease-in-quart</code>, <code>timingFunctions.easeInQuart</code>, <code>--lpds-animation-ease-in-quart</code>, animation['timing-function-ease-in-quart']],
+    [<code>$ease-out-quart</code>, <code>timingFunctions.easeOutQuart</code>, <code>--lpds-animation-ease-out-quart</code>, animation['timing-function-ease-out-quart']],
+    [<code>$ease-in-out-quart</code>, <code>timingFunctions.easeInOutQuart</code>, <code>--lpds-animation-ease-in-out-quart</code>, animation['timing-function-ease-in-out-quart']],
+    [<code>$animation-setting</code>, <code>animationSetting</code>, <code>--lpds-animation-setting</code>, animation['animation-setting'].replace(`${animation['duration-normal']} ${animation['timing-function-ease-out-cubic']}`, '$duration-normal $ease-out-cubic')],
+    [<code>$animation-slide-up-fade-in</code>, <code>animations.slideUpFadeIn</code>, <code>--lpds-animation-slide-up-fade-in</code>, animation['animation-slide-up-fade-in'].replace(animation['animation-setting'], '$animation-setting')],
+    [<code>$animation-slide-up-fade-out</code>, <code>animations.slideUpFadeOut</code>, <code>--lpds-animation-slide-up-fade-out</code>, animation['animation-slide-up-fade-out'].replace(animation['animation-setting'], '$animation-setting')],
+    [<code>$animation-slide-down-fade-in</code>, <code>animations.slideDownFadeIn</code>, <code>--lpds-animation-slide-down-fade-in</code>, animation['animation-slide-down-fade-in'].replace(animation['animation-setting'], '$animation-setting')],
+    [<code>$animation-slide-down-fade-out</code>, <code>animations.slideDownFadeOut</code>, <code>--lpds-animation-slide-down-fade-out</code>, animation['animation-slide-down-fade-out'].replace(animation['animation-setting'], '$animation-setting')],
+  ]}
 />
+
+## CSS helpers classes
+
+<>
+  {parseClasses(animationCSS).map((item, index) => (
+    <p key={index}>
+      <code>{item}</code>
+    </p>
+  ))}
+</>

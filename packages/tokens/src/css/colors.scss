@@ -3,16 +3,15 @@
 @use '../scss/colors';
 @use '../scss/colors-light';
 
-:root {
-  @include helpers.generate-css-variables(colors.$colors, 'lpds-colors');
-}
-
-.lpds-theme-light {
-  @include helpers.generate-css-variables(colors-light.$colors, 'lpds-colors');
-}
-
 @include helpers.lpds-prefix {
   &-colors {
+    @include helpers.generate-css-variables(colors.$colors, 'lpds-colors');
+
+    .lpds-theme-light &,
+    &-light {
+      @include helpers.generate-css-variables(colors-light.$colors, 'lpds-colors');
+    }
+
     &-bg {
       @include helpers.generate-helpers-classes(colors.$colors, background-color);
     }
@@ -21,7 +20,8 @@
       @include helpers.generate-helpers-classes(colors.$colors, color);
     }
 
-    .lpds-theme-light & {
+    .lpds-theme-light &,
+    &-light {
       &-bg {
         @include helpers.generate-helpers-classes(colors-light.$colors, background-color);
       }

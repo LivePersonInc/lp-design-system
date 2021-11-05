@@ -17,6 +17,10 @@
       @include helpers.generate-helpers-classes(animation.$timing-function, animation-timing-function);
     }
 
+    &-setting {
+      animation: animation.$animation-setting;
+    }
+
     @include helpers.generate-helpers-classes(animation.$animation, animation);
   }
 }

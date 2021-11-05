@@ -1,9 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
 import animation from '../src/scss/animation.exports.scss';
-import animationCSS from '../src/css/animation.scss';
-
-import { parseClasses } from './helpers';
 
 import TokensList from './TokensList';
 
@@ -22,7 +19,7 @@ These are a set of animation values.
 
 @import '~@liveperson-design-system/tokens/scss/animation-keyframes';
 
-.buttons {
+.button {
   animation: animation.$animation-slide-up-fade-in;
 }
 ```
@@ -30,7 +27,15 @@ These are a set of animation values.
 ### JS
 
 ```js
-import { variables, keyframes } from '@liveperson-design-system/tokens/scss/animation';
+import { variables, keyframes as LPDSLeyframes } from '@liveperson-design-system/tokens/scss/animation';
+
+const slideUpFadeIn = keyframes`
+  ${LPDSLeyframes.slideUpFadeIn}
+`;
+
+const Button = styled.button`
+  animation: ${slideUpFadeIn} ${variables.animationSetting};
+`;
 ```
 
 ### CSS
@@ -84,10 +89,48 @@ The `$animation-setting` token provides a default value for use in all animation
 
 ## CSS helpers classes
 
-<>
-  {parseClasses(animationCSS).map((item, index) => (
-    <p key={index}>
-      <code>{item}</code>
-    </p>
-  ))}
-</>
+### CSS variables
+
+To use CSS variables like `--lpds-animation-slide-up-fade-in` you have to add `lpds-animation` class to the root tag.
+In most cases this is `body` tag.
+
+### Duration
+
+To apply `animation-direction` style just add `lpds-animation-duration-{duration}` class to the element.
+
+Available durations:
+
+- `fast`
+- `normal`
+- `slow`
+
+### Timing function
+
+To apply `animation-timing-function` style just add `lpds-animation-timing-function-{timing-function}` class to the element.
+
+Available timing functions:
+
+- `ease-in-quad`
+- `ease-out-quad`
+- `ease-in-out-quad`
+- `ease-in-cubic`
+- `ease-out-cubic`
+- `ease-in-out-cubic`
+- `ease-in-quart`
+- `ease-out-quart`
+- `ease-in-out-quart`
+
+### Animation setting
+
+To apply `animation` style with default value to use in all animations just add `lpds-animation-setting` class to the element.
+
+### Animation
+
+To apply `animation` style just add `lpds-animation-{animation-name}` class to the element.
+
+Available animations:
+
+- `slide-up-fade-in`
+- `slide-up-fade-out`
+- `slide-down-fade-in`
+- `slide-down-fade-out`

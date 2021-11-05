@@ -35,6 +35,16 @@
             border-bottom-right-radius: $value;
           }
         }
+
+        &-left {
+          border-top-left-radius: $value;
+          border-bottom-left-radius: $value;
+        }
+
+        &-right {
+          border-top-right-radius: $value;
+          border-bottom-right-radius: $value;
+        }
       }
     }
   }

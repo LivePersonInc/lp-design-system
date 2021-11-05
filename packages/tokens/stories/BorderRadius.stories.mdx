@@ -1,9 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
 import borderRadius from '../src/scss/border-radius.exports.scss';
-import borderRadiusCSS from '../src/css/border-radius.scss';
-
-import { parseClasses } from './helpers';
 
 import TokensList from './TokensList';
 
@@ -22,7 +19,7 @@ Nested components should be smaller than the parent component.
 @use '~@liveperson-design-system/tokens/scss/border-radius';
 
 .buttons {
-  animation: border-radius.$border-radius-xxs;
+  border-radius: border-radius.$border-radius-xxs;
 }
 ```
 
@@ -30,6 +27,22 @@ Nested components should be smaller than the parent component.
 
 ```js
 import { variables, functions, mixins } from '@liveperson-design-system/tokens/scss/border-radius';
+
+const Button = styled.button`
+  border-radius: ${variables.borderRadius.xxs};
+`;
+
+// or
+
+const Button = styled.button`
+  border-radius: ${functions.getBorderRadius('xxs')};
+`;
+
+// or
+
+const Button = styled.button`
+  ${mixins.borderRadius('xxs')}
+`;
 ```
 
 ### CSS
@@ -81,10 +94,21 @@ To use CSS variables just add `lpds-border-radius` class to the container
 
 ## CSS helpers classes
 
-<>
-  {parseClasses(borderRadiusCSS).map((item, index) => (
-    <p key={index}>
-      <code>{item}</code>
-    </p>
-  ))}
-</>
+### CSS variables
+
+To use CSS variables like `--lpds-border-radius-xxs` you have to add `lpds-border-radiuss` class to the root tag.
+In most cases this is `body` tag.
+
+### Classes
+
+To apply `border-radius` style just add `lpds-border-radius-{size}` class to the element.
+
+Also, you can use classes like `lpds-border-radius-{size}-{position}` to apply border radius to one of the side:
+- `top`
+- `top-left`
+- `top-right`
+- `bottom`
+- `bottom-left`
+- `bottom-right`
+- `left`
+- `right`

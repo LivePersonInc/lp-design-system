@@ -35,6 +35,10 @@
   }
 }
 
+@mixin rule($rule, $value) {
+  #{$rule}: $value;
+}
+
 @mixin export-list($list, $key-prefix: '') {
   @each $key, $value in $list {
     :export {

@@ -39,6 +39,7 @@ export const mixins = {
         `
     );
   },
+  rule: (rule: string, value: string): string => `${rule}: ${value};`,
 };
 
 export const groupListVariables = <T extends Object = Object>(variables: Object, keyPrefix: string): T => {

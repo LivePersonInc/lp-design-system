@@ -1,0 +1,144 @@
+import { Meta } from '@storybook/addon-docs';
+
+import spacing from '../src/scss/spacing.exports.scss';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Spacing" />
+
+# Spacing
+
+Use these spacing units optionally to adjust space between certain units of auto-layouts when common spacing is different.
+
+## How to use
+
+### SCSS
+
+```scss
+@use '~@liveperson-design-system/tokens/scss/spacing';
+
+.buttons {
+  padding: spacing.$border-radius-xxs;
+}
+
+// or
+
+.buttons {
+  @include spacing.padding(0, xxs);
+}
+```
+
+### JS
+
+```js
+import { variables, mixins } from '@liveperson-design-system/tokens/scss/spacing';
+
+const Button = styled.button`
+  padding: 0 ${variables.spaces.xxs};
+`;
+
+// or
+
+const Button = styled.button`
+  ${mixins.padding(0, 'xxs')}
+`;
+```
+
+### CSS
+
+`spacing.css` includes CSS variables and helpers classes
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/spacing.css">
+```
+
+To use CSS variables just add `lpds-spacing` class to the container
+
+```html
+<body class="lpds-spacing">
+  <button>Button</button>
+</body>
+
+<style>
+  button {
+    border-radius: var(--lpds-spaces-xxs);
+  }
+</style>
+```
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$spaces-none</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, spacing['spaces-none']],
+    [<code>$spaces-xxs</code>, <code>spaces.xxs</code>, <code>--lpds-spaces-xxs</code>, spacing['spaces-xxs']],
+    [<code>$spaces-xs</code>, <code>spaces.xs</code>, <code>--lpds-spaces-xs</code>, spacing['spaces-xs']],
+    [<code>$spaces-s</code>, <code>spaces.s</code>, <code>--lpds-spaces-s</code>, spacing['spaces-s']],
+    [<code>$spaces-m</code>, <code>spaces.m</code>, <code>--lpds-spaces-m</code>, spacing['spaces-m']],
+    [<code>$spaces-l</code>, <code>spaces.l</code>, <code>--lpds-spaces-l</code>, spacing['spaces-l']],
+    [<code>$spaces-xl</code>, <code>spaces.xl</code>, <code>--lpds-spaces-xl</code>, spacing['spaces-xl']],
+    [<code>$spaces-xxl</code>, <code>spaces.xxl</code>, <code>--lpds-spaces-xxl</code>, spacing['spaces-xxl']],
+    [<code>$spaces-xxxl</code>, <code>spaces.xxxl</code>, <code>--lpds-spaces-xxxl</code>, spacing['spaces-xxxl']],
+  ]}
+/>
+
+## SCSS
+
+### Mixins
+
+- `padding($size, $hSize: null)` - to apply `padding` styles
+- `margin($size, $hSize: null)` - to apply `margin` styles
+
+**Note:** `$size` can be one of the provided sizes like s, m, l, etc.
+
+- `auto-spacing($breakpoints, $rule: padding)` - to apply `$rule` styles which will be changing related to provided `$breakpoints`
+
+```scss
+@use '~@liveperson-design-system/tokens/spacing';
+
+@include spacing.auto-spacing(
+  (
+    mobile: (xs, s),
+    laptop: s,
+    desktop: (m, l),
+    desktop-large: xl,
+  ),
+);
+```
+
+## JS
+
+### Mixins
+
+- `padding: (size: SpaceArg, hSize?: SpaceArg): string` - to apply `padding` styles
+- `margin: (size: SpaceArg, hSize?: SpaceArg): string` - to apply `margin` styles
+- `autoSpacing: (breakpoints?: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?] }, rule: string = 'padding'): string` - to apply `rule` styles which will be changing related to provided `breakpoints`
+
+### Types
+
+- `SpaceArg = Spaces | string | number`
+- `Spaces = 'none' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'`
+
+## CSS helpers classes
+
+### CSS variables
+
+To use CSS variables like `--lpds-space-xxs` you have to add `lpds-spacing` class to the root tag.
+In most cases this is `body` tag.
+
+### Classes
+
+#### Outer
+
+To apply `margin` style just add `lpds-spacing-{size}` class to the element.
+
+Also there are few options according to the side like `lpds-spacing-{size}-{vertical|horizontal|top|bottom|left|right}`
+
+#### Inner
+
+To apply `padding` style just add `lpds-spacing-{size}-inner` class to the element.
+
+Also there are few options according to the side like `lpds-spacing-{size}-inner-{vertical|horizontal|top|bottom|left|right}`
+
+

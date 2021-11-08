@@ -2,4 +2,3 @@
 @use './spacing';
 
 @include helpers.export-list(spacing.$spaces, 'space-');
-@include helpers.export-list(spacing.$spaces-inner, 'space-inner-');

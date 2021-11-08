@@ -2,13 +2,10 @@
 
 @use '../scss/spacing';
 
-:root {
-  @include helpers.generate-css-variables(spacing.$spaces, 'lpds-spaces');
-  @include helpers.generate-css-variables(spacing.$spaces-inner, 'lpds-spaces-inner');
-}
-
 @include helpers.lpds-prefix {
   &-spacing {
+    @include helpers.generate-css-variables(spacing.$spaces, 'lpds-spaces');
+
     @include helpers.generate-helpers-classes(spacing.$spaces, margin);
 
     @each $key, $value in spacing.$spaces {
@@ -18,35 +15,43 @@
           bottom: $value;
         };
       }
-    }
 
-    @each $key, $value in spacing.$spaces {
       &-#{$key}-horizontal {
         margin: {
           left: $value;
           right: $value;
         };
       }
+
+      @each $position in (top, bottom, left, right) {
+        &-#{$key}-#{$position} {
+          margin-#{$position}: $value;
+        }
+      }
     }
 
     &-inner {
-      @include helpers.generate-helpers-classes(spacing.$spaces-inner, padding);
+      @include helpers.generate-helpers-classes(spacing.$spaces, padding);
 
-      @each $key, $value in spacing.$spaces-inner {
+      @each $key, $value in spacing.$spaces {
         &-#{$key}-vertical {
-          margin: {
+          padding: {
             top: $value;
             bottom: $value;
           };
         }
-      }
 
-      @each $key, $value in spacing.$spaces-inner {
         &-#{$key}-horizontal {
-          margin: {
+          padding: {
             left: $value;
             right: $value;
           };
+        }
+
+        @each $position in (top, bottom, left, right) {
+          &-#{$key}-#{$position} {
+            padding-#{$position}: $value;
+          }
         }
       }
     }

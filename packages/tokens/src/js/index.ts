@@ -23,7 +23,6 @@ export const variables = {
 export const functions = {
   borderRadius: borderRadius.functions,
   responsive: responsive.functions,
-  spacing: spacing.functions,
   transparency: transparency.functions,
 };
 

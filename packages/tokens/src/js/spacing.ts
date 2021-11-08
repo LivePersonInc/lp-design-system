@@ -1,6 +1,6 @@
 import spacing from '../scss/spacing.exports.scss';
 
-import { groupListVariables, functions as helpersFunctions } from './helpers';
+import { groupListVariables } from './helpers';
 import { Breakpoints, mixins as responsiveMixins } from './responsive';
 
 export type Spaces = 'none' |
@@ -10,44 +10,49 @@ export type Spaces = 'none' |
   'm' |
   'l' |
   'xl' |
-  'xxl'
+  'xxl' |
+  'xxxl'
 
 export const variables = {
   spaces: groupListVariables<Record<Spaces, string>>(spacing, 'spaces-'),
-  spacesInner: groupListVariables<Record<Spaces, string>>(spacing, 'spaces-inner-'),
 };
 
-type SpaceArg = Spaces | string
+type SpaceArg = Spaces | string | number
 
-export const functions = {
-  getSpace: (size: SpaceArg, inner: boolean = false): string => variables[(inner ? 'spacesInner' : 'spaces')][size],
-  getSpaceRem: (size: SpaceArg, inner: boolean = false, parentSize?: string): string => (
-    helpersFunctions.getRem(functions.getSpace(size, inner), parentSize)
-  ),
-};
+const getSpace = (space: SpaceArg): string => (
+  variables.spaces[space] || (typeof space === 'number' && space !== 0 ? `${space}px` : space)
+);
 
 export const mixins = {
-  padding: (size: SpaceArg, hSize?: SpaceArg, inner: boolean = false): string => (
-    hSize
-      ? `padding: ${functions.getSpace(size, inner)} ${functions.getSpace(hSize, inner)};`
-      : `padding: ${functions.getSpace(size, inner)};`
-  ),
-  autoPadding: (
-    breakpoints: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?, boolean?] } = {
+  padding: (size: SpaceArg, hSize?: SpaceArg): string => {
+    size = getSpace(size);
+    hSize = getSpace(hSize);
+
+    return `padding: ${hSize ? `${size} ${hSize}` : size};`;
+  },
+  margin: (size: SpaceArg, hSize?: SpaceArg): string => {
+    size = getSpace(size);
+    hSize = getSpace(hSize);
+
+    return `margin: ${hSize ? `${size} ${hSize}` : size};`;
+  },
+  autoSpacing: (
+    breakpoints: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?] } = {
       mobile: ['xs', 's'],
       laptop: ['s', 'm'],
       desktop: ['m', 'l'],
       desktopLarge: ['l', 'xl'],
     },
+    rule: string = 'padding',
   ): string => (
     Object.keys(breakpoints)
       .map(key => (
         responsiveMixins.media((key === 'mobile' ? 'laptop' : key), !(key === 'mobile'))(
           Array.isArray(breakpoints[key])
-            ? mixins.padding(...(breakpoints[key] as [string, string?, boolean?]))
-            : mixins.padding(breakpoints[key])
-        ))
-      )
+            ? `${rule}: ${breakpoints[key].map(v => getSpace(v)).join(' ')}`
+            : `${rule}: ${getSpace(breakpoints[key])}`
+        )
+      ))
       .join('\n')
   ),
 };

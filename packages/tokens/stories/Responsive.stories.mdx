@@ -1,0 +1,113 @@
+import { Meta } from '@storybook/addon-docs';
+
+import responsive from '../src/scss/responsive.exports.scss';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Responsive" />
+
+# Responsive
+
+## How to use
+
+### SCSS
+
+```scss
+@use '~@liveperson-design-system/tokens/scss/responsive';
+
+.button {
+  max-width: 100%;
+
+  @media (min-width: responsive.$width-laptop) {
+    max-width: 250px;
+  }
+
+  // or
+
+  @include responsive.media(laptop) {
+    max-width: 250px;
+  }
+}
+```
+
+### JS
+
+```js
+import { variables, functions, mixins } from '@liveperson-design-system/tokens/scss/responsive';
+
+const Button = styled.button`
+  ${mixins.media('laptop')(`
+    max-width: 250px;
+  `)}
+`;
+```
+
+### CSS
+
+`responsive.css` includes CSS variables and helpers classes
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/responsive.css">
+```
+
+To use CSS variables just add `lpds-responsive` class to the container
+
+```html
+<body class="lpds-responsive">
+  <button>Button</button>
+</body>
+
+<style>
+  @media (min-width: var(--lpds-breakpoints-laptop)) {
+    button {
+      max-width: 250px;
+    }
+  }
+</style>
+```
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$width-laptop</code>, <code>breakpoints.laptop</code>, <code>--lpds-breakpoints-laptop</code>, responsive['breakpoints-laptop']],
+    [<code>$width-desktop</code>, <code>breakpoints.desktop</code>, <code>--lpds-breakpoints-desktop</code>, responsive['breakpoints-desktop']],
+    [<code>$width-desktop-large</code>, <code>breakpoints.desktopLarge</code>, <code>--lpds-breakpoints-desktop-large</code>, responsive['breakpoints-desktop-large']],
+  ]}
+/>
+
+## JS
+
+### Functions
+
+- `getBreakpoint(breakpoint: BreakpointArg, up: boolean = true): string`
+
+### Mixins
+
+- `media: (breakpoint: BreakpointArg, up: boolean = true) => (content: string): string`
+- `mediaFromTo: (from: BreakpointArg, to: BreakpointArg) => (content: string): string`
+
+### Types
+
+- `Breakpoints: 'laptop' | 'desktop' | 'desktopLarge'`
+- `BreakpointArg = Breakpoints | string | number`
+
+## CSS helpers classes
+
+### CSS variables
+
+To use CSS variables like `--lpds-breakpoints-laptop` you have to add `lpds-responsive` class to the root tag.
+In most cases this is `body` tag.
+
+### Classes
+
+To hide elements simply use the `lpds-responsive-hidden` class or one of the `lpds-responsive-hidden-{breakpoint}` classes for any responsive screen variation.
+
+To show elements simply use the `lpds-responsive-visible` class or one of the `lpds-responsive-visible-{breakpoint}` classes for any responsive screen variation.
+
+Available breakpoints:
+
+- `laptop`
+- `desktop`
+- `desktop-large`

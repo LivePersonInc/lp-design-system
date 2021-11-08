@@ -2,12 +2,10 @@
 
 @use '../scss/responsive';
 
-:root {
-  @include helpers.generate-css-variables(responsive.$breakpoints, 'lpds-breakpoints');
-}
-
 @include helpers.lpds-prefix {
   &-responsive {
+    @include helpers.generate-css-variables(responsive.$breakpoints, 'lpds-breakpoints');
+
     $breakpoints-keys: map-keys(responsive.$breakpoints);
 
     &-hidden {

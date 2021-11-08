@@ -12,8 +12,9 @@ export const functions = {
   getBreakpoint: (breakpoint: Breakpoints): string => variables.breakpoints[breakpoint],
 };
 
+type BreakpointArg = Breakpoints | string | number
 export const mixins = {
-  media: (breakpoint: Breakpoints | string | number, up: boolean = true) => (content: string): string => {
+  media: (breakpoint: BreakpointArg, up: boolean = true) => (content: string): string => {
     if (variables.breakpoints[breakpoint]) {
       breakpoint = variables.breakpoints[breakpoint];
     }
@@ -31,5 +32,20 @@ export const mixins = {
           }
         `
     );
+  },
+  mediaFromTo: (from: BreakpointArg, to: BreakpointArg) => (content: string): string => {
+    if (variables.breakpoints[from]) {
+      from = variables.breakpoints[from];
+    }
+
+    if (variables.breakpoints[to]) {
+      to = variables.breakpoints[to];
+    }
+
+    return `
+      @media (min-width: ${from}) and (max-width: calc(${to} - 1px)) {
+        ${content}
+      }
+    `;
   },
 };

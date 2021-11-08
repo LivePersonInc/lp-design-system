@@ -1,7 +1,10 @@
+$width-laptop: 900px;
+$width-desktop: 1200px;
+$width-desktop-large: 1600px;
 $breakpoints: (
-  laptop: 900px,
-  desktop: 1200px,
-  desktop-large: 1600px,
+  laptop: $width-laptop,
+  desktop: $width-desktop,
+  desktop-large: $width-desktop-large,
 );
 
 @function get-breakpoint($breakpoint) {

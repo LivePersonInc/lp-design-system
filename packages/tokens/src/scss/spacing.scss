@@ -1,73 +1,89 @@
 @use './helpers';
 @use './responsive';
 
+$space-none: 0;
+$space-xxs: 4px;
+$space-xs: 8px;
+$space-s: 12px;
+$space-m: 16px;
+$space-l: 24px;
+$space-xl: 32px;
+$space-xxl: 52px;
+$space-xxxl: 84px;
 $spaces: (
-  none: 0,
-  xxs: 4px,
-  xs: 8px,
-  s: 12px,
-  m: 20px,
-  l: 32px,
-  xl: 52px,
-  xxl: 84px,
+  none: $space-none,
+  xxs: $space-xxs,
+  xs: $space-xs,
+  s: $space-s,
+  m: $space-m,
+  l: $space-l,
+  xl: $space-xl,
+  xxl: $space-xxl,
+  xxxl: $space-xxxl,
 );
 
-$spaces-inner: (
-  none: 0,
-  xxs: 4px,
-  xs: 8px,
-  s: 12px,
-  m: 16px,
-  l: 24px,
-  xl: 20px,
-  xxl: 32px,
-);
+@mixin padding($size, $hSize: null) {
+  @if map-has-key($spaces, $size) {
+    $size: map-get($spaces, $size);
+  }
 
-@function get-space($size, $inner: false) {
-  @return map-get(if($inner, $spaces-inner, $spaces), $size);
-}
+  @if map-has-key($spaces, $hSize) {
+    $hSize: map-get($spaces, $hSize);
+  }
 
-@function get-space-rem($size, $inner: false) {
-  @return helpers.get-rem(get-space($size, $inner));
-}
-
-@mixin padding($size, $hSize, $inner: false) {
   @if $hSize {
-    padding: get-space($size, $inner) get-space($hSize, $inner);
+    padding: $size $hSize;
   } @else {
-    padding: get-space($size, $inner);
+    padding: $size;
   }
 }
 
-@mixin auto-padding(
+@mixin margin($size, $hSize: null) {
+  @if map-has-key($spaces, $size) {
+    $size: map-get($spaces, $size);
+  }
+
+  @if map-has-key($spaces, $hSize) {
+    $hSize: map-get($spaces, $hSize);
+  }
+
+  @if $hSize {
+    margin: $size $hSize;
+  } @else {
+    margin: $size;
+  }
+}
+
+@mixin auto-spacing(
   $breakpoints: (
     mobile: (xs, s),
     laptop: (s, m),
     desktop: (m, l),
-    large-desktop: (l, xl),
+    desktop-large: (l, xl),
   ),
+  $rule: padding,
 ) {
-  @if map-has-key($breakpoints, mobile) {
-    @include responsive.media(laptop, false) {
-      @include padding(map-get($breakpoints, mobile));
-    }
-  }
+  @each $key, $value in $breakpoints {
+    @if type-of($value) == list {
+      @each $k in $value {
+        @if map-has-key($spaces, $k) {
+          $value: set-nth($value, index($value, $k), map-get($spaces, $k));
+        }
+      }
 
-  @if map-has-key($breakpoints, laptop) {
-    @include responsive.media(laptop) {
-      @include padding(map-get($breakpoints, laptop));
+      $value: join($value);
+    } @else if map-has-key($spaces, $value) {
+      $value: map-get($spaces, $value);
     }
-  }
 
-  @if map-has-key($breakpoints, desktop) {
-    @include responsive.media(desktop) {
-      @include padding(map-get($breakpoints, desktop));
-    }
-  }
-
-  @if map-has-key($breakpoints, desktop-large) {
-    @include responsive.media(desktop-large) {
-      @include padding(map-get($breakpoints, large-desktop));
+    @if $key == mobile {
+      @include responsive.media(laptop, false) {
+        @include helpers.rule($rule, $value);
+      }
+    } @else {
+      @include responsive.media($key) {
+        @include helpers.rule($rule, $value);
+      }
     }
   }
 }

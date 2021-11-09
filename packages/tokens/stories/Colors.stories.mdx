@@ -31,3 +31,21 @@ export const ColorPaletteWrap = styled.div`
     </ColorPaletteWrap>
   </div>
 </TabsState>
+
+## CSS helpers classes
+
+### CSS variables
+
+To use CSS variables like `--lpds-colors-blue` you have to add `lpds-colors` class to the root tag.
+Also, you can use light theme colors pallet. To do this, please use `lpds-colors-light` class instead of `lpds-colors`
+or you can add `lpds-theme-light` class to the parent element.
+
+### Background color
+
+To apply `background-color` style just add `lpds-colors-bg-{color}` class to the element
+or `lpds-colors-light-bg-{color}` (`lpds-theme-light > lpds-colors-bg-{color}`) to use light theme colors pallet.
+
+### Text color
+
+To apply `color` style just add `lpds-colors-text-{color}` class to the element
+or `lpds-colors-light-text-{color}` (`lpds-theme-light > lpds-colors-text-{color}`) to use light theme colors pallet.

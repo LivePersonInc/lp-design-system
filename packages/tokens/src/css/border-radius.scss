@@ -1,0 +1,51 @@
+@use '../common/helpers';
+
+@use '../scss/border-radius';
+
+@include helpers.lpds-prefix {
+  &-border-radius {
+    @include helpers.generate-css-variables(border-radius.$border-radius, 'lpds-border-radius');
+
+    @include helpers.generate-helpers-classes(border-radius.$border-radius, border-radius);
+
+    @each $key, $value in border-radius.$border-radius {
+      &-#{$key} {
+        &-top {
+          border-top-left-radius: $value;
+          border-top-right-radius: $value;
+
+          &-left {
+            border-top-left-radius: $value;
+          }
+
+          &-right {
+            border-top-right-radius: $value;
+          }
+        }
+
+        &-bottom {
+          border-bottom-left-radius: $value;
+          border-bottom-right-radius: $value;
+
+          &-left {
+            border-bottom-left-radius: $value;
+          }
+
+          &-right {
+            border-bottom-right-radius: $value;
+          }
+        }
+
+        &-left {
+          border-top-left-radius: $value;
+          border-bottom-left-radius: $value;
+        }
+
+        &-right {
+          border-top-right-radius: $value;
+          border-bottom-right-radius: $value;
+        }
+      }
+    }
+  }
+}

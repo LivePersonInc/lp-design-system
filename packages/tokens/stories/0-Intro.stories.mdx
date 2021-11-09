@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Tokens/Intro" />
+
+# LPDS Tokens
+
+Base tokens for LPDS.
+Tokens include reusable styles such as colors, text, shadows, etc.
+
+## Available tokens
+
+1. Animation
+1. Border radius
+1. Colors
+1. Responsive
+1. Shadow
+1. Spacing
+1. Transparency
+1. Typography
+
+## How to use
+
+LPDS Tokens provides a few options how you can use it.
+Also, each module contains variables and some of them can has functions and mixins
+
+### SCSS
+
+```scss
+@use '~@liveperson-design-system/tokens/scss/colors';
+
+.button {
+  background-color: colors.$blue;
+}
+```
+
+### JS
+
+```js
+import styled from 'styled-components';
+
+import { variables } from '@liveperson-design-system/tokens/js/colors';
+
+const Button = styled.button`
+  background-color: ${variables.blue.default};
+`;
+```
+
+Some mixins can handle content. For example, Responsive module have `media` mixin and it works like this
+
+```js
+import styled from 'styled-components';
+
+import { mixins } from '@liveperson-design-system/tokens/js/responsive';
+
+const Button = styled.button`
+  ${mixins.media('laptop')(`
+    display: none;
+  `)}
+`;
+```
+
+### CSS
+
+`{tokens}.css` includes CSS variables, helpers classes and others related things.
+To use all of these, you have to add CSS file to the `head` tag
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/colors.css">
+```
+
+#### CSS variables
+
+To use CSS variables just add `lpds-{tokens}` class to the container. In most cases this is `body` tag.
+
+```html
+<body class="lpds-colors">
+  <button>Button</button>
+</body>
+
+<style>
+  button {
+    background-color: var(--lpds-colors-blue);
+  }
+</style>
+```
+
+#### CSS helpers classes
+
+Each module provides its own list of helpers classes

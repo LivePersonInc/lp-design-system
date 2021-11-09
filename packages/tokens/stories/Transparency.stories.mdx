@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs';
+
+import transparency from '../src/scss/transparency.exports.scss';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Transparency" />
+
+# Transparency
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$disabled</code>, <code>disabled</code>, <code>--lpds-transparency-disabled</code>, transparency['disabled']],
+    [<code>$light-0</code>, <code>light.0</code>, <code>--lpds-transparency-light-0</code>, transparency['light-0']],
+    [<code>$light-1</code>, <code>light.1</code>, <code>--lpds-transparency-light-1</code>, transparency['light-1']],
+    [<code>$light-2</code>, <code>light.2</code>, <code>--lpds-transparency-light-2</code>, transparency['light-2']],
+    [<code>$light-3</code>, <code>light.3</code>, <code>--lpds-transparency-light-3</code>, transparency['light-3']],
+    [<code>$light-4</code>, <code>light.4</code>, <code>--lpds-transparency-light-4</code>, transparency['light-4']],
+    [<code>$dark-0</code>, <code>dark.0</code>, <code>--lpds-transparency-dark-0</code>, transparency['dark-0']],
+    [<code>$dark-1</code>, <code>dark.1</code>, <code>--lpds-transparency-dark-1</code>, transparency['dark-1']],
+    [<code>$dark-2</code>, <code>dark.2</code>, <code>--lpds-transparency-dark-2</code>, transparency['dark-2']],
+    [<code>$dark-3</code>, <code>dark.3</code>, <code>--lpds-transparency-dark-3</code>, transparency['dark-3']],
+    [<code>$dark-4</code>, <code>dark.4</code>, <code>--lpds-transparency-dark-4</code>, transparency['dark-4']],
+  ]}
+/>
+
+## CSS helpers classes
+
+### Disabled
+
+To apply `opacity` style for disabled elements just add `lpds-transparency-disabled` class.
+
+### Background color
+
+To apply `background-color` style just add `lpds-transparency-{light|dark}-{0|1|2|3|4}` class to the element.
+
+

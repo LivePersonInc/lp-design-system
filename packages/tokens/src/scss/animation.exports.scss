@@ -3,3 +3,9 @@
 
 @include helpers.export-list(animation.$duration, 'duration-');
 @include helpers.export-list(animation.$timing-function, 'timing-function-');
+
+:export {
+  animation-setting: animation.$animation-setting;
+}
+
+@include helpers.export-list(animation.$animation, 'animation-');

@@ -1,7 +1,7 @@
-import colorsDark from '../../src/scss/colors.exports.scss';
-import colorsLight from '../../src/scss/colors-light.exports.scss';
+import colorsDark from '../src/scss/colors.exports.scss';
+import colorsLight from '../src/scss/colors-light.exports.scss';
 
-const firstLetterUpper = (str) => (str.charAt(0).toUpperCase() + str.slice(1));
+const firstLetterUpper = str => (str.charAt(0).toUpperCase() + str.slice(1));
 
 const descriptions = {
   Navy: 'Main palette for background and text purposes',
@@ -33,4 +33,8 @@ export function getGroupedColors(light = false) {
   });
 
   return groups;
+}
+
+export function parseClasses(css) {
+  return css.match(/^\..+/gm).map(row => row.replace(' {', ''));
 }

@@ -31,7 +31,7 @@
   border: 1px solid var(--color-border);
   @include border-radius.border-radius(xl);
   background-color: var(--color-bg);
-  padding: spacing.get-space(xs, true) spacing.get-space(s, true);
+  padding: spacing.$space-xs spacing.$space-s;
   cursor: default;
   transition: all .15s ease-out;
 
@@ -70,14 +70,14 @@
 
 :host([size="small"]) {
   @include typography.tag;
-  padding: spacing.get-space(xxs, true) spacing.get-space(xs, true);
+  padding: spacing.$space-xxs spacing.$space-xs;
 }
 
 button {
   display: block;
   @include helpers.button-transparent;
-  margin-left: spacing.get-space(xxs) * -1;
-  margin-right: spacing.get-space(xxs);
+  margin-left: spacing.$space-xxs * -1;
+  margin-right: spacing.$space-xxs;
 
   > * {
     display: block;

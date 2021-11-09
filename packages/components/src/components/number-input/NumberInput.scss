@@ -23,7 +23,7 @@
 
   --input-height: 38px;
   --input-text-align: left;
-  --input-padding: #{spacing.get-space(s, true)};
+  --input-padding: #{spacing.$space-s};
 
   --color-button--hover: #{transparency.$light-2};
 
@@ -67,7 +67,7 @@
 
 $font-size: 16px;
 $button-width: helpers.get-em(32px, $font-size);
-$padding-size: helpers.get-em(spacing.get-space(s, true), $font-size);
+$padding-size: helpers.get-em(spacing.$space-s, $font-size);
 
 input {
   flex-grow: 1;
@@ -80,7 +80,7 @@ input {
   color: inherit;
   border: 1px solid var(--color-border);
   outline: none;
-  border-radius: border-radius.get-border-radius(xxs);
+  border-radius: border-radius.$border-radius-xxs;
   background: var(--color-bg);
   box-shadow: none;
   -webkit-tap-highlight-color: rgba(#fff, 0);
@@ -132,7 +132,7 @@ input {
     justify-content: center;
     flex: 1 0 auto;
     @include helpers.button-transparent;
-    padding: spacing.get-space(xxs, true);
+    padding: spacing.$space-xxs;
     transition: all .15s ease-out;
 
     &[disabled] {

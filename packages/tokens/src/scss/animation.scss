@@ -1,43 +1,44 @@
 @use './helpers';
 
+$duration-fast: .15s;
+$duration-normal: .3s;
+$duration-slow: .4s;
 $duration: (
-  fast: .15s,
-  normal: .3s,
-  slow: .4s,
+  fast: $duration-fast,
+  normal: $duration-normal,
+  slow: $duration-slow,
 );
 
+$ease-in-quad: cubic-bezier(.11, 0, .5, 0);
+$ease-out-quad: cubic-bezier(.5, 1, .89, 1);
+$ease-in-out-quad: cubic-bezier(.45, 0, .55, 1);
+$ease-in-cubic: cubic-bezier(.32, 0, .67, 0);
+$ease-out-cubic: cubic-bezier(.33, 1, .68, 1);
+$ease-in-out-cubic: cubic-bezier(.65, 0, .35, 1);
+$ease-in-quart: cubic-bezier(.5, 0, .75, 0);
+$ease-out-quart: cubic-bezier(.25, 1, .5, 1);
+$ease-in-out-quart: cubic-bezier(.76, 0, .24, 1);
 $timing-function: (
-  ease-in-quad: cubic-bezier(.11, 0, .5, 0),
-  ease-out-quad: cubic-bezier(.5, 1, .89, 1),
-  ease-in-out-quad: cubic-bezier(.45, 0, .55, 1),
-  ease-in-cubic: cubic-bezier(.32, 0, .67, 0),
-  ease-out-cubic: cubic-bezier(.33, 1, .68, 1),
-  ease-in-out-cubic: cubic-bezier(.65, 0, .35, 1),
-  ease-in-quart: cubic-bezier(.5, 0, .75, 0),
-  ease-out-quart: cubic-bezier(.25, 1, .5, 1),
-  ease-in-out-quart: cubic-bezier(.76, 0, .24, 1),
+  ease-in-quad: $ease-in-quad,
+  ease-out-quad: $ease-out-quad,
+  ease-in-out-quad: $ease-in-out-quad,
+  ease-in-cubic: $ease-in-cubic,
+  ease-out-cubic: $ease-out-cubic,
+  ease-in-out-cubic: $ease-in-out-cubic,
+  ease-in-quart: $ease-in-quart,
+  ease-out-quart: $ease-out-quart,
+  ease-in-out-quart: $ease-in-out-quart,
 );
 
-$-duration: $duration;
-$-timing-function: $timing-function;
+$animation-setting: $duration-normal $ease-out-cubic 0s 1 forwards;
 
-@mixin animation(
-  $name: slide-up-fade-in,
-  $duration: normal,
-  $timing-function: ease-out-cubic,
-  $delay: 0s,
-  $iteration-count: 1,
-  $direction: normal,
-  $fill-mode: none,
-  $play-state: running
-) {
-  @if map-has-key($duration) {
-    $duration: map-get($-duration, $duration);
-  }
-
-  @if map-has-key($timing-function) {
-    $timing-function: map-get($-timing-function, $timing-function);
-  }
-
-  animation: $duration $timing-function $delay $iteration-count $direction $fill-mode $play-state $name;
-}
+$animation-slide-up-fade-in: $animation-setting slide-up-fade-in;
+$animation-slide-up-fade-out: $animation-setting slide-up-fade-out;
+$animation-slide-down-fade-in: $animation-setting slide-down-fade-in;
+$animation-slide-down-fade-out: $animation-setting slide-down-fade-out;
+$animation: (
+  slide-up-fade-in: $animation-slide-up-fade-in,
+  slide-up-fade-out: $animation-slide-up-fade-out,
+  slide-down-fade-in: $animation-slide-down-fade-in,
+  slide-down-fade-out: $animation-slide-down-fade-out,
+);

@@ -68,7 +68,7 @@
   --color-input-border: #{transparency.$dark-1};
 }
 
-$dropdown-content-border-radius: border-radius.get-border-radius(xxs);
+$dropdown-content-border-radius: border-radius.$border-radius-xxs;
 
 lp-dropdown {
   min-width: 198px;
@@ -94,8 +94,8 @@ lp-dropdown {
 }
 
 $icon-size: 16px;
-$icon-offset: spacing.get-space(xs);
-$padding-size: spacing.get-space(s, true);
+$icon-offset: spacing.$space-xs;
+$padding-size: spacing.$space-s;
 $dropdown-toggle-size: $icon-size + $padding-size * 2;
 
 .dropdown-toggle {
@@ -108,7 +108,7 @@ $dropdown-toggle-size: $icon-size + $padding-size * 2;
   color: var(--color-input-text);
   outline: none;
   border: 1px solid var(--color-input-border);
-  border-radius: border-radius.get-border-radius(xxs);
+  border-radius: border-radius.$border-radius-xxs;
   background: var(--color-input-bg);
   margin: 0;
   transition: all .15s ease-out;
@@ -143,11 +143,11 @@ $dropdown-toggle-size: $icon-size + $padding-size * 2;
 
 lp-chip-group {
   flex-shrink: 0;
-  padding-left: spacing.get-space(xs, true);
+  padding-left: spacing.$space-xs;
 
   &::part(chip last) {
     :host([search]:not([search="false"])) & {
-      margin-right: spacing.get-space(xxs, true);
+      margin-right: spacing.$space-xxs;
     }
   }
 }
@@ -215,7 +215,7 @@ lp-chip-group {
 .select-all {
   display: block;
   border-bottom: 1px solid var(--color-separator);
-  @include spacing.padding(xs, s, true);
+  @include spacing.padding(xs, s);
 }
 
 .options {
@@ -243,7 +243,7 @@ slot {
       border: none;
       background: none;
       box-shadow: none;
-      @include spacing.padding(xs, s, true);
+      @include spacing.padding(xs, s);
       cursor: pointer;
       transition: all .15s ease-out;
     }

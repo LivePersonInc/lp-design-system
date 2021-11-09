@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs';
+
+import spacing from '../src/scss/spacing.exports.scss';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Spacing" />
+
+# Spacing
+
+Use these spacing units optionally to adjust space between certain units of auto-layouts when common spacing is different.
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$space-none</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, spacing['spaces-none']],
+    [<code>$space-xxs</code>, <code>spaces.xxs</code>, <code>--lpds-spaces-xxs</code>, spacing['spaces-xxs']],
+    [<code>$space-xs</code>, <code>spaces.xs</code>, <code>--lpds-spaces-xs</code>, spacing['spaces-xs']],
+    [<code>$space-s</code>, <code>spaces.s</code>, <code>--lpds-spaces-s</code>, spacing['spaces-s']],
+    [<code>$space-m</code>, <code>spaces.m</code>, <code>--lpds-spaces-m</code>, spacing['spaces-m']],
+    [<code>$space-l</code>, <code>spaces.l</code>, <code>--lpds-spaces-l</code>, spacing['spaces-l']],
+    [<code>$space-xl</code>, <code>spaces.xl</code>, <code>--lpds-spaces-xl</code>, spacing['spaces-xl']],
+    [<code>$space-xxl</code>, <code>spaces.xxl</code>, <code>--lpds-spaces-xxl</code>, spacing['spaces-xxl']],
+    [<code>$space-xxxl</code>, <code>spaces.xxxl</code>, <code>--lpds-spaces-xxxl</code>, spacing['spaces-xxxl']],
+  ]}
+/>
+
+## Mixins
+
+- `padding($size, $hSize: null)` - to apply `padding` styles
+- `margin($size, $hSize: null)` - to apply `margin` styles
+
+`$size` and `$hSize` can be either one of the provided spaces sizes or just a value
+
+- `auto-spacing($breakpoints, $rule: padding)` - to apply `$rule` styles which will be changing related to provided `$breakpoints`
+  - `$breakpoints` - a list of breakpoints
+  - `$rule` - one of the CSS rule like `padding` or `margin` that will be changing
+
+```scss
+@use '~@liveperson-design-system/tokens/spacing';
+
+@include spacing.auto-spacing(
+  (
+    mobile: (xs, s),
+    laptop: s,
+    desktop: (m, l),
+    desktop-large: xl,
+  ),
+);
+```
+
+### JS
+
+- `padding: (size: SpaceArg, hSize?: SpaceArg): string`
+- `margin: (size: SpaceArg, hSize?: SpaceArg): string`
+- `autoSpacing: (breakpoints?: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?] }, rule: string = 'padding'): string`
+
+#### Types
+
+- `SpaceArg = Spaces | string | number`
+- `Spaces = 'none' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'`
+
+## CSS helpers classes
+
+### Outer
+
+To apply `margin` style just add `lpds-spacing-{size}` class to the element.
+
+Also there are few options according to the side like `lpds-spacing-{size}-{vertical|horizontal|top|bottom|left|right}`
+
+### Inner
+
+To apply `padding` style just add `lpds-spacing-{size}-inner` class to the element.
+
+Also there are few options according to the side like `lpds-spacing-{size}-inner-{vertical|horizontal|top|bottom|left|right}`

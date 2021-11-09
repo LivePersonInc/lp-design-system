@@ -1,16 +1,15 @@
+$width-laptop: 900px;
+$width-desktop: 1200px;
+$width-desktop-large: 1600px;
 $breakpoints: (
-  laptop: 900px,
-  desktop: 1200px,
-  desktop-large: 1600px,
+  laptop: $width-laptop,
+  desktop: $width-desktop,
+  desktop-large: $width-desktop-large,
 );
-
-@function get-breakpoint($breakpoint) {
-  @return map-get($breakpoints, $breakpoint);
-}
 
 @mixin media($breakpoint, $up: true) {
   @if (map-has-key($breakpoints, $breakpoint)) {
-    $breakpoint: get-breakpoint($breakpoint);
+    $breakpoint: map-get($breakpoints, $breakpoint);
   }
 
   @if $up {
@@ -18,7 +17,7 @@ $breakpoints: (
       @content;
     }
   } @else {
-    @media (max-width: $breakpoint - 1px) {
+    @media (max-width: calc(#{$breakpoint} - 1px)) {
       @content;
     }
   }
@@ -26,14 +25,14 @@ $breakpoints: (
 
 @mixin media-from-to($from, $to) {
   @if (map-has-key($breakpoints, $from)) {
-    $from: get-breakpoint($from);
+    $from: map-get($breakpoints, $from);
   }
 
   @if (map-has-key($breakpoints, $to)) {
-    $to: get-breakpoint($to) - 1px;
+    $to: map-get($breakpoints, $to) - 1px;
   }
 
-  @media (min-width: $from) and (max-width: $to) {
+  @media (min-width: $from) and (max-width: calc(#{$to} - 1px)) {
     @content;
   }
 }

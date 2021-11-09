@@ -16,7 +16,7 @@
 
 lp-radio {
   ::slotted(&) {
-    margin-right: spacing.get-space(s);
+    margin-right: spacing.$space-s;
   }
 
   &:last-child {

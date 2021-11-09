@@ -1,0 +1,35 @@
+@use '../common/helpers';
+
+@use '../scss/responsive';
+
+@include helpers.lpds-prefix {
+  &-responsive {
+    @include helpers.generate-css-variables(responsive.$breakpoints, 'lpds-breakpoints');
+
+    $breakpoints-keys: map-keys(responsive.$breakpoints);
+
+    &-hidden {
+      display: none;
+
+      @each $key in $breakpoints-keys {
+        @include responsive.media($key) {
+          &-#{$key} {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &-visible {
+      display: block;
+
+      @each $key in $breakpoints-keys {
+        @include responsive.media($key) {
+          &-#{$key} {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

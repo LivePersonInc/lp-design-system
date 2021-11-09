@@ -1,0 +1,28 @@
+@use '../common/helpers';
+
+@use '../scss/animation';
+
+@include helpers.lpds-prefix {
+  &-animation {
+    @include helpers.generate-css-variables(animation.$duration, 'lpds-animation-duration');
+    @include helpers.generate-css-variables(animation.$timing-function, 'lpds-animation');
+    @include helpers.generate-css-variables(animation.$animation, 'lpds-animation');
+    --lpds-animation-setting: #{animation.$animation-setting};
+
+    &-duration {
+      @include helpers.generate-helpers-classes(animation.$duration, animation-direction);
+    }
+
+    &-timing-function {
+      @include helpers.generate-helpers-classes(animation.$timing-function, animation-timing-function);
+    }
+
+    &-setting {
+      animation: animation.$animation-setting;
+    }
+
+    @include helpers.generate-helpers-classes(animation.$animation, animation);
+  }
+}
+
+@import '../scss/animation-keyframes';

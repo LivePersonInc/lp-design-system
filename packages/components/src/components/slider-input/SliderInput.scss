@@ -20,7 +20,7 @@
   align-items: center;
   width: 100%;
   height: var(--host-height);
-  padding: 0 spacing.get-space(xs, true);
+  padding: 0 spacing.$space-xs;
   user-select: none;
 }
 :host([theme="light"]) {

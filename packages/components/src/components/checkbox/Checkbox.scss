@@ -75,7 +75,7 @@
 
 $checkbox-size: helpers.get-em(16px, typography.$size-small);
 $checkbox-borders: inset 0 0 0 2px var(--color-checkbox);
-$checkbox-offset: helpers.get-em(spacing.get-space(xs), typography.$size-small);
+$checkbox-offset: helpers.get-em(spacing.$space-xs, typography.$size-small);
 
 label {
   display: flex;
@@ -175,7 +175,7 @@ input {
   display: block;
   width: $checkbox-size;
   height: $checkbox-size;
-  border-radius: border-radius.get-border-radius(xxxs);
+  border-radius: border-radius.$border-radius-xxxs;
   fill: none;
   box-shadow: $checkbox-borders;
   margin-right: $checkbox-offset;

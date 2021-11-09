@@ -39,6 +39,7 @@ export const mixins = {
         `
     );
   },
+  rule: (rule: string, value: string): string => `${rule}: ${value};`,
 };
 
 export const groupListVariables = <T extends Object = Object>(variables: Object, keyPrefix: string): T => {
@@ -50,3 +51,7 @@ export const groupListVariables = <T extends Object = Object>(variables: Object,
 
   return group as T;
 };
+
+export const getArgValue = <T extends Object = Object>(variables: T, value: keyof T | string | number): string | number => (
+  String(variables[value as keyof T]) || ((typeof value === 'number' && value !== 0 ? `${value}px` : value) as string | number)
+);

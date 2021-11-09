@@ -24,7 +24,7 @@
   @include typography.input-value;
   color: var(--color-option-label);
   background-color: var(--color-option-bg);
-  padding: spacing.get-space(xs, true) spacing.get-space(s, true);
+  padding: spacing.$space-xs spacing.$space-s;
   transition: color, background-color .15s ease-out;
   cursor: pointer;
 }

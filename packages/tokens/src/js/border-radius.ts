@@ -1,6 +1,6 @@
 import borderRadiusStyles from '../scss/border-radius.exports.scss';
 
-import { groupListVariables } from './helpers';
+import { groupListVariables, getArgValue } from './helpers';
 
 export type BorderRadius = 'xxxs' |
   'xxs' |
@@ -15,5 +15,7 @@ export const variables =  {
 };
 
 export const mixins = {
-  borderRadius: (size: BorderRadius | string): string => `border-radius: ${variables.borderRadius[size] || size};`,
+  borderRadius: (size: BorderRadius | string | number): string => (
+    `border-radius: ${getArgValue(variables.borderRadius, size)};`
+  ),
 };

@@ -12,7 +12,11 @@ $shadow: (
 );
 
 @mixin box-shadow($size) {
-  box-shadow: map-get($shadow, $size);
+  @if map-has-key($shadow, $size) {
+    $size: map-get($shadow, $size);
+  }
+
+  box-shadow: $size;
 }
 
 // Text shadow
@@ -35,7 +39,7 @@ $shadow-text: (
   light-l: $shadow-light-text-l,
 );
 
-@mixin text-shadow($size: s, $text-color: light) {
+@mixin text-shadow($size, $text-color: light) {
   text-shadow: map-get($shadow-text, '#{$text-color}-#{$size}');
 }
 
@@ -77,6 +81,6 @@ $shadow-input: (
   v: $shadow-input-v,
 );
 
-@mixin input-shadow($type: v) {
+@mixin input-shadow($type) {
   box-shadow: map-get($shadow-input, $type);
 }

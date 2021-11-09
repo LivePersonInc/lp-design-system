@@ -22,11 +22,11 @@ export const variables = {
 
 export const mixins = {
   boxShadow: (size: BoxShadows | string): string => `box-shadow: ${variables.shadow[size] || size};`,
-  textShadow: (size: TextShadows = 's', textColor: 'light' | 'dark' = 'light'): string => (
+  textShadow: (size: TextShadows, textColor: 'light' | 'dark' = 'light'): string => (
     `text-shadow: ${variables.shadowText[textColor][size]};`
   ),
   cardShadow: (hover: boolean = false, theme: Theme = 'dark'): string => (
     `box-shadow: ${variables.shadowCard[`${theme}${hover ? 'Hover' : ''}`]};`
   ),
-  inputShadow: (type: 'v' = 'v'): string => `box-shadow: ${variables.shadowInput[type]};`,
+  inputShadow: (type: 'v'): string => `box-shadow: ${variables.shadowInput[type]};`,
 };

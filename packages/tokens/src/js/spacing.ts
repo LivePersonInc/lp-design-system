@@ -1,6 +1,6 @@
 import spacing from '../scss/spacing.exports.scss';
 
-import { groupListVariables } from './helpers';
+import { groupListVariables, getArgValue } from './helpers';
 import { Breakpoints, mixins as responsiveMixins } from './responsive';
 
 export type Spaces = 'none' |
@@ -20,18 +20,12 @@ export const variables = {
 type SpaceArg = Spaces | string | number
 
 export const mixins = {
-  padding: (size: SpaceArg, hSize?: SpaceArg): string => {
-    size = getSpace(size);
-    hSize = getSpace(hSize);
-
-    return `padding: ${hSize ? `${size} ${hSize}` : size};`;
-  },
-  margin: (size: SpaceArg, hSize?: SpaceArg): string => {
-    size = getSpace(size);
-    hSize = getSpace(hSize);
-
-    return `margin: ${hSize ? `${size} ${hSize}` : size};`;
-  },
+  padding: (size: SpaceArg, hSize?: SpaceArg): string => (
+    `padding: ${getArgValue(variables.spaces, size)}${hSize ? ` ${getArgValue(variables.spaces, hSize)}` : ''};`
+  ),
+  margin: (size: SpaceArg, hSize?: SpaceArg): string => (
+    `margin: ${getArgValue(variables.spaces, size)}${hSize ? ` ${getArgValue(variables.spaces, hSize)}` : ''};`
+  ),
   autoSpacing: (
     breakpoints: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?] } = {
       mobile: ['xs', 's'],
@@ -43,11 +37,13 @@ export const mixins = {
   ): string => (
     Object.keys(breakpoints)
       .map(key => (
-        responsiveMixins.media((key === 'mobile' ? 'laptop' : key), !(key === 'mobile'))(
-          Array.isArray(breakpoints[key])
-            ? `${rule}: ${breakpoints[key].map(v => getSpace(v)).join(' ')}`
-            : `${rule}: ${getSpace(breakpoints[key])}`
-        )
+        responsiveMixins.media((key === 'mobile' ? 'laptop' : key), !(key === 'mobile'))(`
+          ${rule}: ${(
+            Array.isArray(breakpoints[key])
+              ? breakpoints[key].map(v => getArgValue(variables.spaces, v)).join(' ')
+              : getArgValue(variables.spaces, breakpoints[key])
+          )}
+        `)
       ))
       .join('\n')
   ),

@@ -1,25 +1,25 @@
 @use './helpers';
 @use './responsive';
 
-$spaces-none: 0;
-$spaces-xxs: 4px;
-$spaces-xs: 8px;
-$spaces-s: 12px;
-$spaces-m: 16px;
-$spaces-l: 24px;
-$spaces-xl: 32px;
-$spaces-xxl: 52px;
-$spaces-xxxl: 84px;
+$space-none: 0;
+$space-xxs: 4px;
+$space-xs: 8px;
+$space-s: 12px;
+$space-m: 16px;
+$space-l: 24px;
+$space-xl: 32px;
+$space-xxl: 52px;
+$space-xxxl: 84px;
 $spaces: (
-  none: $spaces-none,
-  xxs: $spaces-xxs,
-  xs: $spaces-xs,
-  s: $spaces-s,
-  m: $spaces-m,
-  l: $spaces-l,
-  xl: $spaces-xl,
-  xxl: $spaces-xxl,
-  xxxl: $spaces-xxxl,
+  none: $space-none,
+  xxs: $space-xxs,
+  xs: $space-xs,
+  s: $space-s,
+  m: $space-m,
+  l: $space-l,
+  xl: $space-xl,
+  xxl: $space-xxl,
+  xxxl: $space-xxxl,
 );
 
 @mixin padding($size, $hSize: null) {

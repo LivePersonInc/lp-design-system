@@ -8,62 +8,6 @@ import TokensList from './TokensList';
 
 # Transparency
 
-## How to use
-
-### SCSS
-
-```scss
-@use '~@liveperson-design-system/tokens/scss/transparency';
-
-.buttons {
-  background-color: transparency.$dark-1;
-}
-
-// or
-
-.buttons {
-  background-color: transparency.get-transparency(1);
-}
-```
-
-### JS
-
-```js
-import { variables, functions } from '@liveperson-design-system/tokens/scss/transparency';
-
-const Button = styled.button`
-  background-color: ${variables.dark['1']};
-`;
-
-// or
-
-const Button = styled.button`
-  background-color: ${functions.getTransparency(1)}
-`;
-```
-
-### CSS
-
-`transparency.css` includes CSS variables and helpers classes
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/transparency.css">
-```
-
-To use CSS variables just add `lpds-transparency` class to the container
-
-```html
-<body class="lpds-transparency">
-  <button>Button</button>
-</body>
-
-<style>
-  button {
-    border-radius: var(--lpds-transparency-dark-1);
-  }
-</style>
-```
-
 ## Variables
 
 <TokensList
@@ -83,36 +27,13 @@ To use CSS variables just add `lpds-transparency` class to the container
   ]}
 />
 
-## SCSS
-
-### Functions
-
-- `get-transparency($transparency, $light-theme: false)` - to get transparency value
-
-## JS
-
-### Functions
-
-- `getTransparency: (transparency: Transparencies, light: boolean = false): string`
-
-### Types
-
-- `Transparencies = 0 | 1 | 2 | 3 | 4`
-
 ## CSS helpers classes
 
-### CSS variables
-
-To use CSS variables like `--lpds-transparency-light-1` you have to add `lpds-transparency` class to the root tag.
-In most cases this is `body` tag.
-
-### Classes
-
-#### Disabled
+### Disabled
 
 To apply `opacity` style for disabled elements just add `lpds-transparency-disabled` class.
 
-#### Background color
+### Background color
 
 To apply `background-color` style just add `lpds-transparency-{light|dark}-{0|1|2|3|4}` class to the element.
 

@@ -15,55 +15,6 @@ export const ColorPaletteWrap = styled.div`
 
 # Colors
 
-## How to use
-
-### SCSS
-
-```scss
-@use '~@liveperson-design-system/tokens/scss/colors';
-
-.buttons {
-  background-color: colors.$blue;
-}
-```
-
-### JS
-
-```js
-import { variables } from '@liveperson-design-system/tokens/scss/colors';
-
-const Button = styled.button`
-  background-color: ${variables.blue.default};
-`;
-```
-
-### CSS
-
-`colors.css` includes CSS variables and helpers classes
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/colors.css">
-```
-
-To use CSS variables just add `lpds-colors` class to the container
-
-```html
-<body class="lpds-colors">
-  <button>Button</button>
-</body>
-
-<style>
-  button {
-    background-color: var(--lpds-colors-blue);
-  }
-</style>
-```
-
-To use colors pallet for light theme just add `lpds-theme-light` class to parent element
-or use `lpds-colors-light` instead of `lpds-colors`
-
-## Colors pallet
-
 <TabsState>
   <div id="dark" title="Dark theme">
     <ColorPaletteWrap>
@@ -86,7 +37,6 @@ or use `lpds-colors-light` instead of `lpds-colors`
 ### CSS variables
 
 To use CSS variables like `--lpds-colors-blue` you have to add `lpds-colors` class to the root tag.
-In most cases this is `body` tag.
 Also, you can use light theme colors pallet. To do this, please use `lpds-colors-light` class instead of `lpds-colors`
 or you can add `lpds-theme-light` class to the parent element.
 

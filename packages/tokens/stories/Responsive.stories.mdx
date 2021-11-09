@@ -33,7 +33,9 @@ import TokensList from './TokensList';
 ### JS
 
 ```js
-import { variables, functions, mixins } from '@liveperson-design-system/tokens/scss/responsive';
+import styled from 'styled-components';
+
+import { mixins } from '@liveperson-design-system/tokens/js/responsive';
 
 const Button = styled.button`
   ${mixins.media('laptop')(`
@@ -43,14 +45,6 @@ const Button = styled.button`
 ```
 
 ### CSS
-
-`responsive.css` includes CSS variables and helpers classes
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/responsive.css">
-```
-
-To use CSS variables just add `lpds-responsive` class to the container
 
 ```html
 <body class="lpds-responsive">
@@ -77,28 +71,21 @@ To use CSS variables just add `lpds-responsive` class to the container
   ]}
 />
 
-## JS
+## Mixins
 
-### Functions
+- `media($breakpoint, $up: true)` - to apply `@media` rule
+  - `$breakpoint` - one of the available breakpoints or a value
+  - `$up` - to switch between `@media (min-width: $breakpoint)` and `@media (max-width: $breakpoint)`
+- `media-from-to($from, $to)` - to apply `@media` rule
+  - `$from` - one of the available breakpoints or a value
+  - `$to` - one of the available breakpoints or a value
 
-- `getBreakpoint(breakpoint: BreakpointArg, up: boolean = true): string`
-
-### Mixins
+### JS
 
 - `media: (breakpoint: BreakpointArg, up: boolean = true) => (content: string): string`
 - `mediaFromTo: (from: BreakpointArg, to: BreakpointArg) => (content: string): string`
 
-### Types
-
-- `Breakpoints: 'laptop' | 'desktop' | 'desktopLarge'`
-- `BreakpointArg = Breakpoints | string | number`
-
 ## CSS helpers classes
-
-### CSS variables
-
-To use CSS variables like `--lpds-breakpoints-laptop` you have to add `lpds-responsive` class to the root tag.
-In most cases this is `body` tag.
 
 ### Classes
 

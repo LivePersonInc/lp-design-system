@@ -11,62 +11,6 @@ import TokensList from './TokensList';
 Border-radius are used on most components that are used as containers.
 Nested components should be smaller than the parent component.
 
-## How to use
-
-### SCSS
-
-```scss
-@use '~@liveperson-design-system/tokens/scss/border-radius';
-
-.buttons {
-  border-radius: border-radius.$border-radius-xxs;
-}
-```
-
-### JS
-
-```js
-import { variables, functions, mixins } from '@liveperson-design-system/tokens/scss/border-radius';
-
-const Button = styled.button`
-  border-radius: ${variables.borderRadius.xxs};
-`;
-
-// or
-
-const Button = styled.button`
-  border-radius: ${functions.getBorderRadius('xxs')};
-`;
-
-// or
-
-const Button = styled.button`
-  ${mixins.borderRadius('xxs')}
-`;
-```
-
-### CSS
-
-`border-radius.css` includes CSS variables and helpers classes
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/border-radius.css">
-```
-
-To use CSS variables just add `lpds-border-radius` class to the container
-
-```html
-<body class="lpds-border-radius">
-  <button>Button</button>
-</body>
-
-<style>
-  button {
-    border-radius: var(--lpds-border-radius-xxs);
-  }
-</style>
-```
-
 ## Variables
 
 <TokensList
@@ -82,22 +26,16 @@ To use CSS variables just add `lpds-border-radius` class to the container
   ]}
 />
 
-## JS
+## Mixins
 
-### Functions
+- `border-radius($border-radius)` - returns `border-radius` style
+  - `$border-radius` - available size or just a value
 
-- `getBorderRadius` - to get border-radius by size (s, m, l, etc.) Example: `functions.getBorderRadius('xxs') => '4px'`
+### JS
 
-### Mixins
-
-- `borderRadius` - returns border-radius rule by size (s, m, l, etc.). Example: `mixins.borderRadius('xxs') => 'border-radius: 4px;'`
+- `borderRadius: (size: BorderRadius | string | number): string`
 
 ## CSS helpers classes
-
-### CSS variables
-
-To use CSS variables like `--lpds-border-radius-xxs` you have to add `lpds-border-radius` class to the root tag.
-In most cases this is `body` tag.
 
 ### Classes
 

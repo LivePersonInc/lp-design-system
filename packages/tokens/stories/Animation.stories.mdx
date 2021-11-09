@@ -14,6 +14,8 @@ These are a set of animation values.
 
 ### SCSS
 
+To use keyframes animations provided by LPDS you have to also import `animation-keyframes.scss` file
+
 ```scss
 @use '~@liveperson-design-system/tokens/scss/animation';
 
@@ -27,7 +29,9 @@ These are a set of animation values.
 ### JS
 
 ```js
-import { variables, keyframes as LPDSLeyframes } from '@liveperson-design-system/tokens/scss/animation';
+import styled from 'styled-components';
+
+import { variables, keyframes as LPDSLeyframes } from '@liveperson-design-system/tokens/js/animation';
 
 const slideUpFadeIn = keyframes`
   ${LPDSLeyframes.slideUpFadeIn}
@@ -36,28 +40,6 @@ const slideUpFadeIn = keyframes`
 const Button = styled.button`
   animation: ${slideUpFadeIn} ${variables.animationSetting};
 `;
-```
-
-### CSS
-
-`animation.css` includes CSS variables, helpers classes and keyframes animations
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/animation.css">
-```
-
-To use CSS variables just add `lpds-animation` class to the container
-
-```html
-<body class="lpds-animation">
-  <button>Button</button>
-</body>
-
-<style>
-  button {
-    transition-duration: var(--lpds-animation-duration-fast);
-  }
-</style>
 ```
 
 ## Variables
@@ -88,11 +70,6 @@ The `$animation-setting` token provides a default value for use in all animation
 />
 
 ## CSS helpers classes
-
-### CSS variables
-
-To use CSS variables like `--lpds-animation-slide-up-fade-in` you have to add `lpds-animation` class to the root tag.
-In most cases this is `body` tag.
 
 ### Duration
 

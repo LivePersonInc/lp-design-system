@@ -15,56 +15,6 @@ export const VarValue = styled.span`
 
 Shadows can be used only on modals and popovers to show elevation, or on text to enhance legibility.
 
-## How to use
-
-### SCSS
-
-```scss
-@use '~@liveperson-design-system/tokens/scss/shadow';
-
-.modal {
-  box-shadow: shadow.$shadow-l;
-}
-```
-
-### JS
-
-```js
-import { variables, mixins } from '@liveperson-design-system/tokens/scss/border-radius';
-
-const Button = styled.button`
-  box-shadow: ${variables.shadow.l};
-`;
-
-// or
-
-const Button = styled.button`
-  ${mixins.boxShadow('l')}
-`;
-```
-
-### CSS
-
-`shadow.css` includes CSS variables and helpers classes
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/shadow.css">
-```
-
-To use CSS variables just add `lpds-shadow` class to the container
-
-```html
-<body class="lpds-shadow">
-  <button>Button</button>
-</body>
-
-<style>
-  button {
-    box-shadow: var(--lpds-shadow-l);
-  }
-</style>
-```
-
 ## Variables
 
 <TokensList
@@ -86,37 +36,41 @@ To use CSS variables just add `lpds-shadow` class to the container
   ]}
 />
 
-## JS
+## Mixins
 
-### Functions
+- `box-shadow($size)` - to apply `box-shadow` rule
+  - `$size` - one of the available shadow sizes or a value
+- `text-shadow($size, $text-color: light)` - to apply `text-shadow` rule
+  - `$size` - one of the available text shadow sizes
+  - `$text-color` - can be `light` or `dark`
+- `card-shadow($hover: false, $theme: light)` - to apply `box-shadow` rule for the cards
+  - `$hover` - to apply shadow for default card state or for hover state
+  - `$theme` - can be `light` or `dark`
+- `input-shadow($type)` - to apply `box-shadow` rule for the inputs
+  - `$type` - one of the available shadow types
 
-- `boxShadow: (size: 's' | 'l' | 'xl' | 'xxl' | string): string`
-- `textShadow: (size: 's' | 'l' = 's', textColor: 'light' | 'dark' = 'light'): string`
-- `cardShadow: (hover: boolean = false, theme: 'dark' | 'light' = 'dark'): string`
-- `inputShadow: (type: 'v' = 'v'): string`
+### JS
+
+- `boxShadow: (size: BoxShadows | string): string`
+- `textShadow: (size: TextShadows, textColor: 'light' | 'dark' = 'light'): string`
+- `cardShadow: (hover: boolean = false, theme: Theme = 'dark'): string`
+- `inputShadow: (type: 'v'): string`
 
 ## CSS helpers classes
 
-### CSS variables
-
-To use CSS variables like `--lpds-shadow-l` you have to add `lpds-shadow` class to the root tag.
-In most cases this is `body` tag.
-
-### Classes
-
-#### Box shadow
+### Box shadow
 
 To apply `box-shadow` style just add `lpds-shadow-{s|l|xl|xxl}` class to the element.
 
-#### Text shadow
+### Text shadow
 
 To apply `text-shadow` style just add `lpds-shadow-text-{dark|light}-{s|l}` class to the element.
 
-#### Card shadow
+### Card shadow
 
 To apply `box-shadow` style for cards just add `lpds-shadow-card-{dark|light}` class to the element.
 Also, `lpds-shadow-card-{dark|light}-hover` for hovered elements.
 
-#### Input shadow
+### Input shadow
 
 To apply `box-shadow` style for inputs just add `lpds-shadow-input-{v}` class to the element.

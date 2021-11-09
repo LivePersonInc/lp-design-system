@@ -10,62 +10,6 @@ import TokensList from './TokensList';
 
 Use these spacing units optionally to adjust space between certain units of auto-layouts when common spacing is different.
 
-## How to use
-
-### SCSS
-
-```scss
-@use '~@liveperson-design-system/tokens/scss/spacing';
-
-.buttons {
-  padding: spacing.$border-radius-xxs;
-}
-
-// or
-
-.buttons {
-  @include spacing.padding(0, xxs);
-}
-```
-
-### JS
-
-```js
-import { variables, mixins } from '@liveperson-design-system/tokens/scss/spacing';
-
-const Button = styled.button`
-  padding: 0 ${variables.spaces.xxs};
-`;
-
-// or
-
-const Button = styled.button`
-  ${mixins.padding(0, 'xxs')}
-`;
-```
-
-### CSS
-
-`spacing.css` includes CSS variables and helpers classes
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/spacing.css">
-```
-
-To use CSS variables just add `lpds-spacing` class to the container
-
-```html
-<body class="lpds-spacing">
-  <button>Button</button>
-</body>
-
-<style>
-  button {
-    border-radius: var(--lpds-spaces-xxs);
-  }
-</style>
-```
-
 ## Variables
 
 <TokensList
@@ -83,16 +27,16 @@ To use CSS variables just add `lpds-spacing` class to the container
   ]}
 />
 
-## SCSS
-
-### Mixins
+## Mixins
 
 - `padding($size, $hSize: null)` - to apply `padding` styles
 - `margin($size, $hSize: null)` - to apply `margin` styles
 
-**Note:** `$size` can be one of the provided sizes like s, m, l, etc.
+`$size` and `$hSize` can be either one of the provided spaces sizes or just a value
 
 - `auto-spacing($breakpoints, $rule: padding)` - to apply `$rule` styles which will be changing related to provided `$breakpoints`
+  - `$breakpoints` - a list of breakpoints
+  - `$rule` - one of the CSS rule like `padding` or `margin` that will be changing
 
 ```scss
 @use '~@liveperson-design-system/tokens/spacing';
@@ -107,38 +51,27 @@ To use CSS variables just add `lpds-spacing` class to the container
 );
 ```
 
-## JS
+### JS
 
-### Mixins
+- `padding: (size: SpaceArg, hSize?: SpaceArg): string`
+- `margin: (size: SpaceArg, hSize?: SpaceArg): string`
+- `autoSpacing: (breakpoints?: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?] }, rule: string = 'padding'): string`
 
-- `padding: (size: SpaceArg, hSize?: SpaceArg): string` - to apply `padding` styles
-- `margin: (size: SpaceArg, hSize?: SpaceArg): string` - to apply `margin` styles
-- `autoSpacing: (breakpoints?: { [breakpoint in Breakpoints | 'mobile']: SpaceArg | [SpaceArg, SpaceArg?] }, rule: string = 'padding'): string` - to apply `rule` styles which will be changing related to provided `breakpoints`
-
-### Types
+#### Types
 
 - `SpaceArg = Spaces | string | number`
 - `Spaces = 'none' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'`
 
 ## CSS helpers classes
 
-### CSS variables
-
-To use CSS variables like `--lpds-space-xxs` you have to add `lpds-spacing` class to the root tag.
-In most cases this is `body` tag.
-
-### Classes
-
-#### Outer
+### Outer
 
 To apply `margin` style just add `lpds-spacing-{size}` class to the element.
 
 Also there are few options according to the side like `lpds-spacing-{size}-{vertical|horizontal|top|bottom|left|right}`
 
-#### Inner
+### Inner
 
 To apply `padding` style just add `lpds-spacing-{size}-inner` class to the element.
 
 Also there are few options according to the side like `lpds-spacing-{size}-inner-{vertical|horizontal|top|bottom|left|right}`
-
-

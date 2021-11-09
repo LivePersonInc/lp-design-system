@@ -17,8 +17,8 @@ $border-radius: (
 
 @mixin border-radius($size) {
   @if map-has-key($border-radius, $size) {
-    $border-radius: map-get($border-radius, $size);
+    $size: map-get($border-radius, $size);
   }
 
-  border-radius: $border-radius;
+  border-radius: $size;
 }

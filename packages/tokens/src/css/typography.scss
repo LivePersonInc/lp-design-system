@@ -2,17 +2,15 @@
 
 @use '../scss/typography';
 
-:root {
-  @include helpers.generate-css-variables(typography.$fonts, 'lpds-typography-font');
-  @include helpers.generate-css-variables(typography.$sizes, 'lpds-typography-size');
-  @include helpers.generate-css-variables(typography.$line-heights, 'lpds-typography-line-height');
-  @include helpers.generate-css-variables(typography.$weights, 'lpds-typography-weight');
-  @include helpers.generate-css-variables(typography.$letter-spacings, 'lpds-typography-letter-spacing');
-  @include helpers.generate-css-variables(typography.$font-size-heading, 'lpds-typography-heading');
-}
-
 @include helpers.lpds-prefix {
   &-typography {
+    @include helpers.generate-css-variables(typography.$fonts, 'lpds-typography-font');
+    @include helpers.generate-css-variables(typography.$sizes, 'lpds-typography-size');
+    @include helpers.generate-css-variables(typography.$line-heights, 'lpds-typography-line-height');
+    @include helpers.generate-css-variables(typography.$weights, 'lpds-typography-weight');
+    @include helpers.generate-css-variables(typography.$letter-spacings, 'lpds-typography-letter-spacing');
+    @include helpers.generate-css-variables(typography.$font-size-heading, 'lpds-typography-heading');
+
     &-font {
       @include helpers.generate-helpers-classes(typography.$fonts, font-family);
     }
@@ -70,6 +68,8 @@
     }
 
     &-button {
+      @include typography.button;
+
       @each $key in (small, medium, large) {
         &-#{$key} {
           @include typography.button($key);

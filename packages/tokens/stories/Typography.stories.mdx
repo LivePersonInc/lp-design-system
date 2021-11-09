@@ -1,12 +1,202 @@
 import { Meta } from '@storybook/addon-docs';
-import { Figma } from 'storybook-addon-designs/blocks';
+
+import typography from '../src/scss/typography.exports.scss';
+
+import TokensList from './TokensList';
 
 <Meta title="Tokens/Typography" />
 
 # Typography
 
-<Figma
-  collapsable={false}
-  url="https://www.figma.com/file/HDTHGpqZJxUpvdlWWKAbux/LPDS-v0.1----WIP?node-id=11677%3A98707"
-  allowFullscreen
+The typography section is used to describe regular typography over all LP projects.
+It consists of headers, body, input, buttons lables, tag and code.
+
+This table of styles made as presets with combinations of tokens.
+If there a need to add more styles, please refer to [LPDS Governance Process](https://docs.google.com/document/d/1Iua6CuGrJFAdMRX0MVmMx6_TNPpYppKBYDmKw3Cr_WQ/edit#heading=h.4rya4in1uke4)
+
+Base font size 1em (14px).
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$font-roboto</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['fonts-roboto']],
+    [<code>$font-roboto-mono</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['fonts-roboto-mono']],
+    [<code>$font-roboto-condensed</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['fonts-roboto-condensed']],
+    [<code>$size-default</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['sizes-default']],
+    [<code>$size-body</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['sizes-body']],
+    [<code>$size-small</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['sizes-small']],
+    [<code>$size-large</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['sizes-large']],
+    [<code>$line-height-small</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['line-heights-small']],
+    [<code>$line-height-medium</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['line-heights-medium']],
+    [<code>$line-height-large</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['line-heights-large']],
+    [<code>$weight-light</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['weights-light']],
+    [<code>$weight-regular</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['weights-regular']],
+    [<code>$weight-medium</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['weights-medium']],
+    [<code>$weight-bold</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['weights-bold']],
+    [<code>$letter-spacing-regular</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['letter-spacings-regular']],
+    [<code>$letter-spacing-all-caps</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['letter-spacings-all-caps']],
+    [<code>$letter-spacing-compact</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['letter-spacings-compact']],
+    [<code>$font-size-heading-1</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['heading-1']],
+    [<code>$font-size-heading-2</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['heading-2']],
+    [<code>$font-size-heading-3</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['heading-3']],
+    [<code>$font-size-heading-4</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['heading-4']],
+    [<code>$font-size-heading-5</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['heading-5']],
+    [<code>$font-size-heading-6</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, typography['heading-6']],
+  ]}
 />
+
+## Mixins
+
+### Fonts
+
+Mixins to apply `font-family` style
+
+- `font-family($font: roboto)`
+- `with-font-family($font: roboto)`
+
+`$font` can be either one of the provided fonts or just a `font-family` value
+
+### Modifications
+
+Mixins to apply rules for different types of text
+
+- `type-all-caps` - uppercase text
+- `type-link-active` - link text
+- `type-inline-emphasis` - emphasis text
+- `type-code` - code embed text
+- `type-condensed` - for text with Roboto Condensed font
+
+### Headers
+
+Mixins to apply rules for headers
+
+- `header($header: 1)`
+  - `$header` - can be one of the provided headers, form 1 to 6
+
+### Body
+
+Mixins to apply rules for simple body text
+
+- `body($small: false)`
+- `body-bold($small: false)`
+- `body-italic($small: false)`
+
+`$small` - to switch between font sizes, `$size-small` or `$size-body`
+
+### Button
+
+Mixins to apply rules for buttons
+
+- `button($size: medium)`
+  - `$size` - can be `small`, `medium` or `large`. It has influence on `font-size` and `font-weight`
+
+### Tag
+
+Mixins to apply rules for tags
+
+- `tag`
+
+### Table
+
+Mixins to apply rules for tables and its elements
+
+- `table-header` - header cells
+- `table-cell` - body cells
+
+### Input
+
+Mixins to apply rules for inputs and its elements
+
+- `input-label` - label
+- `input-value` - value
+
+### Code
+
+Mixins to apply rules for code embed
+
+- `code`
+
+### Charts
+
+Mixins to apply rules for charts and its elements
+
+- `chart-title`
+- `chart-axis-title`
+- `chart-axis-label`
+- `chart-number-title`
+- `chart-number($big: false)`
+  - `$big` - to switch between font sizes, `$font-size-heading-1` or `$font-size-heading-3`
+
+## CSS helpers classes
+
+### Fonts
+
+To apply `font-family` style just add `lpds-typography-font-{roboto|roboto-mono|roboto-condensed}` class to the element.
+
+### Sizes
+
+To apply `font-size` style just add `lpds-typography-size-{default|body|small|large}` class to the element.
+
+### Line heights
+
+To apply `line-height` style just add `lpds-typography-line-height-{small|medium|large}` class to the element.
+
+### Weights
+
+To apply `font-weight` style just add `lpds-typography-weight-{light|regular|medium|bold}` class to the element.
+
+### Letter spacings
+
+To apply `letter-spacing` style just add `lpds-typography-letter-spacing-{regular|all-caps|compact}` class to the element.
+
+### Headers
+
+To apply `font-size` style for headers just add `lpds-typography-heading-{1|2|3|4|5|6}` class to the element.
+
+### Styles for elements
+
+#### Headers
+
+To apply head styles use `lpds-typography-head-{1|2|3|4|5|6}` class.
+
+#### Body
+
+To apply body text styles use `lpds-typography-body` class.
+
+Also, you can use a few variations
+- `lpds-typography-body-small`
+- `lpds-typography-body-{bold|italic}`
+- `lpds-typography-body-{bold|italic}-small`
+
+#### Button
+
+To apply button styles use `lpds-typography-button` class.
+
+Also, you can use size variations `lpds-typography-button-{small|medium|large}`
+
+#### Tag
+
+To apply tag styles use `lpds-typography-tag` class.
+
+#### Table
+
+To apply table header styles use `lpds-typography-table-header` class and `lpds-typography-table-cell` for table cell styles.
+
+#### Input
+
+To apply input label styles use `lpds-typography-input-label` class and `lpds-typography-input-value` for input value styles.
+
+#### Code
+
+To apply code text styles use `lpds-typography-code` class.
+
+#### Chat
+
+- `lpds-typography-chart-title` - chart title styles
+- `lpds-typography-chart-axis-title` - chart axis title styles
+- `lpds-typography-chart-axis-label` - chart axis label styles
+- `lpds-typography-chart-number` - chart number styles
+- `lpds-typography-chart-number-big` - chart big number styles
+- `lpds-typography-chart-number-title` - chart number title styles

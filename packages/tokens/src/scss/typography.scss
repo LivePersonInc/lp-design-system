@@ -56,13 +56,17 @@ $font-size-heading: (
   6: 14px,
 );
 
-@mixin font-family($font-family: $font-roboto) {
-  font-family: $font-family;
+@mixin font-family($font: roboto) {
+  @if map-has-key($fonts, $font) {
+    $font: map-get($fonts, $font);
+  }
+
+  font-family: $font;
 }
 
-@mixin with-font-family($font-family: $font-roboto) {
-  @if $font-family {
-    @include font-family($font-family);
+@mixin with-font-family($font: roboto) {
+  @if $font {
+    @include font-family($font);
   }
 
   text-rendering: optimizeLegibility;
@@ -82,10 +86,10 @@ $font-size-heading: (
   font-style: italic;
 }
 @mixin type-code {
-  @include font-family($font-roboto-mono);
+  @include font-family(roboto-mono);
 }
 @mixin type-condensed {
-  @include font-family($font-roboto-condensed);
+  @include font-family(roboto-condensed);
 }
 
 // Headers mixins

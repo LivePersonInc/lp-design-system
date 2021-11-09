@@ -2,54 +2,26 @@ import typography from '../scss/typography.exports.scss';
 
 import { groupListVariables } from './helpers';
 
+export type Fonts = 'roboto' | 'robotoMono' | 'robotoCondensed'
+export type Sizes = 'default' | 'body' | 'small' | 'large'
+export type LineHeights = 'small' | 'medium' | 'large'
+export type Weights = 'light' | 'regular' | 'medium' | 'bold'
+export type LetterSpacings = 'regular' | 'allCaps' | 'compact'
 export type Headings = 1 | 2 | 3 | 4 | 5 | 6
 
 export const variables = {
-  fonts: {
-    roboto: typography.fontRoboto,
-    robotoMono: typography.fontRobotoMono,
-    robotoCondensed: typography.fontRobotoCondensed,
-  },
-
-  sizes: {
-    default: typography.sizeDefault,
-    body: typography.sizeBody,
-    small: typography.sizeSmall,
-    large: typography.sizeLarge,
-  },
-
-  lineHeights: {
-    small: typography.lineHeightSmall,
-    medium: typography.lineHeightMedium,
-    large: typography.lineHeightLarge,
-  },
-
-  weights: {
-    light: typography.weightLight,
-    regular: typography.weightRegular,
-    medium: typography.weightMedium,
-    bold: typography.weightBold,
-  },
-
-  letterSpacings: {
-    regular: typography.letterSpacingRegular,
-    allCaps: typography.letterSpacingAllCaps,
-    compact: typography.letterSpacingCompact,
-  },
-
+  fonts: groupListVariables<Record<Fonts, string>>(typography, 'fonts-'),
+  sizes: groupListVariables<Record<Sizes, string>>(typography, 'sizes-'),
+  lineHeights: groupListVariables<Record<LineHeights, string>>(typography, 'line-heights-'),
+  weights: groupListVariables<Record<Weights, string>>(typography, 'weights-'),
+  letterSpacings: groupListVariables<Record<LetterSpacings, string>>(typography, 'letter-spacings-'),
   heading: groupListVariables<Record<Headings, string>>(typography, 'heading-'),
 };
 
-export type Fonts = keyof typeof variables.fonts
-export type Sizes = keyof typeof variables.sizes
-export type LineHeights = keyof typeof variables.lineHeights
-export type Weights = keyof typeof variables.weights
-export type LetterSpacings = keyof typeof variables.letterSpacings
-
 export const mixins = {
-  fontFamily: (fontFamily: Fonts | string = variables.fonts.roboto): string => `font-family: ${fontFamily};`,
-  withFontFamily: (fontFamily: Fonts | string = variables.fonts.roboto): string => `
-    ${fontFamily ? mixins.fontFamily(fontFamily) : ''}
+  fontFamily: (font: Fonts | string = 'roboto'): string => `font-family: ${variables.fonts[font] || font};`,
+  withFontFamily: (font: Fonts | string = 'roboto'): string => `
+    ${font ? mixins.fontFamily(font) : ''}
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

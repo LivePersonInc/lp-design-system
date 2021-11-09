@@ -25,7 +25,3 @@ $dark: (
   3: $dark-3,
   4: $dark-4,
 );
-
-@function get-transparency($transparency, $light-theme: false) {
-  @return map-get(if($light-theme, $light, $dark), $transparency);
-}

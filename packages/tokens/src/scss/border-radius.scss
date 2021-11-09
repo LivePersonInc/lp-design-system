@@ -15,15 +15,9 @@ $border-radius: (
   xl: $border-radius-xl,
 );
 
-$-border-radius: $border-radius;
-
-@function get-border-radius($size) {
-  @return map-get($border-radius, $size);
-}
-
-@mixin border-radius($border-radius) {
-  @if map-has-key($-border-radius, $border-radius) {
-    $border-radius: get-border-radius($border-radius);
+@mixin border-radius($size) {
+  @if map-has-key($border-radius, $size) {
+    $border-radius: map-get($border-radius, $size);
   }
 
   border-radius: $border-radius;

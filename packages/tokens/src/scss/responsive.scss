@@ -7,13 +7,9 @@ $breakpoints: (
   desktop-large: $width-desktop-large,
 );
 
-@function get-breakpoint($breakpoint) {
-  @return map-get($breakpoints, $breakpoint);
-}
-
 @mixin media($breakpoint, $up: true) {
   @if (map-has-key($breakpoints, $breakpoint)) {
-    $breakpoint: get-breakpoint($breakpoint);
+    $breakpoint: map-get($breakpoints, $breakpoint);
   }
 
   @if $up {
@@ -29,11 +25,11 @@ $breakpoints: (
 
 @mixin media-from-to($from, $to) {
   @if (map-has-key($breakpoints, $from)) {
-    $from: get-breakpoint($from);
+    $from: map-get($breakpoints, $from);
   }
 
   @if (map-has-key($breakpoints, $to)) {
-    $to: get-breakpoint($to) - 1px;
+    $to: map-get($breakpoints, $to) - 1px;
   }
 
   @media (min-width: $from) and (max-width: $to) {

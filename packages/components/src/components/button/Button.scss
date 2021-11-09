@@ -237,8 +237,10 @@
 
   &[slot$="left"] {
     ::slotted(&) {
-      margin-left: spacing.$space-xxs * -1;
-      margin-right: spacing.$space-xs;
+      margin: {
+        left: spacing.$space-xxs * -1;
+        right: spacing.$space-xs;
+      };
     }
 
     :host([variant="inline"]) ::slotted(&) {

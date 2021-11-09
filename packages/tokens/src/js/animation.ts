@@ -66,3 +66,4 @@ export const keyframes: { [name in Animations]: { [key in 'from' | 'to' | string
     },
   },
 };
+

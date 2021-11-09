@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs';
+
+import transparency from '../src/scss/transparency.exports.scss';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Transparency" />
+
+# Transparency
+
+## How to use
+
+### SCSS
+
+```scss
+@use '~@liveperson-design-system/tokens/scss/transparency';
+
+.buttons {
+  background-color: transparency.$dark-1;
+}
+
+// or
+
+.buttons {
+  background-color: transparency.get-transparency(1);
+}
+```
+
+### JS
+
+```js
+import { variables, functions } from '@liveperson-design-system/tokens/scss/transparency';
+
+const Button = styled.button`
+  background-color: ${variables.dark['1']};
+`;
+
+// or
+
+const Button = styled.button`
+  background-color: ${functions.getTransparency(1)}
+`;
+```
+
+### CSS
+
+`transparency.css` includes CSS variables and helpers classes
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@liveperson-design-system/tokens/css/transparency.css">
+```
+
+To use CSS variables just add `lpds-transparency` class to the container
+
+```html
+<body class="lpds-transparency">
+  <button>Button</button>
+</body>
+
+<style>
+  button {
+    border-radius: var(--lpds-transparency-dark-1);
+  }
+</style>
+```
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    [<code>$disabled</code>, <code>disabled</code>, <code>--lpds-transparency-disabled</code>, transparency['disabled']],
+    [<code>$light-0</code>, <code>light.0</code>, <code>--lpds-transparency-light-0</code>, transparency['light-0']],
+    [<code>$light-1</code>, <code>light.1</code>, <code>--lpds-transparency-light-1</code>, transparency['light-1']],
+    [<code>$light-2</code>, <code>light.2</code>, <code>--lpds-transparency-light-2</code>, transparency['light-2']],
+    [<code>$light-3</code>, <code>light.3</code>, <code>--lpds-transparency-light-3</code>, transparency['light-3']],
+    [<code>$light-4</code>, <code>light.4</code>, <code>--lpds-transparency-light-4</code>, transparency['light-4']],
+    [<code>$dark-0</code>, <code>dark.0</code>, <code>--lpds-transparency-dark-0</code>, transparency['dark-0']],
+    [<code>$dark-1</code>, <code>dark.1</code>, <code>--lpds-transparency-dark-1</code>, transparency['dark-1']],
+    [<code>$dark-2</code>, <code>dark.2</code>, <code>--lpds-transparency-dark-2</code>, transparency['dark-2']],
+    [<code>$dark-3</code>, <code>dark.3</code>, <code>--lpds-transparency-dark-3</code>, transparency['dark-3']],
+    [<code>$dark-4</code>, <code>dark.4</code>, <code>--lpds-transparency-dark-4</code>, transparency['dark-4']],
+  ]}
+/>
+
+## SCSS
+
+### Functions
+
+- `get-transparency($transparency, $light-theme: false)` - to get transparency value
+
+## JS
+
+### Functions
+
+- `getTransparency: (transparency: Transparencies, light: boolean = false): string`
+
+### Types
+
+- `Transparencies = 0 | 1 | 2 | 3 | 4`
+
+## CSS helpers classes
+
+### CSS variables
+
+To use CSS variables like `--lpds-transparency-light-1` you have to add `lpds-transparency` class to the root tag.
+In most cases this is `body` tag.
+
+### Classes
+
+#### Disabled
+
+To apply `opacity` style for disabled elements just add `lpds-transparency-disabled` class.
+
+#### Background color
+
+To apply `background-color` style just add `lpds-transparency-{light|dark}-{0|1|2|3|4}` class to the element.
+
+

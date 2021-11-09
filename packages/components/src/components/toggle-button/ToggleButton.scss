@@ -11,7 +11,7 @@
 
 :host {
   --size-height: 32px;
-  --size-padding: spacing.get-space(s, true);
+  --size-padding: spacing.$space-s;
 
   --color-bg: transparent;
   --color-border: #{colors.$blue-darker};
@@ -94,7 +94,7 @@
 
 :host([size="small"]) {
   --size-height: 24px;
-  --size-padding: spacing.get-space(xs, true);
+  --size-padding: spacing.$space-xs;
 
   ::slotted([slot="icon-left"]) {
     margin-left: 0;
@@ -111,12 +111,12 @@
 
 ::slotted([slot="icon-left"]) {
   @include icon;
-  margin-left: spacing.get-space(xxs) * -1;
-  margin-right: spacing.get-space(xxs);
+  margin-left: spacing.$space-xxs * -1;
+  margin-right: spacing.$space-xxs;
 }
 
 ::slotted([slot="icon-right"]) {
   @include icon;
-  margin-left: spacing.get-space(xxs);
-  margin-right: spacing.get-space(xxs) * -1;
+  margin-left: spacing.$space-xxs;
+  margin-right: spacing.$space-xxs * -1;
 }

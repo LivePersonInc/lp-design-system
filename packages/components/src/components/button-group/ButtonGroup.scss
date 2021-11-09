@@ -10,7 +10,7 @@
 
 :host {
   --size-button-height: 32px;
-  --size-button-padding: #{spacing.get-space(m, true)};
+  --size-button-padding: #{spacing.$space-m};
 
   --color-bg: #{transparency.$light-2};
 
@@ -43,7 +43,7 @@
 
 :host([size="small"]) {
   --size-button-height: 24px;
-  --size-button-padding: #{spacing.get-space(s, true)};
+  --size-button-padding: #{spacing.$space-s};
 }
 
 button {

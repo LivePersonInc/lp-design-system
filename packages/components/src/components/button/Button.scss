@@ -31,7 +31,7 @@
   color: var(--color-text);
   @include border-radius.border-radius(xxs);
   background: var(--color-bg);
-  @include spacing.padding(none, m, true);
+  @include spacing.padding(none, m);
   cursor: pointer;
 }
 :host([theme="light"]) {
@@ -225,7 +225,7 @@
   font-size: typography.$size-small;
   font-weight: typography.$weight-bold;
 
-  @include spacing.padding(none, s, true);
+  @include spacing.padding(none, s);
 }
 
 [slot^="icon"] {
@@ -237,8 +237,8 @@
 
   &[slot$="left"] {
     ::slotted(&) {
-      margin-left: spacing.get-space(xxs) * -1;
-      margin-right: spacing.get-space(xs);
+      margin-left: spacing.$space-xxs * -1;
+      margin-right: spacing.$space-xs;
     }
 
     :host([variant="inline"]) ::slotted(&) {
@@ -246,14 +246,14 @@
     }
 
     :host([size="small"]) ::slotted(&) {
-      margin-right: spacing.get-space(xxs);
+      margin-right: spacing.$space-xxs;
     }
   }
 
   &[slot$="right"] {
     ::slotted(&) {
-      margin-left: spacing.get-space(xs);
-      margin-right: spacing.get-space(xxs) * -1;
+      margin-left: spacing.$space-xs;
+      margin-right: spacing.$space-xxs * -1;
     }
 
     :host([variant="inline"]) ::slotted(&) {
@@ -261,8 +261,8 @@
     }
 
     :host([size="small"]) ::slotted(&) {
-      margin-left: spacing.get-space(xxs);
-      margin-right: spacing.get-space(xxs) * -1;
+      margin-left: spacing.$space-xxs;
+      margin-right: spacing.$space-xxs * -1;
     }
   }
 }

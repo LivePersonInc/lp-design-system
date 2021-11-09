@@ -22,8 +22,8 @@
   --color-text: #{colors.$navy-white};
 
   --input-text-align: left;
-  --input-padding-v: spacing.get-space(xs, true);
-  --input-padding-h: spacing.get-space(s, true);
+  --input-padding-v: spacing.$space-xs;
+  --input-padding-h: spacing.$space-s;
 
   position: relative;
   display: inline-flex;
@@ -63,7 +63,7 @@
 }
 
 $icon-size: helpers.get-em(16px);
-$icon-offset: helpers.get-em(spacing.get-space(xs));
+$icon-offset: helpers.get-em(spacing.$space-xs);
 
 textarea {
   flex-grow: 1;
@@ -74,7 +74,7 @@ textarea {
   color: inherit;
   border: 1px solid var(--color-border);
   outline: none;
-  border-radius: border-radius.get-border-radius(xxs);
+  border-radius: border-radius.$border-radius-xxs;
   background: var(--color-bg);
   box-shadow: none;
   -webkit-tap-highlight-color: rgba(#fff, 0);

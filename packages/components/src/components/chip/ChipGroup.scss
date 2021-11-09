@@ -13,7 +13,7 @@
 lp-chip {
   &,
   ::slotted(&) {
-    margin: math.div(spacing.get-space(xxs), 2);
+    margin: math.div(spacing.$space-xxs, 2);
   }
 
   &:first-child {

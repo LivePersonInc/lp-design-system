@@ -51,7 +51,7 @@
 
 $toggle-circle-width: helpers.get-em(14px, typography.$size-small);
 $toggle-circle-offset: 1px;
-$toggle-offset: spacing.get-space(xs);
+$toggle-offset: spacing.$space-xs;
 
 label {
   display: flex;
@@ -156,7 +156,7 @@ input {
   display: block;
   width: $toggle-circle-width * 2;
   height: calc(#{$toggle-circle-width} + #{$toggle-circle-offset} * 2);
-  border-radius: border-radius.get-border-radius(m);
+  border-radius: border-radius.$border-radius-m;
   background-color: var(--color-toggle);
   margin-right: $toggle-offset;
   transition: all .15s ease-out;

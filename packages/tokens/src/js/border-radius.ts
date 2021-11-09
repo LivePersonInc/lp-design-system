@@ -14,10 +14,6 @@ export const variables =  {
   borderRadius: groupListVariables<Record<BorderRadius, string>>(borderRadiusStyles, 'border-radius-'),
 };
 
-export const functions = {
-  getBorderRadius: (size: BorderRadius): string => variables.borderRadius[size],
-};
-
 export const mixins = {
   borderRadius: (size: BorderRadius | string): string => `border-radius: ${variables.borderRadius[size] || size};`,
 };

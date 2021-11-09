@@ -20,12 +20,6 @@ export const variables = {
   typography: typography.variables,
 };
 
-export const functions = {
-  borderRadius: borderRadius.functions,
-  responsive: responsive.functions,
-  transparency: transparency.functions,
-};
-
 export const mixins = {
   borderRadius: borderRadius.mixins,
   responsive: responsive.mixins,

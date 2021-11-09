@@ -8,10 +8,6 @@ export const variables = {
   breakpoints: groupListVariables<Record<Breakpoints, string>>(responsive, 'breakpoints-'),
 };
 
-export const functions = {
-  getBreakpoint: (breakpoint: Breakpoints): string => variables.breakpoints[breakpoint],
-};
-
 type BreakpointArg = Breakpoints | string | number
 export const mixins = {
   media: (breakpoint: BreakpointArg, up: boolean = true) => (content: string): string => {

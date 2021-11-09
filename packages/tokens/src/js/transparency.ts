@@ -10,9 +10,3 @@ export const variables = {
   dark: groupListVariables<Record<Transparencies, string>>(transparency, 'dark-'),
   light: groupListVariables<Record<Transparencies, string>>(transparency, 'light-'),
 };
-
-export const functions = {
-  getTransparency: (transparency: Transparencies, light: boolean = false): string => (
-    variables[light ? 'light' : 'dark'][transparency]
-  ),
-};

@@ -19,10 +19,6 @@ export const variables = {
 
 type SpaceArg = Spaces | string | number
 
-const getSpace = (space: SpaceArg): string => (
-  variables.spaces[space] || (typeof space === 'number' && space !== 0 ? `${space}px` : space)
-);
-
 export const mixins = {
   padding: (size: SpaceArg, hSize?: SpaceArg): string => {
     size = getSpace(size);

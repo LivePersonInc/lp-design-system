@@ -63,7 +63,6 @@
     "lerna": "^4.0.0",
     "np": "^7.5.0",
     "sass-loader": "8.0.2",
-    "storybook-addon-designs": "^6.1.0",
     "to-string-loader": "^1.1.6",
     "webpack-cli": "^3.3.12"
   },

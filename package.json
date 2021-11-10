@@ -43,7 +43,7 @@
     "build:tokens": "lerna exec --scope=@liveperson-design-system/tokens -- yarn build",
     "build:all": "yarn build:tokens && yarn build:icons && yarn build:components",
     "bootstrap": "lerna link && yarn build:all",
-    "publish:all": "yarn bootstrap && lerna publish --conventional-commits --create-release github",
+    "publish:all": "yarn bootstrap && dotenv lerna publish --conventional-commits --create-release github",
     "release": "np --yolo --no-publish"
   },
   "dependencies": {},
@@ -60,6 +60,7 @@
     "@storybook/theming": "^6.3.8",
     "css-loader": "3.4.2",
     "dotenv": "^10.0.0",
+    "dotenv-cli": "^4.1.0",
     "fs-extra": "^10.0.0",
     "lerna": "^4.0.0",
     "np": "^7.5.0",

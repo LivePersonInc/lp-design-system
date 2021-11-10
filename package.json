@@ -59,7 +59,6 @@
     "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/theming": "^6.3.8",
     "css-loader": "3.4.2",
-    "dotenv": "^10.0.0",
     "dotenv-cli": "^4.1.0",
     "fs-extra": "^10.0.0",
     "lerna": "^4.0.0",

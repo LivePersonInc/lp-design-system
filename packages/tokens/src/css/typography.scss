@@ -10,6 +10,7 @@
     @include helpers.generate-css-variables(typography.$weights, 'lpds-typography-weight');
     @include helpers.generate-css-variables(typography.$letter-spacings, 'lpds-typography-letter-spacing');
     @include helpers.generate-css-variables(typography.$font-size-heading, 'lpds-typography-heading');
+    @include helpers.generate-css-variables(typography.$font-size-display, 'lpds-typography-display');
 
     &-font {
       @include helpers.generate-helpers-classes(typography.$fonts, font-family);
@@ -39,6 +40,14 @@
       @each $head in map-keys(typography.$font-size-heading) {
         &-#{$head} {
           @include typography.header($head);
+        }
+      }
+    }
+
+    &-display {
+      @each $display in map-keys(typography.$font-size-display) {
+        &-#{$display} {
+          @include typography.display($display);
         }
       }
     }

@@ -8,6 +8,7 @@ export type LineHeights = 'small' | 'medium' | 'large'
 export type Weights = 'light' | 'regular' | 'medium' | 'bold'
 export type LetterSpacings = 'regular' | 'allCaps' | 'compact'
 export type Headings = 1 | 2 | 3 | 4 | 5 | 6
+export type Display = 1 | 2 | 3 | 4 | 5 | 6
 
 export const variables = {
   fonts: groupListVariables<Record<Fonts, string>>(typography, 'fonts-'),
@@ -16,6 +17,7 @@ export const variables = {
   weights: groupListVariables<Record<Weights, string>>(typography, 'weights-'),
   letterSpacings: groupListVariables<Record<LetterSpacings, string>>(typography, 'letter-spacings-'),
   heading: groupListVariables<Record<Headings, string>>(typography, 'heading-'),
+  display: groupListVariables<Record<Display, string>>(typography, 'display-'),
 };
 
 export const mixins = {
@@ -43,6 +45,23 @@ export const mixins = {
     line-height: ${header === 1 || header === 2 || header === 3 ? variables.lineHeights.medium : variables.lineHeights.small};
     font-weight: ${header === 1 || header === 2 ? variables.weights.bold : variables.weights.medium};
     ${header === 5 ? mixins.typeAllCaps() : `letter-spacing: ${variables.letterSpacings.regular};`}
+  `,
+
+  // Display mixins
+  display: (size: Display = 1): string => `
+    font-size: ${variables.display[size]};
+    ${(
+      size == 1 || size == 2 || size == 3
+        ? `
+          line-height: ${variables.lineHeights.medium};
+          font-weight: ${variables.weights.medium};
+        `
+        : `
+          line-height: ${variables.lineHeights.large};
+          font-weight: ${variables.weights.regular};
+        `
+    )}
+    letter-spacing: ${variables.letterSpacings.regular};
   `,
 
   // Body mixins

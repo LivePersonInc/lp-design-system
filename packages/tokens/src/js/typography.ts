@@ -39,9 +39,9 @@ export const mixins = {
 
   // Headers mixins
   header: (header: Headings = 1): string => `
-    font-size: map-get($font-size-heading, $header);
-    line-height: if($header == 1 or $header == 2 or $header == 3, $line-height-medium, $line-height-small);
-    font-weight: if($header == 1 or $header == 2, $weight-bold, $weight-medium);
+    font-size: ${variables.heading[header]};
+    line-height: ${header === 1 || header === 2 || header === 3 ? variables.lineHeights.medium : variables.lineHeights.small};
+    font-weight: ${header === 1 || header === 2 ? variables.weights.bold : variables.weights.medium};
     ${header === 5 ? mixins.typeAllCaps() : `letter-spacing: ${variables.letterSpacings.regular};`}
   `,
 

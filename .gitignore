@@ -6,6 +6,7 @@
 
 build
 storybook-static
+.env
 
 node_modules
 package-lock.json

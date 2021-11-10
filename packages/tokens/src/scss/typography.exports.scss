@@ -7,3 +7,4 @@
 @include helpers.export-list(typography.$weights, 'weights-');
 @include helpers.export-list(typography.$letter-spacings, 'letter-spacings-');
 @include helpers.export-list(typography.$font-size-heading , 'heading-');
+@include helpers.export-list(typography.$font-size-display , 'display-');

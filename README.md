@@ -58,6 +58,9 @@ To run publishing process simply run this script
 yarn publish:all
 ```
 
+**NOTE:** before run this command you have define `GH_TOKEN` environment variable in `.env` file.
+This is your GitHub authentication token (under Settings > Developer settings > Personal access tokens).
+
 ### Release
 
 To run release process simply run this script

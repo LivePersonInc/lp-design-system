@@ -32,12 +32,13 @@
     ]
   },
   "scripts": {
+    "postinstall": "lerna link",
     "start": "start-storybook -s public",
     "start:docs": "start-storybook --docs -s public",
     "storybook:build": "build-storybook -s public",
     "storybook:build:docs": "build-storybook --docs -s public",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build --source-branch main",
-    "storybook:docs:deploy": "storybook-to-ghpages -s storybook:build:docs --source-branch main",
+    "storybook:deploy:docs": "storybook-to-ghpages -s storybook:build:docs --source-branch main",
     "build:components": "lerna exec --scope=@liveperson-design-system/components -- yarn build",
     "build:icons": "lerna exec --scope=@liveperson-design-system/icons -- yarn build",
     "build:tokens": "lerna exec --scope=@liveperson-design-system/tokens -- yarn build",
@@ -48,6 +49,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@liveperson-design-system/tokens": "workspace:*",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-docs": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",

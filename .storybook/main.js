@@ -9,7 +9,6 @@ module.exports = {
   addons: [
     '@storybook/preset-create-react-app',
     '@storybook/addon-essentials',
-    'storybook-addon-designs',
   ],
   webpackFinal: async config => {
     const oneOfRuleIndex = config.module.rules.findIndex(item => item.oneOf);

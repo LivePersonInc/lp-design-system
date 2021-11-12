@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from 'react';
 import { styled, css } from '@storybook/theming';
 
@@ -14,10 +13,7 @@ const TokensTable = styled.table`
   border-collapse: collapse;
   border-spacing: 0;
   font-size: ${({ theme }) => `${theme.typography.size.s2}px`};
-  margin: ${({ theme }) => {
-    console.log(theme);
-    return `${theme.layoutMargin * 2}px 0`;
-  }};
+  margin: ${({ theme }) => `${theme.layoutMargin * 2}px 0`};
 `;
 
 const thTdStyles = css`

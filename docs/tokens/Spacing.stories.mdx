@@ -1,6 +1,8 @@
 import { Meta } from '@storybook/addon-docs';
 
-import spacing from '../src/scss/spacing.exports.scss';
+import * as spacing from '@liveperson-design-system/tokens/js/spacing';
+
+import { getVariablesList } from './helpers';
 
 import TokensList from './TokensList';
 
@@ -14,17 +16,7 @@ Use these spacing units optionally to adjust space between certain units of auto
 
 <TokensList
   header={['SCSS', 'JS', 'CSS', 'Values']}
-  body={[
-    [<code>$space-none</code>, <code>spaces.none</code>, <code>--lpds-spaces-none</code>, spacing['spaces-none']],
-    [<code>$space-xxs</code>, <code>spaces.xxs</code>, <code>--lpds-spaces-xxs</code>, spacing['spaces-xxs']],
-    [<code>$space-xs</code>, <code>spaces.xs</code>, <code>--lpds-spaces-xs</code>, spacing['spaces-xs']],
-    [<code>$space-s</code>, <code>spaces.s</code>, <code>--lpds-spaces-s</code>, spacing['spaces-s']],
-    [<code>$space-m</code>, <code>spaces.m</code>, <code>--lpds-spaces-m</code>, spacing['spaces-m']],
-    [<code>$space-l</code>, <code>spaces.l</code>, <code>--lpds-spaces-l</code>, spacing['spaces-l']],
-    [<code>$space-xl</code>, <code>spaces.xl</code>, <code>--lpds-spaces-xl</code>, spacing['spaces-xl']],
-    [<code>$space-xxl</code>, <code>spaces.xxl</code>, <code>--lpds-spaces-xxl</code>, spacing['spaces-xxl']],
-    [<code>$space-xxxl</code>, <code>spaces.xxxl</code>, <code>--lpds-spaces-xxxl</code>, spacing['spaces-xxxl']],
-  ]}
+  body={getVariablesList(spacing.variables.spaces, ['$space-', 'spaces.', '--lpds-spaces-'])}
 />
 
 ## Mixins

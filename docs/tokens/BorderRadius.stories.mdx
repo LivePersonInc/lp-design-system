@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs';
+
+import * as borderRadius from '@liveperson-design-system/tokens/js/border-radius';
+
+import { getVariablesList } from './helpers';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Border radius" />
+
+# Border radius
+
+Border-radius are used on most components that are used as containers.
+Nested components should be smaller than the parent component.
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={getVariablesList(borderRadius.variables.borderRadius, ['$'])}
+/>
+
+## Mixins
+
+- `border-radius($border-radius)` - returns `border-radius` style
+  - `$border-radius` - available size or just a value
+
+### JS
+
+- `borderRadius: (size: BorderRadius | string | number): string`
+
+## CSS helpers classes
+
+### Classes
+
+To apply `border-radius` style just add `lpds-border-radius-{size}` class to the element.
+
+Also, you can use classes like `lpds-border-radius-{size}-{position}` to apply border radius to one of the side:
+- `top`
+- `top-left`
+- `top-right`
+- `bottom`
+- `bottom-left`
+- `bottom-right`
+- `left`
+- `right`

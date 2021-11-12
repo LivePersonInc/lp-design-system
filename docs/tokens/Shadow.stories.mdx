@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
+
+import * as shadow from '@liveperson-design-system/tokens/js/shadow';
+
+import { getVariablesList } from './helpers';
+
+import TokensList from './TokensList';
+
+<Meta title="Tokens/Shadow" />
+
+export const VarValue = styled.span`
+  white-space: pre;
+`
+
+# Shadow
+
+Shadows can be used only on modals and popovers to show elevation, or on text to enhance legibility.
+
+## Variables
+
+<TokensList
+  header={['SCSS', 'JS', 'CSS', 'Values']}
+  body={[
+    ...getVariablesList(
+      shadow.variables.shadow,
+      ['$shadow-', 'shadow.', '--lpds-shadow'],
+      value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>,
+    ),
+    [
+      <code>$shadow-dark-text-s</code>,
+      <code>shadowText.dark.s</code>,
+      <code>--lpds-shadow-text-dark-s</code>,
+      <VarValue>{shadow.variables.shadowText.dark.s.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$shadow-dark-text-l</code>,
+      <code>shadowText.dark.l</code>,
+      <code>--lpds-shadow-text-dark-l</code>,
+      <VarValue>{shadow.variables.shadowText.dark.l.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$shadow-light-text-s</code>,
+      <code>shadowText.light.s</code>,
+      <code>--lpds-shadow-text-light-s</code>,
+      <VarValue>{shadow.variables.shadowText.light.s.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$shadow-light-text-l</code>,
+      <code>shadowText.light.l</code>,
+      <code>--lpds-shadow-text-light-l</code>,
+      <VarValue>{shadow.variables.shadowText.light.l.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$card-dark</code>,
+      <code>shadowCard.dark</code>,
+      <code>--lpds-shadow-card-dark</code>,
+      <VarValue>{shadow.variables.shadowCard.dark.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$card-dark-hover</code>,
+      <code>shadowCard.darkHover</code>,
+      <code>--lpds-shadow-card-dark-hover</code>,
+      <VarValue>{shadow.variables.shadowCard.darkHover.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$card-light</code>,
+      <code>shadowCard.light</code>,
+      <code>--lpds-shadow-card-light</code>,
+      <VarValue>{shadow.variables.shadowCard.light.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$card-light-hover</code>,
+      <code>shadowCard.lightHover</code>,
+      <code>--lpds-shadow-card-light-hover</code>,
+      <VarValue>{shadow.variables.shadowCard.lightHover.replace(/\),\s/g, '),\n')}</VarValue>,
+    ],
+    ...getVariablesList(
+      shadow.variables.shadowInput,
+      ['$shadow-input-', 'shadowInput.', '--lpds-shadow-input-'],
+      value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>,
+    ),
+  ]}
+/>
+
+## Mixins
+
+- `box-shadow($size)` - to apply `box-shadow` rule
+  - `$size` - one of the available shadow sizes or a value
+- `text-shadow($size, $text-color: light)` - to apply `text-shadow` rule
+  - `$size` - one of the available text shadow sizes
+  - `$text-color` - can be `light` or `dark`
+- `card-shadow($hover: false, $theme: light)` - to apply `box-shadow` rule for the cards
+  - `$hover` - to apply shadow for default card state or for hover state
+  - `$theme` - can be `light` or `dark`
+- `input-shadow($type)` - to apply `box-shadow` rule for the inputs
+  - `$type` - one of the available shadow types
+
+### JS
+
+- `boxShadow: (size: BoxShadows | string): string`
+- `textShadow: (size: TextShadows, textColor: 'light' | 'dark' = 'light'): string`
+- `cardShadow: (hover: boolean = false, theme: Theme = 'dark'): string`
+- `inputShadow: (type: 'v'): string`
+
+## CSS helpers classes
+
+### Box shadow
+
+To apply `box-shadow` style just add `lpds-shadow-{s|l|xl|xxl}` class to the element.
+
+### Text shadow
+
+To apply `text-shadow` style just add `lpds-shadow-text-{dark|light}-{s|l}` class to the element.
+
+### Card shadow
+
+To apply `box-shadow` style for cards just add `lpds-shadow-card-{dark|light}` class to the element.
+Also, `lpds-shadow-card-{dark|light}-hover` for hovered elements.
+
+### Input shadow
+
+To apply `box-shadow` style for inputs just add `lpds-shadow-input-{v}` class to the element.

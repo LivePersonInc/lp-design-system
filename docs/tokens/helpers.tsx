@@ -1,9 +1,8 @@
-import colorsDark from '../src/scss/colors.exports.scss';
-import colorsLight from '../src/scss/colors-light.exports.scss';
+import React from 'react';
 
-const firstLetterUpper = str => (str.charAt(0).toUpperCase() + str.slice(1));
+const firstLetterUpper = (str: string): string => (str.charAt(0).toUpperCase() + str.slice(1));
 
-const descriptions = {
+const descriptions: { [name: string]: string } = {
   Navy: 'Main palette for background and text purposes',
   Blue: 'Primary accent color. Used for buttons in the dark theme. Used in toast notifications',
   Orange: 'Orange is an signal color. Use for notification indicators, key actions that require immediate attention. Used also for template component',
@@ -12,10 +11,14 @@ const descriptions = {
   Yellow: 'Yellow is a signal color. Used as a warning for the prevention of errors.',
 };
 
-export function getGroupedColors(light = false) {
-  const colors = (light ? colorsLight : colorsDark);
-
-  const groups = {};
+type GroupedColors = {
+  [key: string]: {
+    subtitle?: string
+    colors: { [key: string]: string }
+  }
+}
+export function getGroupedColors(colors: { [key: string]: string }): GroupedColors {
+  const groups: GroupedColors = {};
 
   Object.keys(colors).forEach(key => {
     const name = key.replace(/[A-Z]/g, value => `-${value.toLowerCase()}`);
@@ -29,12 +32,23 @@ export function getGroupedColors(light = false) {
       };
     }
 
-    groups[groupName].colors[`$${name}`] = colors[key];
+    groups[groupName].colors[`$${name}`] = colors[key as any];
   });
 
   return groups;
 }
 
-export function parseClasses(css) {
-  return css.match(/^\..+/gm).map(row => row.replace(' {', ''));
+export function parseClasses(css: string): string[] {
+  return (css.match(/^\..+/gm) || []).map(row => row.replace(' {', ''));
+}
+
+export function getVariablesList(
+  list: { [key: string]: string | number },
+  prefixes: string[],
+  mapValue: (value: string | number) => React.ReactNode = value => value,
+) {
+  return Object.keys(list).map(key => ([
+    ...prefixes.map(prefix => <code key={prefix}>{`${prefix}${key}`}</code>),
+    mapValue(list[key]),
+  ]));
 }

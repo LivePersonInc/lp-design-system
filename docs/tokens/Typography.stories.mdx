@@ -1,11 +1,48 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta, Preview, SourceState } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
-import typography from '../src/scss/typography.exports.scss';
+import * as typography from '@liveperson-design-system/tokens/js/typography';
+
+import { getVariablesList } from './helpers';
 
 import TokensList from './TokensList';
 
 <Meta title="Tokens/Typography" />
+
+export const Head1 = styled.h1`${typography.mixins.header(1)}`;
+
+export const Head2 = styled.h2`${typography.mixins.header(2)}`;
+
+export const Head3 = styled.h3`${typography.mixins.header(3)}`;
+
+export const Head4 = styled.h4`${typography.mixins.header(4)}`;
+
+export const Head5 = styled.h5`${typography.mixins.header(5)}`;
+
+export const Head6 = styled.h6`${typography.mixins.header(6)}`;
+
+export const TypesetItem = styled.div`
+  display: flex;
+  align-items: baseline;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+`;
+
+export const TypesetItemSize = styled.div`
+  font-size: ${({ theme }) => {
+    console.log(theme);
+    return `${theme.typography.size.s1}px`;
+  }};
+  color: rgba(51,51,51,0.6);
+  margin-right: ${({ theme }) => `${theme.layoutMargin * 3}px`};
+`;
+
+export const TypesetItemExample = styled.div`
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+`;
 
 export const VarValue = styled.span`
   white-space: pre;
@@ -21,37 +58,66 @@ If there a need to add more styles, please refer to [LPDS Governance Process](ht
 
 Base font size 1em (14px).
 
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypesetItem>
+    <TypesetItemSize>H1</TypesetItemSize>
+    <TypesetItemExample><Head1>This is H1</Head1></TypesetItemExample>
+  </TypesetItem>
+</Preview>
+
 ## Variables
 
 <TokensList
   header={['SCSS', 'JS', 'CSS', 'Values']}
   body={[
-    [<code>$font-roboto</code>, <code>fonts.robot</code>, <code>--lpds-typography-font-roboto</code>, typography['fonts-roboto']],
-    [<code>$font-roboto-mono</code>, <code>fonts.robotoMono</code>, <code>--lpds-typography-font-roboto-mono</code>, typography['fonts-roboto-mono']],
-    [<code>$font-roboto-condensed</code>, <code>fonts.robotoCondensed</code>, <code>--lpds-typography-font-roboto-condensed</code>, typography['fonts-roboto-condensed']],
-    [<code>$size-default</code>, <code>sizes.default</code>, <code>--lpds-typography-size-default</code>, typography['sizes-default']],
-    [<code>$size-body</code>, <code>sizes.body</code>, <code>--lpds-typography-size-body</code>, typography['sizes-body']],
-    [<code>$size-small</code>, <code>sizes.small</code>, <code>--lpds-typography-size-small</code>, typography['sizes-small']],
-    [<code>$size-large</code>, <code>sizes.large</code>, <code>--lpds-typography-size-large</code>, typography['sizes-large']],
-    [<code>$line-height-small</code>, <code>lineHeights.small</code>, <code>--lpds-typography-line-height-small</code>, typography['line-heights-small']],
-    [<code>$line-height-medium</code>, <code>lineHeights.medium</code>, <code>--lpds-typography-line-height-medium</code>, typography['line-heights-medium']],
-    [<code>$line-height-large</code>, <code>lineHeights.large</code>, <code>--lpds-typography-line-height-large</code>, typography['line-heights-large']],
-    [<code>$weight-light</code>, <code>weights.light</code>, <code>--lpds-typography-weight-light</code>, typography['weights-light']],
-    [<code>$weight-regular</code>, <code>weights.regular</code>, <code>--lpds-typography-weight-regular</code>, typography['weights-regular']],
-    [<code>$weight-medium</code>, <code>weights.medium</code>, <code>--lpds-typography-weight-medium</code>, typography['weights-medium']],
-    [<code>$weight-bold</code>, <code>weights.bold</code>, <code>--lpds-typography-weight-bold</code>, typography['weights-bold']],
-    [<code>$letter-spacing-regular</code>, <code>letterSpacings.regular</code>, <code>--lpds-typography-letter-spacing-regular</code>, typography['letter-spacings-regular']],
-    [<code>$letter-spacing-all-caps</code>, <code>letterSpacings.allCaps</code>, <code>--lpds-typography-letter-spacing-all-caps</code>, typography['letter-spacings-all-caps']],
-    [<code>$letter-spacing-compact</code>, <code>letterSpacings.compact</code>, <code>--lpds-typography-letter-spacing-compact</code>, typography['letter-spacings-compact']],
+    [
+      <code>$font-roboto</code>,
+      <code>fonts.roboto</code>,
+      <code>--lpds-typography-font-roboto</code>,
+      typography.variables.fonts.roboto,
+    ],
+    [
+      <code>$font-roboto-mono</code>,
+      <code>fonts.robotoMono</code>,
+      <code>--lpds-typography-font-roboto-mono</code>,
+      typography.variables.fonts.robotoMono,
+    ],
+    [
+      <code>$font-roboto-condensed</code>,
+      <code>fonts.robotoCondensed</code>,
+      <code>--lpds-typography-font-roboto-condensed</code>,
+      typography.variables.fonts.robotoCondensed,
+    ],
+    ...getVariablesList(typography.variables.sizes, ['$size-', 'sizes.', '--lpds-typography-size-']),
+    ...getVariablesList(typography.variables.sizes, ['$line-height-', 'lineHeights.', '--lpds-typography-line-height-']),
+    ...getVariablesList(typography.variables.weights, ['$weight-', 'weights.', '--lpds-typography-weight-']),
+    [
+      <code>$letter-spacing-regular</code>,
+      <code>letterSpacings.regular</code>,
+      <code>--lpds-typography-letter-spacing-regular</code>,
+      typography.variables.letterSpacings.regular,
+    ],
+    [
+      <code>$letter-spacing-all-caps</code>,
+      <code>letterSpacings.allCaps</code>,
+      <code>--lpds-typography-letter-spacing-all-caps</code>,
+      typography.variables.letterSpacings.allCaps,
+    ],
+    [
+      <code>$letter-spacing-compact</code>,
+      <code>letterSpacings.compact</code>,
+      <code>--lpds-typography-letter-spacing-compact</code>,
+      typography.variables.letterSpacings.compact,
+    ],
     [
       <code>{`$font-size-heading-{1|2|3|4|5|6}`}</code>,
       <code>{`heading.{1|2|3|4|5|6}`}</code>,
       <code>{`--lpds-typography-heading-{1|2|3|4|5|6}`}</code>,
       <VarValue>
         {(
-          Object.keys(typography)
+          Object.keys(typography.variables.heading)
             .filter(key => key.includes('heading-'))
-            .map((key, i) => `${++i}. ${typography[key]}`)
+            .map((key, i) => `${++i}. ${typography.variables.heading[key]}`)
             .join('\n')
         )}
       </VarValue>,
@@ -62,9 +128,9 @@ Base font size 1em (14px).
       <code>{`--lpds-typography-display-{1|2|3|4|5|6}`}</code>,
       <VarValue>
         {(
-          Object.keys(typography)
+          Object.keys(typography.variables.display)
             .filter(key => key.includes('display-'))
-            .map((key, i) => `${++i}. ${typography[key]}`)
+            .map((key, i) => `${++i}. ${typography.variables.display[key]}`)
             .join('\n')
         )}
       </VarValue>,

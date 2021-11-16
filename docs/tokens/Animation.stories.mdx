@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta, Preview, SourceState } from '@storybook/addon-docs';
 
 import * as animation from '@liveperson-design-system/tokens/js/animation';
 
-import TokensList from './TokensList';
+import AnimationExample from '../components/AnimationExample';
+import VariablesList from '../components/VariablesList.mdx';
 
 <Meta title="Tokens/Animation" />
 
@@ -29,7 +30,7 @@ To use keyframes animations provided by LPDS you have to also import `animation-
 ### JS
 
 ```js
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { variables, keyframes as LPDSLeyframes } from '@liveperson-design-system/tokens/js/animation';
 
@@ -46,55 +47,51 @@ const Button = styled.button`
 
 The `$animation-setting` token provides a default value for use in all animations.
 
-<TokensList
-  header={['SCSS', 'JS', 'CSS', 'Values']}
-  body={[
-    [<code>$duration-fast</code>, <code>durations.fast</code>, <code>--lpds-animation-duration-fast</code>, animation.variables.durations.fast],
-    [<code>$duration-normal</code>, <code>durations.normal</code>, <code>--lpds-animation-duration-normal</code>, animation.variables.durations.normal],
-    [<code>$duration-slow</code>, <code>durations.slow</code>, <code>--lpds-animation-duration-slow</code>, animation.variables.durations.slow],
-    [<code>$ease-in-quad</code>, <code>timingFunctions.easeInQuad</code>, <code>--lpds-animation-ease-in-quad</code>, animation.variables.timingFunctions.easeInQuad],
-    [<code>$ease-out-quad</code>, <code>timingFunctions.easeOutQuad</code>, <code>--lpds-animation-ease-out-quad</code>, animation.variables.timingFunctions.easeOutQuad],
-    [<code>$ease-in-out-quad</code>, <code>timingFunctions.easeInOutQuad</code>, <code>--lpds-animation-ease-in-out-quad</code>, animation.variables.timingFunctions.easeInOutQuad],
-    [<code>$ease-in-cubic</code>, <code>timingFunctions.easeInCubic</code>, <code>--lpds-animation-ease-in-cubic</code>, animation.variables.timingFunctions.easeInCubic],
-    [<code>$ease-out-cubic</code>, <code>timingFunctions.easeOutCubic</code>, <code>--lpds-animation-ease-out-cubic</code>, animation.variables.timingFunctions.easeOutCubic],
-    [<code>$ease-in-out-cubic</code>, <code>timingFunctions.easeInOutCubic</code>, <code>--lpds-animation-ease-in-out-cubic</code>, animation.variables.timingFunctions.easeInOutCubic],
-    [<code>$ease-in-quart</code>, <code>timingFunctions.easeInQuart</code>, <code>--lpds-animation-ease-in-quart</code>, animation.variables.timingFunctions.easeInQuart],
-    [<code>$ease-out-quart</code>, <code>timingFunctions.easeOutQuart</code>, <code>--lpds-animation-ease-out-quart</code>, animation.variables.timingFunctions.easeOutQuart],
-    [<code>$ease-in-out-quart</code>, <code>timingFunctions.easeInOutQuart</code>, <code>--lpds-animation-ease-in-out-quart</code>, animation.variables.timingFunctions.easeInOutQuart],
-    [
-      <code>$animation-setting</code>,
-      <code>animationSetting</code>,
-      <code>--lpds-animation-setting</code>,
-      animation.variables.animationSetting.replace(
+## Durations
+
+<Preview isColumn withSource={SourceState.NONE}>
+  {Object.keys(animation.variables.durations).map(duration => (
+    <AnimationExample key={duration} duration={duration}>{duration}</AnimationExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={animation.variables.durations}
+  prefixes={['$duration-', 'durations.', '--lpds-animation-duration-']}
+/>
+
+## Timing functions
+
+<Preview isColumn withSource={SourceState.NONE}>
+  {Object.keys(animation.variables.timingFunctions).map((timingFunction, index) => (
+    <AnimationExample key={index} timingFunction={timingFunction}>{timingFunction}</AnimationExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={animation.variables.timingFunctions}
+  prefixes={['$', 'timingFunctions.', '--lpds-animation-']}
+/>
+
+## Animations
+
+<Preview withSource={SourceState.NONE}>
+  {Object.keys(animation.variables.animations).filter(animation => animation !== 'setting').map(animation => (
+    <AnimationExample key={animation} animationName={animation}>{animation}</AnimationExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={animation.variables.animations}
+  prefixes={['$animation-', 'animations.', '--lpds-animation-']}
+  mapValue={val => (
+    val === animation.variables.animationSetting
+      ? val.replace(
         `${animation.variables.durations.normal} ${animation.variables.timingFunctions.easeOutCubic}`,
         '$duration-normal $ease-out-cubic',
-      ),
-    ],
-    [
-      <code>$animation-slide-up-fade-in</code>,
-      <code>animations.slideUpFadeIn</code>,
-      <code>--lpds-animation-slide-up-fade-in</code>,
-      animation.variables.animations.slideUpFadeIn.replace(animation.variables.animationSetting, '$animation-setting'),
-    ],
-    [
-      <code>$animation-slide-up-fade-out</code>,
-      <code>animations.slideUpFadeOut</code>,
-      <code>--lpds-animation-slide-up-fade-out</code>,
-      animation.variables.animations.slideUpFadeOut.replace(animation.variables.animationSetting, '$animation-setting'),
-    ],
-    [
-      <code>$animation-slide-down-fade-in</code>,
-      <code>animations.slideDownFadeIn</code>,
-      <code>--lpds-animation-slide-down-fade-in</code>,
-      animation.variables.animations.slideDownFadeIn.replace(animation.variables.animationSetting, '$animation-setting'),
-    ],
-    [
-      <code>$animation-slide-down-fade-out</code>,
-      <code>animations.slideDownFadeOut</code>,
-      <code>--lpds-animation-slide-down-fade-out</code>,
-      animation.variables.animations.slideDownFadeOut.replace(animation.variables.animationSetting, '$animation-setting'),
-    ],
-  ]}
+      )
+      : val.replace(animation.variables.animationSetting, '$animation-setting'
+  ))}
 />
 
 ## CSS helpers classes

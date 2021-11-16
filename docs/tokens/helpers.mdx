@@ -1,0 +1,6 @@
+export function getVariablesList(list, prefixes, mapValue = value => value) {
+  return Object.keys(list).map(key => ([
+    ...prefixes.map(prefix => <code key={prefix}>{`${prefix}${key}`}</code>),
+    mapValue(list[key]),
+  ]));
+}

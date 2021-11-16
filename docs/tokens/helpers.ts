@@ -1,5 +1,3 @@
-import React from 'react';
-
 const firstLetterUpper = (str: string): string => (str.charAt(0).toUpperCase() + str.slice(1));
 
 const descriptions: { [name: string]: string } = {
@@ -40,15 +38,4 @@ export function getGroupedColors(colors: { [key: string]: string }): GroupedColo
 
 export function parseClasses(css: string): string[] {
   return (css.match(/^\..+/gm) || []).map(row => row.replace(' {', ''));
-}
-
-export function getVariablesList(
-  list: { [key: string]: string | number },
-  prefixes: string[],
-  mapValue: (value: string | number) => React.ReactNode = value => value,
-) {
-  return Object.keys(list).map(key => ([
-    ...prefixes.map(prefix => <code key={prefix}>{`${prefix}${key}`}</code>),
-    mapValue(list[key]),
-  ]));
 }

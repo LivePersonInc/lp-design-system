@@ -2,7 +2,7 @@ import typography from '../scss/typography.exports.scss';
 
 import { groupListVariables } from './helpers';
 
-export type Fonts = 'roboto' | 'robotoMono' | 'robotoCondensed'
+export type Fonts = 'roboto' | 'robotoMono' | 'robotoCondensed' | 'robotoSlab'
 export type Sizes = 'default' | 'body' | 'small' | 'large'
 export type LineHeights = 'small' | 'medium' | 'large'
 export type Weights = 'light' | 'regular' | 'medium' | 'bold'
@@ -49,6 +49,7 @@ export const mixins = {
 
   // Display mixins
   display: (size: Display = 1): string => `
+    ${mixins.fontFamily('robotoSlab')}
     font-size: ${variables.display[size]};
     ${(
       size == 1 || size == 2 || size == 3

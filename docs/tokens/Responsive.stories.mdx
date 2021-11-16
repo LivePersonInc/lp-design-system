@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 import * as responsive from '@liveperson-design-system/tokens/js/responsive';
 
-import TokensList from './TokensList';
+import VariablesList from '../components/VariablesList.mdx';
 
 <Meta title="Tokens/Responsive" />
 
@@ -62,31 +62,14 @@ const Button = styled.button`
 
 ## Variables
 
-<TokensList
-  header={['SCSS', 'JS', 'CSS', 'Values']}
-  body={[
-    [
-      <code>$width-laptop</code>,
-      <code>breakpoints.laptop</code>,
-      <code>--lpds-breakpoints-laptop</code>,
-      responsive.variables.breakpoints.laptop,
-    ],
-    [
-      <code>$width-desktop</code>,
-      <code>breakpoints.desktop</code>,
-      <code>--lpds-breakpoints-desktop</code>,
-      responsive.variables.breakpoints.desktop,
-    ],
-    [
-      <code>$width-desktop-large</code>,
-      <code>breakpoints.desktopLarge</code>,
-      <code>--lpds-breakpoints-desktop-large</code>,
-      responsive.variables.breakpoints.desktopLarge,
-    ],
-  ]}
+<VariablesList
+  variables={responsive.variables.breakpoints}
+  prefixes={['$width-', 'breakpoints.', '--lpds-breakpoints-']}
 />
 
 ## Mixins
+
+### SCSS
 
 - `media($breakpoint, $up: true)` - to apply `@media` rule
   - `$breakpoint` - one of the available breakpoints or a value
@@ -104,12 +87,8 @@ const Button = styled.button`
 
 ### Classes
 
-To hide elements simply use the `lpds-responsive-hidden` class or one of the `lpds-responsive-hidden-{breakpoint}` classes for any responsive screen variation.
+To hide elements simply use the `lpds-responsive-hidden` class
+or one of the `lpds-responsive-hidden-{laptop|desktop|desktop-large}` classes for any responsive screen variation.
 
-To show elements simply use the `lpds-responsive-visible` class or one of the `lpds-responsive-visible-{breakpoint}` classes for any responsive screen variation.
-
-Available breakpoints:
-
-- `laptop`
-- `desktop`
-- `desktop-large`
+To show elements simply use the `lpds-responsive-visible` class
+or one of the `lpds-responsive-visible-{laptop|desktop|desktop-large}` classes for any responsive screen variation.

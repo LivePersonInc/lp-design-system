@@ -4,8 +4,11 @@ import { styled } from '@storybook/theming';
 
 import { getGroupedColors } from './helpers';
 
-export const colorsDark = getGroupedColors();
-export const colorsLight = getGroupedColors(true);
+import colorsDark from '../../packages/tokens/src/scss/colors.exports.scss';
+import colorsLight from '../../packages/tokens/src/scss/colors-light.exports.scss';
+
+export const groupedColorsDark = getGroupedColors(colorsDark);
+export const groupedColorsLight = getGroupedColors(colorsLight);
 
 export const ColorPaletteWrap = styled.div`
   margin-top: ${({ theme }) => `${theme.layoutMargin * 3}px`};
@@ -19,14 +22,14 @@ export const ColorPaletteWrap = styled.div`
   <div id="dark" title="Dark theme">
     <ColorPaletteWrap>
       <ColorPalette>
-        {Object.keys(colorsDark).map(key => <ColorItem key={key} title={key} {...colorsDark[key]} />)}
+        {Object.keys(groupedColorsDark).map(key => <ColorItem key={key} title={key} {...groupedColorsDark[key]} />)}
       </ColorPalette>
     </ColorPaletteWrap>
   </div>
   <div id="light" title="Light theme">
     <ColorPaletteWrap>
       <ColorPalette>
-        {Object.keys(colorsLight).map(key => <ColorItem key={key} title={key} {...colorsLight[key]} />)}
+        {Object.keys(groupedColorsLight).map(key => <ColorItem key={key} title={key} {...groupedColorsLight[key]} />)}
       </ColorPalette>
     </ColorPaletteWrap>
   </div>

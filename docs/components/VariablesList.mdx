@@ -1,0 +1,59 @@
+import { styled, css } from '@storybook/theming';
+import { paramCase } from 'change-case';
+
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: ${({ theme }) => `${theme.typography.size.s2}px`};
+  margin: ${({ theme }) => `${theme.layoutMargin * 2}px 0`};
+`;
+
+export const thTdStyles = css`
+  border: solid #C4C6CA;
+  border-width: 1px 0;
+  padding: 15px 20px 15px 0;
+  &:last-of-type {
+    padding-right: 0;
+  }
+`;
+
+export const Th = styled.th`
+  text-align: left;
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  ${thTdStyles}
+`;
+
+export const Td = styled.td`
+  ${thTdStyles}
+`;
+
+export const VariablesList = (
+  {
+    headers = ['SCSS', 'JS', 'CSS', 'Value'],
+    variables,
+    prefixes,
+    mapKey = (key, index) => (index === 1 ? key : paramCase(key)),
+    mapValue = val => val,
+  },
+) => (
+  <Table>
+    {!!headers && (
+      <thead>
+      <tr>
+        {headers.map((head, index) => <Th key={index}>{head}</Th>)}
+      </tr>
+      </thead>
+    )}
+    <tbody>
+    {Object.keys(variables).map(key => (
+      <tr key={key}>
+        {prefixes.map((prefix, index) => <Td key={prefix}><code>{`${prefix}${mapKey(key, index)}`}</code></Td>)}
+        <Td>{mapValue(variables[key])}</Td>
+      </tr>
+    ))}
+    </tbody>
+  </Table>
+);
+
+export default VariablesList

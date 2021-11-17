@@ -1,0 +1,400 @@
+import { Meta, Preview, SourceState } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
+import { noCase } from 'change-case';
+import { titleCase } from 'title-case';
+
+import * as typography from '@liveperson-design-system/tokens/js/typography';
+
+import TypographyPreview from '../components/TypographyPreview.mdx';
+import VariablesList from '../components/VariablesList.mdx';
+
+import { Typography } from './StyledComponents';
+
+<Meta title="Tokens/Typography" />
+
+export const VarValue = styled.span`
+  white-space: pre;
+`
+
+# Typography
+
+The typography section is used to describe regular typography over all LP projects.
+It consists of headers, body, input, buttons lables, tag and code.
+
+This table of styles made as presets with combinations of tokens.
+If there a need to add more styles, please refer to [LPDS Governance Process](https://docs.google.com/document/d/1Iua6CuGrJFAdMRX0MVmMx6_TNPpYppKBYDmKw3Cr_WQ/edit#heading=h.4rya4in1uke4)
+
+Base font size 1em (14px).
+
+1. [Fonts](#fonts)
+1. [Sizes](#sizes)
+1. [Line heights](#line-heights)
+1. [Weights](#weights)
+1. [Letter spacings](#letter-spacings)
+1. [Heading](#heading)
+1. [Display](#display)
+1. [Modifications](#modifications)
+1. [Body](#body)
+1. [Button](#button)
+1. [Tag](#tag)
+1. [Table](#table)
+1. [Input](#input)
+1. [Code](#code)
+1. [Charts](#charts)
+
+## Fonts
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.fonts).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.fonts[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.fonts}
+  prefixes={['$font-', 'fonts.', '--lpds-typography-font-']}
+/>
+
+### Mixins
+
+Mixins to apply `font-family` style
+
+- `font-family($font: roboto)`
+- `with-font-family($font: roboto)`
+
+`$font` can be either one of the provided fonts or just a `font-family` value
+
+## Sizes
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.sizes).map(name => ({
+      name: `${titleCase(name)} (${typography.variables.sizes[name]})`,
+      example: Typography.sizes[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.sizes}
+  prefixes={['$size-', 'sizes.', '--lpds-typography-size-']}
+/>
+
+## Line heights
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.lineHeights).map(name => ({
+      name: `${titleCase(name)} (${typography.variables.lineHeights[name]})`,
+      example: Typography.lineHeights[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.lineHeights}
+  prefixes={['$line-height-', 'lineHeights.', '--lpds-typography-line-height-']}
+/>
+
+## Weights
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.weights).map(name => ({
+      name: `${titleCase(name)} (${typography.variables.weights[name]})`,
+      example: Typography.weights[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.weights}
+  prefixes={['$weight-', 'weights.', '--lpds-typography-weight-']}
+/>
+
+## Letter spacings
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.letterSpacings).map(name => ({
+      name: `${titleCase(name)} (${typography.variables.letterSpacings[name]})`,
+      example: Typography.letterSpacings[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.letterSpacings}
+  prefixes={['$letter-spacing-', 'letterSpacings.', '--lpds-typography-letter-spacing-']}
+/>
+
+## Heading
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.heading).map(name => ({
+      name: `H${name}`,
+      example: Typography.heading[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.heading}
+  prefixes={['$font-size-heading-', 'heading.', '--lpds-typography-heading-']}
+/>
+
+### Mixins
+
+Mixins to apply rules for headers
+
+- `header($header: 1)`
+  - `$header` - can be one of the provided headers, form 1 to 6
+
+## Display
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.display).map(name => ({
+      name: `D${name}`,
+      example: Typography.display[name],
+    }))}
+  />
+</Preview>
+
+### Variables
+
+<VariablesList
+  variables={typography.variables.display}
+  prefixes={['$font-size-display-', 'display.', '--lpds-typography-display-']}
+/>
+
+### Mixins
+
+Mixins to apply rules for display texts
+
+- `display($size: 1)`
+  - `$size` - can be one of the provided display texts, form 1 to 6
+
+## Modifications
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.modifications).map(name => ({
+      name: titleCase(noCase(name.replace('type', ''))),
+      example: Typography.modifications[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `type-all-caps` - uppercase text
+- `type-link-active` - link text
+- `type-inline-emphasis` - emphasis text
+- `type-code` - code embed text
+- `type-condensed` - for text with Roboto Condensed font
+
+## Body
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.body).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.body[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `body($small: false)`
+- `body-bold($small: false)`
+- `body-italic($small: false)`
+
+`$small` - to switch between font sizes, `$size-small` or `$size-body`
+
+## Button
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.button).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.button[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `button($size: medium)`
+  - `$size` - can be `small`, `medium` or `large`. It has influence on `font-size` and `font-weight`
+
+## Tag
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.tag).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.tag[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `tag`
+
+## Table
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.table).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.table[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `table-header` - header cells
+- `table-cell` - body cells
+
+## Input
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.input).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.input[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `input-label` - label
+- `input-value` - value
+
+## Code
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.code).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.code[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `code`
+
+## Charts
+
+<Preview isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={Object.keys(Typography.charts).map(name => ({
+      name: titleCase(noCase(name)),
+      example: Typography.charts[name],
+    }))}
+  />
+</Preview>
+
+### Mixins
+
+- `chart-title`
+- `chart-axis-title`
+- `chart-axis-label`
+- `chart-number-title`
+- `chart-number($big: false)`
+  - `$big` - to switch between font sizes, `$font-size-heading-1` or `$font-size-heading-3`
+
+## CSS helpers classes
+
+### Fonts
+
+To apply `font-family` style just add `lpds-typography-font-{roboto|roboto-mono|roboto-condensed}` class to the element.
+
+### Sizes
+
+To apply `font-size` style just add `lpds-typography-size-{default|body|small|large}` class to the element.
+
+### Line heights
+
+To apply `line-height` style just add `lpds-typography-line-height-{small|medium|large}` class to the element.
+
+### Weights
+
+To apply `font-weight` style just add `lpds-typography-weight-{light|regular|medium|bold}` class to the element.
+
+### Letter spacings
+
+To apply `letter-spacing` style just add `lpds-typography-letter-spacing-{regular|all-caps|compact}` class to the element.
+
+### Headers
+
+To apply `font-size` style for headers just add `lpds-typography-heading-{1|2|3|4|5|6}` class to the element.
+
+### Styles for elements
+
+#### Headers
+
+To apply head styles use `lpds-typography-head-{1|2|3|4|5|6}` class.
+
+#### Body
+
+To apply body text styles use `lpds-typography-body` class.
+
+Also, you can use a few variations
+- `lpds-typography-body-small`
+- `lpds-typography-body-{bold|italic}`
+- `lpds-typography-body-{bold|italic}-small`
+
+#### Button
+
+To apply button styles use `lpds-typography-button` class.
+
+Also, you can use size variations `lpds-typography-button-{small|medium|large}`
+
+#### Tag
+
+To apply tag styles use `lpds-typography-tag` class.
+
+#### Table
+
+To apply table header styles use `lpds-typography-table-header` class and `lpds-typography-table-cell` for table cell styles.
+
+#### Input
+
+To apply input label styles use `lpds-typography-input-label` class and `lpds-typography-input-value` for input value styles.
+
+#### Code
+
+To apply code text styles use `lpds-typography-code` class.
+
+#### Chat
+
+- `lpds-typography-chart-title` - chart title styles
+- `lpds-typography-chart-axis-title` - chart axis title styles
+- `lpds-typography-chart-axis-label` - chart axis label styles
+- `lpds-typography-chart-number` - chart number styles
+- `lpds-typography-chart-number-big` - chart big number styles
+- `lpds-typography-chart-number-title` - chart number title styles

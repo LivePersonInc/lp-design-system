@@ -8,7 +8,7 @@ export type TextShadows = 's' | 'l'
 export type InputShadows = 'v'
 
 export const variables = {
-  shadow: groupListVariables<Record<BoxShadows, string>>(boxShadow, 'shadow-'),
+  shadow: groupListVariables<Record<BoxShadows, string>>(boxShadow, 'shadow-', ['s', 'l', 'xl', 'xxl']),
 
   shadowText: {
     dark: groupListVariables<Record<TextShadows, string>>(boxShadow, 'shadow-text-dark-'),

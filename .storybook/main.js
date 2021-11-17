@@ -9,7 +9,6 @@ module.exports = {
   addons: [
     '@storybook/preset-create-react-app',
     '@storybook/addon-essentials',
-    'storybook-addon-designs',
   ],
   webpackFinal: async config => {
     const oneOfRuleIndex = config.module.rules.findIndex(item => item.oneOf);
@@ -17,7 +16,10 @@ module.exports = {
     if (oneOfRuleIndex !== -1) {
       const tsRuleIndex = config.module.rules[oneOfRuleIndex].oneOf.findIndex(rule => '.ts'.match(rule.test));
       if (tsRuleIndex !== -1) {
-        config.module.rules[oneOfRuleIndex].oneOf[tsRuleIndex].include.push(path.resolve(__dirname, '../packages'));
+        config.module.rules[oneOfRuleIndex].oneOf[tsRuleIndex].include.push(
+          path.resolve(__dirname, '../docs'),
+          path.resolve(__dirname, '../packages'),
+        );
       }
 
       const cssRuleIndex = config.module.rules[oneOfRuleIndex].oneOf.findIndex(rule => '.css'.match(rule.test));

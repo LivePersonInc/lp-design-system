@@ -1,0 +1,42 @@
+import { createElement } from 'react';
+import { styled } from '@storybook/theming';
+import { loremIpsum } from 'lorem-ipsum';
+
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+`;
+
+export const Td = styled.td`
+  &:first-of-type {
+    width: 1%;
+    font-size: ${({ theme }) => `${theme.typography.size.s1}px`};
+    white-space: nowrap;
+    color: rgba(51, 51, 51, .6);
+    padding-right: ${({ theme }) => `${theme.layoutMargin * 3}px`};
+  }
+  &:last-of-type {
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  tr:not(:last-child) & {
+    padding-bottom: 1rem;
+  }
+`;
+
+export const TypographyPreview = ({ items }) => (
+  <Table>
+    <tbody>
+    {items.map(({ name, example }, index) => (
+      <tr key={index}>
+        <Td>{name || `${++index}.`}</Td>
+        <Td>{createElement(example, null, loremIpsum())}</Td>
+      </tr>
+    ))}
+    </tbody>
+  </Table>
+);
+
+export default TypographyPreview

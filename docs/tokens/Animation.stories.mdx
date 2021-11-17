@@ -1,0 +1,138 @@
+import { Meta, Preview, SourceState } from '@storybook/addon-docs';
+
+import * as animation from '@liveperson-design-system/tokens/js/animation';
+
+import AnimationExample from '../components/AnimationExample';
+import VariablesList from '../components/VariablesList.mdx';
+
+<Meta title="Tokens/Animation" />
+
+# Animation
+
+These are a set of animation values.
+
+## How to use
+
+### SCSS
+
+To use keyframes animations provided by LPDS you have to also import `animation-keyframes.scss` file
+
+```scss
+@use '~@liveperson-design-system/tokens/scss/animation';
+
+@import '~@liveperson-design-system/tokens/scss/animation-keyframes';
+
+.button {
+  animation: animation.$animation-slide-up-fade-in;
+}
+```
+
+### JS
+
+```js
+import styled, { keyframes } from 'styled-components';
+
+import { variables, keyframes as LPDSLeyframes } from '@liveperson-design-system/tokens/js/animation';
+
+const slideUpFadeIn = keyframes`
+  ${LPDSLeyframes.slideUpFadeIn}
+`;
+
+const Button = styled.button`
+  animation: ${slideUpFadeIn} ${variables.animationSetting};
+`;
+```
+
+## Variables
+
+The `$animation-setting` token provides a default value for use in all animations.
+
+## Durations
+
+<Preview isColumn withSource={SourceState.NONE}>
+  {Object.keys(animation.variables.durations).map(duration => (
+    <AnimationExample key={duration} duration={duration}>{duration}</AnimationExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={animation.variables.durations}
+  prefixes={['$duration-', 'durations.', '--lpds-animation-duration-']}
+/>
+
+## Timing functions
+
+<Preview isColumn withSource={SourceState.NONE}>
+  {Object.keys(animation.variables.timingFunctions).map((timingFunction, index) => (
+    <AnimationExample key={index} timingFunction={timingFunction}>{timingFunction}</AnimationExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={animation.variables.timingFunctions}
+  prefixes={['$', 'timingFunctions.', '--lpds-animation-']}
+/>
+
+## Animations
+
+<Preview withSource={SourceState.NONE}>
+  {Object.keys(animation.variables.animations).filter(animation => animation !== 'setting').map(animation => (
+    <AnimationExample key={animation} animationName={animation}>{animation}</AnimationExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={animation.variables.animations}
+  prefixes={['$animation-', 'animations.', '--lpds-animation-']}
+  mapValue={val => (
+    val === animation.variables.animationSetting
+      ? val.replace(
+        `${animation.variables.durations.normal} ${animation.variables.timingFunctions.easeOutCubic}`,
+        '$duration-normal $ease-out-cubic',
+      )
+      : val.replace(animation.variables.animationSetting, '$animation-setting'
+  ))}
+/>
+
+## CSS helpers classes
+
+### Duration
+
+To apply `animation-direction` style just add `lpds-animation-duration-{duration}` class to the element.
+
+Available durations:
+
+- `fast`
+- `normal`
+- `slow`
+
+### Timing function
+
+To apply `animation-timing-function` style just add `lpds-animation-timing-function-{timing-function}` class to the element.
+
+Available timing functions:
+
+- `ease-in-quad`
+- `ease-out-quad`
+- `ease-in-out-quad`
+- `ease-in-cubic`
+- `ease-out-cubic`
+- `ease-in-out-cubic`
+- `ease-in-quart`
+- `ease-out-quart`
+- `ease-in-out-quart`
+
+### Animation setting
+
+To apply `animation` style with default value to use in all animations just add `lpds-animation-setting` class to the element.
+
+### Animation
+
+To apply `animation` style just add `lpds-animation-{animation-name}` class to the element.
+
+Available animations:
+
+- `slide-up-fade-in`
+- `slide-up-fade-out`
+- `slide-down-fade-in`
+- `slide-down-fade-out`

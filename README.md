@@ -36,18 +36,12 @@ yarn start
 
 Once started the browser will open to the storybook url. From here you can see and try all things that LPDS provides
 
-**Note:** you can run Storybook in docs mode by using `yarn start:docs` command
-
 ### Storybook deploying
 
 To deploy a new version of LPDS documentation (Storybook) to GH Pages you can simply run this command:
 
 ```bash
-yarn storybook:deploy
-```
-or
-```bash
-yarn storybook:docs:deploy
+yarn deploy
 ```
 
 ### Publishing

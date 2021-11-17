@@ -130,6 +130,7 @@ $font-size-display: (
 
 // Display mixins
 @mixin display($size: 1) {
+  @include font-family(roboto-slab);
   font-size: map-get($font-size-display, $size);
   @if $size == 1 or $size == 2 or $size == 3 {
     line-height: $line-height-medium;

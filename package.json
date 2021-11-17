@@ -48,7 +48,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@liveperson-design-system/tokens": "workspace:*",
+    "@liveperson-design-system/tokens": "^0.7.3",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-docs": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",

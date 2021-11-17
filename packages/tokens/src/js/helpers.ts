@@ -42,10 +42,16 @@ export const mixins = {
   rule: (rule: string, value: string): string => `${rule}: ${value};`,
 };
 
-export const groupListVariables = <T extends Object = Object>(variables: Object, keyPrefix: string): T => {
+export const groupListVariables = <T extends Object = Object>(
+  variables: Object,
+  keyPrefix: string,
+  includes?: string[],
+): T => {
   const group = {};
 
-  Object.keys(variables).filter(key => key.includes(keyPrefix)).forEach(key => {
+  const keys = Object.keys(variables);
+
+  (includes ? keys.filter(key => includes.includes(key)) : keys).filter(key => key.includes(keyPrefix)).forEach(key => {
     group[camelCase(key.replace(keyPrefix, ''))] = variables[key];
   });
 

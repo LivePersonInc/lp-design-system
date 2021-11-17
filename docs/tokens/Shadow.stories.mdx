@@ -1,32 +1,49 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta, Preview } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import * as shadow from '@liveperson-design-system/tokens/js/shadow';
 
-import { getVariablesList } from './helpers';
+import VariablesList from '../components/VariablesList.mdx';
 
 import TokensList from './TokensList';
 
-<Meta title="Tokens/Shadow" />
+export const BoxShadowExample = styled.div`
+  box-shadow: ${({ shadow }) => shadow};
+`;
+
+export const TextShadowExample = styled.div`
+  text-shadow: ${({ shadow }) => shadow};
+`;
 
 export const VarValue = styled.span`
   white-space: pre;
 `
 
+<Meta title="Tokens/Shadow" />
+
 # Shadow
 
 Shadows can be used only on modals and popovers to show elevation, or on text to enhance legibility.
+
+## Shadows
+
+<Preview>
+  {Object.keys(shadow.variables.shadow).map(key => (
+    <BoxShadowExample key={key} shadow={shadow.variables.shadow[key]}>{key}</BoxShadowExample>
+  ))}
+</Preview>
+
+<VariablesList
+  variables={shadow.variables.shadow}
+  prefixes={['$shadow-', 'shadow.', '--lpds-shadow-']}
+  mapValue={value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>}
+/>
 
 ## Variables
 
 <TokensList
   header={['SCSS', 'JS', 'CSS', 'Values']}
   body={[
-    ...getVariablesList(
-      shadow.variables.shadow,
-      ['$shadow-', 'shadow.', '--lpds-shadow'],
-      value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>,
-    ),
     [
       <code>$shadow-dark-text-s</code>,
       <code>shadowText.dark.s</code>,
@@ -75,12 +92,13 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
       <code>--lpds-shadow-card-light-hover</code>,
       <VarValue>{shadow.variables.shadowCard.lightHover.replace(/\),\s/g, '),\n')}</VarValue>,
     ],
-    ...getVariablesList(
-      shadow.variables.shadowInput,
-      ['$shadow-input-', 'shadowInput.', '--lpds-shadow-input-'],
-      value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>,
-    ),
   ]}
+/>
+
+<VariablesList
+  variables={shadow.variables.shadowInput}
+  prefixes={['$shadow-input-', 'shadow.', '--lpds-shadow-input-']}
+  mapValue={value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>}
 />
 
 ## Mixins

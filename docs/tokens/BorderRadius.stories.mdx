@@ -1,4 +1,4 @@
-import { Meta, Preview } from '@storybook/addon-docs';
+import { Meta, Canvas } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import * as borderRadius from '@liveperson-design-system/tokens/js/border-radius';
@@ -23,11 +23,11 @@ export const BorderRadiusItem = styled.div`
 Border-radius are used on most components that are used as containers.
 Nested components should be smaller than the parent component.
 
-<Preview>
+<Canvas>
   {Object.keys(borderRadius.variables.borderRadius).map(size => (
     <BorderRadiusItem key={size} size={size}>{size}</BorderRadiusItem>
   ))}
-</Preview>
+</Canvas>
 
 <VariablesList
   variables={borderRadius.variables.borderRadius}

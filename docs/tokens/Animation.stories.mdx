@@ -1,4 +1,4 @@
-import { Meta, Preview, SourceState } from '@storybook/addon-docs';
+import { Meta, Canvas, SourceState } from '@storybook/addon-docs';
 
 import * as animation from '@liveperson-design-system/tokens/js/animation';
 
@@ -49,11 +49,11 @@ The `$animation-setting` token provides a default value for use in all animation
 
 ## Durations
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   {Object.keys(animation.variables.durations).map(duration => (
     <AnimationExample key={duration} duration={duration}>{duration}</AnimationExample>
   ))}
-</Preview>
+</Canvas>
 
 <VariablesList
   variables={animation.variables.durations}
@@ -62,11 +62,11 @@ The `$animation-setting` token provides a default value for use in all animation
 
 ## Timing functions
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   {Object.keys(animation.variables.timingFunctions).map((timingFunction, index) => (
     <AnimationExample key={index} timingFunction={timingFunction}>{timingFunction}</AnimationExample>
   ))}
-</Preview>
+</Canvas>
 
 <VariablesList
   variables={animation.variables.timingFunctions}
@@ -75,11 +75,11 @@ The `$animation-setting` token provides a default value for use in all animation
 
 ## Animations
 
-<Preview withSource={SourceState.NONE}>
+<Canvas withSource={SourceState.NONE}>
   {Object.keys(animation.variables.animations).filter(animation => animation !== 'setting').map(animation => (
     <AnimationExample key={animation} animationName={animation}>{animation}</AnimationExample>
   ))}
-</Preview>
+</Canvas>
 
 <VariablesList
   variables={animation.variables.animations}

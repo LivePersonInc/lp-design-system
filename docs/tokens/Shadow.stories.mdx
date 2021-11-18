@@ -1,4 +1,4 @@
-import { Meta, Preview } from '@storybook/addon-docs';
+import { Meta, Canvas } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import * as shadow from '@liveperson-design-system/tokens/js/shadow';
@@ -27,11 +27,11 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
 
 ## Shadows
 
-<Preview>
+<Canvas>
   {Object.keys(shadow.variables.shadow).map(key => (
     <BoxShadowExample key={key} shadow={shadow.variables.shadow[key]}>{key}</BoxShadowExample>
   ))}
-</Preview>
+</Canvas>
 
 <VariablesList
   variables={shadow.variables.shadow}

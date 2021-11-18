@@ -2,9 +2,9 @@ import { Meta } from '@storybook/addon-docs';
 
 import * as transparency from '@liveperson-design-system/tokens/js/transparency';
 
-import { getVariablesList } from './helpers';
+import VariablesList from '../components/VariablesList.mdx';
 
-import TokensList from './TokensList';
+import { getVariablesList } from './helpers.mdx';
 
 <Meta title="Tokens/Transparency" />
 
@@ -12,9 +12,8 @@ import TokensList from './TokensList';
 
 ## Variables
 
-<TokensList
-  header={['SCSS', 'JS', 'CSS', 'Values']}
-  body={[
+<VariablesList
+  variables={[
     [<code>$disabled</code>, <code>disabled</code>, <code>--lpds-transparency-disabled</code>, transparency.variables.disabled],
     ...getVariablesList(transparency.variables.light, ['$light-', 'light.', '--lpds-transparency-light-']),
     ...getVariablesList(transparency.variables.dark, ['$dark-', 'dark.', '--lpds-transparency-dark-']),

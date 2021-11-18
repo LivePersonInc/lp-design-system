@@ -14,7 +14,7 @@ export type Spaces = 'none' |
   'xxxl'
 
 export const variables = {
-  spaces: groupListVariables<Record<Spaces, string>>(spacing, 'spaces-'),
+  spaces: groupListVariables<Record<Spaces, string>>(spacing, 'space-'),
 };
 
 type SpaceArg = Spaces | string | number

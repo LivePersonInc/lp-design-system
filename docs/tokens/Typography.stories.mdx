@@ -1,14 +1,18 @@
-import { Meta, Preview, SourceState } from '@storybook/addon-docs';
-import { styled } from '@storybook/theming';
+import { Canvas, Meta, SourceState } from '@storybook/addon-docs';
+import { styled, css } from '@storybook/theming';
 import { noCase } from 'change-case';
 import { titleCase } from 'title-case';
 
+import '@liveperson-design-system/components/button';
 import * as typography from '@liveperson-design-system/tokens/js/typography';
 
 import TypographyPreview from '../components/TypographyPreview.mdx';
 import VariablesList from '../components/VariablesList.mdx';
 
-import { Typography } from './StyledComponents';
+export const commonPStyles = ({ theme }) => css`
+  font-size: ${`${theme.typography.size.s2}px`};
+  margin: 0;
+`;
 
 <Meta title="Tokens/Typography" />
 
@@ -44,16 +48,18 @@ Base font size 1em (14px).
 
 ## Fonts
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.fonts).map(name => ({
+    items={Object.keys(typography.variables.fonts).map(name => ({
       name: titleCase(noCase(name)),
-      example: Typography.fonts[name],
+      example: styled.p`
+        ${typography.mixins.fontFamily(name)};
+        font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
+        margin: 0;
+      `,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.fonts}
@@ -62,25 +68,24 @@ Base font size 1em (14px).
 
 ### Mixins
 
-Mixins to apply `font-family` style
-
-- `font-family($font: roboto)`
-- `with-font-family($font: roboto)`
+- `font-family($font: roboto)` - to apply `font-family` style
+- `with-font-family($font: roboto)` - to apply `font-family` style with font rendering optimizations
 
 `$font` can be either one of the provided fonts or just a `font-family` value
 
 ## Sizes
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.sizes).map(name => ({
+    items={Object.keys(typography.variables.sizes).map(name => ({
       name: `${titleCase(name)} (${typography.variables.sizes[name]})`,
-      example: Typography.sizes[name],
+      example: styled.p`
+        font-size: ${typography.variables.sizes[name]};
+        margin: 0;
+      `,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.sizes}
@@ -89,16 +94,18 @@ Mixins to apply `font-family` style
 
 ## Line heights
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.lineHeights).map(name => ({
+    items={Object.keys(typography.variables.lineHeights).map(name => ({
       name: `${titleCase(name)} (${typography.variables.lineHeights[name]})`,
-      example: Typography.lineHeights[name],
+      example: styled.p`
+        ${commonPStyles};
+        line-height: ${typography.variables.lineHeights[name]};
+        background-color: rgba(0, 0, 0, .1);
+      `,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.lineHeights}
@@ -107,16 +114,17 @@ Mixins to apply `font-family` style
 
 ## Weights
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.weights).map(name => ({
+    items={Object.keys(typography.variables.weights).map(name => ({
       name: `${titleCase(name)} (${typography.variables.weights[name]})`,
-      example: Typography.weights[name],
+      example: styled.p`
+        ${commonPStyles};
+        font-weight: ${typography.variables.weights[name]};
+      `,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.weights}
@@ -125,16 +133,17 @@ Mixins to apply `font-family` style
 
 ## Letter spacings
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.letterSpacings).map(name => ({
+    items={Object.keys(typography.variables.letterSpacings).map(name => ({
       name: `${titleCase(name)} (${typography.variables.letterSpacings[name]})`,
-      example: Typography.letterSpacings[name],
+      example: styled.p`
+        ${commonPStyles};
+        letter-spacing: ${typography.variables.letterSpacings[name]};
+      `,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.letterSpacings}
@@ -143,16 +152,17 @@ Mixins to apply `font-family` style
 
 ## Heading
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.heading).map(name => ({
+    items={Object.keys(typography.variables.heading).map(name => ({
       name: `H${name}`,
-      example: Typography.heading[name],
+      example: styled[`h${name}`]`
+        ${typography.mixins.header(name)};
+        margin: 0;
+      `,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.heading}
@@ -161,23 +171,19 @@ Mixins to apply `font-family` style
 
 ### Mixins
 
-Mixins to apply rules for headers
-
-- `header($header: 1)`
+- `header($header: 1)` - to apply styles for headers
   - `$header` - can be one of the provided headers, form 1 to 6
 
 ## Display
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.display).map(name => ({
+    items={Object.keys(typography.variables.display).map(name => ({
       name: `D${name}`,
-      example: Typography.display[name],
+      example: styled.div`${typography.mixins.display(name)}`,
     }))}
   />
-</Preview>
-
-### Variables
+</Canvas>
 
 <VariablesList
   variables={typography.variables.display}
@@ -186,21 +192,22 @@ Mixins to apply rules for headers
 
 ### Mixins
 
-Mixins to apply rules for display texts
-
-- `display($size: 1)`
+- `display($size: 1)` - to apply styles for display texts
   - `$size` - can be one of the provided display texts, form 1 to 6
 
 ## Modifications
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.modifications).map(name => ({
-      name: titleCase(noCase(name.replace('type', ''))),
-      example: Typography.modifications[name],
+    items={['AllCaps', 'LinkActive', 'InlineEmphasis', 'Code', 'Condensed'].map(name => ({
+      name: titleCase(name),
+      example: styled.p`
+        ${commonPStyles};
+        ${typography.mixins[`type${name}`]()};
+      `,
     }))}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 
@@ -212,14 +219,26 @@ Mixins to apply rules for display texts
 
 ## Body
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.body).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.body[name],
-    }))}
+    items={[
+      ...['body', 'bodyBold', 'bodyItalic'].map(name => ({
+        name: titleCase(name),
+        example: styled.p`
+          ${commonPStyles};
+          ${typography.mixins[name]()};
+        `,
+      })),
+      ...['body', 'bodyBold', 'bodyItalic'].map(name => ({
+        name: titleCase(`${name}Small`),
+        example: styled.p`
+          ${commonPStyles};
+          ${typography.mixins[name](true)};
+        `,
+      })),
+    ]}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 
@@ -231,14 +250,18 @@ Mixins to apply rules for display texts
 
 ## Button
 
-<Preview isColumn withSource={SourceState.NONE}>
+export const button = props => <lp-button {...props} />;
+
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.button).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.button[name],
+    items={['small', 'medium', 'large'].map(name => ({
+      name: titleCase(name),
+      example: button,
+      exampleProps: { theme: 'light', label: name, size: name },
+      exampleChildren: null,
     }))}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 
@@ -247,14 +270,17 @@ Mixins to apply rules for display texts
 
 ## Tag
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.tag).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.tag[name],
+    items={['tag'].map(name => ({
+      name: titleCase(name),
+      example: styled.p`
+        ${commonPStyles};
+        ${typography.mixins[name]()};
+      `,
     }))}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 
@@ -262,14 +288,17 @@ Mixins to apply rules for display texts
 
 ## Table
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.table).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.table[name],
+    items={['Header', 'Cell'].map(name => ({
+      name,
+      example: styled.p`
+        ${commonPStyles};
+        ${typography.mixins[`table${name}`]()};
+      `,
     }))}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 
@@ -278,14 +307,17 @@ Mixins to apply rules for display texts
 
 ## Input
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.input).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.input[name],
+    items={['Label', 'Value'].map(name => ({
+      name,
+      example: styled.p`
+        ${commonPStyles};
+        ${typography.mixins[`input${name}`]()};
+      `,
     }))}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 
@@ -294,14 +326,21 @@ Mixins to apply rules for display texts
 
 ## Code
 
-<Preview isColumn withSource={SourceState.NONE}>
-  <TypographyPreview
-    items={Object.keys(Typography.code).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.code[name],
-    }))}
-  />
-</Preview>
+export const CodeExample = styled.code`
+  ${typography.mixins.code()};
+`;
+
+<Canvas isColumn withSource={SourceState.NONE}>
+  <CodeExample>
+    {`
+    @use '~@liveperson-design-system/tokens/scss/typography';
+    \n
+    .code {
+      @include typography.code;
+    }
+    `}
+  </CodeExample>
+</Canvas>
 
 ### Mixins
 
@@ -309,14 +348,26 @@ Mixins to apply rules for display texts
 
 ## Charts
 
-<Preview isColumn withSource={SourceState.NONE}>
+<Canvas isColumn withSource={SourceState.NONE}>
   <TypographyPreview
-    items={Object.keys(Typography.charts).map(name => ({
-      name: titleCase(noCase(name)),
-      example: Typography.charts[name],
-    }))}
+    items={[
+      ...['Title', 'AxisTitle', 'AxisLabel', 'NumberTitle', 'Number'].map(name => ({
+        name: titleCase(name),
+        example: styled.p`
+          ${commonPStyles};
+          ${typography.mixins[`chart${name}`]()};
+        `,
+      })),
+      {
+        name: 'Number Big',
+        example: styled.p`
+          ${commonPStyles};
+          ${typography.mixins.chartNumber(true)};
+        `,
+      },
+    ]}
   />
-</Preview>
+</Canvas>
 
 ### Mixins
 

@@ -1,18 +1,23 @@
-import { Meta, Preview } from '@storybook/addon-docs';
+import { Meta, Canvas, SourceState } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import * as shadow from '@liveperson-design-system/tokens/js/shadow';
+import * as colors from '@liveperson-design-system/tokens/js/colors';
+
+import { objectFilter } from '../common/helpers';
 
 import VariablesList from '../components/VariablesList.mdx';
-
-import TokensList from './TokensList';
+import TypographyPreview from '../components/TypographyPreview.mdx';
 
 export const BoxShadowExample = styled.div`
-  box-shadow: ${({ shadow }) => shadow};
-`;
-
-export const TextShadowExample = styled.div`
-  text-shadow: ${({ shadow }) => shadow};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  border-radius: ${({ theme }) => `${theme.appBorderRadius}px`};
+  background: ${({ theme }) => theme.barSelectedColor};
 `;
 
 export const VarValue = styled.span`
@@ -25,100 +30,204 @@ export const VarValue = styled.span`
 
 Shadows can be used only on modals and popovers to show elevation, or on text to enhance legibility.
 
-## Shadows
+## Available tokens
 
-<Preview>
+1. [Box shadow](#box-shadow)
+1. [Text shadow](#text-shadow)
+1. [Card shadow](#card-shadow)
+1. [Input shadow](#input-shadow)
+
+## Box shadow
+
+<Canvas withSource={SourceState.NONE}>
   {Object.keys(shadow.variables.shadow).map(key => (
-    <BoxShadowExample key={key} shadow={shadow.variables.shadow[key]}>{key}</BoxShadowExample>
+    <BoxShadowExample key={key} style={{ boxShadow: shadow.variables.shadow[key] }}>{key}</BoxShadowExample>
   ))}
-</Preview>
+</Canvas>
 
 <VariablesList
   variables={shadow.variables.shadow}
   prefixes={['$shadow-', 'shadow.', '--lpds-shadow-']}
-  mapValue={value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>}
+  mapValue={value => <VarValue>{value.replace(/\),\s?/g, '),\n')}</VarValue>}
 />
 
-## Variables
+### Mixins
 
-<TokensList
-  header={['SCSS', 'JS', 'CSS', 'Values']}
-  body={[
+- `box-shadow($size)` - to apply `box-shadow` rule
+  - `$size` - one of the available shadow sizes or a value
+
+#### JS
+
+- `boxShadow: (size: BoxShadows | string): string`
+
+## Text shadow
+
+### Dark
+
+<Canvas isColumn withSource={SourceState.NONE}>
+  <TypographyPreview
+    items={[
+      {
+        name: 'Small',
+        example: styled.p`
+          font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
+          text-shadow: ${shadow.variables.shadowText.dark.s};
+          margin: 0;
+        `,
+      },
+      {
+        name: 'Large',
+        example: styled.p`
+          font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
+          text-shadow: ${shadow.variables.shadowText.dark.l};
+          margin: 0;
+        `,
+      },
+    ]}
+  />
+</Canvas>
+
+<VariablesList
+  variables={[
     [
       <code>$shadow-dark-text-s</code>,
-      <code>shadowText.dark.s</code>,
+      <code>shadow.variables.shadowText.dark.s</code>,
       <code>--lpds-shadow-text-dark-s</code>,
-      <VarValue>{shadow.variables.shadowText.dark.s.replace(/\),\s/g, '),\n')}</VarValue>,
+      <VarValue>{shadow.variables.shadowText.dark.s.replace(/\),\s?/g, '),\n')}</VarValue>,
     ],
     [
       <code>$shadow-dark-text-l</code>,
-      <code>shadowText.dark.l</code>,
+      <code>shadow.variables.shadowText.dark.l</code>,
       <code>--lpds-shadow-text-dark-l</code>,
-      <VarValue>{shadow.variables.shadowText.dark.l.replace(/\),\s/g, '),\n')}</VarValue>,
-    ],
-    [
-      <code>$shadow-light-text-s</code>,
-      <code>shadowText.light.s</code>,
-      <code>--lpds-shadow-text-light-s</code>,
-      <VarValue>{shadow.variables.shadowText.light.s.replace(/\),\s/g, '),\n')}</VarValue>,
-    ],
-    [
-      <code>$shadow-light-text-l</code>,
-      <code>shadowText.light.l</code>,
-      <code>--lpds-shadow-text-light-l</code>,
-      <VarValue>{shadow.variables.shadowText.light.l.replace(/\),\s/g, '),\n')}</VarValue>,
-    ],
-    [
-      <code>$card-dark</code>,
-      <code>shadowCard.dark</code>,
-      <code>--lpds-shadow-card-dark</code>,
-      <VarValue>{shadow.variables.shadowCard.dark.replace(/\),\s/g, '),\n')}</VarValue>,
-    ],
-    [
-      <code>$card-dark-hover</code>,
-      <code>shadowCard.darkHover</code>,
-      <code>--lpds-shadow-card-dark-hover</code>,
-      <VarValue>{shadow.variables.shadowCard.darkHover.replace(/\),\s/g, '),\n')}</VarValue>,
-    ],
-    [
-      <code>$card-light</code>,
-      <code>shadowCard.light</code>,
-      <code>--lpds-shadow-card-light</code>,
-      <VarValue>{shadow.variables.shadowCard.light.replace(/\),\s/g, '),\n')}</VarValue>,
-    ],
-    [
-      <code>$card-light-hover</code>,
-      <code>shadowCard.lightHover</code>,
-      <code>--lpds-shadow-card-light-hover</code>,
-      <VarValue>{shadow.variables.shadowCard.lightHover.replace(/\),\s/g, '),\n')}</VarValue>,
+      <VarValue>{shadow.variables.shadowText.dark.l.replace(/\),\s?/g, '),\n')}</VarValue>,
     ],
   ]}
 />
 
+### Light
+
+export const Name = styled.span`
+  color: rgba(255, 255, 255, .9);
+`;
+
+<Canvas isColumn withSource={SourceState.NONE} style={{ backgroundColor: colors.variables.navy.dark }}>
+  <TypographyPreview
+    items={[
+      {
+        name: <Name>Small</Name>,
+        example: styled.p`
+          font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
+          color: #fff;
+          text-shadow: ${shadow.variables.shadowText.light.s};
+          margin: 0;
+        `,
+      },
+      {
+        name: <Name>Small</Name>,
+        example: styled.p`
+          font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
+          color: #fff;
+          text-shadow: ${shadow.variables.shadowText.light.l};
+          margin: 0;
+        `,
+      },
+    ]}
+  />
+</Canvas>
+
 <VariablesList
-  variables={shadow.variables.shadowInput}
-  prefixes={['$shadow-input-', 'shadow.', '--lpds-shadow-input-']}
-  mapValue={value => <VarValue>{value.replace(/\),\s/g, '),\n')}</VarValue>}
+  variables={[
+    [
+      <code>$shadow-light-text-s</code>,
+      <code>shadow.variables.shadowText.light.s</code>,
+      <code>--lpds-shadow-text-light-s</code>,
+      <VarValue>{shadow.variables.shadowText.light.s.replace(/\),\s?/g, '),\n')}</VarValue>,
+    ],
+    [
+      <code>$shadow-light-text-l</code>,
+      <code>shadow.variables.shadowText.light.l</code>,
+      <code>--lpds-shadow-text-light-l</code>,
+      <VarValue>{shadow.variables.shadowText.light.l.replace(/\),\s?/g, '),\n')}</VarValue>,
+    ],
+  ]}
 />
 
-## Mixins
+### Mixins
 
-- `box-shadow($size)` - to apply `box-shadow` rule
-  - `$size` - one of the available shadow sizes or a value
 - `text-shadow($size, $text-color: light)` - to apply `text-shadow` rule
   - `$size` - one of the available text shadow sizes
-  - `$text-color` - can be `light` or `dark`
+
+#### JS
+
+- `textShadow: (size: TextShadows, textColor: 'light' | 'dark' = 'light'): string`
+
+## Card shadow
+
+### Dark
+
+<Canvas withSource={SourceState.NONE} style={{ backgroundColor: colors.variables.navy.darker }}>
+  {Object.keys(shadow.variables.shadowCard).filter(key => key.includes('dark')).map(key => (
+    <BoxShadowExample
+      key={key}
+      style={{ backgroundColor: colors.variables.navy.dark, boxShadow: shadow.variables.shadowCard[key] }}
+    />
+  ))}
+</Canvas>
+
+<VariablesList
+  variables={objectFilter(shadow.variables.shadowCard, (val, key) => key.includes('dark'))}
+  prefixes={['$card-', 'shadowCard.', '--lpds-shadow-card-']}
+  mapValue={value => <VarValue>{value.replace(/\),\s?/g, '),\n')}</VarValue>}
+/>
+
+### Light
+
+<Canvas withSource={SourceState.NONE}>
+  {Object.keys(shadow.variables.shadowCard).filter(key => key.includes('light')).map(key => (
+    <BoxShadowExample key={key} style={{ backgroundColor: '#fff', boxShadow: shadow.variables.shadowCard[key] }} />
+  ))}
+</Canvas>
+
+<VariablesList
+  variables={objectFilter(shadow.variables.shadowCard, (val, key) => key.includes('light'))}
+  prefixes={['$card-', 'shadowCard.', '--lpds-shadow-card-']}
+  mapValue={value => <VarValue>{value.replace(/\),\s?/g, '),\n')}</VarValue>}
+/>
+
+### Mixins
+
 - `card-shadow($hover: false, $theme: light)` - to apply `box-shadow` rule for the cards
   - `$hover` - to apply shadow for default card state or for hover state
   - `$theme` - can be `light` or `dark`
+
+#### JS
+
+- `cardShadow: (hover: boolean = false, theme: Theme = 'dark'): string`
+
+## Input shadow
+
+<Canvas isColumn withSource={SourceState.NONE}>
+  {Object.keys(shadow.variables.shadowInput).map(key => (
+    <BoxShadowExample
+      key={key}
+      style={{ width: '200px', height: '40px', backgroundColor: '#fff', boxShadow: shadow.variables.shadowInput[key] }}
+    />
+  ))}
+</Canvas>
+
+<VariablesList
+  variables={shadow.variables.shadowInput}
+  prefixes={['$shadow-input-', 'shadow.', '--lpds-shadow-input-']}
+  mapValue={value => <VarValue>{value.replace(/\),\s?/g, '),\n')}</VarValue>}
+/>
+
+### Mixins
+
 - `input-shadow($type)` - to apply `box-shadow` rule for the inputs
   - `$type` - one of the available shadow types
 
-### JS
+#### JS
 
-- `boxShadow: (size: BoxShadows | string): string`
-- `textShadow: (size: TextShadows, textColor: 'light' | 'dark' = 'light'): string`
-- `cardShadow: (hover: boolean = false, theme: Theme = 'dark'): string`
 - `inputShadow: (type: 'v'): string`
 
 ## CSS helpers classes

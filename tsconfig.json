@@ -17,7 +17,13 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@liveperson-design-system/components": ["@liveperson-design-system/components/build"],
+      "@liveperson-design-system/icons": ["@liveperson-design-system/icons/build"],
+      "@liveperson-design-system/tokens": ["@liveperson-design-system/tokens/build"]
+    }
   },
   "include": [
     "docs",

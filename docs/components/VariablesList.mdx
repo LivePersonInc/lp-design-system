@@ -46,12 +46,22 @@ export const VariablesList = (
       </thead>
     )}
     <tbody>
-    {Object.keys(variables).map(key => (
-      <tr key={key}>
-        {prefixes.map((prefix, index) => <Td key={prefix}><code>{`${prefix}${mapKey(key, index)}`}</code></Td>)}
-        <Td>{mapValue(variables[key])}</Td>
-      </tr>
-    ))}
+    {(
+      Array.isArray(variables)
+        ? variables.map((row, index) => (
+          <tr key={index}>
+            {row.map((item, index) => (
+              <Td key={index}>{item}</Td>
+            ))}
+          </tr>
+        ))
+        : Object.keys(variables).map(key => (
+          <tr key={key}>
+            {prefixes.map((prefix, index) => <Td key={prefix}><code>{`${prefix}${mapKey(key, index)}`}</code></Td>)}
+            <Td>{mapValue(variables[key])}</Td>
+          </tr>
+        ))
+    )}
     </tbody>
   </Table>
 );

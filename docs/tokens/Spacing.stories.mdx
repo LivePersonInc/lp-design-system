@@ -2,9 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 import * as spacing from '@liveperson-design-system/tokens/js/spacing';
 
-import { getVariablesList } from './helpers';
-
-import TokensList from './TokensList';
+import VariablesList from '../components/VariablesList.mdx';
 
 <Meta title="Tokens/Spacing" />
 
@@ -14,9 +12,9 @@ Use these spacing units optionally to adjust space between certain units of auto
 
 ## Variables
 
-<TokensList
-  header={['SCSS', 'JS', 'CSS', 'Values']}
-  body={getVariablesList(spacing.variables.spaces, ['$space-', 'spaces.', '--lpds-spaces-'])}
+<VariablesList
+  variables={spacing.variables.spaces}
+  prefixes={['$space-', 'spaces.', '--lpds-spaces-']}
 />
 
 ## Mixins

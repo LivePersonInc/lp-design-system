@@ -43,10 +43,6 @@ const Button = styled.button`
 `;
 ```
 
-## Variables
-
-The `$animation-setting` token provides a default value for use in all animations.
-
 ## Durations
 
 <Canvas isColumn withSource={SourceState.NONE}>
@@ -80,6 +76,8 @@ The `$animation-setting` token provides a default value for use in all animation
     <AnimationExample key={animation} animationName={animation}>{animation}</AnimationExample>
   ))}
 </Canvas>
+
+The `$animation-setting` token provides a default value for use in all animations.
 
 <VariablesList
   variables={animation.variables.animations}

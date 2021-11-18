@@ -23,42 +23,35 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ],
-    "nohoist": [
-      "@liveperson-design-system/tokens/**/**"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "postinstall": "lerna link",
-    "prestart": "yarn bootstrap",
-    "start": "start-storybook --docs -s public",
-    "prebuild": "yarn bootstrap",
-    "build": "build-storybook --docs -s public",
+    "start": "yarn bootstrap && start-storybook --docs -s public",
+    "build": "yarn bootstrap && build-storybook --docs -s public",
     "deploy": "storybook-to-ghpages -s build --source-branch main",
-    "build:components": "lerna exec --scope=@liveperson-design-system/components -- yarn build",
-    "build:icons": "lerna exec --scope=@liveperson-design-system/icons -- yarn build",
-    "build:tokens": "lerna exec --scope=@liveperson-design-system/tokens -- yarn build",
+    "build:components": "yarn workspace @liveperson-design-system/components run build",
+    "build:icons": "yarn workspace @liveperson-design-system/icons run build",
+    "build:tokens": "yarn workspace @liveperson-design-system/tokens run build",
     "build:all": "yarn build:tokens && yarn build:icons && yarn build:components",
-    "bootstrap": "lerna link && yarn build:all",
+    "bootstrap": "yarn build:all && lerna link",
     "publish:all": "yarn bootstrap && dotenv lerna publish --conventional-commits --create-release github",
     "release": "np --yolo --no-publish"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@liveperson-design-system/tokens": "^0.7.3",
-    "@storybook/addon-actions": "^6.3.8",
-    "@storybook/addon-docs": "^6.3.8",
-    "@storybook/addon-essentials": "^6.3.8",
-    "@storybook/addons": "^6.3.8",
-    "@storybook/components": "^6.3.8",
-    "@storybook/node-logger": "^6.3.8",
+    "@liveperson-design-system/components": "workspaces:*",
+    "@liveperson-design-system/tokens": "workspaces:*",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-docs": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
+    "@storybook/components": "^6.3.12",
+    "@storybook/node-logger": "^5.3.21",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.8",
+    "@storybook/react": "^6.3.12",
     "@storybook/storybook-deployer": "^2.8.10",
-    "@storybook/theming": "^6.3.8",
+    "@storybook/theming": "^6.3.12",
     "@types/lodash": "^4.14.176",
     "change-case": "^4.1.2",
     "css-loader": "3.4.2",
@@ -102,5 +95,6 @@
     "setupFilesAfterEnv": [
       "direflow-scripts/direflow-jest.config.js"
     ]
-  }
+  },
+  "packageManager": "yarn@2.4.3"
 }

@@ -1,30 +1,28 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { Icons, icons } from '../icons';
+import { icons } from '@liveperson-design-system/icons/src/components/icons';
 
-import { IconProps } from '../Icon';
+import '@liveperson-design-system/icons/src/components';
 
-import '../';
-
-import { IconsNames } from './';
+import { IconPropsWithName, IconsNames } from './';
 
 import IconListItem from './IconsListItem';
 import IconImportDetails from './IconImportDetails';
 
 import classes from './IconsList.module.scss';
 
-export type IconsListProps = IconProps & IconsNames
+export type IconsListProps = IconPropsWithName
 
 export type IconsListComponent = React.FC<IconsListProps>
 
 const IconsList: IconsListComponent = ({ name, ...props }) => {
-  const [selectedIcon, setSelectedIcon] = useState<Icons>();
+  const [selectedIcon, setSelectedIcon] = useState<IconsNames['name']>();
 
-  const filteredIcons = useMemo<Icons[]>(() => (
+  const filteredIcons = useMemo<IconsNames['name'][]>(() => (
     name ? icons.filter(icon => icon.includes(name)) : icons
   ), [name]);
 
-  const itemClickHandler = useCallback((icon?: Icons) => (): void => {
+  const itemClickHandler = useCallback((icon?: IconsNames['name']) => (): void => {
     setSelectedIcon(icon);
   }, []);
 

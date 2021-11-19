@@ -1,7 +1,5 @@
 const path = require('path');
 
-const tsConfig = require('../tsconfig.json');
-
 module.exports = {
   stories: [
     '../docs/**/*.stories.@(js|jsx|ts|tsx|mdx)',
@@ -50,10 +48,6 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       });
     }
-
-    Object.keys(tsConfig.compilerOptions.paths).forEach(key => {
-      config.resolve.alias[key] = tsConfig.compilerOptions.paths[key][0];
-    });
 
     return config;
   },

@@ -17,12 +17,16 @@
   --color-input-border--hover: #{colors.$navy-white};
   --color-input-border--active: #{colors.$blue};
   --color-input-border--focus: #{colors.$blue};
-
   --color-input-outline: #{colors.$focus-outline};
-
   --color-input-bg: #{transparency.$light-1};
-
   --color-input-text: #{colors.$navy-white};
+
+  --color-option-bg: transparent;
+  --color-option-bg-hover: #{transparency.$light-1};
+  --color-option-bg-selected: #{colors.$blue-light};
+  --color-option-bg-selected-hover: #{colors.$blue-lighter};
+  --color-option-label: #{colors.$navy-white};
+  --color-option-label-selected: #{colors.$navy-darker};
 
   --color-separator: #{transparency.$light-3};
 
@@ -40,12 +44,16 @@
   --color-input-border--hover: #{colors-light.$navy};
   --color-input-border--active: #{colors-light.$blue};
   --color-input-border--focus: #{colors-light.$blue};
-
   --color-input-outline: #{colors-light.$focus-outline};
-
   --color-input-bg: #{colors-light.$white};
+  --color-input-text: #{colors-light.$navy-dark};
 
-  --color-input-text: #{colors-light.$navy-white};
+  --color-option-bg: #{transparency.$dark-0};
+  --color-option-bg-hover: #{transparency.$dark-1};
+  --color-option-bg-selected: #{colors-light.$navy};
+  --color-option-bg-selected-hover: #{colors-light.$navy-dark};
+  --color-option-label: #{colors-light.$navy-dark};
+  --color-option-label-selected: #{colors-light.$white};
 
   --color-separator: #{transparency.$dark-3};
 

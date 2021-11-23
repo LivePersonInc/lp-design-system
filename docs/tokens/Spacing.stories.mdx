@@ -1,7 +1,10 @@
 import { Meta } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
 
 import * as spacing from '@liveperson-design-system/tokens/build/js/spacing';
 
+import Preview from '../ui/Preview';
+import TypographyPreview from '../ui/TypographyPreview.mdx';
 import VariablesList from '../ui/VariablesList.mdx';
 
 <Meta title="Tokens/Spacing" />
@@ -10,7 +13,20 @@ import VariablesList from '../ui/VariablesList.mdx';
 
 Use these spacing units optionally to adjust space between certain units of auto-layouts when common spacing is different.
 
-## Variables
+<Preview>
+  <TypographyPreview
+    items={Object.keys(spacing.variables.spaces).map(name => ({
+      name,
+      example: styled.div`
+        width: ${spacing.variables.spaces[name]};
+        height: 20px;
+        border-radius: ${({ theme }) => `${theme.appBorderRadius}px`};
+        background: ${({ theme }) => theme.barSelectedColor};
+      `,
+      exampleChildren: null,
+    }))}
+  />
+</Preview>
 
 <VariablesList
   variables={spacing.variables.spaces}

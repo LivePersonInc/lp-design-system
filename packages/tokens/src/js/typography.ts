@@ -6,7 +6,7 @@ export type Fonts = 'roboto' | 'robotoMono' | 'robotoCondensed' | 'robotoSlab'
 export type Sizes = 'default' | 'body' | 'small' | 'large'
 export type LineHeights = 'small' | 'medium' | 'large'
 export type Weights = 'light' | 'regular' | 'medium' | 'bold'
-export type LetterSpacings = 'regular' | 'allCaps' | 'compact'
+export type LetterSpacings = 'regular' | 'allCaps' | 'compact' | 'small'
 export type Headings = 1 | 2 | 3 | 4 | 5 | 6
 export type Display = 1 | 2 | 3 | 4 | 5 | 6
 
@@ -44,7 +44,18 @@ export const mixins = {
     font-size: ${variables.heading[header]};
     line-height: ${header === 1 || header === 2 || header === 3 ? variables.lineHeights.medium : variables.lineHeights.small};
     font-weight: ${header === 1 || header === 2 ? variables.weights.bold : variables.weights.medium};
-    ${header === 5 ? mixins.typeAllCaps() : `letter-spacing: ${variables.letterSpacings.regular};`}
+    ${(() => {
+      switch (header) {
+        case 1:
+          return `letter-spacing: ${variables.letterSpacings.compact};`;
+        case 2:
+          return `letter-spacing: ${variables.letterSpacings.small};`;
+        case 4:
+          return mixins.typeAllCaps();
+        default:
+          return `letter-spacing: ${variables.letterSpacings.regular};`;
+      }
+    })()}
   `,
 
   // Display mixins

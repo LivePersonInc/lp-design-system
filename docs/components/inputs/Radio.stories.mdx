@@ -1,0 +1,66 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+
+import Radio from '@liveperson-design-system/components/src/components/radio/Radio';
+import RadioGroup from '@liveperson-design-system/components/src/components/radio/RadioGroup';
+import '@liveperson-design-system/components/build/radio';
+
+import Preview from '../../ui/Preview';
+
+<Meta title="Components/Inputs/Radio" component={RadioGroup} subcomponents={{ Radio }} />
+
+# Radio
+
+Radio component always has to work with RadioGroup component. For this, you don't need to import two modules.
+RadioGroup and Radio components place in one `radio` module
+
+```jsx
+import '@liveperson-design-system/components/radio';
+```
+
+<ArgsTable of={RadioGroup} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Radio Group
+
+export const LPRadioGroup = props => (
+  <lp-radio-group {...props}>
+    {Array(5).fill(null).map((element, index) => <lp-radio key={index} label={`Radio ${++index}`} value={index} />)}
+  </lp-radio-group>
+);
+
+<Preview>
+  <LPRadioGroup theme="light" />
+</Preview>
+
+<Preview dark>
+  <LPRadioGroup />
+</Preview>
+
+### Sizes
+
+<Preview isColumn>
+  {['default', 'large'].map(size => (
+    <LPRadioGroup key={size} theme="light" size={size} />
+  ))}
+</Preview>
+
+### Label positions
+
+<Preview isColumn>
+  {['right', 'left'].map(labelPosition => (
+    <LPRadioGroup key={labelPosition} theme="light" labelPosition={labelPosition} />
+  ))}
+</Preview>
+
+### With error
+
+<Preview>
+  <LPRadioGroup theme="light" error />
+</Preview>
+
+### Default selected
+
+<Preview>
+  <LPRadioGroup theme="light" selected="3" />
+</Preview>

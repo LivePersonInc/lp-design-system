@@ -1,0 +1,64 @@
+import { Meta, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import Button from '@liveperson-design-system/components/src/components/button/Button';
+import '@liveperson-design-system/components/build/button';
+
+import Preview from '../ui/Preview';
+
+import WithIconStoryDescription from './withIconStory';
+
+<Meta title="Components/Button" component={Button} />
+
+# Button
+
+```jsx
+import '@liveperson-design-system/components/button';
+```
+
+<ArgsTable of={Button} />
+
+## Variants
+
+<Preview withSource={SourceState.NONE}>
+  {['primary', 'secondary', 'tertiary', 'destructive', 'inline'].map(variant => (
+    <lp-button key={variant} theme="light" variant={variant} label={variant} />
+  ))}
+</Preview>
+
+<Preview dark withSource={SourceState.NONE}>
+  {['primary', 'secondary', 'tertiary', 'destructive', 'inline'].map(variant => (
+    <lp-button key={variant} variant={variant} label={variant} />
+  ))}
+</Preview>
+
+## Sizes
+
+<Preview withSource={SourceState.NONE}>
+  {['small', 'medium', 'large'].map(size => (
+    <lp-button key={size} theme="light" size={size} label={size} />
+  ))}
+</Preview>
+
+## With icon
+
+<WithIconStoryDescription />
+
+<Preview>
+  <lp-button label="With left icon">
+    <lp-add-target-icon slot="icon-left" />
+  </lp-button>
+  <lp-button label="With right icon">
+    <lp-add-target-icon slot="icon-right" />
+  </lp-button>
+  <lp-button label="With left and right icon">
+    <lp-add-target-icon slot="icon-left" />
+    <lp-add-target-icon slot="icon-right" />
+  </lp-button>
+</Preview>
+
+```html
+<lp-button label="With left and right icon">
+  <lp-add-target-icon slot="icon-left" />
+  <lp-add-target-icon slot="icon-right" />
+</lp-button>
+```

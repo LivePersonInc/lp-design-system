@@ -1,0 +1,36 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+
+import InputLabel from '@liveperson-design-system/components/src/components/input-label/InputLabel';
+import '@liveperson-design-system/components/src/components/input-label';
+
+import Preview from '../../ui/Preview';
+
+<Meta title="Components/Inputs/InputLabel" component={InputLabel} />
+
+# InputLabel
+
+```jsx
+import '@liveperson-design-system/components/input-label';
+```
+
+<ArgsTable of={InputLabel} />
+
+## Basic
+
+<Preview>
+  <lp-input-label theme="light" label="Input" />
+</Preview>
+
+<Preview dark>
+  <lp-input-label label="Input" />
+</Preview>
+
+## With information <span style={{ color: 'red' }}>WIP</span>
+
+<Preview>
+  <lp-input-label theme="light" label="Input" info="Additional description" />
+</Preview>
+
+<Preview dark>
+  <lp-input-label label="Input" info="Additional description" />
+</Preview>

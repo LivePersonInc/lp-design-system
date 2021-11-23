@@ -1,0 +1,95 @@
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+
+import Toggle from '@liveperson-design-system/components/src/components/toggle/Toggle';
+import '@liveperson-design-system/components/build/toggle';
+
+import Preview from '../../ui/Preview';
+
+<Meta title="Components/Inputs/Toggle" component={Toggle} />
+
+# Toggle
+
+```jsx
+import '@liveperson-design-system/components/toggle';
+```
+
+<ArgsTable of={Toggle} />
+
+**Note:** Those attributes extend [HTMLInputElement](https://www.w3schools.com/tags/tag_input.asp) attributes
+
+## Basic
+
+<Preview>
+  <lp-toggle theme="light" label="Toggle" />
+</Preview>
+
+<Preview dark>
+  <lp-toggle label="Toggle" />
+</Preview>
+
+## Label positions
+
+<Preview isColumn>
+  {['right', 'left'].map(labelPosition => (
+    <lp-toggle key={labelPosition} theme="light" labelPosition={labelPosition} label="Toggle" />
+  ))}
+</Preview>
+
+## A11Y
+
+<Preview>
+  <lp-toggle theme="light" label="Toggle" a11y />
+</Preview>
+
+<Preview dark>
+  <lp-toggle label="Toggle" a11y />
+</Preview>
+
+## Controlled
+
+export const Controlled = () => {
+  const toggleRef = useRef(null);
+  const [checked, setChecked] = useState(false);
+  const toggleChangeHandler = useCallback(e => {
+    setChecked(e.detail.checked);
+  }, []);
+  useLayoutEffect(() => {
+    if (toggleRef.current) {
+      toggleRef.current.addEventListener('change', toggleChangeHandler);
+    }
+  }, [toggleChangeHandler]);
+  return <lp-toggle ref={toggleRef} theme="light" checked={checked} label={checked ? 'Checked' : 'Unchecked'} />;
+};
+
+<Preview>
+  <Controlled />
+</Preview>
+
+```jsx
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+
+import '@liveperson-design-system/components/toggle';
+
+const Toggle = ({ ...props }) => {
+  const toggleRef = useRef(null);
+
+  const [checked, setChecked] = useState(false);
+
+  const toggleChangeHandler = useCallback(e => {
+    setChecked(e.detail.checked);
+  }, []);
+
+  useLayoutEffect(() => {
+    toggleRef.current.addEventListener('change', toggleChangeHandler);
+
+    return () => {
+      toggleRef.current.removeEventListener('change', toggleChangeHandler);
+    };
+  }, [toggleChangeHandler]);
+
+  return <lp-toggle {...props} ref={toggleRef} checked={checked} />;
+};
+
+export default Toggle
+```

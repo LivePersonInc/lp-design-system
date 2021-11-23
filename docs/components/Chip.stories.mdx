@@ -1,0 +1,81 @@
+import { Meta, Story, Canvas, ArgsTable, SourceState } from '@storybook/addon-docs';
+
+import Chip from '@liveperson-design-system/components/src/components/chip/Chip';
+import ChipGroup from '@liveperson-design-system/components/src/components/chip/ChipGroup';
+import '@liveperson-design-system/components/build/chip';
+
+import { getPropsByDefaultProps, hideControls } from '../common/helpers';
+
+import Preview from '../ui/Preview';
+
+<Meta title="Components/Chip" component={Chip} />
+
+export const Template = props => <lp-chip {...getPropsByDefaultProps(Chip.defaultProps, props)} />;
+
+# Chip
+
+```jsx
+import '@liveperson-design-system/components/chip';
+```
+
+<ArgsTable of={Chip} />
+
+## Basic
+
+<Preview>
+  <lp-chip theme="light" label="Chip" />
+</Preview>
+
+<Preview dark>
+  <lp-chip label="Chip" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  {['default', 'small'].map(size => (
+    <lp-chip key={size} theme="light" size={size} label={size} />
+  ))}
+</Preview>
+
+## Removable
+
+<Preview>
+  <lp-chip theme="light" label="Chip" removable />
+</Preview>
+
+## ChipGroup
+
+<Preview withSource={SourceState.OPEN}>
+<lp-chip-group theme="light">
+  <lp-chip label="Chip 1" />
+  <lp-chip label="Chip 2" />
+  <lp-chip label="Chip 3" />
+  <lp-chip label="Chip 4" />
+  <lp-chip label="Chip 5" />
+</lp-chip-group>
+</Preview>
+
+### Small Size
+
+<Preview withSource={SourceState.OPEN}>
+<lp-chip-group theme="light" size="small">
+  <lp-chip label="Chip 1" />
+  <lp-chip label="Chip 2" />
+  <lp-chip label="Chip 3" />
+  <lp-chip label="Chip 4" />
+  <lp-chip label="Chip 5" />
+</lp-chip-group>
+</Preview>
+
+### Removable
+
+<Preview withSource={SourceState.OPEN}>
+<lp-chip-group theme="light" size="small" removable>
+  <lp-chip label="Chip 1" />
+  <lp-chip label="Chip 2" />
+  <lp-chip label="Chip 3" />
+  <lp-chip label="Chip 4" />
+  <lp-chip label="Chip 5" />
+</lp-chip-group>
+</Preview>

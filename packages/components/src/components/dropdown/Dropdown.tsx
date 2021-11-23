@@ -133,7 +133,7 @@ const Dropdown: DropdownComponent = (
             }
           }
 
-          const offset = (parentOffset ? +parentOffset : 15);
+          const offset = (parentOffset !== undefined ? +parentOffset : 15);
 
           if (bottom > parentBottom - offset) {
             setShow('top');

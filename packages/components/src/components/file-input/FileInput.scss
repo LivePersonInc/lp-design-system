@@ -82,7 +82,7 @@
 }
 
 :host([size="medium"]) {
-  --input-height: 32px;
+  --host-height: 32px;
 }
 
 $border-radius: border-radius.$border-radius-xxs;
@@ -143,7 +143,6 @@ input {
   align-items: center;
   flex-grow: 1;
   min-width: helpers.get-em(100px);
-  height: var(--input-height);
   color: var(--color-selected-text);
   border-radius: 0 $border-radius $border-radius 0;
   background: var(--color-selected);

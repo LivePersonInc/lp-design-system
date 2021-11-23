@@ -1,8 +1,8 @@
-import { Meta } from '@storybook/addon-docs';
+import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs';
 
-import * as transparency from '@liveperson-design-system/tokens/js/transparency';
+import * as transparency from '@liveperson-design-system/tokens/build/js/transparency';
 
-import VariablesList from '../components/VariablesList.mdx';
+import VariablesList from '../ui/VariablesList.mdx';
 
 import { getVariablesList } from './helpers.mdx';
 
@@ -10,7 +10,10 @@ import { getVariablesList } from './helpers.mdx';
 
 # Transparency
 
-## Variables
+<ColorPalette>
+  <ColorItem title="Light" subtitle="" colors={transparency.variables.light} />
+  <ColorItem title="Dark" subtitle="" colors={transparency.variables.dark} />
+</ColorPalette>
 
 <VariablesList
   variables={[
@@ -29,5 +32,3 @@ To apply `opacity` style for disabled elements just add `lpds-transparency-disab
 ### Background color
 
 To apply `background-color` style just add `lpds-transparency-{light|dark}-{0|1|2|3|4}` class to the element.
-
-

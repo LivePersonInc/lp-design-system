@@ -1,7 +1,7 @@
-import IconsList from './IconsList';
+import { Icons } from '@liveperson-design-system/icons/src/components/icons';
+import { IconProps } from '@liveperson-design-system/icons/src/components/Icon';
 
-import { Icons } from '../icons';
-import { IconProps } from '../Icon';
+import IconsList from './IconsList';
 
 export * from './IconsList';
 export * from './IconsListItem';

@@ -51,7 +51,7 @@ export const groupListVariables = <T extends Object = Object>(
 
   const keys = Object.keys(variables).filter(key => key.includes(keyPrefix));
 
-  (includes ? keys.filter(key => includes.includes(`${keyPrefix}${key}`)) : keys).forEach(key => {
+  (includes ? keys.filter(key => includes.includes(key.replace(keyPrefix, ''))) : keys).forEach(key => {
     group[camelCase(key.replace(keyPrefix, ''))] = variables[key];
   });
 

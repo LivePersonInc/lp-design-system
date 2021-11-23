@@ -22,8 +22,8 @@
   --color-text: #{colors.$navy-white};
 
   --input-text-align: left;
-  --input-padding-v: spacing.$space-xs;
-  --input-padding-h: spacing.$space-s;
+  --input-padding-v: #{spacing.$space-xs};
+  --input-padding-h: #{spacing.$space-s};
 
   position: relative;
   display: inline-flex;
@@ -125,7 +125,7 @@ textarea {
     }
   }
 
-  $padding-size-with-icon: $icon-size + var(--input-padding-h) + $icon-offset;
+  $padding-size-with-icon: calc(#{$icon-size} + var(--input-padding-h) + #{$icon-offset});
 
   &.with-icon-left {
     padding-left: $padding-size-with-icon;

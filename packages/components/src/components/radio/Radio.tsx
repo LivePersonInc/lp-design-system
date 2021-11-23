@@ -48,17 +48,15 @@ const Radio: RadioComponent = ({ theme, size, label, labelPosition, error, child
   );
 };
 
-export const radioDefaultProps = {
+Radio.defaultProps = {
   theme: 'dark',
   size: 'default',
   label: '',
-  labelPosition: 'left',
+  labelPosition: 'right',
   error: false,
   checked: false,
   disabled: false,
   readOnly: false,
 };
-
-Radio.defaultProps = radioDefaultProps as Partial<RadioProps>;
 
 export default Radio

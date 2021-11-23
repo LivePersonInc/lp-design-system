@@ -11,7 +11,7 @@
 
 :host {
   --size-height: 32px;
-  --size-padding: spacing.$space-s;
+  --size-padding: #{spacing.$space-s};
 
   --color-bg: transparent;
   --color-border: #{colors.$blue-darker};

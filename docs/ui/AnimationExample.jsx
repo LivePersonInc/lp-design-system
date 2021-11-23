@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { styled, keyframes } from '@storybook/theming';
 
-import * as animation from '@liveperson-design-system/tokens/js/animation';
+import * as animation from '@liveperson-design-system/tokens/build/js/animation';
 
 const growAnimation = keyframes`
   from {

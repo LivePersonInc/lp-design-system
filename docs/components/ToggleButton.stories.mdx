@@ -1,0 +1,66 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs';
+
+import ToggleButton from '@liveperson-design-system/components/src/components/toggle-button/ToggleButton';
+import '@liveperson-design-system/components/build/toggle-button';
+
+import Preview from '../ui/Preview';
+
+import WithIconStoryDescription from './withIconStory';
+
+<Meta title="Components/ToggleButton" component={ToggleButton} />
+
+# Toggle button
+
+```jsx
+import '@liveperson-design-system/components/toggle-button';
+```
+
+<ArgsTable of={ToggleButton} />
+
+## Basic
+
+<Preview>
+  <lp-toggle-button theme="light" label="Toggle" />
+</Preview>
+
+<Preview dark>
+  <lp-toggle-button theme="light" label="Toggle" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  {['default', 'small'].map(size => (
+    <lp-toggle-button key={size} theme="light" size={size} label={size} />
+  ))}
+</Preview>
+
+## Selected
+
+<Preview>
+  <lp-toggle-button theme="light" label="Selected" selected />
+</Preview>
+
+## With icon
+
+<WithIconStoryDescription />
+
+<Preview>
+  <lp-toggle-button theme="light" label="With left icon">
+    <lp-add-target-icon slot="icon-left" />
+  </lp-toggle-button>
+  <lp-toggle-button theme="light" label="With right icon">
+    <lp-add-target-icon slot="icon-right" />
+  </lp-toggle-button>
+  <lp-toggle-button theme="light" label="With left and right icon">
+    <lp-add-target-icon slot="icon-left" />
+    <lp-add-target-icon slot="icon-right" />
+  </lp-toggle-button>
+</Preview>
+
+```html
+<lp-toggle-button theme="light" label="With left and right icon">
+  <lp-add-target-icon slot="icon-left" />
+  <lp-add-target-icon slot="icon-right" />
+</lp-toggle-button>
+```

@@ -124,7 +124,7 @@ input {
     }
   }
 
-  $padding-size-with-icon: $icon-size + var(--input-padding) + $icon-offset;
+  $padding-size-with-icon: calc(#{$icon-size} + var(--input-padding) + #{$icon-offset});
 
   &.with-icon-left {
     padding-left: $padding-size-with-icon;

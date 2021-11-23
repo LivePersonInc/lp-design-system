@@ -3,7 +3,7 @@ import { EventContext } from 'direflow-component';
 
 import Styled from '../../common/Styled';
 
-import Radio, { RadioProps, radioDefaultProps } from '../radio/Radio';
+import Radio, { RadioProps } from '../radio/Radio';
 
 import styles from './RadioGroup.scss';
 
@@ -40,11 +40,12 @@ const RadioGroup: RadioGroupComponent = ({ name, selected, children, ...props })
     setTimeout(() => {
       const elements = getRadioElements();
 
-      const defaultPropsKeys = Object.keys(radioDefaultProps) as Array<keyof Omit<typeof radioDefaultProps, 'label'>>;
+      const defaultPropsKeys = (Object.keys(Radio.defaultProps as RadioProps) as Array<keyof Omit<typeof Radio.defaultProps, 'label'>>)
+        .filter(key => key !== 'label');
 
       elements?.forEach(element => {
         defaultPropsKeys.forEach(key => {
-          if (radioDefaultProps[key] === props[key]) {
+          if ((Radio.defaultProps as RadioProps)[key] === props[key]) {
             element.removeAttribute(key);
           } else {
             element.setAttribute(key, String(props[key]));
@@ -52,7 +53,7 @@ const RadioGroup: RadioGroupComponent = ({ name, selected, children, ...props })
         });
 
         if (selected) {
-          if (selected === element.getAttribute('value')) {
+          if (String(selected) === element.getAttribute('value')) {
             element.setAttribute('checked', '');
           } else {
             element.removeAttribute('checked');

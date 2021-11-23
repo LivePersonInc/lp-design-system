@@ -124,7 +124,7 @@ label {
   color: var(--color-label);
   cursor: pointer;
 
-  :host([labelPosition="right"]) & {
+  :host([labelPosition="left"]) & {
     flex-direction: row-reverse;
   }
 }
@@ -269,7 +269,7 @@ $radio-offset: spacing.$space-xs;
   margin-right: $radio-offset;
   transition: all .15s ease-out;
 
-  :host([labelPosition="right"]) & {
+  :host([labelPosition="left"]) & {
     margin-left: $radio-offset;
     margin-right: 0;
   }

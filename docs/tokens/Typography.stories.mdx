@@ -1,4 +1,4 @@
-import { Canvas, Meta, SourceState } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs';
 import { styled, css } from '@storybook/theming';
 import { noCase } from 'change-case';
 import { titleCase } from 'title-case';
@@ -6,6 +6,7 @@ import { titleCase } from 'title-case';
 import '@liveperson-design-system/components/build/button';
 import * as typography from '@liveperson-design-system/tokens/build/js/typography';
 
+import Preview from '../ui/Preview';
 import TypographyPreview from '../ui/TypographyPreview.mdx';
 import VariablesList from '../ui/VariablesList.mdx';
 
@@ -48,7 +49,7 @@ Base font size 1em (14px).
 
 ## Fonts
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.fonts).map(name => ({
       name: titleCase(noCase(name)),
@@ -59,7 +60,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.fonts}
@@ -75,7 +76,7 @@ Base font size 1em (14px).
 
 ## Sizes
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.sizes).map(name => ({
       name: `${titleCase(name)} (${typography.variables.sizes[name]})`,
@@ -85,7 +86,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.sizes}
@@ -94,7 +95,7 @@ Base font size 1em (14px).
 
 ## Line heights
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.lineHeights).map(name => ({
       name: `${titleCase(name)} (${typography.variables.lineHeights[name]})`,
@@ -105,7 +106,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.lineHeights}
@@ -114,7 +115,7 @@ Base font size 1em (14px).
 
 ## Weights
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.weights).map(name => ({
       name: `${titleCase(name)} (${typography.variables.weights[name]})`,
@@ -124,7 +125,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.weights}
@@ -133,7 +134,7 @@ Base font size 1em (14px).
 
 ## Letter spacings
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.letterSpacings).map(name => ({
       name: `${titleCase(name)} (${typography.variables.letterSpacings[name]})`,
@@ -143,7 +144,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.letterSpacings}
@@ -152,7 +153,7 @@ Base font size 1em (14px).
 
 ## Heading
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.heading).map(name => ({
       name: `H${name}`,
@@ -162,7 +163,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.heading}
@@ -176,14 +177,14 @@ Base font size 1em (14px).
 
 ## Display
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={Object.keys(typography.variables.display).map(name => ({
       name: `D${name}`,
       example: styled.div`${typography.mixins.display(name)}`,
     }))}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={typography.variables.display}
@@ -197,7 +198,7 @@ Base font size 1em (14px).
 
 ## Modifications
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={['AllCaps', 'LinkActive', 'InlineEmphasis', 'Code', 'Condensed'].map(name => ({
       name: titleCase(name),
@@ -207,7 +208,7 @@ Base font size 1em (14px).
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -219,7 +220,7 @@ Base font size 1em (14px).
 
 ## Body
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={[
       ...['body', 'bodyBold', 'bodyItalic'].map(name => ({
@@ -238,7 +239,7 @@ Base font size 1em (14px).
       })),
     ]}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -252,7 +253,7 @@ Base font size 1em (14px).
 
 export const button = props => <lp-button {...props} />;
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={['small', 'medium', 'large'].map(name => ({
       name: titleCase(name),
@@ -261,7 +262,7 @@ export const button = props => <lp-button {...props} />;
       exampleChildren: null,
     }))}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -270,7 +271,7 @@ export const button = props => <lp-button {...props} />;
 
 ## Tag
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={['tag'].map(name => ({
       name: titleCase(name),
@@ -280,7 +281,7 @@ export const button = props => <lp-button {...props} />;
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -288,7 +289,7 @@ export const button = props => <lp-button {...props} />;
 
 ## Table
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={['Header', 'Cell'].map(name => ({
       name,
@@ -298,7 +299,7 @@ export const button = props => <lp-button {...props} />;
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -307,7 +308,7 @@ export const button = props => <lp-button {...props} />;
 
 ## Input
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={['Label', 'Value'].map(name => ({
       name,
@@ -317,7 +318,7 @@ export const button = props => <lp-button {...props} />;
       `,
     }))}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -330,7 +331,7 @@ export const CodeExample = styled.code`
   ${typography.mixins.code()};
 `;
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <CodeExample>
     {`
     @use '~@liveperson-design-system/tokens/scss/typography';
@@ -340,7 +341,7 @@ export const CodeExample = styled.code`
     }
     `}
   </CodeExample>
-</Canvas>
+</Preview>
 
 ### Mixins
 
@@ -348,7 +349,7 @@ export const CodeExample = styled.code`
 
 ## Charts
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={[
       ...['Title', 'AxisTitle', 'AxisLabel', 'NumberTitle', 'Number'].map(name => ({
@@ -367,7 +368,7 @@ export const CodeExample = styled.code`
       },
     ]}
   />
-</Canvas>
+</Preview>
 
 ### Mixins
 

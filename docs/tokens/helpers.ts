@@ -1,4 +1,4 @@
-const firstLetterUpper = (str: string): string => (str.charAt(0).toUpperCase() + str.slice(1));
+export const firstLetterUpper = (str: string): string => (str.charAt(0).toUpperCase() + str.slice(1));
 
 const descriptions: { [name: string]: string } = {
   Navy: 'Main palette for background and text purposes',

@@ -1,4 +1,4 @@
-import { Meta, Canvas, SourceState } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import * as shadow from '@liveperson-design-system/tokens/build/js/shadow';
@@ -6,6 +6,7 @@ import * as colors from '@liveperson-design-system/tokens/build/js/colors';
 
 import { objectFilter } from '../common/helpers';
 
+import Preview from '../ui/Preview';
 import VariablesList from '../ui/VariablesList.mdx';
 import TypographyPreview from '../ui/TypographyPreview.mdx';
 
@@ -39,11 +40,11 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
 
 ## Box shadow
 
-<Canvas withSource={SourceState.NONE}>
+<Preview>
   {Object.keys(shadow.variables.shadow).map(key => (
     <BoxShadowExample key={key} style={{ boxShadow: shadow.variables.shadow[key] }}>{key}</BoxShadowExample>
   ))}
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={shadow.variables.shadow}
@@ -64,7 +65,7 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
 
 ### Dark
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   <TypographyPreview
     items={[
       {
@@ -85,7 +86,7 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
       },
     ]}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={[
@@ -110,7 +111,7 @@ export const Name = styled.span`
   color: rgba(255, 255, 255, .9);
 `;
 
-<Canvas isColumn withSource={SourceState.NONE} style={{ backgroundColor: colors.variables.navy.dark }}>
+<Preview dark isColumn>
   <TypographyPreview
     items={[
       {
@@ -133,7 +134,7 @@ export const Name = styled.span`
       },
     ]}
   />
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={[
@@ -165,14 +166,14 @@ export const Name = styled.span`
 
 ### Dark
 
-<Canvas withSource={SourceState.NONE} style={{ backgroundColor: colors.variables.navy.darker }}>
+<Preview dark>
   {Object.keys(shadow.variables.shadowCard).filter(key => key.includes('dark')).map(key => (
     <BoxShadowExample
       key={key}
       style={{ backgroundColor: colors.variables.navy.dark, boxShadow: shadow.variables.shadowCard[key] }}
     />
   ))}
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={objectFilter(shadow.variables.shadowCard, (val, key) => key.includes('dark'))}
@@ -182,11 +183,11 @@ export const Name = styled.span`
 
 ### Light
 
-<Canvas withSource={SourceState.NONE}>
+<Preview>
   {Object.keys(shadow.variables.shadowCard).filter(key => key.includes('light')).map(key => (
     <BoxShadowExample key={key} style={{ backgroundColor: '#fff', boxShadow: shadow.variables.shadowCard[key] }} />
   ))}
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={objectFilter(shadow.variables.shadowCard, (val, key) => key.includes('light'))}
@@ -206,14 +207,14 @@ export const Name = styled.span`
 
 ## Input shadow
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   {Object.keys(shadow.variables.shadowInput).map(key => (
     <BoxShadowExample
       key={key}
       style={{ width: '200px', height: '40px', backgroundColor: '#fff', boxShadow: shadow.variables.shadowInput[key] }}
     />
   ))}
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={shadow.variables.shadowInput}

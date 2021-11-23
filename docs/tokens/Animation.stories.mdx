@@ -1,7 +1,8 @@
-import { Meta, Canvas, SourceState } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs';
 
 import * as animation from '@liveperson-design-system/tokens/build/js/animation';
 
+import Preview from '../ui/Preview';
 import AnimationExample from '../ui/AnimationExample';
 import VariablesList from '../ui/VariablesList.mdx';
 
@@ -51,11 +52,11 @@ const Button = styled.button`
 
 ## Durations
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   {Object.keys(animation.variables.durations).map(duration => (
     <AnimationExample key={duration} duration={duration}>{duration}</AnimationExample>
   ))}
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={animation.variables.durations}
@@ -64,11 +65,11 @@ const Button = styled.button`
 
 ## Timing functions
 
-<Canvas isColumn withSource={SourceState.NONE}>
+<Preview isColumn>
   {Object.keys(animation.variables.timingFunctions).map((timingFunction, index) => (
     <AnimationExample key={index} timingFunction={timingFunction}>{timingFunction}</AnimationExample>
   ))}
-</Canvas>
+</Preview>
 
 <VariablesList
   variables={animation.variables.timingFunctions}
@@ -77,11 +78,11 @@ const Button = styled.button`
 
 ## Animations
 
-<Canvas withSource={SourceState.NONE}>
+<Preview>
   {Object.keys(animation.variables.animations).filter(animation => animation !== 'setting').map(animation => (
     <AnimationExample key={animation} animationName={animation}>{animation}</AnimationExample>
   ))}
-</Canvas>
+</Preview>
 
 The `$animation-setting` token provides a default value for use in all animations.
 

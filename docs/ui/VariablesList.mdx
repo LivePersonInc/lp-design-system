@@ -6,11 +6,12 @@ export const Table = styled.table`
   border-collapse: collapse;
   border-spacing: 0;
   font-size: ${({ theme }) => `${theme.typography.size.s2}px`};
+  color: ${({ theme }) => theme.color.defaultText};
   margin: ${({ theme }) => `${theme.layoutMargin * 2}px 0`};
 `;
 
-export const thTdStyles = css`
-  border: solid #C4C6CA;
+export const thTdStyles = ({ theme }) => css`
+  border: ${`solid ${theme.appBorderColor}`};
   border-width: 1px 0;
   padding: 15px 20px 15px 0;
   &:last-of-type {

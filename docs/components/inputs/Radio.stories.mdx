@@ -30,37 +30,41 @@ export const LPRadioGroup = props => (
 );
 
 <Preview>
-  <LPRadioGroup theme="light" />
+  <LPRadioGroup />
 </Preview>
 
-<Preview dark>
-  <LPRadioGroup />
+<Preview light>
+  <LPRadioGroup theme="light" />
 </Preview>
 
 ### Sizes
 
 <Preview isColumn>
-  {['default', 'large'].map(size => (
-    <LPRadioGroup key={size} theme="light" size={size} />
-  ))}
+  {['default', 'large'].map(size => <LPRadioGroup key={size} size={size} />)}
 </Preview>
 
 ### Label positions
 
 <Preview isColumn>
-  {['right', 'left'].map(labelPosition => (
-    <LPRadioGroup key={labelPosition} theme="light" labelPosition={labelPosition} />
-  ))}
+  {['right', 'left'].map(labelPosition => <LPRadioGroup key={labelPosition} labelPosition={labelPosition} />)}
 </Preview>
 
 ### With error
 
 <Preview>
+  <LPRadioGroup error />
+</Preview>
+
+<Preview light>
   <LPRadioGroup theme="light" error />
 </Preview>
 
 ### Default selected
 
 <Preview>
+  <LPRadioGroup selected="3" />
+</Preview>
+
+<Preview light>
   <LPRadioGroup theme="light" selected="3" />
 </Preview>

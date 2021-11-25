@@ -22,19 +22,17 @@ import '@liveperson-design-system/components/textarea';
 ## Basic
 
 <Preview>
-  <lp-textarea theme="light" />
+  <lp-textarea />
 </Preview>
 
-<Preview dark>
-  <lp-textarea />
+<Preview light>
+  <lp-textarea theme="light" />
 </Preview>
 
 ## Text align
 
 <Preview>
-  {['left', 'center', 'right'].map(textAlign => (
-    <lp-textarea key={textAlign} theme="light" textAlign={textAlign} value={textAlign} />
-  ))}
+  {['left', 'center', 'right'].map(textAlign => <lp-textarea key={textAlign} textAlign={textAlign} value={textAlign} />)}
 </Preview>
 
 ## With icon
@@ -42,19 +40,6 @@ import '@liveperson-design-system/components/textarea';
 <WithIconStoryDescription />
 
 <Preview>
-  <lp-textarea theme="light" value="With left icon">
-    <lp-add-target-icon slot="icon-left" />
-  </lp-textarea>
-  <lp-textarea theme="light" value="With right icon">
-    <lp-add-target-icon slot="icon-right" />
-  </lp-textarea>
-  <lp-textarea theme="light" value="With left and right icon">
-    <lp-add-target-icon slot="icon-left" />
-    <lp-add-target-icon slot="icon-right" />
-  </lp-textarea>
-</Preview>
-
-<Preview dark>
   <lp-textarea value="With left icon">
     <lp-add-target-icon slot="icon-left" />
   </lp-textarea>
@@ -62,6 +47,19 @@ import '@liveperson-design-system/components/textarea';
     <lp-add-target-icon slot="icon-right" />
   </lp-textarea>
   <lp-textarea value="With left and right icon">
+    <lp-add-target-icon slot="icon-left" />
+    <lp-add-target-icon slot="icon-right" />
+  </lp-textarea>
+</Preview>
+
+<Preview light>
+  <lp-textarea theme="light" value="With left icon">
+    <lp-add-target-icon slot="icon-left" />
+  </lp-textarea>
+  <lp-textarea theme="light" value="With right icon">
+    <lp-add-target-icon slot="icon-right" />
+  </lp-textarea>
+  <lp-textarea theme="light" value="With left and right icon">
     <lp-add-target-icon slot="icon-left" />
     <lp-add-target-icon slot="icon-right" />
   </lp-textarea>

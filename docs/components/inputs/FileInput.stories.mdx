@@ -20,61 +20,77 @@ import '@liveperson-design-system/components/file-input';
 ## Basic
 
 <Preview>
-  <lp-file-input theme="light" />
+  <lp-file-input />
 </Preview>
 
-<Preview dark>
-  <lp-file-input />
+<Preview light>
+  <lp-file-input theme="light" />
 </Preview>
 
 ## Sizes
 
 <Preview isColumn>
-  {['medium', 'large'].map(size => (
-    <lp-file-input key={size} theme="light" size={size} />
-  ))}
+  {['medium', 'large'].map(size => <lp-file-input key={size} size={size} />)}
 </Preview>
 
 ## Custom button label
 
 <Preview>
-  <lp-file-input theme="light" buttonLabel="Select file" />
+  <lp-file-input buttonLabel="Select file" />
 </Preview>
 
 ## Uploading
 
 <Preview>
-  <lp-file-input theme="light" uploading uploadingProgress={35} />
+  <lp-file-input uploading uploadingProgress={35} />
 </Preview>
 
-<Preview dark>
-  <lp-file-input uploading uploadingProgress={35} />
+<Preview light>
+  <lp-file-input theme="light" uploading uploadingProgress={35} />
 </Preview>
 
 ### Custom uploading label
 
 <Preview>
-  <lp-file-input theme="light" uploading uploadingProgress={35} uploadingButtonLabel="In progress..." />
-</Preview>
-
-## With error
-
-<Preview>
-  <lp-file-input theme="light" error />
-</Preview>
-
-<Preview dark>
-  <lp-file-input error />
-</Preview>
-
-## Disabled
-
-<Preview>
-  <lp-file-input theme="light" disabled />
+  <lp-file-input uploading uploadingProgress={35} uploadingButtonLabel="In progress..." />
 </Preview>
 
 ## Multiple Selection
 
 <Preview>
+  <lp-file-input multiple />
+</Preview>
+
+<Preview light>
   <lp-file-input theme="light" multiple />
+</Preview>
+
+## With error
+
+<Preview>
+  <lp-file-input error />
+</Preview>
+
+<Preview light>
+  <lp-file-input theme="light" error />
+</Preview>
+
+## Disabled
+
+<Preview>
+  <lp-file-input disabled />
+</Preview>
+
+<Preview light>
+  <lp-file-input theme="light" disabled />
+</Preview>
+
+## Readonly
+
+<Preview>
+  <lp-file-input readOnly />
+</Preview>
+
+<Preview light>
+  <lp-file-input theme="light" readOnly />
 </Preview>

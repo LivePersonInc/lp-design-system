@@ -21,29 +21,27 @@ import '@liveperson-design-system/components/checkbox';
 ## Basic
 
 <Preview>
-  <lp-checkbox theme="light" label="Checkbox" />
+  <lp-checkbox label="Checkbox" />
 </Preview>
 
-<Preview dark>
-  <lp-checkbox label="Checkbox" />
+<Preview light>
+  <lp-checkbox theme="light" label="Checkbox" />
 </Preview>
 
 ## Label positions
 
 <Preview>
-  {['left', 'right'].map(position => (
-    <lp-checkbox key={position} theme="light" labelPosition={position} label={`Label ${position}`} />
-  ))}
+  {['left', 'right'].map(position => <lp-checkbox key={position} labelPosition={position} label={`Label ${position}`} />)}
 </Preview>
 
 ## With error
 
 <Preview>
-  <lp-checkbox theme="light" label="Checkbox" error />
+  <lp-checkbox label="Checkbox" error />
 </Preview>
 
-<Preview dark>
-  <lp-checkbox label="Checkbox" error />
+<Preview light>
+  <lp-checkbox theme="light" label="Checkbox" error />
 </Preview>
 
 ## Controlled
@@ -59,7 +57,7 @@ export const ControlledCheckbox = () => {
       checkboxRef.current.addEventListener('change', checkboxChangeHandler);
     }
   }, [checkboxChangeHandler]);
-  return <lp-checkbox ref={checkboxRef} theme="light" checked={checked} label={checked ? 'Checked' : 'Unchecked'} />;
+  return <lp-checkbox ref={checkboxRef} checked={checked} label={checked ? 'Checked' : 'Unchecked'} />;
 };
 
 <Preview withSource={SourceState.NONE}>
@@ -97,5 +95,9 @@ export default Checkbox
 ## Indeterminate
 
 <Preview>
+  <lp-checkbox label="Checkbox" checked indeterminate />
+</Preview>
+
+<Preview light>
   <lp-checkbox theme="light" label="Checkbox" checked indeterminate />
 </Preview>

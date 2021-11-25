@@ -47,17 +47,17 @@ export const SelectExample = (
 ## Basic
 
 <Preview>
-  <SelectExample theme="light" />
+  <SelectExample />
 </Preview>
 
-<Preview dark>
-  <SelectExample />
+<Preview light>
+  <SelectExample theme="light" />
 </Preview>
 
 ## With scroll
 
 <Preview>
-  <SelectExample theme="light" numberOfOptions={10} numberOfSuggestions={10} />
+  <SelectExample numberOfOptions={10} numberOfSuggestions={10} />
 </Preview>
 
 ## With suggestions
@@ -65,7 +65,7 @@ export const SelectExample = (
 To put some options to the Suggestions section just add `slot="suggestions"` attribute
 
 <Preview>
-  <SelectExample theme="light" numberOfSuggestions={2} />
+  <SelectExample numberOfSuggestions={2} />
 </Preview>
 
 ```html
@@ -93,7 +93,7 @@ To put some options to the Suggestions section just add `slot="suggestions"` att
 To put some elements to the Actions section just add `slot="actions"` attribute
 
 <Preview>
-  <SelectExample theme="light" actions={['Action 1']} />
+  <SelectExample actions={['Action 1']} />
 </Preview>
 
 ```html
@@ -115,29 +115,29 @@ To put some elements to the Actions section just add `slot="actions"` attribute
 ## With suggestions and actions
 
 <Preview>
-  <SelectExample theme="light" numberOfSuggestions={2} actions={['Action 1']} />
+  <SelectExample numberOfSuggestions={2} actions={['Action 1']} />
 </Preview>
 
 ## With search
 
 <Preview>
-  <SelectExample theme="light" search />
+  <SelectExample search />
 </Preview>
 
 ## Multiple Selection
 
 <Preview>
-  <SelectExample theme="light" multiple />
+  <SelectExample multiple />
 </Preview>
 
 ## With search and multiple Selection
 
 <Preview>
-  <SelectExample theme="light" search multiple />
+  <SelectExample search multiple />
 </Preview>
 
 ## With Select all
 
 <Preview>
-  <SelectExample theme="light" withSelectAll="Select all" multiple />
+  <SelectExample withSelectAll="Select all" multiple />
 </Preview>

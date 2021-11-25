@@ -2,16 +2,16 @@ import React from 'react';
 import { Canvas, SourceState } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
-import * as colors from '@liveperson-design-system/tokens/build/js/colors';
+import { variables as colorsVariables } from '@liveperson-design-system/tokens/build/js/colors';
 
 const CanvasWrap = styled.div`
   .docs-story {
-    background-color: ${({ dark }) => (dark ? colors.variables.navy.darker : '#fff')};
+    background-color: ${({ bg, light }) => (bg ? bg : (light ? '#fff' : colorsVariables.navy.dark))};
   }
 `;
 
-const Preview = ({ dark, withSource = SourceState.NONE, children, ...props }) => (
-  <CanvasWrap dark={dark}>
+const Preview = ({ bg, light, withSource = SourceState.NONE, children, ...props }) => (
+  <CanvasWrap bg={bg} light={light}>
     <Canvas {...props} withSource={withSource}>
       {children}
     </Canvas>

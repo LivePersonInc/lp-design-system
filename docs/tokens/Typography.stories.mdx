@@ -2,6 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 import { styled, css } from '@storybook/theming';
 import { noCase } from 'change-case';
 import { titleCase } from 'title-case';
+import dedent from 'ts-dedent';
 
 import '@liveperson-design-system/components/build/button';
 import * as typography from '@liveperson-design-system/tokens/build/js/typography';
@@ -329,16 +330,18 @@ export const button = props => <lp-button {...props} />;
 
 export const CodeExample = styled.code`
   ${typography.mixins.code()};
+  color: ${({ theme }) => theme.color.defaultText};
 `;
 
 <Preview isColumn>
   <CodeExample>
-    {`
-    @use '~@liveperson-design-system/tokens/scss/typography';
-    \n
-    .code {
-      @include typography.code;
-    }
+    {dedent`
+      @use '~@liveperson-design-system/tokens/scss/typography';
+      \n
+      code,
+      pre {
+        @include typography.code;
+      }
     `}
   </CodeExample>
 </Preview>

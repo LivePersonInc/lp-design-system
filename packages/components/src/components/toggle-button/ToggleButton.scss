@@ -68,6 +68,7 @@
   :host(&) {
     --color-bg: #{colors.$blue-lighter};
     --color-text: #{colors.$navy-dark};
+    box-shadow: none;
   }
   :host(&:hover),
   :host(&:focus) {
@@ -94,7 +95,7 @@
 
 :host([size="small"]) {
   --size-height: 24px;
-  --size-padding: spacing.$space-xs;
+  --size-padding: #{spacing.$space-xs};
 
   ::slotted([slot="icon-left"]) {
     margin-left: 0;

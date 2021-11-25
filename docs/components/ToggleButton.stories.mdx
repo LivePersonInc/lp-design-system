@@ -20,24 +20,26 @@ import '@liveperson-design-system/components/toggle-button';
 ## Basic
 
 <Preview>
-  <lp-toggle-button theme="light" label="Toggle" />
+  <lp-toggle-button label="Toggle" />
 </Preview>
 
-<Preview dark>
+<Preview light>
   <lp-toggle-button theme="light" label="Toggle" />
 </Preview>
 
 ## Sizes
 
 <Preview>
-  {['default', 'small'].map(size => (
-    <lp-toggle-button key={size} theme="light" size={size} label={size} />
-  ))}
+  {['default', 'small'].map(size => <lp-toggle-button key={size} size={size} label={size} />)}
 </Preview>
 
 ## Selected
 
 <Preview>
+  <lp-toggle-button label="Selected" selected />
+</Preview>
+
+<Preview light>
   <lp-toggle-button theme="light" label="Selected" selected />
 </Preview>
 
@@ -46,20 +48,20 @@ import '@liveperson-design-system/components/toggle-button';
 <WithIconStoryDescription />
 
 <Preview>
-  <lp-toggle-button theme="light" label="With left icon">
+  <lp-toggle-button label="With left icon">
     <lp-add-target-icon slot="icon-left" />
   </lp-toggle-button>
-  <lp-toggle-button theme="light" label="With right icon">
+  <lp-toggle-button label="With right icon">
     <lp-add-target-icon slot="icon-right" />
   </lp-toggle-button>
-  <lp-toggle-button theme="light" label="With left and right icon">
+  <lp-toggle-button label="With left and right icon">
     <lp-add-target-icon slot="icon-left" />
     <lp-add-target-icon slot="icon-right" />
   </lp-toggle-button>
 </Preview>
 
 ```html
-<lp-toggle-button theme="light" label="With left and right icon">
+<lp-toggle-button label="With left and right icon">
   <lp-add-target-icon slot="icon-left" />
   <lp-add-target-icon slot="icon-right" />
 </lp-toggle-button>

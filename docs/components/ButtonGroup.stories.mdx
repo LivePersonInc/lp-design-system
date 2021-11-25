@@ -20,18 +20,14 @@ All buttons have to be provided as children elements
 ## Basic
 
 <Preview>
-  <lp-button-group theme="light">
-    {Array(5).fill(null).map((item, index) => (
-      <button key={index}>{`Button ${++index}`}</button>
-    ))}
+  <lp-button-group>
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
   </lp-button-group>
 </Preview>
 
-<Preview dark>
-  <lp-button-group>
-    {Array(5).fill(null).map((item, index) => (
-      <button key={index}>{`Button ${++index}`}</button>
-    ))}
+<Preview light>
+  <lp-button-group theme="light">
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
   </lp-button-group>
 </Preview>
 
@@ -40,20 +36,16 @@ All buttons have to be provided as children elements
 ### Default
 
 <Preview>
-  <lp-button-group theme="light">
-    {Array(5).fill(null).map((item, index) => (
-      <button key={index}>{`Button ${++index}`}</button>
-    ))}
+  <lp-button-group>
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
   </lp-button-group>
 </Preview>
 
 ### Small
 
 <Preview>
-  <lp-button-group theme="light" size="small">
-    {Array(5).fill(null).map((item, index) => (
-      <button key={index}>{`Button ${++index}`}</button>
-    ))}
+  <lp-button-group size="small">
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
   </lp-button-group>
 </Preview>
 
@@ -62,6 +54,14 @@ All buttons have to be provided as children elements
 You can easily set the default selected button by adding `selected` class to the button item
 
 <Preview>
+  <lp-button-group>
+    {Array(5).fill(null).map((item, index) => (
+      <button key={index} className={index === 2 ? 'selected' : undefined}>{`Button ${++index}`}</button>
+    ))}
+  </lp-button-group>
+</Preview>
+
+<Preview light>
   <lp-button-group theme="light">
     {Array(5).fill(null).map((item, index) => (
       <button key={index} className={index === 2 ? 'selected' : undefined}>{`Button ${++index}`}</button>
@@ -70,7 +70,7 @@ You can easily set the default selected button by adding `selected` class to the
 </Preview>
 
 ```html
-<lp-button-group theme="light">
+<lp-button-group>
   <button>Button 1</button>
   <button>Button 2</button>
   <button class="selected">Button 3</button>

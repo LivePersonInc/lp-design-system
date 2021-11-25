@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { styled } from '@storybook/theming';
 
 import { icons } from '@liveperson-design-system/icons/src/components/icons';
 
@@ -9,11 +10,14 @@ import { IconPropsWithName, IconsNames } from './';
 import IconListItem from './IconsListItem';
 import IconImportDetails from './IconImportDetails';
 
-import classes from './IconsList.module.scss';
-
 export type IconsListProps = IconPropsWithName
 
 export type IconsListComponent = React.FC<IconsListProps>
+
+const List = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 const IconsList: IconsListComponent = ({ name, ...props }) => {
   const [selectedIcon, setSelectedIcon] = useState<IconsNames['name']>();
@@ -27,7 +31,7 @@ const IconsList: IconsListComponent = ({ name, ...props }) => {
   }, []);
 
   return (
-    <div className={classes['list']}>
+    <List>
       {filteredIcons.map(icon => (
         icon === selectedIcon
           ? (
@@ -39,7 +43,7 @@ const IconsList: IconsListComponent = ({ name, ...props }) => {
           )
           : <IconListItem key={icon} name={icon} onClick={itemClickHandler(icon)} {...props} />
       ))}
-    </div>
+    </List>
   );
 };
 

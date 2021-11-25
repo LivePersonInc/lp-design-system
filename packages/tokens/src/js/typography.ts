@@ -163,6 +163,7 @@ export const mixins = {
     font-weight: ${variables.weights.regular};
     line-height: ${variables.lineHeights.small};
     letter-spacing: ${variables.letterSpacings.regular};
+    white-space: pre;
   `,
 
   // Charts mixins

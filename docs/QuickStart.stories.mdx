@@ -1,7 +1,5 @@
-import { Meta, Source } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs';
 import { TabsState } from '@storybook/components';
-
-import { packages } from './common/packages';
 
 <Meta title="Docs/Quick Start" />
 
@@ -10,11 +8,27 @@ import { packages } from './common/packages';
 ## Installing
 
 <TabsState>
-  {packages.map(({ name, title }) => (
-    <div key={name} id={name} title={title}>
-      <Source language="bash" code={`yarn add ${name}`} />
-    </div>
-  ))}
+  <div id="tokens" title="Tokens">
+
+```shell
+yarn add @liveperson-design-system/tokens
+```
+
+  </div>
+  <div id="icons" title="Icons">
+
+```shell
+yarn add @liveperson-design-system/icons
+```
+
+  </div>
+  <div id="components" title="Components">
+
+```shell
+yarn add @liveperson-design-system/components
+```
+
+  </div>
 </TabsState>
 
 ## How to use
@@ -25,11 +39,20 @@ Before using `@liveperson-design-system/icons` or `@liveperson-design-system/com
 you have to add the following script inside `head` tag
 
 <TabsState>
-  {packages.filter(({ key }) => (key === 'icons' || key === 'components')).map(({ key, name, title }) => (
-    <div key={key} id={key} title={title}>
-      <Source language="html" code={`<script src="https://unpkg.com/${name}/vendor.js"></script>`} />
-    </div>
-  ))}
+  <div id="icons" title="Icons">
+
+```html
+<script src="https://unpkg.com/@liveperson-design-system/icons/vendor.js"></script>
+```
+
+  </div>
+  <div id="components" title="Components">
+
+```html
+<script src="https://unpkg.com/@liveperson-design-system/components/vendor.js"></script>
+```
+
+  </div>
 </TabsState>
 
 ### Usage

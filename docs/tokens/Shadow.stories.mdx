@@ -2,7 +2,8 @@ import { Meta } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import * as shadow from '@liveperson-design-system/tokens/build/js/shadow';
-import * as colors from '@liveperson-design-system/tokens/build/js/colors';
+import { variables as colorsVariables } from '@liveperson-design-system/tokens/build/js/colors';
+import { variables as transparencyVariables } from '@liveperson-design-system/tokens/build/js/transparency';
 
 import { objectFilter } from '../common/helpers';
 
@@ -63,10 +64,11 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
 
 ## Text shadow
 
-### Dark
+### Dark text
 
-<Preview isColumn>
+<Preview light isColumn>
   <TypographyPreview
+    light
     items={[
       {
         name: 'Small',
@@ -105,17 +107,13 @@ Shadows can be used only on modals and popovers to show elevation, or on text to
   ]}
 />
 
-### Light
+### Light text
 
-export const Name = styled.span`
-  color: rgba(255, 255, 255, .9);
-`;
-
-<Preview dark isColumn>
+<Preview isColumn>
   <TypographyPreview
     items={[
       {
-        name: <Name>Small</Name>,
+        name: 'Small',
         example: styled.p`
           font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
           color: #fff;
@@ -124,7 +122,7 @@ export const Name = styled.span`
         `,
       },
       {
-        name: <Name>Small</Name>,
+        name: 'Large',
         example: styled.p`
           font-size: ${({ theme }) => `${theme.typography.size.m2}px`};
           color: #fff;
@@ -166,11 +164,11 @@ export const Name = styled.span`
 
 ### Dark
 
-<Preview dark>
+<Preview bg={colorsVariables.navy.darker}>
   {Object.keys(shadow.variables.shadowCard).filter(key => key.includes('dark')).map(key => (
     <BoxShadowExample
       key={key}
-      style={{ backgroundColor: colors.variables.navy.dark, boxShadow: shadow.variables.shadowCard[key] }}
+      style={{ backgroundColor: colorsVariables.navy.dark, boxShadow: shadow.variables.shadowCard[key] }}
     />
   ))}
 </Preview>
@@ -183,7 +181,7 @@ export const Name = styled.span`
 
 ### Light
 
-<Preview>
+<Preview light>
   {Object.keys(shadow.variables.shadowCard).filter(key => key.includes('light')).map(key => (
     <BoxShadowExample key={key} style={{ backgroundColor: '#fff', boxShadow: shadow.variables.shadowCard[key] }} />
   ))}
@@ -211,7 +209,12 @@ export const Name = styled.span`
   {Object.keys(shadow.variables.shadowInput).map(key => (
     <BoxShadowExample
       key={key}
-      style={{ width: '200px', height: '40px', backgroundColor: '#fff', boxShadow: shadow.variables.shadowInput[key] }}
+      style={{
+        width: '200px',
+        height: '40px',
+        backgroundColor: transparencyVariables.light['1'],
+        boxShadow: shadow.variables.shadowInput[key],
+      }}
     />
   ))}
 </Preview>

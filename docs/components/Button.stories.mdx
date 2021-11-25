@@ -21,22 +21,20 @@ import '@liveperson-design-system/components/button';
 
 <Preview withSource={SourceState.NONE}>
   {['primary', 'secondary', 'tertiary', 'destructive', 'inline'].map(variant => (
-    <lp-button key={variant} theme="light" variant={variant} label={variant} />
+    <lp-button key={variant} variant={variant} label={variant} />
   ))}
 </Preview>
 
-<Preview dark withSource={SourceState.NONE}>
+<Preview light withSource={SourceState.NONE}>
   {['primary', 'secondary', 'tertiary', 'destructive', 'inline'].map(variant => (
-    <lp-button key={variant} variant={variant} label={variant} />
+    <lp-button key={variant} theme="light" variant={variant} label={variant} />
   ))}
 </Preview>
 
 ## Sizes
 
 <Preview withSource={SourceState.NONE}>
-  {['small', 'medium', 'large'].map(size => (
-    <lp-button key={size} theme="light" size={size} label={size} />
-  ))}
+  {['small', 'medium', 'large'].map(size => <lp-button key={size} size={size} label={size} />)}
 </Preview>
 
 ## With icon

@@ -20,35 +20,33 @@ import '@liveperson-design-system/components/number-input';
 ## Basic
 
 <Preview>
-  <lp-number-input theme="light" />
+  <lp-number-input />
 </Preview>
 
-<Preview dark>
-  <lp-number-input />
+<Preview light>
+  <lp-number-input theme="light" />
 </Preview>
 
 ## Sizes
 
 <Preview>
-  {['medium', 'large'].map(size => (
-    <lp-number-input key={size} theme="light" size={size} placeholder={size} value={2} />
-  ))}
+  {['medium', 'large'].map(size => <lp-number-input key={size} size={size} placeholder={size} value={2} />)}
 </Preview>
 
 ## Text aligns
 
 <Preview>
   {['left', 'center', 'right'].map(textAlign => (
-    <lp-number-input key={textAlign} theme="light" textAlign={textAlign} placeholder={textAlign} value={3} />
+    <lp-number-input key={textAlign} textAlign={textAlign} placeholder={textAlign} value={3} />
   ))}
 </Preview>
 
 ## With error
 
 <Preview>
-  <lp-number-input theme="light" error value={4} />
+  <lp-number-input error value={4} />
 </Preview>
 
-<Preview dark>
-  <lp-number-input error value={4} />
+<Preview light>
+  <lp-number-input theme="light" error value={4} />
 </Preview>

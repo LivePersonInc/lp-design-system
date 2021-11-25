@@ -21,29 +21,27 @@ import '@liveperson-design-system/components/toggle';
 ## Basic
 
 <Preview>
-  <lp-toggle theme="light" label="Toggle" />
+  <lp-toggle label="Toggle" />
 </Preview>
 
-<Preview dark>
-  <lp-toggle label="Toggle" />
+<Preview light>
+  <lp-toggle theme="light" label="Toggle" />
 </Preview>
 
 ## Label positions
 
 <Preview isColumn>
-  {['right', 'left'].map(labelPosition => (
-    <lp-toggle key={labelPosition} theme="light" labelPosition={labelPosition} label="Toggle" />
-  ))}
+  {['right', 'left'].map(labelPosition => <lp-toggle key={labelPosition} labelPosition={labelPosition} label="Toggle" />)}
 </Preview>
 
 ## A11Y
 
 <Preview>
-  <lp-toggle theme="light" label="Toggle" a11y />
+  <lp-toggle label="Toggle" a11y />
 </Preview>
 
-<Preview dark>
-  <lp-toggle label="Toggle" a11y />
+<Preview light>
+  <lp-toggle theme="light" label="Toggle" a11y />
 </Preview>
 
 ## Controlled
@@ -59,7 +57,7 @@ export const Controlled = () => {
       toggleRef.current.addEventListener('change', toggleChangeHandler);
     }
   }, [toggleChangeHandler]);
-  return <lp-toggle ref={toggleRef} theme="light" checked={checked} label={checked ? 'Checked' : 'Unchecked'} />;
+  return <lp-toggle ref={toggleRef} checked={checked} label={checked ? 'Checked' : 'Unchecked'} />;
 };
 
 <Preview>

@@ -42,10 +42,10 @@ export const mixins = {
   // Headers mixins
   header: (header: Headings = 1): string => `
     font-size: ${variables.heading[header]};
-    line-height: ${header === 1 || header === 2 || header === 3 ? variables.lineHeights.medium : variables.lineHeights.small};
-    font-weight: ${header === 1 || header === 2 ? variables.weights.bold : variables.weights.medium};
+    line-height: ${variables.lineHeights[header === 1 || header === 2 || header === 3 ? 'medium' : 'small']};
+    font-weight: ${variables.weights[header === 1 || header === 2 ? 'bold' : 'medium']};
     ${(() => {
-      switch (header) {
+      switch (+header) {
         case 1:
           return `letter-spacing: ${variables.letterSpacings.compact};`;
         case 2:

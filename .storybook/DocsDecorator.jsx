@@ -12,6 +12,10 @@ const DocsDecorator = styled.div`
     &-h5,
     &-h6 {
       color: ${colorsVariables.orange.default};
+
+      &:first-of-type {
+        margin-top: 20px;
+      }
     }
 
     &-h2 {

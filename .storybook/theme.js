@@ -10,7 +10,7 @@ export default create({
   base: 'dark',
 
   //colorPrimary: '#FF6900',
-  colorSecondary: '#FF6900',
+  colorSecondary: colorsVariables.orange.default,
 
   // UI
   appBg: colorsVariables.navy.dark,

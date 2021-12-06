@@ -7,8 +7,8 @@ import Styled from '../../common/Styled';
 
 import '../dropdown';
 import '../text-input';
-import { ChipGroupProps } from '../chip/ChipGroup';
-import '../chip';
+import { MultiselectChipProps } from '../multiselect-chip/MultiselectChip';
+import '../multiselect-chip';
 import '../checkbox';
 
 import styles from './Select.scss';
@@ -30,7 +30,7 @@ type Selected = {
 
 type GetElementTypes = {
   'dropdown-toggle': HTMLDivElement
-  'chip-group': Element & ChipGroupProps
+  'multiselect-chip': Element & MultiselectChipProps
   'selected-value': HTMLDivElement
   'select-input': HTMLInputElement
   'select-all': HTMLInputElement
@@ -50,8 +50,8 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
     switch (type) {
       case 'dropdown-toggle':
         return dropdownElRef.current?.querySelector<GetElementTypes[K]>('.dropdown-toggle');
-      case 'chip-group':
-        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('lp-chip-group');
+      case 'multiselect-chip':
+        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('lp-multiselect-chip');
       case 'selected-value':
         return dropdownElRef.current?.querySelector<GetElementTypes[K]>('.selected-value');
       case 'select-input':
@@ -150,7 +150,7 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
   }, [getHostElement, dropdownClose]);
 
   const dropdownToggleClickHandler = useCallback((e): void => {
-    if (e.target === getElement('chip-group')) {
+    if (e.target === getElement('multiselect-chip')) {
       return;
     }
 
@@ -236,44 +236,39 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
   useEffect(() => {
     const dropdownEl = dropdownElRef.current;
     const dropdownToggleEl = getElement('dropdown-toggle');
-    const chipGroupEl = getElement('chip-group');
+    const multiselectChipEl = getElement('multiselect-chip');
     const selectInputEl = getElement('select-input');
 
     dropdownEl?.addEventListener('dropdown-click-outside', dropdownClickOutsideHandler);
     dropdownEl?.addEventListener('select', optionSelectHandler, true);
     dropdownToggleEl?.addEventListener('click', dropdownToggleClickHandler);
-    chipGroupEl?.addEventListener('chip-remove', chipRemoveHandler, true);
+    multiselectChipEl?.addEventListener('chip-remove', chipRemoveHandler, true);
     selectInputEl?.addEventListener('input', selectInputInputHandler);
 
     return () => {
       dropdownEl?.removeEventListener('dropdown-click-outside', dropdownClickOutsideHandler);
       dropdownEl?.removeEventListener('select', optionSelectHandler, true);
       dropdownToggleEl?.removeEventListener('click', dropdownToggleClickHandler);
-      chipGroupEl?.removeEventListener('chip-remove', chipRemoveHandler, true);
+      multiselectChipEl?.removeEventListener('chip-remove', chipRemoveHandler, true);
       selectInputEl?.removeEventListener('input', selectInputInputHandler);
     };
   }, [getElement, dropdownClickOutsideHandler, optionSelectHandler, dropdownToggleClickHandler, chipRemoveHandler, selectInputInputHandler]);
 
   useEffect(() => {
-    const chipGroupEl = getElement('chip-group');
+    const multiselectChipEl = getElement('multiselect-chip');
     const selectedValueEl = getElement('selected-value');
 
     if (Array.isArray(selected)) {
-      if (chipGroupEl) {
-        chipGroupEl.chips = selected.map(({ label, value }) => ({
-          id: value,
-          size: 'small',
-          label,
-          removable: true,
-        }));
+      if (multiselectChipEl) {
+        multiselectChipEl.chips = [...selected];
       }
     } else if (selected) {
       if (selectedValueEl) {
         selectedValueEl.innerText = selected.label;
       }
     } else {
-      if (chipGroupEl) {
-        chipGroupEl.chips = [];
+      if (multiselectChipEl) {
+        multiselectChipEl.chips = [];
       }
 
       if (selectedValueEl) {
@@ -309,7 +304,7 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
     <Styled styles={styles}>
       <lp-dropdown ref={dropdownElRef} open={isDropdownOpen} closeOnContentClick={false} closeOnBlur={false}>
         <div slot="toggle" className="dropdown-toggle">
-          {multiple ? <lp-chip-group /> : <div className="selected-value" />}
+          {multiple ? <lp-multiselect-chip size="small" /> : <div className="selected-value" />}
 
           {search && <input className="select-input" type="text" />}
 

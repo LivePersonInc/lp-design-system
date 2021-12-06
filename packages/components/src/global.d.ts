@@ -3,12 +3,11 @@
 import { ButtonGroupProps } from './components/button-group/ButtonGroup';
 import { ButtonProps } from './components/button/Button';
 import { CheckboxProps } from './components/checkbox/Checkbox';
-import { ChipProps } from './components/chip/Chip';
-import { ChipGroupProps } from './components/chip/ChipGroup';
 import { DropdownProps } from './components/dropdown/Dropdown';
 import { FileInputProps } from './components/file-input/FileInput';
 import { InputHelperProps } from './components/input-helper/InputHelper';
 import { InputLabelProps } from './components/input-label/InputLabel';
+import { MultiselectChipProps } from './components/multiselect-chip/MultiselectChip';
 import { NumberInputProps } from './components/number-input/NumberInput';
 import { RadioProps } from './components/radio/Radio';
 import { RadioGroupProps } from './components/radio/RadioGroup';
@@ -25,12 +24,11 @@ declare global {
       'lp-button': ButtonProps
       'lp-button-group': ButtonGroupProps
       'lp-checkbox': CheckboxProps
-      'lp-chip': ChipProps
-      'lp-chip-group': ChipGroupProps
       'lp-dropdown': DropdownProps
       'lp-file-input': FileInputProps
       'lp-input-helper': InputHelperProps
       'lp-input-label': InputLabelProps
+      'lp-multiselect-chip': MultiselectChipProps
       'lp-number-input': NumberInputProps
       'lp-radio': RadioProps
       'lp-radio-group': RadioGroupProps

@@ -12,11 +12,11 @@
 import Button from './components/button/Button';
 import ButtonGroup from './components/button-group/ButtonGroup';
 import Checkbox from './components/checkbox/Checkbox';
-import Chip from './components/chip/Chip';
 import Dropdown from './components/dropdown/Dropdown';
 import FileInput from './components/file-input/FileInput';
 import InputHelper from './components/input-helper/InputHelper';
 import InputLabel from './components/input-label/InputLabel';
+import MultiselectChip from './components/multiselect-chip/MultiselectChip';
 import NumberInput from './components/number-input/NumberInput';
 import Radio from './components/radio/Radio';
 import Select from './components/select/Select';
@@ -29,11 +29,11 @@ export {
   Button,
   ButtonGroup,
   Checkbox,
-  Chip,
   Dropdown,
   FileInput,
   InputHelper,
   InputLabel,
+  MultiselectChip,
   NumberInput,
   Radio,
   Select,

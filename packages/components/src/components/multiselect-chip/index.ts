@@ -2,12 +2,10 @@ import { DireflowComponent } from 'direflow-component';
 
 import { getComponentConfig, RobotoFontWeights } from '../../common/direflow';
 
-import Chip from './Chip';
-import ChipGroup from './ChipGroup';
+import MultiselectChip from './MultiselectChip';
 
-DireflowComponent.createAll([
-  getComponentConfig(Chip, 'lp-chip', {
+DireflowComponent.create(
+  getComponentConfig(MultiselectChip, 'lp-multiselect-chip', {
     withRobotoFont: [RobotoFontWeights.medium, RobotoFontWeights.bold],
-  }),
-  getComponentConfig(ChipGroup, 'lp-chip-group'),
-]);
+  })
+);

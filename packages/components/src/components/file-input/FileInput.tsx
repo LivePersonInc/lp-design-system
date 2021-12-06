@@ -4,7 +4,7 @@ import { EventContext } from 'direflow-component';
 import { Theme } from '../../common/types';
 import Styled from '../../common/Styled';
 
-import '../chip';
+import '../multiselect-chip';
 
 import styles from './FileInput.scss';
 
@@ -51,7 +51,7 @@ const FileInput: FileInputComponent = (
   },
 ) => {
   const inputElRef = useRef<HTMLInputElement>(null);
-  const chipGroupElRef = useRef<HTMLInputElement>(null);
+  const multiselectChipElRef = useRef<HTMLInputElement>(null);
 
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
@@ -98,9 +98,9 @@ const FileInput: FileInputComponent = (
   }, []);
 
   useEffect(() => {
-    if (multiple && chipGroupElRef.current) {
+    if (multiple && multiselectChipElRef.current) {
       // @ts-ignore
-      chipGroupElRef.current.chips = selectedFiles.map(file => ({
+      multiselectChipElRef.current.chips = selectedFiles.map(file => ({
         id: file,
         size: 'small',
         label: file,
@@ -114,14 +114,14 @@ const FileInput: FileInputComponent = (
   }, [selectedFiles, fileRemoveHandler]);
 
   useEffect(() => {
-    const chipGroupEl = chipGroupElRef.current;
+    const multiselectChipEl = multiselectChipElRef.current;
 
     if (multiple) {
-      chipGroupEl?.addEventListener('chip-remove', fileRemoveHandler);
+      multiselectChipEl?.addEventListener('chip-remove', fileRemoveHandler);
     }
 
     return () => {
-      chipGroupEl?.removeEventListener('chip-remove', fileRemoveHandler);
+      multiselectChipEl?.removeEventListener('chip-remove', fileRemoveHandler);
     };
   }, [multiple, fileRemoveHandler]);
 
@@ -146,7 +146,7 @@ const FileInput: FileInputComponent = (
         // @ts-ignore
         part="selected-files"
       >
-        {multiple ? <lp-chip-group ref={chipGroupElRef} /> : <span>{selectedFiles[0]}</span>}
+        {multiple ? <lp-multiselect-chip ref={multiselectChipElRef} /> : <span>{selectedFiles[0]}</span>}
 
         {uploading && (
           <div

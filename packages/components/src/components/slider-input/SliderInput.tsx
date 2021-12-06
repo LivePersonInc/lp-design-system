@@ -5,8 +5,6 @@ import { Theme } from '../../common/types';
 import { scaleValue } from '../../common/helpers';
 import Styled from '../../common/Styled';
 
-import '../chip';
-
 import styles from './SliderInput.scss';
 
 export type SliderInputCustomProps = {

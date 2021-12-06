@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '~@liveperson-design-system/tokens/scss/border-radius';
 @use '~@liveperson-design-system/tokens/scss/spacing';
 @use '~@liveperson-design-system/tokens/scss/colors';
@@ -22,36 +23,11 @@
 
   --color-text: #{colors.$navy-lightest};
 
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   @include typography.with-font-family;
   @include typography.button;
-  white-space: nowrap;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-  @include border-radius.border-radius(xl);
-  background-color: var(--color-bg);
-  padding: spacing.$space-xs spacing.$space-s;
-  cursor: default;
-  transition: all .15s ease-out;
-
-  &,
-  &::before,
-  &::after {
-    box-sizing: border-box;
-  }
-}
-
-:host(:hover) {
-  border-color: var(--color-border-hover);
-  background-color: var(--color-bg-hover);
-}
-
-:host(:focus) {
-  border-color: var(--color-border-focus);
-  outline: none;
-  background-color: var(--color-bg-focus);
-  box-shadow: var(--color-outline);
 }
 
 :host([theme="light"]) {
@@ -68,18 +44,52 @@
   --color-text: #{colors-light.$navy-darker};
 }
 
-:host([size="small"]) {
-  @include typography.tag;
-  padding: spacing.$space-xxs spacing.$space-xs;
-}
+[part*="chip"] {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  @include border-radius.border-radius(xl);
+  background-color: var(--color-bg);
+  padding: spacing.$space-xs spacing.$space-s;
+  margin: math.div(spacing.$space-xxs, 2);
+  cursor: default;
+  transition: all .15s ease-out;
 
-button {
-  display: block;
-  @include helpers.button-transparent;
-  margin-left: spacing.$space-xxs * -1;
-  margin-right: spacing.$space-xxs;
+  &:first-child {
+    margin-left: 0;
+  }
 
-  > * {
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-bg-hover);
+  }
+
+  &:focus {
+    border-color: var(--color-border-focus);
+    outline: none;
+    background-color: var(--color-bg-focus);
+    box-shadow: var(--color-outline);
+  }
+
+  :host([size="small"]) & {
+    @include typography.tag;
+    padding: spacing.$space-xxs spacing.$space-xs;
+  }
+
+  button {
     display: block;
+    @include helpers.button-transparent;
+    margin-left: spacing.$space-xxs * -1;
+    margin-right: spacing.$space-xxs;
+
+    > * {
+      display: block;
+    }
   }
 }

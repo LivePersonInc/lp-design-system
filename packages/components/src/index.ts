@@ -12,11 +12,11 @@
 import './components/button';
 import './components/button-group';
 import './components/checkbox';
-import './components/chip';
 import './components/dropdown';
 import './components/file-input';
 import './components/input-helper';
 import './components/input-label';
+import './components/multiselect-chip';
 import './components/number-input';
 import './components/radio';
 import './components/select';

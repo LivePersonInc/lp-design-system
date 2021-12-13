@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocsContainer as SBDocsContainer } from '@storybook/addon-docs';
+import { DocsContainer as SBDocsContainer, DocsContainerProps } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
 import { variables as colorsVariables } from '@liveperson-design-system/tokens/build/js/colors';
@@ -24,9 +24,9 @@ const DocsDecorator = styled.div`
   }
 `;
 
-const DocsContainer = ({ children, context }) => (
+const DocsContainer: React.FC<DocsContainerProps> = ({ children, ...props }) => (
   <DocsDecorator>
-    <SBDocsContainer context={context}>
+    <SBDocsContainer {...props}>
       {children}
     </SBDocsContainer>
   </DocsDecorator>

@@ -37,7 +37,7 @@
     "components:build": "yarn workspace @liveperson-design-system/components run build",
     "icons:build": "yarn workspace @liveperson-design-system/icons run build",
     "tokens:build": "yarn workspace @liveperson-design-system/tokens run build",
-    "build:all": "yarn tokens:build & yarn icons:build & yarn components:build",
+    "build:all": "yarn tokens:build && yarn icons:build && yarn components:build",
     "bootstrap": "yarn build:all && lerna link",
     "publish:all": "yarn bootstrap && dotenv lerna publish --conventional-commits --create-release github",
     "release": "np --yolo --no-publish --no-yarn"

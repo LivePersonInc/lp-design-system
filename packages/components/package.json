@@ -34,68 +34,37 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "main": "vendor.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/components/components.esm.js",
   "files": [
-    "build",
-    "README.md"
+    "dist/",
+    "loader/"
   ],
-  "publishConfig": {
-    "directory": "build"
-  },
   "scripts": {
-    "build": "direflow-scripts build && node ./scripts/after-build.js",
+    "start": "stencil build --dev --watch --serve",
+    "watch": "stencil build --docs-readme --dev --watch",
+    "build": "stencil build",
+    "generate": "stencil generate",
     "prepublishOnly": "node ./scripts/prepublishOnly.js",
     "postpublish": "node ./scripts/postpublish.js"
   },
   "dependencies": {
     "@liveperson-design-system/icons": "^0.3.24",
     "@liveperson-design-system/tokens": "^0.8.2",
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.3",
-    "@types/react-dom": "16.9.1",
-    "classnames": "^2.3.1",
-    "direflow-component": "3.5.5",
-    "direflow-scripts": "3.5.5",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-scripts": "3.4.1",
-    "styled-components": "^5.3.1"
+    "@stencil/core": "^2.7.0"
   },
   "devDependencies": {
-    "@types/jest": "24.0.18",
-    "@types/react-test-renderer": "16.9.1",
-    "@types/styled-components": "^5.1.15",
-    "jest-environment-jsdom-fourteen": "0.1.0",
-    "react-app-rewired": "2.1.3",
-    "react-test-renderer": "16.9.0",
-    "to-string-loader": "^1.1.6",
-    "ts-loader": "^6.2.2",
-    "tslint": "5.20.0",
-    "tslint-config-airbnb": "5.11.2",
-    "tslint-react": "4.1.0",
-    "typescript": "^3.9.3",
-    "webpack-cli": "^3.3.11"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "direflow-scripts/direflow-jest.config.js"
-    ]
-  },
-  "config-overrides-path": "direflow-webpack.js",
-  "gitHead": "6563296f973abd643b8d2127343b2fed1a58167e"
+    "@stencil/react-output-target": "^0.2.0",
+    "@stencil/sass": "^1.5.2",
+    "@types/jest": "^26.0.24",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "puppeteer": "^10.0.0"
+  }
 }

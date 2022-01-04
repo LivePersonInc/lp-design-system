@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/ButtonGroup" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-button-group>
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
+  </lp-button-group>
+</Preview>
+
+<Preview light>
+  <lp-button-group theme="light">
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
+  </lp-button-group>
+</Preview>
+
+**Note:** All buttons have to be provided as children elements
+
+```html
+<lp-button-group>
+  <button>Button 1</button>
+  <button>Button 2</button>
+  <button>Button 3</button>
+  <button>Button 4</button>
+  <button>Button 5</button>
+</lp-button-group>
+```
+
+## Sizes
+
+### Default
+
+<Preview>
+  <lp-button-group>
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
+  </lp-button-group>
+</Preview>
+
+### Small
+
+<Preview>
+  <lp-button-group size="small">
+    {Array(5).fill(null).map((item, index) => <button key={index}>{`Button ${++index}`}</button>)}
+  </lp-button-group>
+</Preview>
+
+## Default selected
+
+You can easily set the default selected button by adding `selected` class to the button item
+
+<Preview>
+  <lp-button-group>
+    {Array(5).fill(null).map((item, index) => (
+      <button key={index} className={index === 2 ? 'selected' : undefined}>{`Button ${++index}`}</button>
+    ))}
+  </lp-button-group>
+</Preview>
+
+<Preview light>
+  <lp-button-group theme="light">
+    {Array(5).fill(null).map((item, index) => (
+      <button key={index} className={index === 2 ? 'selected' : undefined}>{`Button ${++index}`}</button>
+    ))}
+  </lp-button-group>
+</Preview>
+
+```html
+<lp-button-group>
+  <button>Button 1</button>
+  <button>Button 2</button>
+  <button class="selected">Button 3</button>
+  <button>Button 4</button>
+  <button>Button 5</button>
+</lp-button-group>
+```

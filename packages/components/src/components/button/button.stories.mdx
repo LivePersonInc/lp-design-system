@@ -1,0 +1,71 @@
+import { Meta, SourceState } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+import WithIconStoryDescription from '@docs/components/withIconStory';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Button" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Variants
+
+export const buttonVariants = ['primary', 'secondary', 'tertiary', 'destructive', 'inline'];
+
+<Preview withSource={SourceState.NONE}>
+  {buttonVariants.map(variant => <lp-button key={variant} variant={variant}>{variant}</lp-button>)}
+</Preview>
+
+<Preview light withSource={SourceState.NONE}>
+  {buttonVariants.map(variant => <lp-button key={variant} theme="light" variant={variant}>{variant}</lp-button>)}
+</Preview>
+
+## Sizes
+
+<Preview withSource={SourceState.NONE}>
+  {['small', 'medium', 'large'].map(size => <lp-button key={size} size={size}>{size}</lp-button>)}
+</Preview>
+
+## With icon
+
+export const ButtonsWithIconWrap = styled.div`
+  display: flex;
+  lp-button {
+    &:not(:last-child) {
+      margin-right: ${({ theme }) => `${theme.layoutMargin * 2}px`};
+    }
+  }
+`;
+
+<WithIconStoryDescription />
+
+<Preview>
+  <ButtonsWithIconWrap>
+    <lp-button>
+      <lp-add-target-icon slot="icon-left" />
+      With left icon
+    </lp-button>
+    <lp-button>
+      With right icon
+      <lp-add-target-icon slot="icon-right" />
+    </lp-button>
+    <lp-button>
+      <lp-add-target-icon slot="icon-left" />
+      With left and right icon
+      <lp-add-target-icon slot="icon-right" />
+    </lp-button>
+  </ButtonsWithIconWrap>
+</Preview>
+
+```html
+<lp-button>
+  <lp-add-target-icon slot="icon-left" />
+  With left and right icon
+  <lp-add-target-icon slot="icon-right" />
+</lp-button>
+```

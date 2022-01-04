@@ -4,20 +4,21 @@ import { Theme } from '../../utils/types';
 
 import '@liveperson-design-system/icons/requested';
 
-export type TextareaTextAligners = 'left' | 'center' | 'right'
+export type TextInputSizes = 'large' | 'medium'
+export type TextInputTextAligners = 'left' | 'center' | 'right'
 
 @Component({
-  tag: 'lp-textarea',
-  styleUrl: 'textarea.scss',
+  tag: 'lp-text-input',
+  styleUrl: 'text-input.scss',
   shadow: true,
 })
-export class Textarea {
+export class TextInput {
 
   @Prop() theme: Theme;
-  @Prop() textAlign: TextareaTextAligners;
+  @Prop() size: TextInputSizes;
+  @Prop() textAlign: TextInputTextAligners;
   @Prop() error: boolean;
   @Prop({ mutable: true }) value: string = '';
-  @Prop() resizable: boolean;
   @Prop() disabled: boolean;
   @Prop({ attribute: 'readOnly' }) readOnly: boolean;
 
@@ -37,19 +38,18 @@ export class Textarea {
       <Host>
         <slot name="icon-left" onSlotchange={this.slotChangeHandler} />
 
-        <textarea
+        <input
           class={{
             'with-icon-left': this.withLeftIcon,
             'with-icon-right': (this.error || this.withRightIcon),
           }}
-          part="textarea"
+          part="input"
+          type="text"
           value={this.value}
           disabled={this.disabled}
           readOnly={this.readOnly}
           onChange={this.inputChangeHandler}
-        >
-          {this.value}
-        </textarea>
+        />
 
         <slot name="icon-right" onSlotchange={this.slotChangeHandler}>
           {this.error && <lp-requested-icon />}

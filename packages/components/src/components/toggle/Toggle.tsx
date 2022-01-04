@@ -1,92 +1,51 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext } from 'direflow-component';
+import { Component, h, Prop } from '@stencil/core';
 
-import { Theme } from '../../common/types';
-import Styled from '../../common/Styled';
-
-import styles from './Toggle.scss';
+import { Theme } from '../../utils/types';
 
 export type ToggleLabelPositions = 'left' | 'right'
 
-export type ToggleCustomProps = {
-  theme?: Theme
+@Component({
+  tag: 'lp-toggle',
+  styleUrl: 'toggle.scss',
+  shadow: true,
+})
+export class Toggle {
+  @Prop() theme: Theme;
 
   /**
    * Can be provided as a child element
    */
-  label?: string
+  @Prop() label: string;
 
-  labelPosition?: ToggleLabelPositions
-  a11y?: boolean
-}
+  @Prop() labelPosition: ToggleLabelPositions;
+  @Prop({ attribute: 'a11y' }) a11y: boolean;
+  @Prop({ mutable: true }) checked: boolean;
+  @Prop() disabled: boolean;
+  @Prop({ attribute: 'readOnly' }) readOnly: boolean;
 
-export type ToggleProps = JSX.IntrinsicElements['input'] & ToggleCustomProps
+  private toggleChangeHandler = (e): void => {
+    this.checked = e.target.checked;
+  };
 
-export type ToggleComponent = React.FC<ToggleProps>
-
-const Toggle: ToggleComponent = (
-  { theme, label, labelPosition, a11y, checked: checkedProp, defaultChecked, children, ...props },
-) => {
-  const inputElRef = useRef<HTMLInputElement>(null);
-
-  const [checked, setChecked] = useState<boolean>(!!(defaultChecked || checkedProp));
-
-  const dispatch = useContext(EventContext);
-
-  const isCheckedSet = useCallback((): boolean => (
-    (inputElRef.current?.getRootNode() as ShadowRoot)?.host.hasAttribute('checked')
-  ), []);
-
-  const toggleChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!isCheckedSet()) {
-      setChecked(e.target.checked);
-    }
-
-    dispatch(new CustomEvent<HTMLInputElement>(e.type, { detail: e.target }));
-  }, [isCheckedSet, dispatch]);
-
-  useEffect(() => {
-    if (isCheckedSet()) {
-      setChecked(!!checkedProp);
-    }
-  }, [isCheckedSet, checkedProp]);
-
-  return (
-    <Styled styles={styles}>
+  render() {
+    return (
       <label>
         <input
-          {...props}
-          ref={inputElRef}
           type="checkbox"
-          checked={checked}
-          onChange={toggleChangeHandler}
+          checked={this.checked}
+          disabled={this.disabled}
+          readOnly={this.readOnly}
+          onChange={this.toggleChangeHandler}
         />
 
-        <div className="label">
-          <div className="slider">
-            {a11y && (
-              <>
-                <span />
-                <span />
-              </>
-            )}
+        <div id="label">
+          <div id="slider">
+            {this.a11y && [<span />, <span />]}
           </div>
 
-          <slot>{label}</slot>
+          <slot>{this.label}</slot>
         </div>
       </label>
-    </Styled>
-  );
-};
-
-Toggle.defaultProps = {
-  theme: 'dark',
-  label: '',
-  labelPosition: 'right',
-  a11y: false,
-  checked: false,
-  disabled: false,
-  readOnly: false,
-};
-
-export default Toggle
+    );
+  }
+}

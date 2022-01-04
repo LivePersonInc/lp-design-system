@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/InputLabel" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-input-label label="Input" />
+</Preview>
+
+<Preview light>
+  <lp-input-label theme="light" label="Input" />
+</Preview>
+
+## With information <span style={{ color: 'red' }}>WIP</span>
+
+<Preview>
+  <lp-input-label label="Input" info="Additional description" />
+</Preview>
+
+<Preview light>
+  <lp-input-label theme="light" label="Input" info="Additional description" />
+</Preview>

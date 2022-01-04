@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/Radio" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+`lp-radio` component always has to work with `lp-radio-group` component. For this, you don't need to import two modules.
+`lp-radio-group` and `lp-radio` components place in one `radio` module
+
+## Radio Group
+
+export const LPRadioGroup = props => (
+  <lp-radio-group {...props}>
+    {Array(5).fill(null).map((element, index) => <lp-radio key={index} label={`Radio ${++index}`} value={index} />)}
+  </lp-radio-group>
+);
+
+<Preview>
+  <LPRadioGroup />
+</Preview>
+
+<Preview light>
+  <LPRadioGroup theme="light" />
+</Preview>
+
+### Sizes
+
+<Preview isColumn>
+  {['default', 'large'].map(size => <LPRadioGroup key={size} size={size} />)}
+</Preview>
+
+### Label positions
+
+<Preview isColumn>
+  {['right', 'left'].map(labelPosition => <LPRadioGroup key={labelPosition} label-position={labelPosition} />)}
+</Preview>
+
+### With error
+
+<Preview>
+  <LPRadioGroup error />
+</Preview>
+
+<Preview light>
+  <LPRadioGroup theme="light" error />
+</Preview>
+
+### Default selected
+
+<Preview>
+  <LPRadioGroup selected="3" />
+</Preview>
+
+<Preview light>
+  <LPRadioGroup theme="light" selected="3" />
+</Preview>

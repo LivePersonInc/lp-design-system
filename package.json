@@ -28,8 +28,8 @@
   ],
   "scripts": {
     "postinstall": "lerna link",
-    "start": "yarn bootstrap && start-storybook --docs -s public",
-    "build": "yarn bootstrap && build-storybook --docs -s public",
+    "start": "run-p components:watch storybook:start",
+    "build": "yarn bootstrap && yarn storybook:build",
     "deploy": "storybook-to-ghpages -s build --source-branch main",
     "build:components": "yarn workspace @liveperson-design-system/components run build",
     "build:icons": "yarn workspace @liveperson-design-system/icons run build",

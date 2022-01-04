@@ -1,87 +1,82 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext } from 'direflow-component';
+import { Component, Prop, h, State, Event, Element, EventEmitter, Watch } from '@stencil/core';
 
-import { Theme } from '../../common/types';
-import { useHostElement } from '../../common/hooks';
-import Styled from '../../common/Styled';
-
-import '../dropdown';
-import '../text-input';
-import { MultiselectChipProps } from '../multiselect-chip/MultiselectChip';
-import '../multiselect-chip';
-import '../checkbox';
-
-import styles from './Select.scss';
-
-export type SelectCustomProps = {
-  theme?: Theme
-  search?: boolean
-  withSelectAll?: false | string
-}
-
-export type SelectProps = JSX.IntrinsicElements['select'] & SelectCustomProps
-
-export type SelectComponent = React.FC<SelectProps>
+import { Theme } from '../../utils/types';
+import { Query, QueryAll } from '../../utils/decorators';
 
 type Selected = {
   label: string
   value: string
 }
 
-type GetElementTypes = {
-  'dropdown-toggle': HTMLDivElement
-  'multiselect-chip': Element & MultiselectChipProps
-  'selected-value': HTMLDivElement
-  'select-input': HTMLInputElement
-  'select-all': HTMLInputElement
-}
+@Component({
+  tag: 'lp-select',
+  styleUrl: 'select.scss',
+  shadow: true,
+})
+export class Select {
 
-const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
-  const dropdownElRef = useRef<HTMLDivElement>(null);
+  @Element() hostEl: HTMLElement;
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<Selected | Selected[]>();
+  @Query('lp-multiselect-chip') multiselectChipEl: HTMLLpMultiselectChipElement;
+  @Query('#select-input') selectInputEl: HTMLInputElement;
+  @Query('lp-checkbox#select-all') selectAllEl: HTMLLpCheckboxElement;
+  @QueryAll('lp-select-option', { inHost: true }) selectOptionsEls: NodeListOf<HTMLLpSelectOptionElement>;
 
-  const dispatch = useContext(EventContext);
+  @Prop() theme: Theme;
+  @Prop() search: boolean;
+  @Prop() withSelectAll: false | string;
+  @Prop() multiple: boolean;
 
-  const { getHostElement } = useHostElement(dropdownElRef);
+  @State() isDropdownOpen: boolean = false;
+  @State() selected: Selected | Selected[];
 
-  const getElement = useCallback(<K extends keyof GetElementTypes>(type: K): GetElementTypes[K] | undefined | null => {
-    switch (type) {
-      case 'dropdown-toggle':
-        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('.dropdown-toggle');
-      case 'multiselect-chip':
-        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('lp-multiselect-chip');
-      case 'selected-value':
-        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('.selected-value');
-      case 'select-input':
-        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('.select-input');
-      case 'select-all':
-        return dropdownElRef.current?.querySelector<GetElementTypes[K]>('.select-all');
+  @Watch('isDropdownOpen')
+  isDropdownOpenStateChangeHandler(newValue: boolean) {
+    if (newValue) {
+      window.addEventListener<'keydown'>('keydown', this.windowKeyDownHandler);
+    } else {
+      window.removeEventListener<'keydown'>('keydown', this.windowKeyDownHandler);
     }
-  }, []);
+  }
 
-  const getOptionsElements = useCallback((selector: string = ''): HTMLOptionElement[] => (
-    (getHostElement()?.querySelectorAll(`lp-select-option${selector}`) || []) as HTMLOptionElement[]
-  ), [getHostElement]);
+  @Watch('selected')
+  selectedStateChangeHandler(newValue?: Selected | Selected[]) {
+    const values = (Array.isArray(newValue) ? newValue : (newValue ? [newValue] : [])).map(({ value }) => value);
 
-  const windowKeyDownHandler = useCallback((e: KeyboardEvent): void => {
-    const options = getOptionsElements(':not([hidden]:not([hidden="false"]))');
+    this.selectOptions.forEach(options => {
+      options.selected = values.includes(options.value);
+    });
+  }
 
-    if (!options) {
+  @Event({ eventName: 'change', composed: true }) changeEvent: EventEmitter;
+
+  componentDidLoad() {
+    this.selectOptions.forEach(el => {
+      el.addEventListener('click', this.optionClickHandler, true);
+    });
+  }
+
+  private get selectOptions(): HTMLLpSelectOptionElement[] {
+    return Array.from(this.selectOptionsEls);
+  }
+
+  private windowKeyDownHandler = (e: KeyboardEvent): void => {
+    const options = this.selectOptions.filter(({ hidden }) => !hidden);
+
+    if (!options.length) {
       return;
     }
 
-    const focusedOptionIndex = Array.from(options).findIndex(el => el === document.activeElement);
+    const focusedOptionIndex = options.findIndex(el => el === document.activeElement);
 
     const selectedOptionIndex = (
-      focusedOptionIndex !== -1 ? focusedOptionIndex : Array.from(options).findIndex(el => (
-        el.hasAttribute('selected') && el.getAttribute('selected') !== 'false')
-      )
+      focusedOptionIndex !== -1 ? focusedOptionIndex : options.findIndex(({ selected }) => selected)
     );
 
-    switch (e.code) {
+    switch (e.key) {
       case 'ArrowUp':
+        e.preventDefault();
+
         if (selectedOptionIndex === -1) {
           options[options.length - 1]?.focus();
         } else if (selectedOptionIndex > 0) {
@@ -90,6 +85,8 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
 
         break;
       case 'ArrowDown':
+        e.preventDefault();
+
         if (selectedOptionIndex === -1) {
           options[0]?.focus();
         } else if (selectedOptionIndex < options.length - 1) {
@@ -104,224 +101,149 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
 
         break;
     }
-  }, [getOptionsElements]);
+  }
 
-  const selectAllChangeHandler = useCallback((e): void => {
-    if (e.detail.checked) {
-      const selectedOptions: Selected[] = [];
-
-      getOptionsElements(':not([hidden]:not([hidden="false"]))').forEach(option => {
-        selectedOptions.push({
-          label: option.innerText,
-          value: option.getAttribute('value') || option.innerText,
-        });
-      });
-
-      setSelected(selectedOptions);
+  private selectAllChangeHandler = (e): void => {
+    if (e.target.checked) {
+      this.selected = this.selectOptions.filter(({ hidden }) => !hidden).map(option => ({
+        label: option.innerText,
+        value: option.value || option.innerText,
+      }));
     } else {
-      setSelected(undefined);
+      this.selected = undefined;
     }
-  }, [getOptionsElements]);
+  }
 
-  const dropdownOpen = useCallback((): void => {
-    getElement('dropdown-toggle')?.classList.add('open');
+  private dropdownClickOutsideHandler = (): void => {
+    this.isDropdownOpen = false;
+  };
 
-    window.addEventListener<'keydown'>('keydown', windowKeyDownHandler);
-
-    getElement('select-all')?.addEventListener<'change'>('change', selectAllChangeHandler);
-
-    setIsDropdownOpen(true);
-  }, [getElement, windowKeyDownHandler, selectAllChangeHandler]);
-
-  const dropdownClose = useCallback((): void => {
-    getElement('dropdown-toggle')?.classList.remove('open');
-
-    window.removeEventListener<'keydown'>('keydown', windowKeyDownHandler);
-
-    getElement('select-all')?.removeEventListener<'change'>('change', selectAllChangeHandler);
-
-    setIsDropdownOpen(false);
-  }, [getElement, windowKeyDownHandler, selectAllChangeHandler]);
-
-  const dropdownClickOutsideHandler = useCallback((e): void => {
-    if (!getHostElement()?.contains(e.detail)) {
-      dropdownClose();
-    }
-  }, [getHostElement, dropdownClose]);
-
-  const dropdownToggleClickHandler = useCallback((e): void => {
-    if (e.target === getElement('multiselect-chip')) {
+  private dropdownToggleClickHandler = (e): void => {
+    if (this.multiselectChipEl?.contains(e.target)) {
       return;
     }
 
-    if (isDropdownOpen && e.target !== getElement('select-input')) {
-      dropdownClose();
-    } else {
-      dropdownOpen();
+    this.isDropdownOpen = !(this.isDropdownOpen && e.target !== this.selectInputEl);
+  };
+
+  private chipRemoveHandler = ({ target }): void => {
+    this.selected = (Array.isArray(this.selected) ? this.selected : (this.selected ? [this.selected] : []))
+      .filter(({ value }) => value !== target.value);
+
+    const selectedOption = this.selectOptions.find(({ value }) => (String(value) === target.value));
+    if (selectedOption) {
+      selectedOption.selected = false;
     }
-  }, [getElement, isDropdownOpen, dropdownClose, dropdownOpen]);
+  };
 
-  const chipRemoveHandler = useCallback((e): void => {
-    setSelected(state => (
-      (Array.isArray(state) ? state : (state ? [state] : [])).filter(({ value }) => value !== e.detail.id)
-    ));
-
-    getHostElement()?.querySelector(`lp-select-option[value="${e.detail.id}"]`)
-      ?.removeAttribute('selected');
-  }, [getHostElement]);
-
-  const selectInputInputHandler = useCallback((e): void => {
+  private selectInputInputHandler = (e): void => {
     const value = (e.target as HTMLInputElement).value.toLowerCase();
 
-    const options = getOptionsElements();
-
     if (value) {
-      options.forEach(option => {
-        if ((option.innerText || option.getAttribute('label') || '').toLowerCase().includes(value)) {
-          option.removeAttribute('hidden');
-        } else {
-          option.setAttribute('hidden', 'true');
-        }
+      this.selectOptions.forEach(option => {
+        option.hidden = !option.innerText.toLowerCase().includes(value);
       });
     } else {
-      options.forEach(option => {
-        option.removeAttribute('hidden');
+      this.selectOptions.forEach(option => {
+        option.hidden = false;
       });
     }
-  }, [getOptionsElements]);
+  };
 
-  const optionSelectHandler = useCallback((e): void => {
-    const target = e.target as HTMLOptionElement
+  private optionClickHandler = (e): void => {
+    const target = e.target as HTMLLpSelectOptionElement;
 
     const selected: Selected = {
       label: target.innerText,
-      value: target.getAttribute('value') || target.innerText,
+      value: target.value || target.innerText,
     };
 
-    if (multiple) {
-      setSelected(state => {
-        const newState = (Array.isArray(state) ? [...state] : (state ? [state] : []));
+    if (this.multiple) {
+      const newState = (Array.isArray(this.selected) ? [...this.selected] : (this.selected ? [this.selected] : []));
 
-        const selectedIndex = newState.findIndex(({ value }) => value === selected.value);
+      const selectedIndex = newState.findIndex(({ value }) => value === selected.value);
 
-        if (selectedIndex !== -1) {
-          newState.splice(selectedIndex, 1);
-        } else {
-          newState.push(selected);
-        }
-
-        return newState;
-      });
-    } else {
-      setSelected(selected);
-
-      dropdownClose();
-    }
-
-    if (search) {
-      const selectInputEl = getElement('select-input');
-
-      if (selectInputEl) {
-        selectInputEl.value = '';
+      if (selectedIndex !== -1) {
+        newState.splice(selectedIndex, 1);
+      } else {
+        newState.push(selected);
       }
 
-      getOptionsElements().forEach(option => {
-        option.removeAttribute('hidden');
+      this.selected = newState;
+    } else {
+      this.selected = selected;
+
+      this.isDropdownOpen = false;
+    }
+
+    if (this.search) {
+      if (this.selectInputEl) {
+        this.selectInputEl.value = '';
+      }
+
+      this.selectOptions.filter(({ hidden }) => hidden).forEach(option => {
+        option.hidden = false;
       });
     }
 
-    dispatch(new CustomEvent('change', { detail: e.target }));
-  }, [multiple, dropdownClose, search, getElement, getOptionsElements, dispatch]);
+    this.changeEvent.emit();
+  };
 
-  useEffect(() => {
-    const dropdownEl = dropdownElRef.current;
-    const dropdownToggleEl = getElement('dropdown-toggle');
-    const multiselectChipEl = getElement('multiselect-chip');
-    const selectInputEl = getElement('select-input');
+  render() {
+    return (
+      <lp-dropdown
+        id="dropdown"
+        open={this.isDropdownOpen}
+        closeOnContentClick={false}
+        closeOnBlur={false}
+        onClickOutside={this.dropdownClickOutsideHandler}
+      >
+        <div
+          slot="toggle"
+          id="dropdown-toggle"
+          class={{ open: this.isDropdownOpen }}
+          onClick={this.dropdownToggleClickHandler}
+        >
+          {(
+            this.multiple
+              ? (
+                <lp-multiselect-chip id="chips" size="small">
+                  {(
+                    Array.isArray(this.selected)
+                      ? this.selected.map(item => <lp-chip key={item.value} {...item} onRemove={this.chipRemoveHandler} />)
+                      : (!!this.selected && <lp-chip {...this.selected} onRemove={this.chipRemoveHandler} />)
+                  )}
+                </lp-multiselect-chip>
+              )
+              : (
+                <div id="selected-value">
+                  {(Array.isArray(this.selected) ? this.selected[0] : this.selected)?.label}
+                </div>
+              )
+          )}
 
-    dropdownEl?.addEventListener('dropdown-click-outside', dropdownClickOutsideHandler);
-    dropdownEl?.addEventListener('select', optionSelectHandler, true);
-    dropdownToggleEl?.addEventListener('click', dropdownToggleClickHandler);
-    multiselectChipEl?.addEventListener('chip-remove', chipRemoveHandler, true);
-    selectInputEl?.addEventListener('input', selectInputInputHandler);
+          {this.search && <input id="select-input" type="text" onInput={this.selectInputInputHandler} />}
 
-    return () => {
-      dropdownEl?.removeEventListener('dropdown-click-outside', dropdownClickOutsideHandler);
-      dropdownEl?.removeEventListener('select', optionSelectHandler, true);
-      dropdownToggleEl?.removeEventListener('click', dropdownToggleClickHandler);
-      multiselectChipEl?.removeEventListener('chip-remove', chipRemoveHandler, true);
-      selectInputEl?.removeEventListener('input', selectInputInputHandler);
-    };
-  }, [getElement, dropdownClickOutsideHandler, optionSelectHandler, dropdownToggleClickHandler, chipRemoveHandler, selectInputInputHandler]);
-
-  useEffect(() => {
-    const multiselectChipEl = getElement('multiselect-chip');
-    const selectedValueEl = getElement('selected-value');
-
-    if (Array.isArray(selected)) {
-      if (multiselectChipEl) {
-        multiselectChipEl.chips = [...selected];
-      }
-    } else if (selected) {
-      if (selectedValueEl) {
-        selectedValueEl.innerText = selected.label;
-      }
-    } else {
-      if (multiselectChipEl) {
-        multiselectChipEl.chips = [];
-      }
-
-      if (selectedValueEl) {
-        selectedValueEl.innerText = '';
-      }
-    }
-
-    const values = (Array.isArray(selected) ? selected : (selected ? [selected] : [])).map(({ value }) => value);
-
-    const options = getOptionsElements();
-
-    const selectAllEl = getElement('select-all');
-    if (selectAllEl) {
-      if (values.length > 0) {
-        selectAllEl.setAttribute('checked', 'true');
-        selectAllEl.setAttribute('indeterminate', (values.length !== options.length ? 'true' : 'false'));
-      } else {
-        selectAllEl.setAttribute('checked', 'false');
-        selectAllEl.setAttribute('indeterminate', 'false');
-      }
-    }
-
-    options.forEach(options => {
-      if (values.includes(options.getAttribute('value') || '')) {
-        options.setAttribute('selected', 'true');
-      } else {
-        options.removeAttribute('selected');
-      }
-    });
-  }, [selected, getElement, getOptionsElements]);
-
-  return (
-    <Styled styles={styles}>
-      <lp-dropdown ref={dropdownElRef} open={isDropdownOpen} closeOnContentClick={false} closeOnBlur={false}>
-        <div slot="toggle" className="dropdown-toggle">
-          {multiple ? <lp-multiselect-chip size="small" /> : <div className="selected-value" />}
-
-          {search && <input className="select-input" type="text" />}
-
-          <div className="dropdown-toggle-icon">
+          <div id="dropdown-toggle-icon">
             <svg>
               <path d="M7.96618 10.9662L3 6H13L7.96618 10.9662Z" />
             </svg>
           </div>
         </div>
 
-        <div slot="content" className="options">
-          {(multiple && withSelectAll) && (
+        <div slot="content" id="options">
+          {(this.multiple && this.withSelectAll) && (
             <lp-checkbox
               slot="content"
-              // @ts-ignore
-              class="select-all"
-              label={withSelectAll}
+              id="select-all"
+              label={(typeof this.withSelectAll === 'string' ? this.withSelectAll : 'Select all')}
+              checked={(
+                Array.isArray(this.selected) ? this.selected.length === this.selectOptions.length : !!this.selected
+              )}
+              indeterminate={(
+                Array.isArray(this.selected) && this.selected.length && this.selected.length !== this.selectOptions.length
+              )}
+              onChange={this.selectAllChangeHandler}
             />
           )}
 
@@ -332,15 +254,6 @@ const Select: SelectComponent = ({ search, withSelectAll, multiple }) => {
 
         <slot slot="content" name="actions" />
       </lp-dropdown>
-    </Styled>
-  );
-};
-
-Select.defaultProps = {
-  theme: 'dark',
-  search: false,
-  withSelectAll: false,
-  multiple: false,
-};
-
-export default Select
+    );
+  }
+}

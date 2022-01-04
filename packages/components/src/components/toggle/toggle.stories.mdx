@@ -1,0 +1,87 @@
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/Toggle" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-toggle label="Toggle" />
+</Preview>
+
+<Preview light>
+  <lp-toggle theme="light" label="Toggle" />
+</Preview>
+
+## Label positions
+
+<Preview isColumn>
+  {['right', 'left'].map(labelPosition => <lp-toggle key={labelPosition} label-position={labelPosition} label="Toggle" />)}
+</Preview>
+
+## A11Y
+
+<Preview>
+  <lp-toggle label="Toggle" a11y />
+</Preview>
+
+<Preview light>
+  <lp-toggle theme="light" label="Toggle" a11y />
+</Preview>
+
+## Controlled
+
+export const Controlled = () => {
+  const toggleRef = useRef(null);
+  const [checked, setChecked] = useState(false);
+  const toggleChangeHandler = useCallback(e => {
+    setChecked(e.detail.checked);
+  }, []);
+  useLayoutEffect(() => {
+    if (toggleRef.current) {
+      toggleRef.current.addEventListener('change', toggleChangeHandler);
+    }
+  }, [toggleChangeHandler]);
+  return <lp-toggle ref={toggleRef} checked={checked} label={checked ? 'Checked' : 'Unchecked'} />;
+};
+
+<Preview>
+  <Controlled />
+</Preview>
+
+```jsx
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+
+import '@liveperson-design-system/components/toggle';
+
+const Toggle = ({ ...props }) => {
+  const toggleRef = useRef(null);
+
+  const [checked, setChecked] = useState(false);
+
+  const toggleChangeHandler = useCallback(e => {
+    setChecked(e.detail.checked);
+  }, []);
+
+  useLayoutEffect(() => {
+    toggleRef.current.addEventListener('change', toggleChangeHandler);
+
+    return () => {
+      toggleRef.current.removeEventListener('change', toggleChangeHandler);
+    };
+  }, [toggleChangeHandler]);
+
+  return <lp-toggle {...props} ref={toggleRef} checked={checked} />;
+};
+
+export default Toggle
+```

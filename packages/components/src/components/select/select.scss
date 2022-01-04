@@ -1,0 +1,266 @@
+@use '~@liveperson-design-system/tokens/scss/border-radius';
+@use '~@liveperson-design-system/tokens/scss/colors';
+@use '~@liveperson-design-system/tokens/scss/colors-light';
+@use '~@liveperson-design-system/tokens/scss/common';
+@use '~@liveperson-design-system/tokens/scss/helpers';
+@use '~@liveperson-design-system/tokens/scss/spacing';
+@use '~@liveperson-design-system/tokens/scss/transparency';
+@use '~@liveperson-design-system/tokens/scss/typography';
+
+@include common.base-styles;
+
+:host {
+  --color-dropdown-border--open: #{colors.$blue};
+  --color-dropdown-content: #{transparency.$light-2};
+
+  --color-input-border: #{transparency.$light-4};
+  --color-input-border--hover: #{colors.$navy-white};
+  --color-input-border--active: #{colors.$blue};
+  --color-input-border--focus: #{colors.$blue};
+  --color-input-outline: #{colors.$focus-outline};
+  --color-input-bg: #{transparency.$light-1};
+  --color-input-text: #{colors.$navy-white};
+
+  --color-option-bg: transparent;
+  --color-option-bg-hover: #{transparency.$light-1};
+  --color-option-bg-selected: #{colors.$blue-light};
+  --color-option-bg-selected-hover: #{colors.$blue-lighter};
+  --color-option-label: #{colors.$navy-white};
+  --color-option-label-selected: #{colors.$navy-darker};
+
+  --color-separator: #{transparency.$light-3};
+
+  --color-button: #{colors.$blue-lighter};
+  --color-button-icon: #{colors.$blue-light};
+  --color-button-hover: #{transparency.$light-1};
+
+  @include typography.with-font-family;
+}
+:host([theme="light"]) {
+  --color-dropdown-border--open: #{colors.$blue};
+  --color-dropdown-content: #{colors-light.$white};
+
+  --color-input-border: #{colors-light.$navy-light};
+  --color-input-border--hover: #{colors-light.$navy};
+  --color-input-border--active: #{colors-light.$blue};
+  --color-input-border--focus: #{colors-light.$blue};
+  --color-input-outline: #{colors-light.$focus-outline};
+  --color-input-bg: #{colors-light.$white};
+  --color-input-text: #{colors-light.$navy-dark};
+
+  --color-option-bg: #{transparency.$dark-0};
+  --color-option-bg-hover: #{transparency.$dark-1};
+  --color-option-bg-selected: #{colors-light.$navy};
+  --color-option-bg-selected-hover: #{colors-light.$navy-dark};
+  --color-option-label: #{colors-light.$navy-dark};
+  --color-option-label-selected: #{colors-light.$white};
+
+  --color-separator: #{transparency.$dark-3};
+
+  --color-button: #{colors-light.$blue};
+  --color-button-icon: #{colors-light.$blue};
+  --color-button-hover: #{transparency.$light-1};
+}
+
+@include helpers.host-with-attr(error) {
+  --color-input-border: #{colors.$red-light};
+}
+@include helpers.host-with-attr(error, '[theme="light"]') {
+  --color-input-border: #{colors-light.$red};
+}
+
+@include helpers.host-with-attr(disabled) {
+  --color-input-border: #{transparency.$light-1};
+}
+@include helpers.host-with-attr(disabled, '[theme="light"]') {
+  --color-input-border: #{transparency.$dark-1};
+}
+
+$dropdown-content-border-radius: border-radius.$border-radius-xxs;
+
+#dropdown {
+  min-width: 198px;
+
+  &::part(content) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 200px;
+    border: 1px solid var(--color-dropdown-border--open);
+    border-top: none;
+    border-radius: 0 0 $dropdown-content-border-radius $dropdown-content-border-radius;
+    background-color: var(--color-dropdown-content);
+    overflow: hidden;
+  }
+
+  &::part(content-top) {
+    margin-bottom: -1px;
+  }
+  &::part(content-bottom) {
+    margin-top: -1px;
+  }
+}
+
+$icon-size: 16px;
+$icon-offset: spacing.$space-xs;
+$padding-size: spacing.$space-s;
+$dropdown-toggle-size: $icon-size + $padding-size * 2;
+
+#dropdown-toggle {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  @include typography.input-value;
+  width: 100%;
+  min-height: 40px;
+  color: var(--color-input-text);
+  outline: none;
+  border: 1px solid var(--color-input-border);
+  border-radius: border-radius.$border-radius-xxs;
+  background: var(--color-input-bg);
+  margin: 0;
+  transition: all .15s ease-out;
+  cursor: pointer;
+
+  &.open {
+    border-color: var(--color-dropdown-border--open) !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  :host([disabled]:not([disabled="false"])) & {
+    opacity: transparency.$disabled;
+  }
+
+  :host(:not([disabled]:not([disabled="false"]))) &,
+  :host(:not([error]:not([error="false"]))) & {
+    &:hover {
+      border-color: var(--color-border--hover);
+    }
+
+    &:active,
+    &:focus {
+      border-color: var(--color-border--active);
+    }
+
+    &:focus {
+      box-shadow: var(--color-outline);
+    }
+  }
+}
+
+#chips {
+  flex-shrink: 0;
+  padding-left: spacing.$space-xs;
+
+  lp-chip {
+    :host([search]:not([search="false"])) & {
+      margin-right: spacing.$space-xxs;
+    }
+  }
+}
+
+#selected-value {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  padding-left: $padding-size;
+}
+
+#select-input {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  flex-grow: 1;
+  width: auto;
+  min-width: 20px;
+  height: 100%;
+  font: inherit;
+  text-align: left;
+  @include typography.input-value;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  -webkit-tap-highlight-color: rgba(#fff, 0);
+  padding: 0 $dropdown-toggle-size 0 $padding-size;
+  margin: 0;
+  transition: all .15s ease-out;
+
+  :host([multiple]:not([multiple="false"])) & {
+    position: relative;
+    height: auto;
+    padding: 0;
+  }
+}
+
+#dropdown-toggle-icon {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: $dropdown-toggle-size;
+
+  svg {
+    width: $icon-size;
+    height: $icon-size;
+    fill: none;
+    user-select: none;
+    pointer-events: none;
+    transition: all .15s ease-out;
+
+    path {
+      fill: currentColor;
+      opacity: .9;
+    }
+  }
+}
+
+#select-all {
+  display: block;
+  border-bottom: 1px solid var(--color-separator);
+  @include spacing.padding(xs, s);
+}
+
+#options {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+slot {
+  &[name="suggestions"] {
+    display: block;
+    box-shadow: inset 0 -1px 0 0 var(--color-separator);
+  }
+
+  &[name="actions"] {
+    display: flex;
+    flex-shrink: 0;
+    box-shadow: inset 0 1px 0 0 var(--color-separator);
+
+    &::slotted(button) {
+      display: flex;
+      align-items: center;
+      flex: 1 0 auto;
+      @include typography.button;
+      color: var(--color-button);
+      border: none;
+      background: none;
+      box-shadow: none;
+      @include spacing.padding(xs, s);
+      cursor: pointer;
+      transition: all .15s ease-out;
+    }
+    &::slotted(button:hover),
+    &::slotted(button:focus) {
+      background-color: var(--color-button-hover);
+    }
+    &::slotted(button:focus) {
+      outline: none;
+    }
+  }
+}

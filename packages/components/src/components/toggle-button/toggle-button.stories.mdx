@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+import WithIconStoryDescription from '@docs/components/withIconStory';
+
+import Readme from './readme.md';
+
+<Meta title="Components/ToggleButton" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-toggle-button label="Toggle" />
+</Preview>
+
+<Preview light>
+  <lp-toggle-button theme="light" label="Toggle" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  {['default', 'small'].map(size => <lp-toggle-button key={size} size={size} label={size} />)}
+</Preview>
+
+## Selected
+
+<Preview>
+  <lp-toggle-button label="Selected" checked />
+</Preview>
+
+<Preview light>
+  <lp-toggle-button theme="light" label="Selected" checked />
+</Preview>
+
+## With icon
+
+export const ButtonsWithIconWrap = styled.div`
+  display: flex;
+  lp-toggle-button {
+    &:not(:last-child) {
+      margin-right: ${({ theme }) => `${theme.layoutMargin * 2}px`};
+    }
+  }
+`;
+
+<WithIconStoryDescription />
+
+<Preview>
+  <ButtonsWithIconWrap>
+    <lp-toggle-button>
+      <lp-add-target-icon slot="icon-left" />
+      With left icon
+    </lp-toggle-button>
+    <lp-toggle-button>
+      With right icon
+      <lp-add-target-icon slot="icon-right" />
+    </lp-toggle-button>
+    <lp-toggle-button>
+      <lp-add-target-icon slot="icon-left" />
+      With left and right icon
+      <lp-add-target-icon slot="icon-right" />
+    </lp-toggle-button>
+  </ButtonsWithIconWrap>
+</Preview>
+
+```html
+<lp-toggle-button>
+  <lp-add-target-icon slot="icon-left" />
+  With left and right icon
+  <lp-add-target-icon slot="icon-right" />
+</lp-toggle-button>
+```

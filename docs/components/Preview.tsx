@@ -4,15 +4,22 @@ import { styled } from '@storybook/theming';
 
 import { variables as colorsVariables } from '@liveperson-design-system/tokens/build/js/colors';
 
-const CanvasWrap = styled.div`
+type CanvasWrapProps = {
+  bg?: string
+  light?: boolean
+}
+
+const CanvasWrap = styled.div<CanvasWrapProps>`
   .docs-story {
     background-color: ${({ bg, light }) => (bg ? bg : (light ? '#fff' : colorsVariables.navy.dark))};
   }
 `;
 
-const Preview = ({ bg, light, withSource = SourceState.NONE, children, ...props }) => (
+export type PreviewProps = CanvasWrapProps & React.ComponentProps<typeof Canvas>
+
+const Preview: React.FC<PreviewProps> = ({ bg, light, withSource, children, ...props }) => (
   <CanvasWrap bg={bg} light={light}>
-    <Canvas {...props} withSource={withSource}>
+    <Canvas {...props} withSource={(withSource || SourceState.NONE) as any}>
       {children}
     </Canvas>
   </CanvasWrap>

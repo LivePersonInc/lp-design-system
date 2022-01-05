@@ -46,6 +46,9 @@
     "dist/",
     "loader/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "stencil build --dev --watch --serve",
     "watch": "stencil build --docs-readme --dev --watch",
@@ -65,5 +68,5 @@
     "jest-cli": "^26.6.3",
     "puppeteer": "^10.0.0"
   },
-  "gitHead": "f37c969c6a221ba6374b695e65c0f3beec93d8bb"
+  "gitHead": "c1c4098d8b4f04f3df914160a7e020a747b218b6"
 }

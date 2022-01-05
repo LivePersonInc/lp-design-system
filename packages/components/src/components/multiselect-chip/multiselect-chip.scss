@@ -1,0 +1,9 @@
+@use '~@liveperson-design-system/tokens/scss/common';
+
+@include common.base-styles;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+import WithIconStoryDescription from '@docs/components/withIconStory';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/Textarea" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-textarea />
+</Preview>
+
+<Preview light>
+  <lp-textarea theme="light" />
+</Preview>
+
+## Text align
+
+<Preview>
+  {['left', 'center', 'right'].map(textAlign => <lp-textarea key={textAlign} textAlign={textAlign} value={textAlign} />)}
+</Preview>
+
+## With icon
+
+<WithIconStoryDescription />
+
+<Preview>
+  <lp-textarea value="With left icon">
+    <lp-add-target-icon slot="icon-left" />
+  </lp-textarea>
+  <lp-textarea value="With right icon">
+    <lp-add-target-icon slot="icon-right" />
+  </lp-textarea>
+  <lp-textarea value="With left and right icon">
+    <lp-add-target-icon slot="icon-left" />
+    <lp-add-target-icon slot="icon-right" />
+  </lp-textarea>
+</Preview>
+
+<Preview light>
+  <lp-textarea theme="light" value="With left icon">
+    <lp-add-target-icon slot="icon-left" />
+  </lp-textarea>
+  <lp-textarea theme="light" value="With right icon">
+    <lp-add-target-icon slot="icon-right" />
+  </lp-textarea>
+  <lp-textarea theme="light" value="With left and right icon">
+    <lp-add-target-icon slot="icon-left" />
+    <lp-add-target-icon slot="icon-right" />
+  </lp-textarea>
+</Preview>
+
+```html
+<lp-textarea value="With left and right icon">
+  <lp-add-target-icon slot="icon-left" />
+  <lp-add-target-icon slot="icon-right" />
+</lp-textarea>
+```

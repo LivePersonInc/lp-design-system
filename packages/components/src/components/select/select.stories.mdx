@@ -1,0 +1,136 @@
+import { Meta } from '@storybook/addon-docs';
+import { styled } from '@storybook/theming';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/Select" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+export const SelectWrap = styled.div`
+  min-height: ${({ wrapHeight = 250 }) => `${wrapHeight}px`};
+`
+
+export const SelectExample = (
+  { wrapHeight = 250, numberOfOptions = 5, numberOfSuggestions, actions, ...props },
+) => (
+  <SelectWrap wrapHeight={wrapHeight}>
+    <lp-select {...props}>
+      {Array(numberOfOptions).fill(null).map((item, index) => (
+        <lp-select-option
+          key={index}
+          slot={index < numberOfSuggestions ? 'suggestions' : undefined}
+          value={index + 1}
+        >
+          Option {index + 1}
+        </lp-select-option>
+      ))}
+      {!!actions && actions.map((action, index) => (
+        <button key={index} slot="actions" type="button">{action}</button>
+      ))}
+    </lp-select>
+  </SelectWrap>
+);
+
+## Basic
+
+<Preview>
+  <SelectExample />
+</Preview>
+
+<Preview light>
+  <SelectExample theme="light" />
+</Preview>
+
+## With scroll
+
+<Preview>
+  <SelectExample numberOfOptions={10} numberOfSuggestions={10} />
+</Preview>
+
+## With suggestions
+
+To put some options to the Suggestions section just add `slot="suggestions"` attribute
+
+<Preview>
+  <SelectExample numberOfSuggestions={2} />
+</Preview>
+
+```html
+<lp-select>
+  <lp-select-option slot="suggestions" value="1">
+    <span>Option 1</span>
+  </lp-select-option>
+  <lp-select-option slot="suggestions" value="2">
+    <span>Option 2</span>
+  </lp-select-option>
+  <lp-select-option value="3">
+    <span>Option 3</span>
+  </lp-select-option>
+  <lp-select-option value="4">
+    <span>Option 4</span>
+  </lp-select-option>
+  <lp-select-option value="5">
+    <span>Option 5</span>
+  </lp-select-option>
+</lp-select>
+```
+
+## With actions
+
+To put some elements to the Actions section just add `slot="actions"` attribute
+
+<Preview>
+  <SelectExample actions={['Action 1']} />
+</Preview>
+
+```html
+<lp-select>
+  <lp-select-option value="1">
+    <span>Option 1</span>
+  </lp-select-option>
+  <lp-select-option value="2">
+    <span>Option 2</span>
+  </lp-select-option>
+  <lp-select-option value="3">
+    <span>Option 3</span>
+  </lp-select-option>
+
+  <button slot="actions" type="button">Action</button>
+</lp-select>
+```
+
+## With suggestions and actions
+
+<Preview>
+  <SelectExample numberOfSuggestions={2} actions={['Action 1']} />
+</Preview>
+
+## With search
+
+<Preview>
+  <SelectExample search />
+</Preview>
+
+## Multiple Selection
+
+<Preview>
+  <SelectExample multiple />
+</Preview>
+
+## With search and multiple Selection
+
+<Preview>
+  <SelectExample search multiple />
+</Preview>
+
+## With Select all
+
+<Preview>
+  <SelectExample with-select-all="Select all" multiple />
+</Preview>

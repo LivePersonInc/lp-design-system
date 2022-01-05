@@ -1,4 +1,7 @@
 const path = require('path');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+
+const tsConfig = require('../tsconfig.json');
 
 module.exports = {
   stories: [
@@ -12,6 +15,7 @@ module.exports = {
       name: '@storybook/addon-docs',
       options: {
         configureJSX: true,
+        transcludeMarkdown: true,
       },
     },
     '@storybook/addon-essentials',
@@ -48,6 +52,19 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       });
     }
+
+    Object.keys(tsConfig.compilerOptions.paths).forEach(key => {
+      config.resolve.alias[key.replace('/*', '')] = (
+        path.resolve(__dirname, `../${tsConfig.compilerOptions.paths[key][0].replace('/*', '')}`)
+      );
+    });
+
+    config.resolve.plugins[1] = new ModuleScopePlugin([
+      path.resolve(__dirname, '../src'),
+      path.resolve(__dirname),
+      path.resolve(__dirname, '../docs'),
+      path.resolve(__dirname, '../packages'),
+    ], [path.resolve(__dirname, '../package.json')]);
 
     return config;
   },

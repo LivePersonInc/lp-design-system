@@ -3,9 +3,9 @@ import { styled } from '@storybook/theming';
 
 import * as spacing from '@liveperson-design-system/tokens/build/js/spacing';
 
-import Preview from '../ui/Preview';
-import TypographyPreview from '../ui/TypographyPreview.mdx';
-import VariablesList from '../ui/VariablesList.mdx';
+import Preview from '@docs/components/Preview';
+import TypographyPreview from '@docs/components/TypographyPreview';
+import VariablesList from '@docs/components/VariablesList.mdx';
 
 <Meta title="Tokens/Spacing" />
 
@@ -23,7 +23,7 @@ Use these spacing units optionally to adjust space between certain units of auto
         border-radius: ${({ theme }) => `${theme.appBorderRadius}px`};
         background: ${({ theme }) => theme.barSelectedColor};
       `,
-      exampleChildren: null,
+      exampleText: null,
     }))}
   />
 </Preview>

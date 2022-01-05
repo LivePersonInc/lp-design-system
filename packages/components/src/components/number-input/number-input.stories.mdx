@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/NumberInput" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-number-input />
+</Preview>
+
+<Preview light>
+  <lp-number-input theme="light" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  {['medium', 'large'].map(size => <lp-number-input key={size} size={size} placeholder={size} value={2} />)}
+</Preview>
+
+## Text aligns
+
+<Preview>
+  {['left', 'center', 'right'].map(textAlign => (
+    <lp-number-input key={textAlign} textAlign={textAlign} placeholder={textAlign} value={3} />
+  ))}
+</Preview>
+
+## With error
+
+<Preview>
+  <lp-number-input error value={4} />
+</Preview>
+
+<Preview light>
+  <lp-number-input theme="light" error value={4} />
+</Preview>
+
+## Min and Max
+
+<Preview>
+  <lp-number-input min="2" max="5" />
+</Preview>
+
+```html
+<lp-number-input min="2" max="5" />
+```
+
+## Step
+
+<Preview>
+  <lp-number-input step="0.5" />
+</Preview>
+
+```html
+<lp-number-input step="0.5" />
+```

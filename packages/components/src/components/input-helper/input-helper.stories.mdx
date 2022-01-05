@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs';
+
+import Preview from '@docs/components/Preview';
+import ReadmeWrap from '@docs/components/ReadmeWrap';
+
+import Readme from './readme.md';
+
+<Meta title="Components/Inputs/InputHelper" />
+
+<ReadmeWrap>
+  <Readme />
+</ReadmeWrap>
+
+## Basic
+
+<Preview>
+  <lp-input-helper text="Input description" />
+</Preview>
+
+<Preview light>
+  <lp-input-helper theme="light" text="Input description" />
+</Preview>
+
+## With error
+
+<Preview>
+  <lp-input-helper text="Error description" error />
+</Preview>
+
+<Preview light>
+  <lp-input-helper theme="light" text="Error description" error />
+</Preview>
+
+## Disabled
+
+<Preview>
+  <lp-input-helper text="Disabled input" disabled />
+</Preview>
+
+<Preview light>
+  <lp-input-helper theme="light" text="Disabled input" disabled />
+</Preview>

@@ -1,16 +1,16 @@
-import React, { useCallback, useContext } from 'react';
-import { EventContext } from 'direflow-component';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 
-import { Theme } from '../../common/types';
-import Styled from '../../common/Styled';
-
-import styles from './Radio.scss';
+import { Theme } from '../../utils/types';
 
 export type RadioSizes = 'default' | 'large'
 export type RadioLabelPositions = 'left' | 'right'
 
-export type RadioCustomProps = {
+export type RadioProps = {
   theme?: Theme
+
+  name: string
+  value: string
+
   size?: RadioSizes
 
   /**
@@ -20,43 +20,68 @@ export type RadioCustomProps = {
 
   labelPosition?: RadioLabelPositions
   error?: boolean
+  checked?: boolean
+  disabled?: boolean
+  readOnly?: boolean
 }
 
-export type RadioProps = Omit<JSX.IntrinsicElements['input'], 'size'> & RadioCustomProps
+@Component({
+  tag: 'lp-radio',
+  styleUrl: 'radio.scss',
+  shadow: true,
+})
+export class Radio {
+  static defaultProps: Partial<RadioProps> = {
+    theme: 'dark',
+    size: 'default',
+    labelPosition: 'right',
+    error: false,
+    checked: false,
+    disabled: false,
+    readOnly: false,
+  };
 
-export type RadioComponent = React.FC<RadioProps>
+  @Prop() theme: Theme;
 
-const Radio: RadioComponent = ({ theme, size, label, labelPosition, error, children, ...props }) => {
-  const dispatch = useContext(EventContext);
+  @Prop({ reflect: true }) name!: string;
+  @Prop({ reflect: true }) value!: string;
 
-  const radioChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-    dispatch(new CustomEvent<HTMLInputElement>(e.type, { detail: e.target }));
-  }, [dispatch]);
+  @Prop() size: RadioSizes;
 
-  return (
-    <Styled styles={styles}>
+  /**
+   * Can be provided as a child element
+   */
+  @Prop() label: string;
+
+  @Prop() labelPosition: RadioLabelPositions;
+  @Prop() error: boolean;
+  @Prop() checked: boolean;
+  @Prop() disabled: boolean;
+  @Prop() readOnly: boolean;
+
+  @Event({ eventName: 'change' }) changeEvent: EventEmitter;
+
+  private inputChangeHandler = (): void => {
+    this.changeEvent.emit();
+  };
+
+  render() {
+    return (
       <label>
-        <input {...props} type="radio" onChange={radioChangeHandler} />
+        <input
+          type="radio"
+          name={this.name}
+          value={this.value}
+          checked={this.checked}
+          onChange={this.inputChangeHandler}
+        />
 
-        <div className="label">
-          <div className="check-box" />
+        <div class="label">
+          <div class="check-box" />
 
-          <slot>{label}</slot>
+          <slot>{this.label}</slot>
         </div>
       </label>
-    </Styled>
-  );
-};
-
-Radio.defaultProps = {
-  theme: 'dark',
-  size: 'default',
-  label: '',
-  labelPosition: 'right',
-  error: false,
-  checked: false,
-  disabled: false,
-  readOnly: false,
-};
-
-export default Radio
+    );
+  }
+}

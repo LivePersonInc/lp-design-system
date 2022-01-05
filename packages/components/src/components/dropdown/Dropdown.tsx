@@ -1,190 +1,183 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext } from 'direflow-component';
-import classNames from 'classnames';
+import { Component, Prop, h, State, Event, EventEmitter, Element, Host, Watch, Method } from '@stencil/core';
 
-import { useHostElement } from '../../common/hooks';
-import Styled from '../../common/Styled';
-
-import styles from './Dropdown.scss';
+import { Query, SlotElement } from '../../utils/decorators';
 
 export type DropdownContentPlacements = 'auto' | 'top' | 'bottom' | 'left' | 'right'
 
-export type DropdownProps = JSX.IntrinsicElements['div'] & {
-  open?: boolean
-  contentPlacement?: DropdownContentPlacements
-  parentSelector?: string
-  parentOffset?: string | number
-  closeOnContentClick?: boolean
-  closeOnBlur?: boolean
-  closeOnEscape?: boolean
+enum ShowStates {
+  top = 'top',
+  bottom = 'bottom',
+  left = 'left',
+  right = 'right',
 }
 
-export type DropdownComponent = React.FC<DropdownProps>
+@Component({
+  tag: 'lp-dropdown',
+  styleUrl: 'dropdown.scss',
+  shadow: true,
+})
+export class Dropdown {
 
-const Dropdown: DropdownComponent = (
-  { open, contentPlacement, parentSelector, parentOffset, closeOnContentClick, closeOnBlur, closeOnEscape }
-) => {
-  const toggleSlotElRef = useRef<HTMLSlotElement>(null);
-  const contentSlotElRef = useRef<HTMLSlotElement>(null);
+  @Element() hostEl: HTMLElement;
 
-  const [isOpen, setIsOpen] = useState<boolean>(!!open);
-  const [show, setShow] = useState<'top' | 'bottom' | 'left' | 'right'>();
+  @SlotElement('toggle') toggleSlotEl!: HTMLSlotElement;
 
-  const dispatch = useContext(EventContext);
+  @Query('#content') contentEl: HTMLDivElement;
 
-  const { getHostElement, hostHasAttribute, hostGetAttribute } = useHostElement(toggleSlotElRef);
+  @Prop() open: boolean;
+  @Prop() contentPlacement: DropdownContentPlacements = 'auto';
+  @Prop() parentSelector: string;
+  @Prop() parentOffset: string | number = 15;
+  @Prop() closeOnContentClick: boolean = true;
+  @Prop() closeOnBlur: boolean = true;
+  @Prop() closeOnEscape: boolean = true;
 
-  const dropdownOpen = useCallback((): void => {
-    if (!hostGetAttribute('open')) {
-      setIsOpen(true);
-    }
+  @State() isOpen: boolean = false;
+  @State() show: ShowStates;
 
-    dispatch(new CustomEvent('dropdown-open', { composed: true }));
-  }, [hostGetAttribute, dispatch]);
-  const dropdownClose = useCallback((): void => {
-    if (!hostGetAttribute('open')) {
-      setIsOpen(false);
-    }
+  @Watch('open')
+  openPropChangeHandler(newValue: boolean) {
+    this.isOpen = newValue;
+  }
 
-    dispatch(new CustomEvent('dropdown-close', { composed: true }));
-  }, [hostGetAttribute, dispatch]);
+  @Watch('isOpen')
+  isOpenStateChangeHandler() {
+    if (this.isOpen) {
+      window.addEventListener<'click'>('click', this.windowClickHandler);
 
-  const toggleClickHandler = useCallback((): void => {
-    if (isOpen) {
-      dropdownClose();
-    } else {
-      dropdownOpen();
-    }
-  }, [isOpen, dropdownClose, dropdownOpen]);
-
-  const contentClickHandler = useCallback((): void => {
-    if (closeOnContentClick) {
-      dropdownClose();
-    }
-  }, [closeOnContentClick, dropdownClose]);
-
-  const windowClickHandler = useCallback((e: MouseEvent): void => {
-    if (!getHostElement()?.contains(e.target as Node)) {
-      if (closeOnBlur) {
-        dropdownClose();
+      if (this.closeOnEscape) {
+        window.addEventListener<'keydown'>('keydown', this.windowKeydownHandler);
       }
-
-      dispatch(new CustomEvent('dropdown-click-outside', { detail: e.target, composed: true }));
-    }
-  }, [getHostElement, closeOnBlur, dropdownClose, dispatch]);
-
-  const windowKeydownHandler = useCallback((e: KeyboardEvent): void => {
-    if (e.code === 'Escape') {
-      dropdownClose();
-    }
-  }, [dropdownClose]);
-
-  useEffect(() => {
-    if (hostHasAttribute('open')) {
-      setIsOpen(!!open);
-    }
-  }, [open, hostHasAttribute]);
-
-  useEffect(() => {
-    toggleSlotElRef.current?.addEventListener<'click'>('click', toggleClickHandler);
-  }, [toggleClickHandler]);
-
-  useEffect(() => {
-    if (isOpen) {
-      contentSlotElRef.current?.addEventListener<'click'>('click', contentClickHandler);
     } else {
-      contentSlotElRef.current?.removeEventListener<'click'>('click', contentClickHandler);
+      window.removeEventListener<'click'>('click', this.windowClickHandler);
+
+      window.removeEventListener<'keydown'>('keydown', this.windowKeydownHandler);
+
+      this.show = undefined;
     }
-  }, [isOpen, contentClickHandler]);
+  }
 
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener<'click'>('click', windowClickHandler);
-    } else {
-      window.removeEventListener<'click'>('click', windowClickHandler);
-    }
-  }, [isOpen, windowClickHandler]);
+  @Event({ eventName: 'open', composed: true }) openEvent: EventEmitter;
+  @Event({ eventName: 'close', composed: true }) closeEvent: EventEmitter;
+  @Event({ eventName: 'clickOutside', bubbles: true, cancelable: true, composed: true }) clickOutsideEvent: EventEmitter;
 
-  useEffect(() => {
-    if (closeOnEscape && isOpen) {
-      window.addEventListener<'keydown'>('keydown', windowKeydownHandler);
-    } else {
-      window.removeEventListener<'keydown'>('keydown', windowKeydownHandler);
-    }
-  }, [closeOnEscape, isOpen, windowKeydownHandler]);
+  componentWillLoad() {
+    this.isOpen = this.open;
+  }
 
-  useEffect(() => {
-    if (isOpen) {
-      if (contentPlacement === undefined || contentPlacement === 'auto') {
-        if (contentSlotElRef.current) {
-          const { bottom, right } = contentSlotElRef.current.getBoundingClientRect();
+  componentDidRender() {
+    if (this.contentEl) {
+      if (this.isOpen && !this.show) {
+        setTimeout(() => {
+          this.contentEl.addEventListener('click', this.contentClickHandler);
 
-          let parentRight = window.innerWidth;
-          let parentBottom = window.innerHeight;
+          if (this.contentPlacement === 'auto') {
+            const { bottom, right } = this.contentEl.getBoundingClientRect();
 
-          if (parentSelector) {
-            const parentElement = getHostElement(contentSlotElRef)?.closest(parentSelector);
+            let parentRight = window.innerWidth;
+            let parentBottom = window.innerHeight;
 
-            if (parentElement) {
-              const parentBounding = parentElement.getBoundingClientRect();
+            if (this.parentSelector) {
+              const parentElement = this.hostEl.closest(this.parentSelector);
 
-              parentRight = parentBounding.right;
-              parentBottom = parentBounding.bottom;
+              if (parentElement) {
+                const parentBounding = parentElement.getBoundingClientRect();
+
+                parentRight = parentBounding.right;
+                parentBottom = parentBounding.bottom;
+              }
             }
-          }
 
-          const offset = (parentOffset !== undefined ? +parentOffset : 15);
+            const offset = +this.parentOffset;
 
-          if (bottom > parentBottom - offset) {
-            setShow('top');
+            if (bottom > parentBottom - offset) {
+              this.show = ShowStates.top;
+            } else {
+              this.show = ShowStates.bottom;
+            }
+
+            if (right > parentRight - offset) {
+              this.contentEl.style.transform = `translateX(${parentRight - right - offset}px)`;
+            }
           } else {
-            setShow('bottom');
+            this.show = (this.contentPlacement as ShowStates);
           }
-
-          if (right > parentRight - offset) {
-            contentSlotElRef.current.style.transform = `translateX(${parentRight - right - offset}px)`;
-          }
-        }
+        });
       } else {
-        setShow(contentPlacement);
+        this.contentEl.removeEventListener('click', this.contentClickHandler);
       }
-    } else {
-      setShow(undefined);
     }
-  }, [isOpen, contentPlacement, getHostElement, parentOffset, parentSelector]);
+  }
 
-  return (
-    <Styled styles={styles}>
-      <slot
-        ref={toggleSlotElRef}
-        name="toggle"
-        // @ts-ignore
-        part={classNames('toggle', { open: isOpen }, show)}
-      />
+  componentDidLoad() {
+    this.toggleSlotEl.addEventListener('click', this.toggleClickHandler);
+  }
 
-      {isOpen && (
-        <slot
-          ref={contentSlotElRef}
-          className={classNames({
-            show: show !== undefined,
-          }, show)}
-          name="content"
-          // @ts-ignore
-          part={classNames('content', { open: isOpen }, show)}
-        />
-      )}
-    </Styled>
-  );
-};
+  @Method()
+  async dropdownOpen() {
+    if (this.open === undefined) {
+      this.isOpen = true;
+    }
 
-Dropdown.defaultProps = {
-  open: false,
-  contentPlacement: 'auto',
-  parentSelector: '',
-  parentOffset: 15,
-  closeOnContentClick: true,
-  closeOnBlur: true,
-  closeOnEscape: true,
-};
+    this.openEvent.emit();
+  }
 
-export default Dropdown
+  @Method()
+  async dropdownClose() {
+    if (this.open === undefined) {
+      this.isOpen = false;
+    }
+
+    this.closeEvent.emit();
+  }
+
+  private toggleClickHandler = (): void => {
+    if (this.isOpen) {
+      this.dropdownClose();
+    } else {
+      this.dropdownOpen();
+    }
+  }
+
+  private contentClickHandler = (): void => {
+    if (this.closeOnContentClick) {
+      this.dropdownClose();
+    }
+  }
+
+  private windowClickHandler = (e): void => {
+    if (!e.path.includes(this.hostEl)) {
+      if (this.closeOnBlur) {
+        this.dropdownClose();
+      }
+
+      this.clickOutsideEvent.emit(e);
+    }
+  }
+
+  private windowKeydownHandler = (e: KeyboardEvent): void => {
+    if (e.code === 'Escape') {
+      this.dropdownClose();
+    }
+  }
+
+  render() {
+    return (
+      <Host
+        class={{
+          open: this.isOpen,
+          show: !!this.show,
+          [this.show]: !!this.show,
+        }}
+      >
+        <slot name="toggle" />
+
+        {this.isOpen && (
+          <div id="content" part="content">
+            <slot name="content" />
+          </div>
+        )}
+      </Host>
+    );
+  }
+}

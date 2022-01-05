@@ -1,111 +1,60 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { EventContext } from 'direflow-component';
+import { Component, Prop, h, Event, EventEmitter, Watch, Element } from '@stencil/core';
 
-import { Theme } from '../../common/types';
-import { useHostElement } from '../../common/hooks';
-import Styled from '../../common/Styled';
-
-import styles from './Checkbox.scss';
+import { Theme } from '../../utils/types';
+import { Query } from '../../utils/decorators';
 
 export type CheckboxLabelPositions = 'left' | 'right'
 
-export type CheckboxCustomProps = {
-  theme?: Theme
+@Component({
+  tag: 'lp-checkbox',
+  styleUrl: 'checkbox.scss',
+  shadow: true,
+})
+export class Checkbox {
+
+  @Element() hostEl: HTMLElement;
+
+  @Query('input') inputEl: HTMLInputElement;
+
+  @Prop() theme: Theme;
 
   /**
    * Can be provided as a child element
    */
-  label?: string
+  @Prop() label: string;
 
-  labelPosition?: CheckboxLabelPositions
-  error?: boolean
-  indeterminate?: boolean
-}
+  @Prop() labelPosition: CheckboxLabelPositions;
+  @Prop() error: boolean;
 
-export type CheckboxProps = JSX.IntrinsicElements['input'] & CheckboxCustomProps
+  @Prop({ mutable: true }) checked: boolean;
+  @Prop({ mutable: true }) indeterminate: boolean;
 
-export type CheckboxComponent = React.FC<CheckboxProps>
+  @Watch('indeterminate')
+  indeterminatePropChangeHandler(newValue: boolean) {
+    this.inputEl.indeterminate = newValue;
+  }
 
-const Checkbox: CheckboxComponent = (
-  {
-    theme,
-    label,
-    labelPosition,
-    error,
-    checked: checkedProp,
-    defaultChecked,
-    indeterminate: indeterminateProp,
-    children,
-    ...props
-  },
-) => {
-  const inputElRef = useRef<HTMLInputElement>(null);
+  @Event({ eventName: 'change', composed: true }) changeEvent?: EventEmitter;
 
-  const [checked, setChecked] = useState<boolean>(!!(defaultChecked || checkedProp));
-  const [indeterminate, setIndeterminate] = useState<boolean>(!!indeterminateProp);
+  private checkboxChangeHandler = (e): void => {
+    this.checked = e.target.checked;
 
-  const dispatch = useContext(EventContext);
+    this.changeEvent.emit();
+  };
 
-  const { hostHasAttribute } = useHostElement(inputElRef);
-
-  const checkboxChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!hostHasAttribute('checked')) {
-      setChecked(e.target.checked);
-
-      setIndeterminate(false);
-    }
-
-    dispatch(new CustomEvent<HTMLInputElement>(e.type, { detail: e.target }));
-  }, [hostHasAttribute, dispatch]);
-
-  useEffect(() => {
-    if (hostHasAttribute('checked')) {
-      setChecked(!!checkedProp);
-    }
-  }, [hostHasAttribute, checkedProp]);
-
-  useEffect(() => {
-    setIndeterminate(!!indeterminateProp);
-  }, [indeterminateProp]);
-
-  useEffect(() => {
-    if (inputElRef.current) {
-      inputElRef.current.indeterminate = indeterminate;
-    }
-  }, [indeterminate]);
-
-  return (
-    <Styled styles={styles}>
+  render() {
+    return (
       <label>
-        <input
-          {...props}
-          ref={inputElRef}
-          type="checkbox"
-          checked={checked}
-          onChange={checkboxChangeHandler}
-        />
+        <input type="checkbox" value="1" checked={this.checked} onChange={this.checkboxChangeHandler} />
 
-        <div className="label">
-          <svg className="check-box">
-            {checked && <path d={indeterminate ? 'M5 8H11' : 'M5 8.15805L7.28781 10.3821L11 6'} />}
+        <div id="label">
+          <svg id="check-box">
+            <path d={this.indeterminate ? 'M5 8H11' : 'M5 8.15805L7.28781 10.3821L11 6'} />
           </svg>
 
-          <slot>{label}</slot>
+          <slot>{this.label}</slot>
         </div>
       </label>
-    </Styled>
-  );
-};
-
-Checkbox.defaultProps = {
-  theme: 'dark',
-  label: '',
-  labelPosition: 'right',
-  error: false,
-  checked: false,
-  indeterminate: false,
-  disabled: false,
-  readOnly: false,
-};
-
-export default Checkbox
+    );
+  }
+}

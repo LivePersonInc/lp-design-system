@@ -39,6 +39,9 @@
   "files": [
     "dist/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf dist",
@@ -70,5 +73,5 @@
       "dist"
     ]
   },
-  "gitHead": "f37c969c6a221ba6374b695e65c0f3beec93d8bb"
+  "gitHead": "c1c4098d8b4f04f3df914160a7e020a747b218b6"
 }

@@ -1,4 +1,4 @@
-# LivePerson Design System Components
+# LivePerson Design System Web Components
 
 Checkout the [demos](https://livepersoninc.github.io/lp-design-system/?path=/story/components)
 
@@ -11,40 +11,57 @@ You can install LPDS components with NPM or Yarn.
 
 ## How to use
 
-Before using this package you have to add the following script inside `head` tag
+### Project with a Framework
 
-```html
-<script src="https://unpkg.com/@liveperson-design-system/components/vendor.js"></script>
+First, you have to define custom elements. To do this you can import `defineCustomElements` function from `@liveperson-design-system/components/loader`
+
+```javascript
+import { defineCustomElements } from '@liveperson-design-system/components/loader';
+
+defineCustomElements();
 ```
 
-You can use any LPDS component either in a browser or with a front-end framework
+If you need additional Polyfills use `applyPolyfills` function
 
-#### Browser
+```javascript
+import { applyPolyfills, defineCustomElements } from '@liveperson-design-system/components/loader';
+
+applyPolyfills().then(() => {
+  defineCustomElements();
+});
+```
+
+### Project without a Framework
+
+If you're using a simple HTML page, you can add your component via a script tag.
+For example, if we published a component to npm, we could load the component through the [unpkg](https://unpkg.com/) CDN like this:
+
 ```html
 <html>
   <head>
-    <script src="https://unpkg.com/@liveperson-design-system/components/button.js" />
+    <script src="https://unpkg.com/@liveperson-design-system/components"></script>
   </head>
-
   <body>
-    <lp-button labal="Button" />
+    <lp-button>Button</lp-button>
   </body>
 </html>
 ```
 
-#### Framework (React)
-```jsx
-import React from 'react';
+Alternatively, if you wanted to take advantage of ES Modules, you could include the components using an import statement.
+Note that type="module" only works in modern browsers (not available in IE11 or Edge 12-18).
 
-import '@liveperson-design-system/components/button';
-
-const App = () => {
-  return (
-    <lp-button label="Button" />
-  );
-};
-
-export default App
+```html
+<html>
+  <head>
+    <script type="module">
+      import { defineCustomElements } from 'https://unpkg.com/@liveperson-design-system/components/loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+  <body>
+    <lp-button>Button</lp-button>
+  </body>
+</html>
 ```
 
 ## License

@@ -1,13 +1,44 @@
 {
   "name": "@liveperson-design-system/react-components",
-  "sideEffects": false,
   "version": "0.0.1",
-  "private": true,
-  "description": "React specific wrapper for component-library",
+  "description": "The company design system components for LivePerson",
+  "keywords": [
+    "design-system",
+    "designsystem",
+    "live-person",
+    "liveperson",
+    "react"
+  ],
+  "contributors": [
+    {
+      "name": "Mykhailo Riabokon",
+      "email": "mriabokon@liveperson.com"
+    },
+    {
+      "name": "Itay Haephrati",
+      "email": "ihaephrati@liveperson.com"
+    },
+    {
+      "name": "Charlie Wu",
+      "email": "chwu@liveperson.com"
+    }
+  ],
+  "homepage": "https://livepersoninc.github.io/lp-design-system/?path=/story/components",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/ionic.git"
+    "url": "git+https://github.com/LivePersonInc/lp-design-system.git",
+    "directory": "packages/react-components"
   },
+  "bugs": {
+    "url": "https://github.com/LivePersonInc/lp-design-system/issues"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "npm run clean && npm run compile",
     "clean": "rm -rf dist",
@@ -15,12 +46,6 @@
     "tsc": "tsc -p .",
     "rollup": "rollup -c"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/"
-  ],
   "devDependencies": {
     "@types/jest": "23.3.9",
     "@types/node": "^15.12.2",

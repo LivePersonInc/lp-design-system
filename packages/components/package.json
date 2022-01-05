@@ -50,9 +50,7 @@
     "start": "stencil build --dev --watch --serve",
     "watch": "stencil build --docs-readme --dev --watch",
     "build": "stencil build",
-    "generate": "stencil generate",
-    "prepublishOnly": "node ./scripts/prepublishOnly.js",
-    "postpublish": "node ./scripts/postpublish.js"
+    "generate": "stencil generate"
   },
   "dependencies": {
     "@liveperson-design-system/icons": "^0.3.25",

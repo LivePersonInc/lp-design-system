@@ -1,95 +1,39 @@
 import { Meta } from '@storybook/addon-docs';
 import { TabsState } from '@storybook/components';
+import { styled } from '@storybook/theming';
+
+import TokensReadme from '../packages/tokens/README.md';
+import IconsReadme from '../packages/icons/README.md';
+import ComponentsReadme from '../packages/components/README.md';
+import ReactComponentsReadme from '../packages/react-components/README.md';
 
 <Meta title="Docs/Quick Start" />
 
 # Quick Start
 
-## Installing
+export const ReadmeWrap = styled.div`
+  margin-top: ${({ theme }) => `${theme.layoutMargin * 2}px`};
+`;
 
 <TabsState>
   <div id="tokens" title="Tokens">
-
-```shell
-yarn add @liveperson-design-system/tokens
-```
-
+    <ReadmeWrap>
+      <TokensReadme />
+    </ReadmeWrap>
   </div>
   <div id="icons" title="Icons">
-
-```shell
-yarn add @liveperson-design-system/icons
-```
-
+    <ReadmeWrap>
+      <IconsReadme />
+    </ReadmeWrap>
   </div>
   <div id="components" title="Components">
-
-```shell
-yarn add @liveperson-design-system/components
-```
-
+    <ReadmeWrap>
+      <ComponentsReadme />
+    </ReadmeWrap>
   </div>
-</TabsState>
-
-## How to use
-
-### Setup
-
-Before using `@liveperson-design-system/icons` or `@liveperson-design-system/components`,
-you have to add the following script inside `head` tag
-
-<TabsState>
-  <div id="icons" title="Icons">
-
-```html
-<script src="https://unpkg.com/@liveperson-design-system/icons/vendor.js"></script>
-```
-
-  </div>
-  <div id="components" title="Components">
-
-```html
-<script src="https://unpkg.com/@liveperson-design-system/components/vendor.js"></script>
-```
-
-  </div>
-</TabsState>
-
-### Usage
-
-You can use any LPDS component either in a browser or with a front-end framework
-
-<TabsState>
-  <div id="browser" title="Browser">
-
-```html
-<html>
-  <head>
-    <script src="https://unpkg.com/@liveperson-design-system/components/button.js" />
-  </head>
-
-  <body>
-    <lp-button labal="Button" />
-  </body>
-</html>
-```
-
-  </div>
-  <div id="framework" title="Framework (React)">
-
-```jsx
-import React from 'react';
-
-import '@liveperson-design-system/components/button';
-
-const App = () => {
-  return (
-    <lp-button label="Button" />
-  );
-};
-
-export default App
-```
-
+  <div id="react-components" title="React Components">
+    <ReadmeWrap>
+      <ReactComponentsReadme />
+    </ReadmeWrap>
   </div>
 </TabsState>

@@ -1,4 +1,4 @@
-# LivePerson Design System Components
+# LivePerson Design System React Components
 
 Checkout the [demos](https://livepersoninc.github.io/lp-design-system/?path=/story/components)
 

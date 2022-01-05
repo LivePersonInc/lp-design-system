@@ -41,7 +41,7 @@
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/components/components.esm.js",
+  "unpkg": "dist/components/components.js",
   "files": [
     "dist/",
     "loader/"

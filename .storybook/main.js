@@ -21,7 +21,7 @@ module.exports = {
     '@storybook/addon-essentials',
   ],
   webpackFinal: async config => {
-    const oneOfRuleIndex = config.module.rules.findIndex(item => item.oneOf);
+    const oneOfRuleIndex = config.module.rules.findIndex(({ oneOf }) => oneOf);
 
     if (oneOfRuleIndex !== -1) {
       const tsRuleIndex = config.module.rules[oneOfRuleIndex].oneOf.findIndex(rule => '.ts'.match(rule.test));

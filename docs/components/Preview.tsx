@@ -2,7 +2,7 @@ import React from 'react';
 import { Canvas, SourceState } from '@storybook/addon-docs';
 import { styled } from '@storybook/theming';
 
-import { variables as colorsVariables } from '@liveperson-design-system/tokens/build/js/colors';
+import { variables as colorsVariables } from '@lpds/tokens/build/js/colors';
 
 type CanvasWrapProps = {
   bg?: string

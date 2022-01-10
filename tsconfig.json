@@ -20,7 +20,10 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@docs/*": ["docs/*"]
+      "@docs/*": ["docs/*"],
+      "@lpds/components/*": ["packages/components/*"],
+      "@lpds/icons/*": ["packages/icons/*"],
+      "@lpds/tokens/*": ["packages/tokens/*"]
     }
   },
   "include": [

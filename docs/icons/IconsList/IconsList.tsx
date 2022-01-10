@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { styled } from '@storybook/theming';
 
-import { icons } from '@liveperson-design-system/icons/src/components/icons';
+import { icons } from '@lpds/icons/src/components/icons';
 
-import '@liveperson-design-system/icons/src/components';
+import '@lpds/icons/src/components';
 
 import { IconPropsWithName, IconsNames } from './';
 

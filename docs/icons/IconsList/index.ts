@@ -1,5 +1,5 @@
-import { Icons } from '@liveperson-design-system/icons/src/components/icons';
-import { IconProps } from '@liveperson-design-system/icons/src/components/Icon';
+import { Icons } from '@lpds/icons/src/components/icons';
+import { IconProps } from '@lpds/icons/src/components/Icon';
 
 import IconsList from './IconsList';
 

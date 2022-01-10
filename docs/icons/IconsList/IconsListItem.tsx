@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@storybook/theming'
 import classNames from 'classnames';
 
-import { variables as colorsVariables } from '@liveperson-design-system/tokens/build/js/colors';
+import { variables as colorsVariables } from '@lpds/tokens/build/js/colors';
 
 import { IconsListProps } from './IconsList';
 

@@ -1,4 +1,4 @@
-import { defineCustomElements } from '@liveperson-design-system/components/loader';
+import { defineCustomElements } from '@lpds/components/loader';
 
 import theme from './theme';
 

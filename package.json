@@ -44,9 +44,6 @@
     "release": "np --yolo --no-publish --no-yarn"
   },
   "devDependencies": {
-    "@liveperson-design-system/components": "workspaces:*",
-    "@liveperson-design-system/icons": "workspaces:*",
-    "@liveperson-design-system/tokens": "workspaces:*",
     "@storybook/addon-actions": "^6.4.7",
     "@storybook/addon-docs": "^6.4.7",
     "@storybook/addon-essentials": "^6.4.7",

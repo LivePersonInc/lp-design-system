@@ -102,8 +102,5 @@
       "direflow-scripts/direflow-jest.config.js"
     ]
   },
-  "packageManager": "yarn@2.4.3",
-  "dependencies": {
-    "classnames": "^2.3.1"
-  }
+  "packageManager": "yarn@3.1.1"
 }

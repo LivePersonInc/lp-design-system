@@ -52,7 +52,7 @@
   "scripts": {
     "start": "stencil build --dev --watch --serve",
     "watch": "stencil build --docs-readme --dev --watch",
-    "build": "stencil build",
+    "build": "stencil build && node scripts/after-build.js",
     "generate": "stencil generate"
   },
   "dependencies": {

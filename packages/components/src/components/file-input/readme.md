@@ -32,21 +32,6 @@ import '@liveperson-design-system/components/file-input';
 | `"uploading-progress-bar"` |             |
 
 
-## Dependencies
-
-### Depends on
-
-- [lp-multiselect-chip](../multiselect-chip)
-- [lp-chip](../multiselect-chip)
-
-### Graph
-```mermaid
-graph TD;
-  lp-file-input --> lp-multiselect-chip
-  lp-file-input --> lp-chip
-  style lp-file-input fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

@@ -59,19 +59,6 @@ Type: `Promise<void>`
 | `"content"` |             |
 
 
-## Dependencies
-
-### Used by
-
- - [lp-select](../select)
-
-### Graph
-```mermaid
-graph TD;
-  lp-select --> lp-dropdown
-  style lp-dropdown fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

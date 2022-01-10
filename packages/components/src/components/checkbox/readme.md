@@ -26,19 +26,6 @@ import '@liveperson-design-system/components/checkbox';
 | `change` |             | `CustomEvent<any>` |
 
 
-## Dependencies
-
-### Used by
-
- - [lp-select](../select)
-
-### Graph
-```mermaid
-graph TD;
-  lp-select --> lp-checkbox
-  style lp-checkbox fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { styled } from '@storybook/theming'
-import classNames from 'classnames';
 
 import { variables as colorsVariables } from '@lpds/tokens/build/js/colors';
 
@@ -45,7 +44,7 @@ const ListItemName = styled.div`
 `;
 
 const IconListItem: IconListItemComponent = ({ name, selected, onClick, ...props }) => (
-  <ListItem className={classNames({ selected })} onClick={onClick}>
+  <ListItem className={selected ? 'selected' : undefined} onClick={onClick}>
     <ListItemIconWrap>
       {React.createElement(`lp-${name}-icon`, props)}
     </ListItemIconWrap>

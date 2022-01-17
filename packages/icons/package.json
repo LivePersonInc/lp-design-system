@@ -35,64 +35,41 @@
   "bugs": {
     "url": "https://github.com/LivePersonInc/lp-design-system/issues"
   },
-  "main": "vendor.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "unpkg": "dist/index.js",
   "files": [
-    "build",
-    "README.md"
+    "dist/"
   ],
   "publishConfig": {
-    "directory": "build"
+    "access": "public"
   },
   "scripts": {
-    "build": "direflow-scripts build && node ./scripts/after-build.js",
-    "prepublishOnly": "node ./scripts/prepublishOnly.js",
-    "postpublish": "node ./scripts/postpublish.js"
+    "build": "rimraf dist && webpack --progress && build:types",
+    "build:types": "tsc src/**/*.ts --experimentalDecorators --declaration --emitDeclarationOnly --outFile dist/types/index.d.ts",
+    "generate-icons-metadata": "node scripts/generate-icons-metadata.js"
   },
   "dependencies": {
     "@liveperson-design-system/tokens": "^0.8.5",
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.3",
-    "@types/react-dom": "16.9.1",
-    "direflow-component": "3.5.5",
-    "direflow-scripts": "3.5.5",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-scripts": "3.4.1"
+    "lit": "^2.1.1"
   },
   "devDependencies": {
-    "@types/jest": "24.0.18",
-    "@types/react-test-renderer": "16.9.1",
-    "jest-environment-jsdom-fourteen": "0.1.0",
-    "react-app-rewired": "2.1.3",
-    "react-test-renderer": "16.9.0",
-    "to-string-loader": "^1.1.6",
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.4.0",
+    "extract-loader": "^5.1.0",
+    "html-loader": "^3.1.0",
+    "lit-scss-loader": "^1.1.0",
+    "lodash": "^4.17.21",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^12.2.0",
+    "svg-inline-loader": "^0.8.2",
     "ts-loader": "^6.2.2",
-    "tslint": "5.20.0",
-    "tslint-config-airbnb": "5.11.2",
-    "tslint-react": "4.1.0",
-    "typescript": "^3.9.3",
-    "webpack-cli": "^3.3.11"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "direflow-scripts/direflow-jest.config.js"
-    ]
-  },
-  "config-overrides-path": "direflow-webpack.js",
-  "gitHead": "c1c4098d8b4f04f3df914160a7e020a747b218b6"
+    "typescript": "^3.9.10",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1"
+  }
 }

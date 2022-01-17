@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "module": "esnext",
+    "target": "es2017",
+    "module": "es2015",
     "moduleResolution": "node",
-    "lib": ["es2019", "dom"],
-    "skipLibCheck": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
+    "lib": ["es2017", "dom", "dom.iterable"],
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "useDefineForClassFields": false,
     "outDir": "dist/types"
   },

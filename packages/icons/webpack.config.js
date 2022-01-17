@@ -45,7 +45,12 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        use: ['to-string-loader', 'css-loader', 'sass-loader'],
+        use: [{
+          loader: 'lit-scss-loader',
+          options: {
+            minify: true,
+          },
+        }, 'extract-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.svg$/,

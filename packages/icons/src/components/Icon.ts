@@ -1,4 +1,4 @@
-import { css, html, LitElement, unsafeCSS } from 'lit';
+import { html, LitElement } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { property } from 'lit/decorators.js';
 
@@ -9,9 +9,7 @@ export type IconSize = 'small' | 'medium' | 'large'
 export type IconColor = 'dark' | 'white'
 
 abstract class Icon extends LitElement {
-  static styles = css`
-    ${unsafeCSS(styles)}
-  `;
+  static styles = styles;
 
   @property() type: IconType = 'solid';
   @property() size: IconSize = 'small';

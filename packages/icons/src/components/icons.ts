@@ -653,4 +653,4 @@ export const icons: Icons[] = [
   'xls',
   'zoom-in',
   'zoom-out',
-]
+];

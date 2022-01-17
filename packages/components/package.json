@@ -56,7 +56,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@liveperson-design-system/icons": "^0.4.0-alpha.0",
+    "@liveperson-design-system/icons": "^0.4.1-alpha.0",
     "@liveperson-design-system/tokens": "^0.8.6",
     "@stencil/core": "^2.7.0"
   },

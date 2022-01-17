@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 
 import { icons } from '@lpds/icons/src/components/icons';
 
-import '@lpds/icons/src/components';
+import '@lpds/icons';
 
 import { IconPropsWithName, IconsNames } from './';
 

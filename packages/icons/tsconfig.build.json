@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "@liveperson-design-system/icons": ["../build/*"]
-    }
-  }
-}

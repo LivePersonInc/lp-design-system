@@ -46,7 +46,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && webpack --progress && build:types",
+    "build": "rimraf dist && webpack --progress && yarn build:types",
     "build:types": "tsc src/**/*.ts --experimentalDecorators --declaration --emitDeclarationOnly --outFile dist/types/index.d.ts",
     "generate-icons-metadata": "node scripts/generate-icons-metadata.js"
   },

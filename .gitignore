@@ -12,6 +12,8 @@ node_modules
 package-lock.json
 yarn.lock
 
+lerna-debug.log
+
 .pnp.*
 .yarn/*
 !.yarn/patches

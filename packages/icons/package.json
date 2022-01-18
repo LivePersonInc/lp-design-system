@@ -43,9 +43,7 @@
     "dist/"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./*": "./dist/*.js",
-    "./package.json": "./package.json"
+    "./*": "./dist/*.js"
   },
   "publishConfig": {
     "access": "public"

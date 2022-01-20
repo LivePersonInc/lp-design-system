@@ -1,6 +1,6 @@
 import { ArgType, ArgTypes } from '@storybook/addons/dist/ts3.9/types';
 // @ts-ignore
-import Description from './Description.mdx';
+import Description from './Description.md';
 
 import { icons } from './icons';
 

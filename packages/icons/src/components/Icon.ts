@@ -8,12 +8,18 @@ export type IconType = 'solid' | 'outline'
 export type IconSize = 'small' | 'medium' | 'large'
 export type IconColor = 'dark' | 'white'
 
+export type IconProps = {
+  type: IconType
+  size: IconSize
+  color: IconColor
+}
+
 abstract class Icon extends LitElement {
   static styles = styles;
 
-  @property() type: IconType = 'solid';
-  @property() size: IconSize = 'small';
-  @property() color: IconColor = 'dark';
+  @property() type: IconProps['type'] = 'solid';
+  @property() size: IconProps['size'] = 'small';
+  @property() color: IconProps['color'] = 'dark';
 
   abstract icons: string | {
     [type in IconType]: {

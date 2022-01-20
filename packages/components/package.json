@@ -1,6 +1,6 @@
 {
   "name": "@liveperson-design-system/components",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "The company design system components for LivePerson",
   "keywords": [
     "design-system",
@@ -56,7 +56,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@liveperson-design-system/icons": "^0.4.1-alpha.0",
+    "@liveperson-design-system/icons": "^0.4.7",
     "@liveperson-design-system/tokens": "^0.8.6",
     "@stencil/core": "^2.7.0"
   },

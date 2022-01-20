@@ -2,7 +2,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 
 import { Theme } from '../../utils/types';
 
-import '@liveperson-design-system/icons/info-circle';
+import '@liveperson-design-system/icons/dist/info-circle';
 
 @Component({
   tag: 'lp-input-label',

@@ -2,7 +2,7 @@ import { Component, h, Host, Prop, State } from '@stencil/core';
 
 import { Theme } from '../../utils/types';
 
-import '@liveperson-design-system/icons/requested';
+import '@liveperson-design-system/icons/dist/requested';
 
 export type TextareaTextAligners = 'left' | 'center' | 'right'
 

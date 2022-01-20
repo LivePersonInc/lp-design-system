@@ -1,6 +1,7 @@
 # LivePerson Design System Icons
 
-Checkout the [demos](https://livepersoninc.github.io/lp-design-system/?path=/story/icons)
+This project uses [Lit](https://lit.dev/) to create Web Components.
+For more details please check [Lit Docs](https://lit.dev/docs/)
 
 ## Installing
 
@@ -11,41 +12,59 @@ You can install LPDS icons with NPM or Yarn.
 
 ## How to use
 
-Before using this package you have to add the following script inside `head` tag
+### Project with a Framework
 
-```html
-<script src="https://unpkg.com/@liveperson-design-system/components/vendor.js"></script>
+To use all LPDS Icons simply import `@liveperson-design-system/icons`
+
+```javascript
+import `@liveperson-design-system/icons`;
 ```
 
-You can use any LPDS icon either in a browser or with a front-end framework
+Also you can import specific icons to use it
 
-#### Browser
+```javascript
+import `@liveperson-design-system/icons/dist/add-target`;
+```
+
+### Project without a Framework
+
+If you're using a simple HTML page, you can add your component via a script tag.
+For example, if we published a component to npm, we could load the component through the [unpkg](https://unpkg.com/) CDN like this:
+
 ```html
 <html>
   <head>
-    <script src="https://unpkg.com/@liveperson-design-system/icons/arrow-down.js" />
+    <script src="https://unpkg.com/@liveperson-design-system/icons"></script>
+    <!-- or -->
+    <script src="https://unpkg.com/@liveperson-design-system/icons/dist/add-target"></script>
   </head>
-
   <body>
-    <lp-arrow-down-icon />
+    <lp-add-target-icon />
   </body>
 </html>
 ```
 
-#### Framework (React)
-```jsx
-import React from 'react';
+Alternatively, if you wanted to take advantage of ES Modules, you could include the components using an import statement.
+Note that type="module" only works in modern browsers (not available in IE11 or Edge 12-18).
 
-import '@liveperson-design-system/icons/arrow-down';
-
-const App = () => {
-  return (
-    <lp-arrow-down-icon />
-  );
-};
-
-export default App
+```html
+<html>
+  <head>
+    <script type="module">
+      import 'https://unpkg.com/@liveperson-design-system/icons';
+      // or
+      import 'https://unpkg.com/@liveperson-design-system/icons/dist/add-target';
+    </script>
+  </head>
+  <body>
+    <lp-add-target-icon />
+  </body>
+</html>
 ```
+
+## Docs
+
+We use [Storybook](https://storybook.js.org/) to create [LPDS docs and demos](https://livepersoninc.github.io/lp-design-system/?path=/story/icons)
 
 ## License
 

@@ -42,9 +42,6 @@
   "files": [
     "dist/"
   ],
-  "exports": {
-    "./*": "./dist/*.js"
-  },
   "publishConfig": {
     "access": "public"
   },

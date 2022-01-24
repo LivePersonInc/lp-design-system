@@ -5,8 +5,9 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@liveperson-design-system/components';
 
+import { defineCustomElements } from '@liveperson-design-system/components/loader';
 
-
+defineCustomElements();
 export const LpButton = /*@__PURE__*/createReactComponent<JSX.LpButton, HTMLLpButtonElement>('lp-button');
 export const LpButtonGroup = /*@__PURE__*/createReactComponent<JSX.LpButtonGroup, HTMLLpButtonGroupElement>('lp-button-group');
 export const LpCheckbox = /*@__PURE__*/createReactComponent<JSX.LpCheckbox, HTMLLpCheckboxElement>('lp-checkbox');

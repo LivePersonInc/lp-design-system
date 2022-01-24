@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -21,6 +22,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -56,6 +58,13 @@ module.exports = {
         test: /\.svg$/,
         use: 'svg-inline-loader',
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }),
     ],
   },
 };

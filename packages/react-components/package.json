@@ -43,11 +43,14 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "yarn clean && yarn compile",
     "clean": "rm -rf dist",
-    "compile": "npm run tsc",
+    "compile": "yarn tsc",
     "tsc": "tsc -p .",
     "rollup": "rollup -c"
+  },
+  "dependencies": {
+    "@liveperson-design-system/components": "workspace:^"
   },
   "devDependencies": {
     "@types/jest": "23.3.9",

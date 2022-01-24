@@ -1,6 +1,7 @@
 # LivePerson Design System React Components
 
-Checkout the [demos](https://livepersoninc.github.io/lp-design-system/?path=/story/components)
+This project uses [Stencil](https://stenciljs.com/) to create Web Components with [React Integration](https://stenciljs.com/docs/react).
+For more details please check [Stencil Docs](https://stenciljs.com/docs/introduction)
 
 ## Installing
 
@@ -24,6 +25,10 @@ const App = () => {
 
 export default App
 ```
+
+## Docs
+
+We use [Storybook](https://storybook.js.org/) to create [LPDS docs and demos](https://livepersoninc.github.io/lp-design-system/?path=/story/components)
 
 ## License
 

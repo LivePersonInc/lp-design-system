@@ -58,10 +58,10 @@
   "dependencies": {
     "@liveperson-design-system/icons": "^0.4.7",
     "@liveperson-design-system/tokens": "^0.8.6",
-    "@stencil/core": "^2.7.0"
+    "@stencil/core": "^2.12.1"
   },
   "devDependencies": {
-    "@stencil/react-output-target": "^0.2.0",
+    "@stencil/react-output-target": "^0.2.1",
     "@stencil/sass": "^1.5.2",
     "@types/jest": "^26.0.24",
     "jest": "^26.6.3",

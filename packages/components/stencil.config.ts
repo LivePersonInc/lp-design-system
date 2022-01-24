@@ -9,6 +9,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@liveperson-design-system/components',
       proxiesFile: '../react-components/src/components/stencil-generated/index.ts',
+      includeDefineCustomElements: true,
     }),
     {
       type: 'dist',

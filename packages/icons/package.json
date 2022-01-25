@@ -1,6 +1,6 @@
 {
   "name": "@liveperson-design-system/icons",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "The company design system icons for LivePerson",
   "keywords": [
     "design-system",
@@ -51,7 +51,7 @@
     "generate-icons-metadata": "node scripts/generate-icons-metadata.js"
   },
   "dependencies": {
-    "@liveperson-design-system/tokens": "^0.8.6",
+    "@liveperson-design-system/tokens": "^0.8.7",
     "lit": "^2.1.1"
   },
   "devDependencies": {

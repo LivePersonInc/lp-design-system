@@ -1,3 +1,13 @@
+## [0.9.3](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.2...v0.9.3) (2022-01-25)
+
+
+### Features
+
+* **docs:** Added "Changelog" page ([c438cd9](https://github.com/LivePersonInc/lp-design-system/commit/c438cd94dd236bf08b1c78cb04cf8a0fbfce19b4))
+* **root:** Added auto generate changelog during release script ([9dc0a0c](https://github.com/LivePersonInc/lp-design-system/commit/9dc0a0c299cd9fbd29ec2e958153559d67cf0d5b))
+
+
+
 ## [0.9.1](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.0...v0.9.1) (2022-01-25)
 
 

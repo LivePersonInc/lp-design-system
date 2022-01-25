@@ -1,3 +1,12 @@
+## [0.9.4](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.3...v0.9.4) (2022-01-25)
+
+
+### Bug Fixes
+
+* **root:** Fixed auto generate changelog process ([9e4bea0](https://github.com/LivePersonInc/lp-design-system/commit/9e4bea02a27bfab8bb75369add7d8a9d1a65da19))
+
+
+
 ## [0.9.3](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.2...v0.9.3) (2022-01-25)
 
 
@@ -5,6 +14,20 @@
 
 * **docs:** Added "Changelog" page ([c438cd9](https://github.com/LivePersonInc/lp-design-system/commit/c438cd94dd236bf08b1c78cb04cf8a0fbfce19b4))
 * **root:** Added auto generate changelog during release script ([9dc0a0c](https://github.com/LivePersonInc/lp-design-system/commit/9dc0a0c299cd9fbd29ec2e958153559d67cf0d5b))
+
+
+
+## [0.9.2](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.1...v0.9.2) (2022-01-25)
+
+
+### Features
+
+* **components:** Added CHANGELOG file ([a9584b3](https://github.com/LivePersonInc/lp-design-system/commit/a9584b36f7391228f5203116fa5a8e887e3182c9))
+* **icons:** Added CHANGELOG file ([68a24b0](https://github.com/LivePersonInc/lp-design-system/commit/68a24b01add823e0ec77db225d78ab39d281f8db))
+* **react-components:** Added CHANGELOG file ([c4ea3ee](https://github.com/LivePersonInc/lp-design-system/commit/c4ea3eeab9648a54777a1cbb6679b8c4c1bfc303))
+* **root:** Updated CHANGELOG file ([b0cf3cf](https://github.com/LivePersonInc/lp-design-system/commit/b0cf3cf746bdc8a2c4b0e1cb70be9a177896101e))
+* **tokens:** Added CHANGELOG file ([e6960ad](https://github.com/LivePersonInc/lp-design-system/commit/e6960adbe19747946b88798cf8bd8dc567735f76))
+* **utils:** Updated CHANGELOG file ([19746f8](https://github.com/LivePersonInc/lp-design-system/commit/19746f8b10c9a2dce2dcaac831827c2ffea4eb04))
 
 
 

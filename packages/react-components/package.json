@@ -50,7 +50,7 @@
     "rollup": "rollup -c"
   },
   "dependencies": {
-    "@liveperson-design-system/components": "workspace:^"
+    "@liveperson-design-system/components": "^0.5.6"
   },
   "devDependencies": {
     "@types/jest": "23.3.9",

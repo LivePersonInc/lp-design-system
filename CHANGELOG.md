@@ -1,3 +1,18 @@
+## [0.9.1](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.0...v0.9.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **docs:** Fixed icons imports ([9f73f29](https://github.com/LivePersonInc/lp-design-system/commit/9f73f29bcb6790c9a29d7519eb91a713594a7717))
+* **icons:** Fixed build process ([ec7bcca](https://github.com/LivePersonInc/lp-design-system/commit/ec7bcca50c46a933b397e3d24ee81a8d65eb567a))
+
+
+### Features
+
+* **root:** Added CHANGELOG file ([d7a66ba](https://github.com/LivePersonInc/lp-design-system/commit/d7a66ba23319ba6e4e97dca5490fa5a205e0f34e))
+
+
+
 # [0.9.0](https://github.com/LivePersonInc/lp-design-system/compare/v0.8.0...v0.9.0) (2022-01-20)
 
 

@@ -49,7 +49,7 @@ module.exports = {
       path.resolve(__dirname),
       path.resolve(__dirname, '../docs'),
       path.resolve(__dirname, '../packages'),
-    ], [path.resolve(__dirname, '../package.json')]);
+    ], [path.resolve(__dirname, '../package.json'), path.resolve(__dirname, '../CHANGELOG.md')]);
 
     return config;
   },

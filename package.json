@@ -41,7 +41,8 @@
     "build:all": "yarn tokens:build && yarn icons:build && yarn components:build && yarn react-components:build",
     "bootstrap": "yarn build:all && lerna link",
     "publish:all": "yarn bootstrap && dotenv lerna publish --conventional-commits --create-release github",
-    "release": "np --yolo --no-publish --no-yarn"
+    "release": "np --yolo --no-publish --no-yarn",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.7",
@@ -56,6 +57,7 @@
     "@storybook/theming": "^6.4.7",
     "@types/lodash": "^4.14.176",
     "change-case": "^4.1.2",
+    "conventional-changelog-cli": "^2.2.2",
     "dotenv-cli": "^4.1.0",
     "fs-extra": "^10.0.0",
     "lerna": "^4.0.0",

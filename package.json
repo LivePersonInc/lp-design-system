@@ -40,7 +40,7 @@
     "tokens:build": "yarn workspace @liveperson-design-system/tokens run build",
     "build:all": "yarn tokens:build && yarn icons:build && yarn components:build && yarn react-components:build",
     "bootstrap": "yarn build:all && lerna link",
-    "publish:all": "yarn bootstrap && dotenv lerna publish --conventional-commits --create-release github",
+    "publish:all": "yarn bootstrap && lerna publish --conventional-commits",
     "release": "np --yolo --no-publish --no-yarn",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
@@ -58,7 +58,6 @@
     "@types/lodash": "^4.14.176",
     "change-case": "^4.1.2",
     "conventional-changelog-cli": "^2.2.2",
-    "dotenv-cli": "^4.1.0",
     "fs-extra": "^10.0.0",
     "lerna": "^4.0.0",
     "lodash": "^4.17.21",

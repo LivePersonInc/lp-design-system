@@ -1,42 +1,7 @@
-import { ArgsTable, Meta } from '@storybook/addon-docs';
-import { TabsState } from '@storybook/components';
+import { Meta } from '@storybook/addon-docs';
 
-import Icon from '@lpds/icons/src/components/Icon';
+import IconReadme from '@lpds/icons/README.md';
 
-<Meta
-  title="Icons/Overview"
-  component={Icon}
-/>
+<Meta title="Icons/Overview" />
 
-# Icons
-
-Each icon is a separate module.
-It means that you have to import a specific module for the icon that you are going to use
-
-<TabsState>
-  <div id="js" title="JavaScript">
-
-```jsx
-import '@liveperson-design-system/icons/arrow-down';
-
-<lp-arrow-down-icon />
-```
-
-  </div>
-  <div id="browser" title="Browser">
-
-```html
-<script src="https://unpkg.com/@liveperson-design-system/icons/arrow-down.js"></script>
-
-<lp-arrow-down-icon />
-```
-
-  </div>
-</TabsState>
-
-## Properties
-
-<ArgsTable of={Icon} />
-
-**Note:** All thous properties can be provided for each icon component bun at the same time not all icons have all thous variations.
-However, each icon component has fallback logic to display the closest icon related to provided properties
+<IconReadme />

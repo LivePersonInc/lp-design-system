@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { styled } from '@storybook/theming'
 
 import { variables as colorsVariables } from '@lpds/tokens/build/js/colors';
+import { Icons } from '@lpds/icons/src/components/icons';
 
-import { IconsListProps } from './IconsList';
+import IconDetailsModal from './IconDetailsModal';
 
-export type IconListItemProps = IconsListProps & Pick<JSX.IntrinsicElements['div'], 'onClick'> & {
-  selected?: boolean
+export type IconListItemProps = {
+  name: Icons
 }
 
-export type IconListItemComponent = React.FC<IconListItemProps>
+export type IconListItemComponent = React.VFC<IconListItemProps>
 
 const ListItem = styled.div`
   display: flex;
@@ -25,8 +26,7 @@ const ListItem = styled.div`
   cursor: pointer;
   transition: background-color .15s ease-out;
 
-  &:hover,
-  &.selected {
+  &:hover {
     background-color: ${colorsVariables.navy.dark};
   }
 `;
@@ -43,14 +43,30 @@ const ListItemName = styled.div`
   padding: 0 10px;
 `;
 
-const IconListItem: IconListItemComponent = ({ name, selected, onClick, ...props }) => (
-  <ListItem className={selected ? 'selected' : undefined} onClick={onClick}>
-    <ListItemIconWrap>
-      {React.createElement(`lp-${name}-icon`, props)}
-    </ListItemIconWrap>
+const IconListItem: IconListItemComponent = ({ name }) => {
+  const [isIconDetailsModalOpen, setIsIconDetailsModalOpen] = useState<boolean>(false);
 
-    <ListItemName>{name}</ListItemName>
-  </ListItem>
-);
+  const onListItemClick = useCallback((): void => {
+    setIsIconDetailsModalOpen(true);
+  }, []);
+
+  const iconDetailsModalCloseHandler = useCallback((): void => {
+    setIsIconDetailsModalOpen(false);
+  }, []);
+
+  return (
+    <>
+      <ListItem title={name} onClick={onListItemClick}>
+        <ListItemIconWrap>
+          {React.createElement(`lp-${name}-icon`, { size: 'large' })}
+        </ListItemIconWrap>
+
+        <ListItemName>{name}</ListItemName>
+      </ListItem>
+
+      {isIconDetailsModalOpen && <IconDetailsModal name={name} onClose={iconDetailsModalCloseHandler} />}
+    </>
+  );
+};
 
 export default IconListItem

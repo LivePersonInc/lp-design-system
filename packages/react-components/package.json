@@ -1,6 +1,6 @@
 {
   "name": "@liveperson-design-system/react-components",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "The company design system components for LivePerson",
   "keywords": [
     "design-system",
@@ -50,7 +50,7 @@
     "rollup": "rollup -c"
   },
   "dependencies": {
-    "@liveperson-design-system/components": "^0.5.8"
+    "@liveperson-design-system/components": "^0.5.9"
   },
   "devDependencies": {
     "@types/jest": "23.3.9",

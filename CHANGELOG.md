@@ -1,3 +1,12 @@
+## [0.9.5](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.4...v0.9.5) (2022-01-28)
+
+
+### Bug Fixes
+
+* **icons:** Fixed icon styles ([ea9babb](https://github.com/LivePersonInc/lp-design-system/commit/ea9babbb929eb17cb5a86111565d9c3d7d604116))
+
+
+
 ## [0.9.4](https://github.com/LivePersonInc/lp-design-system/compare/v0.9.3...v0.9.4) (2022-01-25)
 
 

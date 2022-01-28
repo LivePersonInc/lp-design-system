@@ -1,10 +1,12 @@
 # LivePerson Design System
 
-Checkout the [demos](https://livepersoninc.github.io/lp-design-system)
+## Docs
+
+We use [Storybook](https://storybook.js.org/) to create [LPDS docs and demos](https://livepersoninc.github.io/lp-design-system/)
 
 ## Developing
 
-**LPDS is using Monorepo development strategy and [Lerna](https://lerna.js.org/) tool to work with it.**
+**LPDS is using Monorepo development strategy and [Lerna](https://lerna.js.org/) + [Yarn 3 Workspaces](https://yarnpkg.com/features/workspaces) to work with it.**
 
 If you want to run the project locally, its really easy!
 
@@ -34,7 +36,7 @@ yarn bootstrap
 yarn start
 ```
 
-Once started the browser will open to the storybook url. From here you can see and try all things that LPDS provides
+Once started the browser will open to the Storybook url. From here you can see all things that LPDS provides
 
 ### Storybook deploying
 
@@ -46,18 +48,15 @@ yarn deploy
 
 ### Publishing
 
-To run publishing process simply run this script
+To start publishing process simply run this script
 
 ```bush
 yarn publish:all
 ```
 
-**NOTE:** before run this command you have define `GH_TOKEN` environment variable in `.env` file.
-This is your GitHub authentication token (under Settings > Developer settings > Personal access tokens).
-
 ### Release
 
-To run release process simply run this script
+To start release process simply run this script
 
 ```bush
 yarn release
@@ -67,8 +66,10 @@ yarn release
 
 There are few NPM scripts to help work with the project
 
-- `yarn build:components` - to build LPDS components
-- `yarn build:icons` - to build LPDS icons
+- `yarn tokens:build` - to build LPDS tokens
+- `yarn icons:build` - to build LPDS icons
+- `yarn components:build` - to build LPDS components
+- `yarn react-components:build` - to build LPDS React components
 - `yarn build:all` - to build all packages
 
 ## License
